@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:id="@+id/scroll_owner_join"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:padding="40dp"
+                android:id="@+id/layout_join_detail_owner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <!--본인인증 레이아웃(아임포트) 아마도 웹뷰??-->
+                <TextView
+                    android:id="@+id/layout_authentication"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="아임포트" />
+
+                <EditText
+                    android:layout_marginBottom="10dp"
+                    android:id="@+id/owner_join_edit_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="비밀번호" />
+                <EditText
+                    android:layout_marginBottom="10dp"
+                    android:id="@+id/owner_join_edit_passwordConfirm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="비밀번호확인" />
+
+                <EditText
+                    android:layout_marginBottom="10dp"
+                    android:id="@+id/owner_join_edit_businessNum"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="사업자등록번호('-'제외)" />
+
+                <EditText
+                    android:layout_marginBottom="10dp"
+                    android:id="@+id/owner_join_edit_ownerName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="대표자명" />
+
+                <EditText
+                    android:layout_marginBottom="10dp"
+                    android:id="@+id/owner_join_edit_storeName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="회사/매장명" />
+
+                <EditText
+                    android:layout_marginBottom="10dp"
+                    android:id="@+id/owner_join_edit_openDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="개업일자" />
+
+                <Button
+                    android:background="@drawable/round_button"
+                    android:textColor="@color/text_color"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:text="가입하기" />
+            </LinearLayout>
+        </ScrollView>
+    </android.support.constraint.ConstraintLayout>
+</layout>
