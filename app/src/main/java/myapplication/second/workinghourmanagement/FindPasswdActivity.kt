@@ -19,11 +19,9 @@ class FindPasswdActivity: AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        val id =
         when(item.itemId){
             android.R.id.home -> {
-                //todo 이전 페이지로 이동(로그인 페이지)
-//                finish()
+                finish()
                 return true
             }
         }
