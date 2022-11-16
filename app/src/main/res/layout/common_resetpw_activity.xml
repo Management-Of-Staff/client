@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="비밀번호 재설정"
+            android:text="@string/reset_passwd"
             android:textSize="17sp"
             android:textStyle="bold" />
     </android.support.v7.widget.Toolbar>
@@ -35,7 +35,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="새로운 비밀번호" />
+            android:text="@string/new_passwd" />
 
         <EditText
             android:id="@+id/resetPasswd_edit_passwd"
@@ -58,7 +58,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="비밀번호 재입력" />
+            android:text="@string/confirm_passwd" />
 
         <EditText
             android:id="@+id/findPasswd_edit_num"
@@ -73,7 +73,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/app_color"
-        android:text="확인"
+        android:text="@string/ok"
         android:textColor="@color/text_color"
         app:layout_constraintBottom_toBottomOf="parent" />
 </android.support.constraint.ConstraintLayout>
