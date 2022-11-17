@@ -12,21 +12,34 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WorkingHourManagement"
         tools:targetApi="31">
+
         <activity
             android:name=".MainActivity"
+            android:exported="true">
+
+
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".FindPasswdActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ResetPasswdActivity"
+            android:exported="true" />
+        <activity
+            android:name=".OwnerJoinActivity"
+            android:exported="true" />
+        <activity
+            android:name=".StaffJoinActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
         </activity>
-        <activity android:name=".FindPasswdActivity" android:exported="true" />
-        <activity android:name=".ResetPasswdActivity" android:exported="true" />
     </application>
 
 </manifest>
