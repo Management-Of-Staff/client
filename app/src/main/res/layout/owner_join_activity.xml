@@ -7,74 +7,174 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="20dp"
+            android:background="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="MissingConstraints">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/owner_join"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+        </android.support.v7.widget.Toolbar>
+
         <ScrollView
             android:id="@+id/scroll_owner_join"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/owner_join_btn_join"
+            app:layout_constraintTop_toBottomOf="@id/toolbar">
 
             <LinearLayout
-                android:padding="40dp"
                 android:id="@+id/layout_join_detail_owner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:orientation="vertical">
-
-                <!--본인인증 레이아웃(아임포트) 아마도 웹뷰??-->
-                <TextView
-                    android:id="@+id/layout_authentication"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="아임포트" />
+                android:orientation="vertical"
+                android:padding="40dp">
 
                 <EditText
-                    android:layout_marginBottom="10dp"
-                    android:id="@+id/owner_join_edit_password"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="비밀번호" />
-                <EditText
-                    android:layout_marginBottom="10dp"
-                    android:id="@+id/owner_join_edit_passwordConfirm"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="비밀번호확인" />
-
-                <EditText
-                    android:layout_marginBottom="10dp"
-                    android:id="@+id/owner_join_edit_businessNum"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="사업자등록번호('-'제외)" />
-
-                <EditText
-                    android:layout_marginBottom="10dp"
                     android:id="@+id/owner_join_edit_ownerName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="대표자명" />
+                    android:layout_marginBottom="10dp"
+                    android:hint="@string/representative_name"
+                    android:inputType="text" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/owner_join_edit_phone"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_weight="3"
+                        android:hint="@string/phone"
+                        android:inputType="phone" />
+
+                    <Button
+                        android:id="@+id/owner_join_btn_auth"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:text="@string/certification" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/owner_join_edit_authenticationNum"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:hint="@string/authentication_num"
+                        android:inputType="number" />
+
+                    <TextView
+                        android:id="@+id/owner_join_text_remainTime"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:textAlignment="center"
+                        android:textColor="#ff0000"
+                        tools:text="03:00" />
+
+                    <Button
+                        android:id="@+id/owner_join_btn_check"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/ok" />
+                </LinearLayout>
+                <!--                잠시 공간 확보,,,-->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/owner_join_edit_businessNum"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_weight="3"
+                        android:hint="@string/business_num"
+                        android:inputType="number" />
+
+                    <Button
+                        android:id="@+id/owner_join_btn_bnCheck"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:text="@string/check" />
+
+                </LinearLayout>
 
                 <EditText
-                    android:layout_marginBottom="10dp"
                     android:id="@+id/owner_join_edit_storeName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="회사/매장명" />
+                    android:layout_marginBottom="10dp"
+                    android:hint="@string/store_name"
+                    android:inputType="text" />
+
+                <!--                <EditText-->
+                <!--                    android:id="@+id/owner_join_edit_openDate"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginBottom="10dp"-->
+                <!--                    android:hint="개업일자" />-->
+
+                <!--                잠시 공간 확보,,,-->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp" />
 
                 <EditText
-                    android:layout_marginBottom="10dp"
-                    android:id="@+id/owner_join_edit_openDate"
+                    android:id="@+id/owner_join_edit_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="개업일자" />
+                    android:layout_marginBottom="10dp"
+                    android:hint="@string/passwd"
+                    android:inputType="textPassword" />
 
-                <Button
-                    android:background="@drawable/round_button"
-                    android:textColor="@color/text_color"
-                    android:layout_width="300dp"
+                <EditText
+                    android:id="@+id/owner_join_edit_passwordConfirm"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="가입하기" />
+                    android:layout_marginBottom="10dp"
+                    android:hint="@string/confirm_passwd"
+                    android:inputType="textPassword" />
             </LinearLayout>
         </ScrollView>
+
+        <Button
+            android:id="@+id/owner_join_btn_join"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/app_color"
+            android:text="@string/join"
+            android:textColor="@color/text_color"
+            app:layout_constraintBottom_toBottomOf="parent" />
     </android.support.constraint.ConstraintLayout>
 </layout>
