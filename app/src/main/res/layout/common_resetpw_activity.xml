@@ -5,6 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginHorizontal="20dp"
+        android:background="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -25,7 +32,8 @@
         android:id="@+id/linear_newPasswd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginVertical="10dp"
         app:layout_constraintBottom_toTopOf="@id/linear_newPasswd_certification"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed">
@@ -49,7 +57,8 @@
         android:id="@+id/linear_newPasswd_certification"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginVertical="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/linear_newPasswd">
 
