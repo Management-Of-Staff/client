@@ -23,7 +23,7 @@
                 android:id="@+id/button_owner_join"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/round_button"
+                android:background="@drawable/round_button_appcolor"
                 android:text="오너회원"
                 android:textColor="@color/text_color" />
 
@@ -44,7 +44,7 @@
                 android:id="@+id/button_staff_join"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/round_button"
+                android:background="@drawable/round_button_appcolor"
                 android:text="개인회원"
                 android:textColor="@color/text_color" />
         </LinearLayout>
