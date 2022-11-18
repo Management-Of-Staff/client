@@ -74,7 +74,7 @@
                 android:id="@+id/button_next"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/round_button"
+                android:background="@drawable/round_button_appcolor"
                 android:text="@string/next"
                 android:textStyle="bold"
                 android:layout_margin="20dp"

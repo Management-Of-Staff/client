@@ -72,7 +72,7 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:background="@drawable/round_button"
+            android:background="@drawable/round_button_appcolor"
             android:text="로그인"
             android:textColor="@color/text_color"
             app:layout_constraintBottom_toTopOf="@id/text_section"
