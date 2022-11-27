@@ -16,6 +16,13 @@
     <string name="certification">인증하기</string>
     <string name="authentication_num">인증번호</string>
 
+    <string name="settle_salary">송금하기</string>
+    <string name="monthly_wage">월급</string>
+    <string name="weekly_wage">주급</string>
+    <string name="daily_wage">일급</string>
+    <string name="select_period">기간선택</string>
+
+
     <string name="find_passwd">비밀번호 찾기</string>
     <string name="reset_passwd">비밀번호 재설정</string>
     <string name="passwd">비밀번호</string>
