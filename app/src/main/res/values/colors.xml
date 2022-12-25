@@ -9,6 +9,40 @@
     <color name="white">#FFFFFFFF</color>
     <color name="custom_gray">#AAAAAA</color>
 
-    <color name="app_color">#005599</color>
+
+    <color name="error1">#BA1A1A</color>
+    <color name="error2">#DE3730</color>
+    <color name="error3">#FF5449</color>
+    <color name="error4">#FF897D</color>
+
+    <color name="success1">#1FAD4E</color>
+    <color name="success2">#21BC55</color>
+    <color name="bg_color_neutral">#FAFAFA</color>
+
+    <color name="b1">#050505</color>
+    <color name="b2">#2E3038</color>
+    <color name="b3">#2E3038</color>
+    <color name="b4">#5C5E67</color>
+
+    <color name="neutral1">#E1E2EC</color>
+    <color name="neutral2">#F0F0FA</color>
+    <color name="neutral3">#FFFBFF</color>
+
+    <color name="point1">#5FD3B0</color>
+    <color name="point2">#46CCA4</color>
+    <color name="disable1">#E3E3E3</color>
+    <color name="disabled_text">#A1A1A1</color>
+
+    <color name="blue4">#0855D1</color>
+    <color name="blue3">#0040A2</color>
+    <color name="blue2">#002B74</color>
+    <color name="blue1">#001848</color>
+    <color name="main_blue">#0053CF</color>
+
+    <color name="sec2">#003548</color>
+    <color name="sec1">#001E2B</color>
+    <color name="main_color">#00AEE5</color>
+
+    <color name="app_color">#0855D1</color>
     <color name="text_color">#ffffff</color>
 </resources>
