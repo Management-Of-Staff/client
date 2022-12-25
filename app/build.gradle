@@ -1,6 +1,6 @@
 plugins {
     id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-android'
     id 'kotlin-kapt'
     id 'kotlin-parcelize'
     id 'com.google.dagger.hilt.android'
@@ -8,7 +8,7 @@ plugins {
 
 android {
     namespace 'myapplication.second.workinghourmanagement'
-    compileSdk 33
+    compileSdk 32
 
     defaultConfig {
         configurations.all {
@@ -16,7 +16,7 @@ android {
         }
         applicationId "myapplication.second.workinghourmanagement"
         minSdk 21
-        targetSdk 33
+        targetSdk 32
         versionCode 1
         versionName "1.0"
 
@@ -24,15 +24,16 @@ android {
     }
 
     buildTypes {
-        buildFeatures {
-            viewBinding true
-            dataBinding true
-        }
-
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+    buildFeatures {
+        viewBinding true
+    }
+    dataBinding{
+        enabled = true
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
