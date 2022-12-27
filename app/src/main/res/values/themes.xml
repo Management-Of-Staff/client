@@ -2,9 +2,28 @@
     <!-- Base application theme. -->
     <style name="Theme.WorkingHourManagement" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimary">@color/app_color</item>
         <item name="colorPrimaryDark">@color/purple_700</item>
-        <item name="colorAccent">@color/teal_200</item>
+        <item name="colorAccent">@color/black</item>
         <!-- Customize your theme here. -->
+
+        <!-- status bar color-->
+        <item name="android:statusBarColor">@color/transparent</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+    </style>
+
+    <style name="neo_regular_black_style">
+        <item name="android:fontFamily">@font/spoqahansansneo_regular</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="neo_medium_white_style">
+        <item name="android:fontFamily">@font/spoqahansansneo_medium</item>
+        <item name="android:textColor">@color/text_color</item>
+    </style>
+
+    <style name="neo_bold_black_style">
+        <item name="android:fontFamily">@font/spoqahansansneo_bold</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 </resources>
