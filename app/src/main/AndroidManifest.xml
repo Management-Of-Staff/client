@@ -29,6 +29,9 @@
             android:name=".ResetPasswdActivity"
             android:exported="true" />
         <activity
+            android:name=".OwnerTosActivity"
+            android:exported="true" />
+        <activity
             android:name=".OwnerJoinActivity"
             android:exported="true" />
         <activity
