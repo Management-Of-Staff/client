@@ -7,8 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="custom_gray">#AAAAAA</color>
-
+    <color name="transparent">#00000000</color>
 
     <color name="error1">#BA1A1A</color>
     <color name="error2">#DE3730</color>
@@ -34,6 +33,7 @@
     <color name="disabled_text">#A1A1A1</color>
 
     <color name="blue4">#0855D1</color>
+    <color name="blue4_20">#330855D1</color>
     <color name="blue3">#0040A2</color>
     <color name="blue2">#002B74</color>
     <color name="blue1">#001848</color>

@@ -9,109 +9,106 @@
         <RadioGroup
             android:id="@+id/radio_group_role"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="55dp"
-            android:layout_marginVertical="40dp"
-            android:gravity="center"
+            android:layout_height="45dp"
+            android:layout_marginHorizontal="24dp"
+            android:background="@drawable/round_blue4_20_background"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@id/edit_phone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintBottom_toTopOf="@id/linearlayout_login">
 
             <RadioButton
                 android:id="@+id/radio_button_owner"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/radio_segmented_left"
+                android:background="@drawable/radio_selector_left_background"
                 android:button="@null"
                 android:checked="true"
+                android:fontFamily="@font/spoqahansansneo_medium"
                 android:padding="10dp"
-                android:text="오너"
+                android:text="@string/owner_login"
                 android:textAlignment="center"
-                android:textColor="@drawable/selector_radio_text_login"
-                android:textStyle="bold" />
+                android:textColor="@drawable/radio_selector_text_color" />
 
             <RadioButton
                 android:id="@+id/radio_button_staff"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/radio_segmented_right"
+                android:background="@drawable/radio_selector_right_background"
                 android:button="@null"
+                android:fontFamily="@font/spoqahansansneo_medium"
                 android:padding="10dp"
-                android:text="직원"
+                android:text="@string/staff_login"
                 android:textAlignment="center"
-                android:textColor="@drawable/selector_radio_text_login"
-                android:textStyle="bold" />
+                android:textColor="@drawable/radio_selector_text_color" />
         </RadioGroup>
 
-        <EditText
-            android:id="@+id/edit_phone"
-            android:layout_width="300dp"
+        <LinearLayout
+            android:id="@+id/linearlayout_login"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="핸드폰번호"
-            android:inputType="phone"
-            app:layout_constraintBottom_toTopOf="@id/edit_password"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:orientation="vertical"
+            android:padding="24dp"
+            app:layout_constraintBottom_toBottomOf="parent">
 
-        <EditText
-            android:id="@+id/edit_password"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:hint="비밀번호"
-            android:inputType="textPassword"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/edit_phone" />
+            <EditText
+                android:id="@+id/edit_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/round_neutral2_background"
+                android:fontFamily="@font/spoqahansansneo_regular"
+                android:hint="@string/phone"
+                android:inputType="phone"
+                android:padding="15dp" />
 
-        <Button
-            android:id="@+id/button_login"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/round_button_appcolor"
-            android:text="로그인"
-            android:textColor="@color/text_color"
-            app:layout_constraintBottom_toTopOf="@id/text_section"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/edit_password" />
+            <EditText
+                android:id="@+id/edit_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/round_neutral2_background"
+                android:fontFamily="@font/spoqahansansneo_regular"
+                android:hint="@string/passwd"
+                android:inputType="textPassword"
+                android:padding="15dp" />
 
-        <TextView
-            android:id="@+id/text_join"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingVertical="20dp"
-            android:text="회원가입"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/text_section"
-            app:layout_constraintStart_toStartOf="@id/button_login"
-            app:layout_constraintTop_toBottomOf="@id/button_login"
-            app:layout_constraintVertical_bias="0.0" />
+            <Button
+                android:id="@+id/button_login"
+                style="@style/neo_medium_white_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="45dp"
+                android:background="@drawable/round_appcolor_background"
+                android:text="@string/login"
+                android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/text_section"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingVertical="20dp"
-            android:text="|"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/button_login" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="40dp">
 
-        <TextView
-            android:id="@+id/text_find_password"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingVertical="20dp"
-            android:text="비밀번호찾기"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/button_login"
-            app:layout_constraintStart_toEndOf="@id/text_section"
-            app:layout_constraintTop_toBottomOf="@id/button_login" />
+                <TextView
+                    android:id="@+id/text_join"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/spoqahansansneo_medium"
+                    android:gravity="center"
+                    android:text="@string/join"
+                    android:textSize="16sp" />
 
+                <TextView
+                    android:id="@+id/text_find_password"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/spoqahansansneo_medium"
+                    android:gravity="center"
+                    android:text="@string/find_passwd"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
