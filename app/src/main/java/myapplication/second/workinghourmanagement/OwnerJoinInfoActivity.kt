@@ -18,8 +18,10 @@ class OwnerJoinInfoActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.owner_join_info_activity)
 
         binding.ownerJoinBtnJoin.setOnClickListener{
+            //todo 회원가입 성공여부 체크후 성공시 intent
             val intent = Intent(this, OwnerJoinCompleteActivity::class.java)
             startActivity(intent)
+            finishAffinity()
         }
 
         val toolbar: Toolbar = findViewById(R.id.toolbar)
