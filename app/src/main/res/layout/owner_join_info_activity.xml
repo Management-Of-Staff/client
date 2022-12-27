@@ -84,7 +84,7 @@
                         android:layout_height="35dp"
                         android:layout_marginStart="12dp"
                         android:layout_weight="1"
-                        android:background="@drawable/round_button_appcolor"
+                        android:background="@drawable/round_appcolor_background"
                         android:text="@string/check" />
                 </LinearLayout>
 
@@ -165,7 +165,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="22dp"
                     android:layout_marginTop="40dp"
-                    android:background="@drawable/round_button_appcolor"
+                    android:background="@drawable/round_appcolor_background"
                     android:text="@string/join"
                     android:textSize="20sp" />
             </LinearLayout>
