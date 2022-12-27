@@ -21,10 +21,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
         </activity>
         <activity
             android:name=".FindPasswdActivity"
@@ -34,6 +30,12 @@
             android:exported="true" />
         <activity
             android:name=".OwnerJoinActivity"
+            android:exported="true" />
+        <activity
+            android:name=".OwnerJoinInfoActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".OwnerJoinCompleteActivity"
             android:exported="true" />
         <activity
             android:name=".StaffJoinActivity"
