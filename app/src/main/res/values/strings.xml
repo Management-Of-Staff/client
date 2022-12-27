@@ -3,6 +3,10 @@
     <string name="privacy">회원 가입 시에 ‘아이디, 비밀번호, 이름, 생년월일, 성별, 휴대전화번호’를 필수항목으로 수집합니다. 만약 이용자가 입력하는 생년월일이 만14세 미만 아동일 경우에는 법정대리인 정보(법정대리인의 이름, 생년월일, 성별, 중복가입확인정보(DI), 휴대전화번호)를 추가로 수집합니다. 그리고 선택항목으로 이메일주소를 수집합니다.
 단체아이디로 회원가입 시 단체아이디, 비밀번호, 단체이름, 이메일주소, 휴대전화번호를 필수항목으로 수집합니다. 그리고 단체 대표자명을 선택항목으로 수집합니다.</string>
 
+    <string name="login">로그인</string>
+    <string name="owner_login">오너 로그인</string>
+    <string name="staff_login">직원 로그인</string>
+
     <string name="join">회원가입</string>
     <string name="owner_join">오너회원가입</string>
     <string name="staff_join">직원회원가입</string>
@@ -31,12 +35,10 @@
     <string name="next">다음</string>
     <string name="ok">확인</string>
     <string name="check">조회</string>
-    <string name="title_activity_test">TestActivity</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
+
+    <string name="password_format">영문, 숫자 포함 8자리 이상</string>
+    <string name="num_char20">0 / 20</string>
+    <string name="input_info">회원 정보를 입력해주세요</string>
+    <string name="complete_join">\'오직\' 회원이 되셨어요!</string>
 
 </resources>
