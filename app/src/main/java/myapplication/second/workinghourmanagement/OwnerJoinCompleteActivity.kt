@@ -16,6 +16,7 @@ class OwnerJoinCompleteActivity: AppCompatActivity() {
         binding.btnOk.setOnClickListener{
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
+            finishAffinity()
         }
     }
 }

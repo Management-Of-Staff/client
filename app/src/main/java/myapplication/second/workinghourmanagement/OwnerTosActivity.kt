@@ -7,23 +7,18 @@ import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
-import myapplication.second.workinghourmanagement.databinding.CommonLoginActivityBinding
-import myapplication.second.workinghourmanagement.databinding.OwnerJoinInfoActivityBinding
+import myapplication.second.workinghourmanagement.databinding.OwnerTosActivityBinding
 
-class OwnerJoinInfoActivity : AppCompatActivity() {
-    private lateinit var binding: OwnerJoinInfoActivityBinding
-
+class OwnerTosActivity : AppCompatActivity() {
+    private lateinit var binding: OwnerTosActivityBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.owner_join_info_activity)
+        binding = DataBindingUtil.setContentView(this, R.layout.owner_tos_activity)
 
-        binding.ownerJoinBtnJoin.setOnClickListener{
-            //todo 회원가입 성공여부 체크후 성공시 intent
-            val intent = Intent(this, OwnerJoinCompleteActivity::class.java)
+        binding.buttonNext.setOnClickListener {
+            val intent = Intent(this, OwnerJoinActivity::class.java)
             startActivity(intent)
-            finishAffinity()
         }
-
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
         val actionBar: ActionBar = supportActionBar!!

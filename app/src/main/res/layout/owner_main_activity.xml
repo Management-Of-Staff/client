@@ -7,22 +7,22 @@
     tools:context=".MainActivity">
 
     <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_staff_main"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:id="@+id/toolbar_staff_main"
-        app:layout_constraintTop_toTopOf="parent"
-        app:contentInsetStart="0dp" >
+        app:contentInsetStart="0dp"
+        app:layout_constraintTop_toTopOf="parent">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent">
 
             <ImageView
+                android:id="@+id/iv_menu"
                 android:layout_width="?attr/actionBarSize"
                 android:layout_height="match_parent"
-                app:srcCompat="@drawable/ic_hamburger_menu"
                 android:padding="17dp"
-                android:id="@+id/iv_menu" />
+                app:srcCompat="@drawable/ic_hamburger_menu" />
 
             <ImageView
                 android:id="@+id/icon_myPage"
@@ -48,17 +48,17 @@
         android:id="@+id/drawer_toolbar_menu"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent" >
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize" >
+                android:layout_height="?attr/actionBarSize">
 
                 <View
                     android:layout_width="0dp"
@@ -68,9 +68,9 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/ic_close_drawer"
+                    android:layout_gravity="right"
                     android:padding="18dp"
-                    android:layout_gravity="right"/>
+                    app:srcCompat="@drawable/ic_close_drawer" />
 
             </LinearLayout>
 
@@ -79,9 +79,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
                 android:layout_marginEnd="40dp"
-                tools:text="사장님"
                 android:gravity="center"
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                tools:text="사장님" />
 
             <View
                 android:layout_width="match_parent"
@@ -107,9 +107,9 @@
         android:id="@+id/button_staff_management"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/round_button_appcolor"
-        android:text="직원관리"
         android:layout_margin="30dp"
+        android:background="@drawable/round_appcolor_background"
+        android:text="직원관리"
         android:textSize="28sp"
         app:layout_constraintBottom_toTopOf="@id/button_time_management"
         app:layout_constraintEnd_toEndOf="parent"
@@ -119,23 +119,23 @@
         android:id="@+id/button_time_management"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/round_button_appcolor"
-        android:text="타임관리"
-        app:layout_constraintBottom_toTopOf="@id/button_work_management"
         android:layout_margin="30dp"
+        android:background="@drawable/round_appcolor_background"
+        android:text="타임관리"
         android:textSize="28sp"
+        app:layout_constraintBottom_toTopOf="@id/button_work_management"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        app:layout_constraintBottom_toBottomOf="parent"
         android:id="@+id/button_work_management"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/round_button_appcolor"
-        android:text="근무관리"
         android:layout_margin="30dp"
+        android:background="@drawable/round_appcolor_background"
+        android:text="근무관리"
         android:textSize="28sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
