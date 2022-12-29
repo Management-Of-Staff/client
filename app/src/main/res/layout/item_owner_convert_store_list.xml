@@ -9,14 +9,19 @@
     app:cardBackgroundColor="@color/white"
     app:cardElevation="7dp"
     app:cardUseCompatPadding="true"
+    app:strokeColor="@color/white"
+    app:strokeWidth="1dp"
     app:rippleColor="#EBDDFF"
     app:contentPadding="10dp"
-    android:layout_marginStart="30dp"
-    android:layout_marginEnd="30dp" >
+     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp" >
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -49,8 +54,8 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_choice_convert_store"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
             android:src="@drawable/ic_right_arrow"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
