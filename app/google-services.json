@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "452556375805",
+    "project_id": "owner-staff-project",
+    "storage_bucket": "owner-staff-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:452556375805:android:11f636e51562b29e57e094",
+        "android_client_info": {
+          "package_name": "myapplication.second.workinghourmanagement"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "452556375805-6nc0ngpiiopjeihh39j1qf2do0uqu6uu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnX0JZ2JPHRYdJIw554YSIarU-amOVKnw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "452556375805-6nc0ngpiiopjeihh39j1qf2do0uqu6uu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
