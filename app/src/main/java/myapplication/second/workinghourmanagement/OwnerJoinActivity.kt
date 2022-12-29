@@ -4,6 +4,8 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
@@ -42,16 +44,24 @@ class OwnerJoinActivity : AppCompatActivity() {
     }
 
     private fun bind() {
+        binding.ownerJoinEditPhone.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {
+                binding.ownerJoinBtnAuth.isEnabled = checkPhoneValidation(binding.ownerJoinEditPhone.text.toString())
+            }
+        })
         binding.ownerJoinBtnAuth.setOnClickListener {
             val phone = "+82" + binding.ownerJoinEditPhone.text.toString().substring(1)
             Log.d("전화번호", phone)
             sendMessage(phone)
         }
-        //todo 인증코드는 6자리 숫자
+
         binding.ownerJoinEditAuthenticationNum.doAfterTextChanged {
             binding.ownerJoinBtnCheck.isEnabled =
                 binding.ownerJoinEditAuthenticationNum.toString().length >= 6
         }
+
         binding.ownerJoinBtnCheck.setOnClickListener {
             val credential = PhoneAuthProvider.getCredential(
                 storedVerificationId,
@@ -120,5 +130,9 @@ class OwnerJoinActivity : AppCompatActivity() {
         PhoneAuthProvider.verifyPhoneNumber(options)
         auth.setLanguageCode("kr")
         Toast.makeText(applicationContext, "문자를 확인하여 인증을 완료해주세요", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun checkPhoneValidation(pw: String): Boolean {
+        return pw.matches("^01(?:0|1|[6-9])(?:\\d{3}|\\d{4})\\d{4}\$".toRegex())
     }
 }
