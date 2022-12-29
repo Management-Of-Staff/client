@@ -35,16 +35,24 @@
                 style="@style/neo_bold_black_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="42dp"
+                android:layout_marginTop="22dp"
+                android:layout_marginBottom="20dp"
                 android:text="@string/input_phone"
                 android:textSize="24sp" />
+
+            <TextView
+                style="@style/neo_regular_black_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="44dp"
+                android:text="@string/input_phone_detail"
+                android:textSize="16sp" />
 
             <TextView
                 style="@style/neo_regular_black_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
-                android:layout_marginTop="30dp"
                 android:text="@string/phone" />
 
             <LinearLayout
@@ -66,6 +74,7 @@
                     android:layout_marginStart="12dp"
                     android:layout_weight="1"
                     android:background="@drawable/button_selector_drawable"
+                    android:enabled="false"
                     android:minHeight="0dp"
                     android:paddingVertical="8dp"
                     android:text="@string/certification"
@@ -113,21 +122,25 @@
 
                 <TextView
                     android:id="@+id/owner_join_text_remainTime"
+                    style="@style/neo_regular_black_style"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:textAlignment="textEnd"
                     android:textColor="#ff0000"
+                    android:textSize="12sp"
                     tools:text="03:00" />
 
                 <TextView
                     android:id="@+id/owner_join_resend"
+                    style="@style/neo_regular_black_style"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
                     android:layout_weight="1"
                     android:text="@string/resend"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textSize="12sp" />
             </LinearLayout>
         </LinearLayout>
 
@@ -139,8 +152,8 @@
             android:layout_marginHorizontal="22dp"
             android:layout_marginBottom="60dp"
             android:background="@drawable/button_selector_drawable"
-            android:text="@string/next"
             android:enabled="false"
+            android:text="@string/next"
             android:textColor="@drawable/button_selector_text_color"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent" />
