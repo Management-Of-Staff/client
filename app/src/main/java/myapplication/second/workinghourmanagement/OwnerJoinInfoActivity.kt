@@ -5,9 +5,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
-import myapplication.second.workinghourmanagement.databinding.CommonLoginActivityBinding
 import myapplication.second.workinghourmanagement.databinding.OwnerJoinInfoActivityBinding
 
 class OwnerJoinInfoActivity : AppCompatActivity() {
@@ -17,15 +15,14 @@ class OwnerJoinInfoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.owner_join_info_activity)
 
-        binding.ownerJoinBtnJoin.setOnClickListener{
+        binding.ownerJoinBtnJoin.setOnClickListener {
             //todo 회원가입 성공여부 체크후 성공시 intent
             val intent = Intent(this, OwnerJoinCompleteActivity::class.java)
             startActivity(intent)
             finishAffinity()
         }
 
-        val toolbar: Toolbar = findViewById(R.id.toolbar)
-        setSupportActionBar(toolbar)
+        setSupportActionBar(binding.toolbar)
         val actionBar: ActionBar = supportActionBar!!
         actionBar.setDisplayShowTitleEnabled(false)
         actionBar.setDisplayHomeAsUpEnabled(true)
