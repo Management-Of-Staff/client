@@ -1,6 +1,8 @@
 package myapplication.second.workinghourmanagement
 
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.ActionBar
@@ -24,6 +26,7 @@ class OwnerJoinActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private var resendToken: PhoneAuthProvider.ForceResendingToken? = null
     private var storedVerificationId = ""   //인증완료시 부여되는 Id
+    private lateinit var customDialog: CustomDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -79,12 +82,16 @@ class OwnerJoinActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     //인증성공
                     binding.ownerJoinBtnNext.isEnabled = true
-                    Toast.makeText(applicationContext, "인증성공.", Toast.LENGTH_SHORT).show()
-
+                    customDialog = CustomDialog(this, getString(R.string.auth_success))
+                    customDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                    customDialog.show()
+                    customDialog.shutdownClick.setOnClickListener { customDialog.dismiss() }
                 } else {
                     //인증실패
-                    Toast.makeText(applicationContext, "인증에 실패했습니다. 다시 시도해주세요.", Toast.LENGTH_SHORT)
-                        .show()
+                    customDialog = CustomDialog(this, getString(R.string.auth_fail))
+                    customDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                    customDialog.show()
+                    customDialog.shutdownClick.setOnClickListener { customDialog.dismiss() }
                 }
             }
     }
