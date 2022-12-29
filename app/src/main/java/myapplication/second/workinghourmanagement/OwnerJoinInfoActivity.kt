@@ -4,19 +4,18 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import myapplication.second.workinghourmanagement.databinding.OwnerJoinInfoActivityBinding
+import myapplication.second.workinghourmanagement.databinding.ActivityOwnerJoinInfoBinding
 
 class OwnerJoinInfoActivity : AppCompatActivity() {
-    private lateinit var binding: OwnerJoinInfoActivityBinding
+    private lateinit var binding: ActivityOwnerJoinInfoBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.owner_join_info_activity)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_owner_join_info)
 
         bind()
 

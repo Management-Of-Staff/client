@@ -6,18 +6,19 @@ import android.view.MenuItem
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import myapplication.second.workinghourmanagement.databinding.OwnerTosActivityBinding
+import myapplication.second.workinghourmanagement.databinding.ActivityOwnerTosBinding
 
 class OwnerTosActivity : AppCompatActivity() {
-    private lateinit var binding: OwnerTosActivityBinding
+    private lateinit var binding: ActivityOwnerTosBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.owner_tos_activity)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_owner_tos)
 
         binding.buttonNext.setOnClickListener {
             val intent = Intent(this, OwnerJoinActivity::class.java)
             startActivity(intent)
         }
+
         setSupportActionBar(binding.toolbar)
         val actionBar: ActionBar = supportActionBar!!
         actionBar.setDisplayShowTitleEnabled(false)

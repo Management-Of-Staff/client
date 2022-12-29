@@ -11,7 +11,7 @@ class CustomDialog(context: Context, contents: String) :
     val shutdownClick: Button
 
     init {
-        setContentView(R.layout.custom_dialog_activity)
+        setContentView(R.layout.activity_custom_dialog)
         msgContents = findViewById(R.id.contents)
         msgContents.text = contents
         shutdownClick = findViewById(R.id.btn_shutdown)

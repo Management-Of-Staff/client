@@ -4,16 +4,16 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import myapplication.second.workinghourmanagement.databinding.OwnerJoinCompleteActivityBinding
+import myapplication.second.workinghourmanagement.databinding.ActivityOwnerJoinCompleteBinding
 
-class OwnerJoinCompleteActivity: AppCompatActivity() {
-    private lateinit var binding: OwnerJoinCompleteActivityBinding
+class OwnerJoinCompleteActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityOwnerJoinCompleteBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.owner_join_complete_activity)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_owner_join_complete)
 
-        binding.btnOk.setOnClickListener{
+        binding.btnOk.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finishAffinity()
