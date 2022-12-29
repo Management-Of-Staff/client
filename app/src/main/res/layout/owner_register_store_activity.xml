@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_back"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_back_arrow" />
+
+        <TextView
+            android:id="@+id/tv_title_register_store"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:text="매장 등록"
+            android:textSize="@dimen/head_text_size"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:id="@+id/layout_register_store_owner"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:padding="22dp">
+
+        <TextView
+            style="@style/neo_regular_black_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="매장명" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/edit_storeName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="매장명을 입력해주세요."
+            android:text=""
+            android:textSize="@dimen/small_text_size"
+            android:inputType="text" />
+
+        <TextView
+            style="@style/neo_regular_black_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="지점명 (선택)" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/edit_spotName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="지점명을 입력해주세요."
+            android:text=""
+            android:textSize="@dimen/small_text_size"
+            android:inputType="text" />
+
+        <TextView
+            style="@style/neo_regular_black_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="기본 주소" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edit_base_address"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:text=""
+                android:textSize="@dimen/small_text_size"
+                android:inputType="text" />
+
+            <Button
+                android:id="@+id/btn_search_base_address"
+                style="@style/neo_medium_white_style"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="12dp"
+                android:layout_weight="1"
+                android:background="@drawable/round_appcolor_background"
+                android:text="주소 검색" />
+
+        </LinearLayout>
+
+        <TextView
+            style="@style/neo_regular_black_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="상세 주소" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/edit_detailed_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="상세 주소를 입력해주세요."
+            android:text=""
+            android:textSize="@dimen/small_text_size"
+            android:inputType="text" />
+
+        <TextView
+            style="@style/neo_regular_black_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="사업장 분류" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edit_classify_business_type"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:text=""
+                android:textSize="@dimen/small_text_size"
+                android:inputType="text" />
+
+            <Button
+                android:id="@+id/btn_classify_business_type"
+                style="@style/neo_medium_white_style"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="12dp"
+                android:layout_weight="1"
+                android:background="@drawable/round_appcolor_background"
+                android:text="선택하기" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_title_commute_info"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_weight="3"
+                android:text="출퇴근 정보"
+                android:textSize="@dimen/body_text_size"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn_modify_commute_info"
+                style="@style/neo_medium_white_style"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="12dp"
+                android:layout_weight="1"
+                android:background="@drawable/round_appcolor_background"
+                android:text="수정하기" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@color/black" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_title_allow_latency"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_weight="3"
+                android:text="지각 허용시간"
+                android:textSize="@dimen/body_text_size"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_set_allow_latency"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="12dp"
+                android:layout_weight="1"
+                tools:text="20분"
+                android:textColor="#2045B1"
+                android:textSize="@dimen/title_text_size"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_title_allow_early_leave"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_weight="3"
+                android:text="조퇴 허용시간"
+                android:textSize="@dimen/body_text_size"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_set_allow_early_leave"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="12dp"
+                android:layout_weight="1"
+                tools:text="20분"
+                android:textColor="#2045B1"
+                android:textSize="@dimen/title_text_size"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
