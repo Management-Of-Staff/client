@@ -20,11 +20,11 @@ import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import myapplication.second.workinghourmanagement.databinding.OwnerJoinActivityBinding
+import myapplication.second.workinghourmanagement.databinding.ActivityOwnerJoinBinding
 import java.util.concurrent.TimeUnit
 
 class OwnerJoinActivity : AppCompatActivity() {
-    private lateinit var binding: OwnerJoinActivityBinding
+    private lateinit var binding: ActivityOwnerJoinBinding
     private lateinit var auth: FirebaseAuth
     private var resendToken: PhoneAuthProvider.ForceResendingToken? = null
     private var storedVerificationId = ""   //인증완료시 부여되는 Id
@@ -32,7 +32,7 @@ class OwnerJoinActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.owner_join_activity)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_owner_join)
         auth = Firebase.auth
 
         bind()
@@ -48,7 +48,8 @@ class OwnerJoinActivity : AppCompatActivity() {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
             override fun afterTextChanged(s: Editable?) {
-                binding.ownerJoinBtnAuth.isEnabled = checkPhoneValidation(binding.ownerJoinEditPhone.text.toString())
+                binding.ownerJoinBtnAuth.isEnabled =
+                    checkPhoneValidation(binding.ownerJoinEditPhone.text.toString())
             }
         })
         binding.ownerJoinBtnAuth.setOnClickListener {

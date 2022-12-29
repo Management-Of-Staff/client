@@ -2,16 +2,16 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="312dp"
-    android:background="@drawable/round_white_radius20_background"
     android:layout_height="wrap_content"
+    android:background="@drawable/round_white_radius20_background"
     android:padding="24dp">
 
     <TextView
         android:id="@+id/contents"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:gravity="center"
         android:fontFamily="@font/spoqahansansneo_medium"
+        android:gravity="center"
         android:text="@string/auth_success"
         android:textAlignment="center"
         android:textSize="16sp"
@@ -21,7 +21,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:textSize="14sp"
         android:id="@+id/btn_shutdown"
         style="@style/neo_medium_white_style"
         android:layout_width="wrap_content"
@@ -29,9 +28,10 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/round_appcolor_background"
         android:minHeight="0dp"
-        android:paddingVertical="10dp"
         android:paddingHorizontal="50dp"
+        android:paddingVertical="10dp"
         android:text="@string/ok"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/contents" />
