@@ -30,7 +30,6 @@
     <string name="already_join">이미 가입했어요!</string>
     <string name="auth_success">인증이 완료되었습니다.</string>
 
-
     <string name="find_passwd">비밀번호 찾기</string>
     <string name="reset_passwd">비밀번호 재설정</string>
     <string name="passwd">비밀번호</string>
@@ -45,6 +44,8 @@
 
     <string name="password_format">영문, 숫자 포함 8자리 이상</string>
     <string name="num_char20">0 / 20</string>
+    <string name="password_disMatch">비밀번호가 일치하지 않습니다.</string>
+    <string name="password_match">비밀번호 일치</string>
     <string name="input_info">회원 정보를 입력해주세요</string>
     <string name="input_phone">핸드폰번호를 인증해주세요</string>
     <string name="complete_join">\'오직\' 회원이 되셨어요!</string>
