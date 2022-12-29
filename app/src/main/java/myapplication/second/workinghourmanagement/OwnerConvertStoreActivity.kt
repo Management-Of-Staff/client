@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import myapplication.second.workinghourmanagement.databinding.ActivityOwnerConvertStoreBinding
 
 class OwnerConvertStoreActivity: AppCompatActivity(), View.OnClickListener {
@@ -47,8 +48,33 @@ class OwnerConvertStoreActivity: AppCompatActivity(), View.OnClickListener {
         }
 
         binding.buttonDeleteStore.setOnClickListener {
+            binding.tvTitleConvertStore.text = "매장 삭제"
 
+            binding.buttonRegisterStore.visibility = View.GONE
+            binding.buttonDeleteStore.visibility = View.GONE
+            binding.buttonChoiceDeleteStore.visibility = View.VISIBLE
         }
+
+        binding.buttonChoiceDeleteStore.setOnClickListener {
+            openDeleteStoreDialog()
+        }
+    }
+
+    private fun openDeleteStoreDialog() {
+        val deleteMessage = "매장을 삭제하시겠습니까?"
+        MaterialAlertDialogBuilder(this)
+            .setMessage(deleteMessage)
+            .setNegativeButton("아니오")
+            { dialog, _ ->
+                dialog.dismiss()
+            }
+            .setPositiveButton("예")
+            { dialog, _ ->
+                // 매장 삭제 기능 구현
+                dialog.dismiss()
+            }
+            .create()
+            .show()
     }
 
     override fun onClick(view: View) {
