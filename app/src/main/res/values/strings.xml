@@ -48,6 +48,7 @@
     <string name="password_match">비밀번호 일치</string>
     <string name="input_info">회원 정보를 입력해주세요</string>
     <string name="input_phone">핸드폰번호를 인증해주세요</string>
+    <string name="input_phone_detail">본인 확인을 위해 번호를 인증해주세요</string>
     <string name="complete_join">\'오직\' 회원이 되셨어요!</string>
 
 </resources>
