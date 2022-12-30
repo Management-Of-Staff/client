@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#DFE2F3">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_owner_convert_store"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            app:contentInsetStart="0dp"
+            android:background="@drawable/round_appcolor_background"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="25dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <TextView
+                        android:id="@+id/tv_store_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="메가커피"
+                        android:textSize="@dimen/body_text_size"
+                        android:textColor="@color/white"
+                        android:layout_marginBottom="7dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_store_subtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="서울대학교 병원 2호점"
+                        android:textSize="@dimen/body_text_size"
+                        android:textColor="@color/white"
+                        tools:text="서울대학교 병원 2호점" />
+
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_option_menu"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/ic_option_menu"
+                    android:padding="5dp"
+                    android:layout_marginEnd="20dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint_layout_title_convert_store"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@drawable/round_appcolor_background"
+            app:layout_constraintTop_toBottomOf="@id/toolbar_owner_convert_store">
+
+            <TextView
+                android:id="@+id/tv_title_convert_store"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="매장 전환"
+                android:textSize="@dimen/head_text_size"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_marginStart="25dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_store_list"
+            android:layout_width="300dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_marginTop="40dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginBottom="30dp"
+            android:layout_marginEnd="30dp"
+            android:background="#E2E9FF"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_owner_convert_store_list"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/constraint_layout_title_convert_store"
+            app:layout_constraintBottom_toTopOf="@id/linear_layout_buttons" />
+
+        <LinearLayout
+            android:id="@+id/linear_layout_buttons"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_marginBottom="50dp"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <Button
+                android:id="@+id/button_register_store"
+                style="@style/neo_medium_white_style"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_appcolor_background"
+                android:text="매장 등록"
+                android:textSize="20sp"
+                android:layout_gravity="center" />
+
+            <Button
+                android:id="@+id/button_delete_store"
+                style="@style/neo_medium_white_style"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/round_appcolor_background"
+                android:text="매장 삭제"
+                android:textSize="20sp"
+                android:layout_gravity="center" />
+
+            <Button
+                android:id="@+id/button_choice_delete_store"
+                style="@style/neo_medium_white_style"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:visibility="gone"
+                android:background="@drawable/round_appcolor_background"
+                android:text="삭제하기"
+                android:textSize="20sp"
+                android:layout_gravity="center" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottomSheetOwnerStoreType"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:behavior_hideable="true"
+    app:behavior_draggable="true"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior" >
+
+    <TextView
+        android:id="@+id/tv_title_store_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:text="사업장 분류"
+        android:textSize="@dimen/head_text_size"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:rowCount="4"
+        android:columnCount="2"
+        android:orientation="horizontal"
+        android:layout_marginTop="35dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp" >
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_cafeteria"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:background="#FFFFFF"
+            app:strokeColor="@color/blue4"
+            app:strokeWidth="1dp"
+            android:text="음식점"
+            android:textColor="@color/blue4"
+            android:textSize="@dimen/body_text_size"
+            android:textStyle="bold"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_cafe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:background="#FFFFFF"
+            app:strokeColor="@color/blue4"
+            app:strokeWidth="1dp"
+            android:text="카페"
+            android:textColor="@color/blue4"
+            android:textSize="@dimen/body_text_size"
+            android:textStyle="bold"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_convenience_store"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:background="#FFFFFF"
+            app:strokeColor="@color/blue4"
+            app:strokeWidth="1dp"
+            android:text="편의점"
+            android:textColor="@color/blue4"
+            android:textSize="@dimen/body_text_size"
+            android:textStyle="bold"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_pc_room"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:background="#FFFFFF"
+            app:strokeColor="@color/blue4"
+            app:strokeWidth="1dp"
+            android:text="PC방"
+            android:textColor="@color/blue4"
+            android:textSize="@dimen/body_text_size"
+            android:textStyle="bold"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_fitness_club"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:background="#FFFFFF"
+            app:strokeColor="@color/blue4"
+            app:strokeWidth="1dp"
+            android:text="헬스장"
+            android:textColor="@color/blue4"
+            android:textSize="@dimen/body_text_size"
+            android:textStyle="bold"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_academy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:background="#FFFFFF"
+            app:strokeColor="@color/blue4"
+            app:strokeWidth="1dp"
+            android:text="학원"
+            android:textColor="@color/blue4"
+            android:textSize="@dimen/body_text_size"
+            android:textStyle="bold"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_auxiliary_office"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:background="#FFFFFF"
+            app:strokeColor="@color/blue4"
+            app:strokeWidth="1dp"
+            android:text="사무보조"
+            android:textColor="@color/blue4"
+            android:textSize="@dimen/body_text_size"
+            android:textStyle="bold"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_etc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:background="#FFFFFF"
+            app:strokeColor="@color/blue4"
+            app:strokeWidth="1dp"
+            android:text="기타"
+            android:textColor="@color/blue4"
+            android:textSize="@dimen/body_text_size"
+            android:textStyle="bold"/>
+
+    </GridLayout>
+
+
+    <Button
+        android:id="@+id/button_choose_store_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/neo_medium_white_style"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/round_appcolor_background"
+        android:text="확인"
+        android:textSize="@dimen/title_text_size"
+        android:layout_gravity="center" />
+
+</LinearLayout>
