@@ -48,7 +48,7 @@ class OwnerStoreConversionActivity: AppCompatActivity(), View.OnClickListener {
         }
 
         binding.buttonDeleteStore.setOnClickListener {
-            binding.tvTitleConvertStore.text = "매장 삭제"
+            binding.tvTitleConvertStore.text = getString(R.string.delete_store)
 
             binding.buttonRegisterStore.visibility = View.GONE
             binding.buttonDeleteStore.visibility = View.GONE
@@ -61,16 +61,16 @@ class OwnerStoreConversionActivity: AppCompatActivity(), View.OnClickListener {
     }
 
     private fun openDeleteStoreDialog() {
-        val deleteMessage = "매장을 삭제하시겠습니까?"
+        val deleteMessage = getString(R.string.do_you_want_to_delete_store)
         MaterialAlertDialogBuilder(this)
             .setMessage(deleteMessage)
-            .setNegativeButton("아니오")
+            .setNegativeButton(getString(R.string.no))
             { dialog, _ ->
                 dialog.dismiss()
             }
-            .setPositiveButton("예")
+            .setPositiveButton(getString(R.string.yes))
             { dialog, _ ->
-                // 매장 삭제 기능 구현
+                // TODO: 매장 삭제 기능 구현
                 dialog.dismiss()
             }
             .create()

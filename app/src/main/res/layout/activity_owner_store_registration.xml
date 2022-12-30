@@ -109,7 +109,7 @@
                 android:orientation="horizontal">
 
                 <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/edit_base_address"
+                    android:id="@+id/edit_primary_address"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
@@ -118,7 +118,7 @@
                     android:inputType="text" />
 
                 <Button
-                    android:id="@+id/btn_search_base_address"
+                    android:id="@+id/btn_search_primary_address"
                     style="@style/neo_medium_white_style"
                     android:layout_width="0dp"
                     android:layout_height="35dp"

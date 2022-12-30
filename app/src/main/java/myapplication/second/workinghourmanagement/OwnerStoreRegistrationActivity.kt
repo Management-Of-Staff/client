@@ -35,8 +35,8 @@ class OwnerStoreRegistrationActivity : AppCompatActivity(), View.OnClickListener
             finish()
         }
 
-        binding.btnSearchBaseAddress.setOnClickListener {
-            intentSearchBaseAddress()
+        binding.btnSearchPrimaryAddress.setOnClickListener {
+            intentSearchPrimaryAddress()
         }
 
         binding.btnClassifyBusinessType.setOnClickListener {
@@ -53,23 +53,23 @@ class OwnerStoreRegistrationActivity : AppCompatActivity(), View.OnClickListener
     }
 
     private fun openRegisterStoreDialog() {
-        val registerMessage = "매장을 등록하시겠습니까?"
+        val registerMessage = getString(R.string.do_you_want_to_register_store)
         MaterialAlertDialogBuilder(this)
             .setMessage(registerMessage)
-            .setNegativeButton("아니오")
+            .setNegativeButton(getString(R.string.no))
             { dialog, _ ->
                 dialog.dismiss()
             }
-            .setPositiveButton("예")
+            .setPositiveButton(getString(R.string.yes))
             { dialog, _ ->
-                // 매장 등록 기능 구현
+                // TODO: 매장 등록 기능 구현
                 dialog.dismiss()
             }
             .create()
             .show()
     }
 
-    private fun intentSearchBaseAddress() {
+    private fun intentSearchPrimaryAddress() {
         val intent = OwnerSearchPrimaryAddressActivity.getIntent(this)
         startActivity(intent)
     }

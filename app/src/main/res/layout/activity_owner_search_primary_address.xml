@@ -36,7 +36,7 @@
         </androidx.appcompat.widget.Toolbar>
 
         <LinearLayout
-            android:id="@+id/linear_layout_search_base_address"
+            android:id="@+id/linear_layout_search_primary_address"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:orientation="horizontal"
@@ -44,7 +44,7 @@
             app:layout_constraintTop_toBottomOf="@id/toolbar">
 
             <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/edit_search_base_address"
+                android:id="@+id/edit_search_primary_address"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
@@ -54,7 +54,7 @@
                 android:inputType="text" />
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/iv_search_base_address"
+                android:id="@+id/iv_search_primary_address"
                 android:layout_width="25dp"
                 android:layout_height="40dp"
                 android:padding="10dp"
@@ -68,7 +68,7 @@
             android:layout_height="0dp"
             android:orientation="vertical"
             android:layout_marginTop="35dp"
-            app:layout_constraintTop_toBottomOf="@id/linear_layout_search_base_address">
+            app:layout_constraintTop_toBottomOf="@id/linear_layout_search_primary_address">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -165,10 +165,10 @@
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:id="@+id/rv_base_address_list"
+            android:id="@+id/rv_primary_address_list"
             android:layout_marginTop="35dp"
             android:visibility="gone"
-            app:layout_constraintTop_toBottomOf="@id/linear_layout_search_base_address" />
+            app:layout_constraintTop_toBottomOf="@id/linear_layout_search_primary_address" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

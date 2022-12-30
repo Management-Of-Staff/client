@@ -27,7 +27,7 @@ class OwnerSearchPrimaryAddressActivity : AppCompatActivity(), View.OnClickListe
     }
 
     private fun setupView() {
-        initRecyclerView(binding.rvBaseAddressList)
+        initRecyclerView(binding.rvPrimaryAddressList)
     }
 
     private fun initRecyclerView(recyclerView: RecyclerView) {
@@ -45,8 +45,8 @@ class OwnerSearchPrimaryAddressActivity : AppCompatActivity(), View.OnClickListe
             finish()
         }
 
-        binding.ivSearchBaseAddress.setOnClickListener {
-
+        binding.ivSearchPrimaryAddress.setOnClickListener {
+            // TODO: 기본주소 검색 기능 구현
         }
     }
 
