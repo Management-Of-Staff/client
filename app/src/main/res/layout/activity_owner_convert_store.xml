@@ -39,10 +39,10 @@
                         android:id="@+id/tv_store_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="메가커피"
-                        android:textSize="@dimen/body_text_size"
-                        android:textColor="@color/white"
                         android:layout_marginBottom="7dp"
+                        android:text="@string/store_item_name"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/body_text_size"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -50,7 +50,7 @@
                         android:id="@+id/tv_store_subtitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="서울대학교 병원 2호점"
+                        android:text="@string/store_item_sub_name"
                         android:textSize="@dimen/body_text_size"
                         android:textColor="@color/white"
                         tools:text="서울대학교 병원 2호점" />
@@ -84,7 +84,7 @@
                 android:id="@+id/tv_title_convert_store"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="매장 전환"
+                android:text="@string/title_store_conversion"
                 android:textSize="@dimen/head_text_size"
                 android:textColor="@color/white"
                 android:textStyle="bold"
@@ -126,7 +126,7 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/round_appcolor_background"
-                android:text="매장 등록"
+                android:text="@string/register_store"
                 android:textSize="20sp"
                 android:layout_gravity="center" />
 
@@ -137,7 +137,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/round_appcolor_background"
-                android:text="매장 삭제"
+                android:text="@string/delete_store"
                 android:textSize="20sp"
                 android:layout_gravity="center" />
 
@@ -149,7 +149,7 @@
                 android:layout_marginTop="20dp"
                 android:visibility="gone"
                 android:background="@drawable/round_appcolor_background"
-                android:text="삭제하기"
+                android:text="@string/delete"
                 android:textSize="20sp"
                 android:layout_gravity="center" />
 
