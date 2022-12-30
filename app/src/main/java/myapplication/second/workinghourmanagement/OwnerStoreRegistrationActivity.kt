@@ -6,18 +6,18 @@ import android.view.View
 import androidx.databinding.DataBindingUtil
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import myapplication.second.workinghourmanagement.databinding.ActivityOwnerRegisterStoreBinding
+import myapplication.second.workinghourmanagement.databinding.ActivityOwnerStoreRegistrationBinding
 
-class OwnerRegisterStoreActivity : AppCompatActivity(), View.OnClickListener {
+class OwnerStoreRegistrationActivity : AppCompatActivity(), View.OnClickListener {
 
-    private lateinit var binding: ActivityOwnerRegisterStoreBinding
+    private lateinit var binding: ActivityOwnerStoreRegistrationBinding
     private val bottomSheetOwnerStoreTypeDialog = BottomSheetDialog(this)
     private val bottomSheetOwnerCommuteInfoDialog = BottomSheetDialog(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_owner_register_store)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_owner_store_registration)
 
         binding.lifecycleOwner = this
 
@@ -70,7 +70,7 @@ class OwnerRegisterStoreActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun intentSearchBaseAddress() {
-        val intent = OwnerSearchBaseAddressActivity.getIntent(this)
+        val intent = OwnerSearchPrimaryAddressActivity.getIntent(this)
         startActivity(intent)
     }
 

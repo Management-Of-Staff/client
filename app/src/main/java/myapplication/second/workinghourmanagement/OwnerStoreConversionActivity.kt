@@ -7,16 +7,16 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import myapplication.second.workinghourmanagement.databinding.ActivityOwnerConvertStoreBinding
+import myapplication.second.workinghourmanagement.databinding.ActivityOwnerStoreConversionBinding
 
-class OwnerConvertStoreActivity: AppCompatActivity(), View.OnClickListener {
+class OwnerStoreConversionActivity: AppCompatActivity(), View.OnClickListener {
 
-    private lateinit var binding: ActivityOwnerConvertStoreBinding
-    private lateinit var ownerConvertStoreAdapter: OwnerConvertStoreAdapter
+    private lateinit var binding: ActivityOwnerStoreConversionBinding
+    private lateinit var ownerStoreConversionAdapter: OwnerStoreConversionAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_owner_convert_store)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_owner_store_conversion)
 
         binding.lifecycleOwner = this
 
@@ -29,7 +29,7 @@ class OwnerConvertStoreActivity: AppCompatActivity(), View.OnClickListener {
     }
 
     private fun initRecyclerView(recyclerView: RecyclerView) {
-        ownerConvertStoreAdapter = OwnerConvertStoreAdapter()
+        ownerStoreConversionAdapter = OwnerStoreConversionAdapter()
 
         recyclerView.run {
             setHasFixedSize(true)

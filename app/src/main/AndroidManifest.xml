@@ -14,13 +14,13 @@
         android:theme="@style/Theme.WorkingHourManagement"
         tools:targetApi="31">
         <activity
-            android:name=".OwnerSearchBaseAddressActivity"
+            android:name=".OwnerSearchPrimaryAddressActivity"
             android:exported="false" />
         <activity
-            android:name=".OwnerConvertStoreActivity"
+            android:name=".OwnerStoreConversionActivity"
             android:exported="false" />
         <activity
-            android:name=".OwnerRegisterStoreActivity"
+            android:name=".OwnerStoreRegistrationActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
