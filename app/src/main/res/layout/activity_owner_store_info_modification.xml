@@ -73,7 +73,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:hint="매장명을 입력해주세요."
+                android:hint="@string/please_enter_store_name"
                 android:text=""
                 android:textSize="@dimen/small_text_size"
                 android:inputType="text" />
