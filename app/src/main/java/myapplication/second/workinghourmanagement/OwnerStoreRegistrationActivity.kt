@@ -4,15 +4,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.databinding.DataBindingUtil
-import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import myapplication.second.workinghourmanagement.databinding.ActivityOwnerStoreRegistrationBinding
 
 class OwnerStoreRegistrationActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivityOwnerStoreRegistrationBinding
-    private val bottomSheetOwnerStoreTypeDialog = BottomSheetDialog(this)
-    private val bottomSheetOwnerCommuteInfoDialog = BottomSheetDialog(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,12 +19,6 @@ class OwnerStoreRegistrationActivity : AppCompatActivity(), View.OnClickListener
         binding.lifecycleOwner = this
 
         setupListeners()
-
-        val bottomSheetOwnerStoreTypeView = layoutInflater.inflate(R.layout.dialog_bottom_sheet_owner_store_type, null)
-        bottomSheetOwnerStoreTypeDialog.setContentView(bottomSheetOwnerStoreTypeView)
-
-        val bottomSheetOwnerCommuteInfoView = layoutInflater.inflate(R.layout.dialog_bottom_sheet_owner_commute_info, null)
-        bottomSheetOwnerCommuteInfoDialog.setContentView(bottomSheetOwnerCommuteInfoView)
     }
 
     private fun setupListeners() {
@@ -40,11 +31,13 @@ class OwnerStoreRegistrationActivity : AppCompatActivity(), View.OnClickListener
         }
 
         binding.btnClassifyBusinessType.setOnClickListener {
-            bottomSheetOwnerStoreTypeDialog.show()
+            val bottomSheetOwnerStoreTypeDialog = BottomSheetOwnerStoreTypeDialogFragment()
+            bottomSheetOwnerStoreTypeDialog.show(supportFragmentManager, bottomSheetOwnerStoreTypeDialog.tag)
         }
 
         binding.btnModifyCommuteInfo.setOnClickListener {
-            bottomSheetOwnerCommuteInfoDialog.show()
+            val bottomSheetOwnerCommuteInfoDialog = BottomSheetOwnerCommuteInfoDialogFragment()
+            bottomSheetOwnerCommuteInfoDialog.show(supportFragmentManager, bottomSheetOwnerCommuteInfoDialog.tag)
         }
 
         binding.btnRegisterStore.setOnClickListener {
