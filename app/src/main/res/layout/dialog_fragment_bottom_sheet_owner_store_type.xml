@@ -30,8 +30,8 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp" >
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_cafeteria"
+        <Button
+            android:id="@+id/btn_cafeteria"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
@@ -44,8 +44,8 @@
             android:textSize="@dimen/body_text_size"
             android:textStyle="bold"/>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_cafe"
+        <Button
+            android:id="@+id/btn_cafe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
@@ -58,8 +58,8 @@
             android:textSize="@dimen/body_text_size"
             android:textStyle="bold"/>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_convenience_store"
+        <Button
+            android:id="@+id/btn_convenience_store"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
@@ -72,8 +72,8 @@
             android:textSize="@dimen/body_text_size"
             android:textStyle="bold"/>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_pc_room"
+        <Button
+            android:id="@+id/btn_pc_room"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
@@ -86,8 +86,8 @@
             android:textSize="@dimen/body_text_size"
             android:textStyle="bold"/>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_fitness_club"
+        <Button
+            android:id="@+id/btn_fitness_club"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
@@ -100,8 +100,8 @@
             android:textSize="@dimen/body_text_size"
             android:textStyle="bold"/>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_academy"
+        <Button
+            android:id="@+id/btn_academy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
@@ -114,8 +114,8 @@
             android:textSize="@dimen/body_text_size"
             android:textStyle="bold"/>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_office_help"
+        <Button
+            android:id="@+id/btn_office_help"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
@@ -128,8 +128,8 @@
             android:textSize="@dimen/body_text_size"
             android:textStyle="bold"/>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_etc"
+        <Button
+            android:id="@+id/btn_etc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
@@ -146,7 +146,7 @@
 
 
     <Button
-        android:id="@+id/button_choose_store_type"
+        android:id="@+id/btn_choose_store_type"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/neo_medium_white_style"
