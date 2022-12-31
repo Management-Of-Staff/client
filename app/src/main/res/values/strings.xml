@@ -54,6 +54,7 @@
     <string name="store_item_sub_name">서울대학교 병원 2호점</string>
     <string name="title_store_conversion">매장 전환</string>
     <string name="register_store">매장 등록</string>
+    <string name="modify_store_info">매장 정보 수정</string>
     <string name="delete_store">매장 삭제</string>
     <string name="delete">삭제하기</string>
     <string name="title_search_address">주소 검색</string>
@@ -102,5 +103,6 @@
     <string name="please_enter_detail_address">상세 주소를 입력해주세요.</string>
     <string name="choose">선택하기</string>
     <string name="register">등록하기</string>
+    <string name="modify">수정하기</string>
 
 </resources>
