@@ -93,5 +93,14 @@
     <string name="yes">예</string>
     <string name="do_you_want_to_delete_store">매장을 삭제하시겠습니까?</string>
     <string name="do_you_want_to_register_store">매장을 등록하시겠습니까?</string>
+    <string name="title_store_info">매장 정보</string>
+    <string name="store_branch_name_choice">지점명 (선택)</string>
+    <string name="please_enter_branch_name">지점명을 입력해주세요.</string>
+    <string name="primary_address">기본 주소</string>
+    <string name="search_address">주소 검색</string>
+    <string name="detail_address">상세 주소</string>
+    <string name="please_enter_detail_address">상세 주소를 입력해주세요.</string>
+    <string name="choose">선택하기</string>
+    <string name="register">등록하기</string>
 
 </resources>

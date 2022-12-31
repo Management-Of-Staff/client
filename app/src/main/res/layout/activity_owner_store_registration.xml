@@ -28,7 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
-                android:text="매장 등록"
+                android:text="@string/register_store"
                 android:textSize="@dimen/head_text_size"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
@@ -51,13 +51,12 @@
                 style="@style/neo_regular_black_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="매장 정보"
+                android:text="@string/title_store_info"
                 android:textSize="@dimen/title_text_size"/>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-
                 android:layout_marginTop="10dp"
                 android:background="@color/black"
                 app:layout_constraintTop_toBottomOf="@id/toolbar" />
@@ -67,7 +66,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="매장명" />
+                android:text="@string/store_name" />
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/edit_storeName"
@@ -84,14 +83,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="지점명 (선택)" />
+                android:text="@string/store_branch_name_choice" />
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/edit_spotName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:hint="지점명을 입력해주세요."
+                android:hint="@string/please_enter_branch_name"
                 android:text=""
                 android:textSize="@dimen/small_text_size"
                 android:inputType="text" />
@@ -101,7 +100,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="기본 주소" />
+                android:text="@string/primary_address" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -125,7 +124,7 @@
                     android:layout_marginStart="12dp"
                     android:layout_weight="1"
                     android:background="@drawable/round_appcolor_background"
-                    android:text="주소 검색" />
+                    android:text="@string/search_address" />
 
             </LinearLayout>
 
@@ -134,13 +133,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="상세 주소" />
+                android:text="@string/detail_address" />
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/edit_detailed_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="상세 주소를 입력해주세요."
+                android:hint="@string/please_enter_detail_address"
                 android:text=""
                 android:textSize="@dimen/small_text_size"
                 android:inputType="text" />
@@ -150,7 +149,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="사업장 분류" />
+                android:text="@string/title_store_type" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -175,7 +174,7 @@
                     android:layout_marginStart="12dp"
                     android:layout_weight="1"
                     android:background="@drawable/round_appcolor_background"
-                    android:text="선택하기" />
+                    android:text="@string/choose" />
 
             </LinearLayout>
 
@@ -191,7 +190,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
                     android:layout_weight="3"
-                    android:text="출퇴근 정보"
+                    android:text="@string/title_commute_info"
                     android:textSize="@dimen/title_text_size"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
@@ -226,7 +225,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
                     android:layout_weight="3"
-                    android:text="지각 허용시간"
+                    android:text="@string/title_allow_late"
                     android:textSize="@dimen/body_text_size"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
@@ -256,7 +255,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
                     android:layout_weight="3"
-                    android:text="조퇴 허용시간"
+                    android:text="@string/title_allow_early_leave"
                     android:textSize="@dimen/body_text_size"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
@@ -280,7 +279,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:background="#BDBDBD"
-                android:text="등록하기"
+                android:text="@string/register"
                 android:textColor="#737373"
                 android:textSize="@dimen/head_text_size" />
 
