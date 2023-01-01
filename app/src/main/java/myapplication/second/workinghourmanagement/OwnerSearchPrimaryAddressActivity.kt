@@ -8,17 +8,17 @@ import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import myapplication.second.workinghourmanagement.databinding.ActivityOwnerSearchBaseAddressBinding
+import myapplication.second.workinghourmanagement.databinding.ActivityOwnerSearchPrimaryAddressBinding
 
-class OwnerSearchBaseAddressActivity : AppCompatActivity(), View.OnClickListener {
+class OwnerSearchPrimaryAddressActivity : AppCompatActivity(), View.OnClickListener {
 
-    private lateinit var binding: ActivityOwnerSearchBaseAddressBinding
-    private lateinit var ownerSearchBaseAddressAdapter: OwnerSearchBaseAddressAdapter
+    private lateinit var binding: ActivityOwnerSearchPrimaryAddressBinding
+    private lateinit var ownerSearchPrimaryAddressAdapter: OwnerSearchPrimaryAddressAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_owner_search_base_address)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_owner_search_primary_address)
 
         binding.lifecycleOwner = this
 
@@ -27,11 +27,11 @@ class OwnerSearchBaseAddressActivity : AppCompatActivity(), View.OnClickListener
     }
 
     private fun setupView() {
-        initRecyclerView(binding.rvBaseAddressList)
+        initRecyclerView(binding.rvPrimaryAddressList)
     }
 
     private fun initRecyclerView(recyclerView: RecyclerView) {
-        ownerSearchBaseAddressAdapter = OwnerSearchBaseAddressAdapter()
+        ownerSearchPrimaryAddressAdapter = OwnerSearchPrimaryAddressAdapter()
 
         recyclerView.run {
             setHasFixedSize(true)
@@ -45,14 +45,14 @@ class OwnerSearchBaseAddressActivity : AppCompatActivity(), View.OnClickListener
             finish()
         }
 
-        binding.ivSearchBaseAddress.setOnClickListener {
-
+        binding.ivSearchPrimaryAddress.setOnClickListener {
+            // TODO: 기본주소 검색 기능 구현
         }
     }
 
     companion object {
         fun getIntent(context: Context) =
-            Intent(context, OwnerSearchBaseAddressActivity::class.java)
+            Intent(context, OwnerSearchPrimaryAddressActivity::class.java)
     }
 
     override fun onClick(view: View) {

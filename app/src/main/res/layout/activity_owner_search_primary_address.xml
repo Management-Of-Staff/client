@@ -28,7 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
-                android:text="주소 검색"
+                android:text="@string/title_search_address"
                 android:textSize="@dimen/head_text_size"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
@@ -36,7 +36,7 @@
         </androidx.appcompat.widget.Toolbar>
 
         <LinearLayout
-            android:id="@+id/linear_layout_search_base_address"
+            android:id="@+id/linear_layout_search_primary_address"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:orientation="horizontal"
@@ -44,17 +44,17 @@
             app:layout_constraintTop_toBottomOf="@id/toolbar">
 
             <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/edit_search_base_address"
+                android:id="@+id/edit_search_primary_address"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
                 android:layout_marginStart="15dp"
-                android:hint="예) 판교역로 235, 분당 주공, 삼평동 681"
+                android:hint="@string/address_example1"
                 android:textSize="@dimen/body_text_size"
                 android:inputType="text" />
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/iv_search_base_address"
+                android:id="@+id/iv_search_primary_address"
                 android:layout_width="25dp"
                 android:layout_height="40dp"
                 android:padding="10dp"
@@ -68,12 +68,12 @@
             android:layout_height="0dp"
             android:orientation="vertical"
             android:layout_marginTop="35dp"
-            app:layout_constraintTop_toBottomOf="@id/linear_layout_search_base_address">
+            app:layout_constraintTop_toBottomOf="@id/linear_layout_search_primary_address">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tip"
+                android:text="@string/tip"
                 android:textSize="@dimen/head_text_size"
                 android:textColor="@color/black"
                 android:textStyle="bold"
@@ -82,7 +82,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="아래와 같은 조합으로 검색을 하시면 더욱 정확한\n결과가 검색됩니다"
+                android:text="@string/search_address_tip"
                 android:textSize="@dimen/body_text_size"
                 android:textColor="@color/black"
                 android:layout_marginTop="10dp"
@@ -91,7 +91,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="도로명+건물번호"
+                android:text="@string/doro_plus_dept_no"
                 android:textSize="@dimen/body_text_size"
                 android:textColor="@color/black"
                 android:layout_marginTop="25dp"
@@ -100,7 +100,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="예) 판교역로 235, 제주 첨단로 242"
+                android:text="@string/address_example2"
                 android:textSize="@dimen/body_text_size"
                 android:textColor="#3C9ED3"
                 android:layout_marginTop="10dp"
@@ -109,7 +109,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="지역명(동/리)+번지"
+                android:text="@string/region_dong_li_address"
                 android:textSize="@dimen/body_text_size"
                 android:textColor="@color/black"
                 android:layout_marginTop="20dp"
@@ -118,7 +118,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="예) 판교역로 235, 제주 첨단로 242"
+                android:text="@string/address_example2"
                 android:textSize="@dimen/body_text_size"
                 android:textColor="#3C9ED3"
                 android:layout_marginTop="10dp"
@@ -127,7 +127,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="지역명(동/리)+건물명(아파트명)"
+                android:text="@string/region_dong_li_address_plus_dept_name"
                 android:textSize="@dimen/body_text_size"
                 android:textColor="@color/black"
                 android:layout_marginTop="20dp"
@@ -136,7 +136,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="예) 판교역로 235, 제주 첨단로 242"
+                android:text="@string/address_example2"
                 android:textSize="@dimen/body_text_size"
                 android:textColor="#3C9ED3"
                 android:layout_marginTop="10dp"
@@ -145,16 +145,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="사서함명+번호"
-                android:textSize="@dimen/body_text_size"
-                android:textColor="@color/black"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginStart="15dp" />
+                android:text="@string/mailbox_plus_no"
+                android:textColor="@color/black"
+                android:textSize="@dimen/body_text_size" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="예) 판교역로 235, 제주 첨단로 242"
+                android:text="@string/address_example2"
                 android:textSize="@dimen/body_text_size"
                 android:textColor="#3C9ED3"
                 android:layout_marginTop="10dp"
@@ -165,10 +165,10 @@
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:id="@+id/rv_base_address_list"
+            android:id="@+id/rv_primary_address_list"
             android:layout_marginTop="35dp"
             android:visibility="gone"
-            app:layout_constraintTop_toBottomOf="@id/linear_layout_search_base_address" />
+            app:layout_constraintTop_toBottomOf="@id/linear_layout_search_primary_address" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

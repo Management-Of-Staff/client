@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
-        android:text="사업장 분류"
+        android:text="@string/title_store_type"
         android:textSize="@dimen/head_text_size"
         android:textColor="@color/black"
         android:textStyle="bold" />
@@ -30,8 +30,8 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp" >
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_cafeteria"
+        <Button
+            android:id="@+id/btn_cafeteria"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
@@ -39,13 +39,13 @@
             android:background="#FFFFFF"
             app:strokeColor="@color/blue4"
             app:strokeWidth="1dp"
-            android:text="음식점"
+            android:text="@string/cafeteria"
             android:textColor="@color/blue4"
             android:textSize="@dimen/body_text_size"
             android:textStyle="bold"/>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_cafe"
+        <Button
+            android:id="@+id/btn_cafe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
@@ -53,13 +53,13 @@
             android:background="#FFFFFF"
             app:strokeColor="@color/blue4"
             app:strokeWidth="1dp"
-            android:text="카페"
+            android:text="@string/cafe"
             android:textColor="@color/blue4"
             android:textSize="@dimen/body_text_size"
             android:textStyle="bold"/>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_convenience_store"
+        <Button
+            android:id="@+id/btn_convenience_store"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
@@ -67,13 +67,13 @@
             android:background="#FFFFFF"
             app:strokeColor="@color/blue4"
             app:strokeWidth="1dp"
-            android:text="편의점"
+            android:text="@string/convenience_store"
             android:textColor="@color/blue4"
             android:textSize="@dimen/body_text_size"
             android:textStyle="bold"/>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_pc_room"
+        <Button
+            android:id="@+id/btn_pc_room"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
@@ -81,13 +81,13 @@
             android:background="#FFFFFF"
             app:strokeColor="@color/blue4"
             app:strokeWidth="1dp"
-            android:text="PC방"
+            android:text="@string/pc_room"
             android:textColor="@color/blue4"
             android:textSize="@dimen/body_text_size"
             android:textStyle="bold"/>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_fitness_club"
+        <Button
+            android:id="@+id/btn_fitness_club"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
@@ -95,13 +95,13 @@
             android:background="#FFFFFF"
             app:strokeColor="@color/blue4"
             app:strokeWidth="1dp"
-            android:text="헬스장"
+            android:text="@string/fitness_club"
             android:textColor="@color/blue4"
             android:textSize="@dimen/body_text_size"
             android:textStyle="bold"/>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_academy"
+        <Button
+            android:id="@+id/btn_academy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
@@ -109,13 +109,13 @@
             android:background="#FFFFFF"
             app:strokeColor="@color/blue4"
             app:strokeWidth="1dp"
-            android:text="학원"
+            android:text="@string/academy"
             android:textColor="@color/blue4"
             android:textSize="@dimen/body_text_size"
             android:textStyle="bold"/>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_auxiliary_office"
+        <Button
+            android:id="@+id/btn_office_help"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
@@ -123,13 +123,13 @@
             android:background="#FFFFFF"
             app:strokeColor="@color/blue4"
             app:strokeWidth="1dp"
-            android:text="사무보조"
+            android:text="@string/office_help"
             android:textColor="@color/blue4"
             android:textSize="@dimen/body_text_size"
             android:textStyle="bold"/>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_etc"
+        <Button
+            android:id="@+id/btn_etc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
@@ -137,7 +137,7 @@
             android:background="#FFFFFF"
             app:strokeColor="@color/blue4"
             app:strokeWidth="1dp"
-            android:text="기타"
+            android:text="@string/etc"
             android:textColor="@color/blue4"
             android:textSize="@dimen/body_text_size"
             android:textStyle="bold"/>
@@ -146,7 +146,7 @@
 
 
     <Button
-        android:id="@+id/button_choose_store_type"
+        android:id="@+id/btn_choose_store_type"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/neo_medium_white_style"

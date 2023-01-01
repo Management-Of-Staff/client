@@ -1,12 +1,12 @@
 package myapplication.second.workinghourmanagement
 
 import androidx.recyclerview.widget.RecyclerView
-import myapplication.second.workinghourmanagement.databinding.ItemOwnerConvertStoreListBinding
+import myapplication.second.workinghourmanagement.databinding.ItemOwnerStoreConversionListBinding
 
-class OwnerConvertStoreAdapter {
+class OwnerStoreConversionAdapter {
 
     class ConvertStoreViewHolder(
-        private val binding: ItemOwnerConvertStoreListBinding
+        private val binding: ItemOwnerStoreConversionListBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind() {
