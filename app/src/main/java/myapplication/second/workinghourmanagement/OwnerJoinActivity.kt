@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
@@ -11,13 +12,12 @@ import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.core.widget.doAfterTextChanged
 import androidx.databinding.DataBindingUtil
 import com.google.firebase.FirebaseException
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.PhoneAuthCredential
-import com.google.firebase.auth.PhoneAuthOptions
-import com.google.firebase.auth.PhoneAuthProvider
+import com.google.firebase.FirebaseTooManyRequestsException
+import com.google.firebase.auth.*
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import myapplication.second.workinghourmanagement.databinding.ActivityOwnerJoinBinding
@@ -29,6 +29,30 @@ class OwnerJoinActivity : AppCompatActivity() {
     private var resendToken: PhoneAuthProvider.ForceResendingToken? = null
     private var storedVerificationId = ""   //인증완료시 부여되는 Id
     private lateinit var customDialog: CustomDialog
+    private var isClickedSendBtn = false
+
+    private val callbacks by lazy {
+        object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+            override fun onVerificationCompleted(credential: PhoneAuthCredential) {}
+            override fun onVerificationFailed(e: FirebaseException) {
+                if (e is FirebaseAuthInvalidCredentialsException) {
+                    Toast.makeText(applicationContext, "Invalid request", Toast.LENGTH_SHORT).show()
+                } else if (e is FirebaseTooManyRequestsException) {
+                    Toast.makeText(applicationContext, "Too many request", Toast.LENGTH_SHORT)
+                        .show()
+                }
+            }
+
+            override fun onCodeSent(
+                verificationId: String,
+                token: PhoneAuthProvider.ForceResendingToken
+            ) {
+                Log.d("TAG_sendMsg_callbacks", "onCodeSent:$verificationId")
+                resendToken = token
+                storedVerificationId = verificationId
+            }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,21 +70,38 @@ class OwnerJoinActivity : AppCompatActivity() {
     private fun bind() {
         binding.ownerJoinEditPhone.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                isClickedSendBtn = false
+                binding.ownerJoinBtnAuth.setText(R.string.certification)
+            }
+
             override fun afterTextChanged(s: Editable?) {
                 binding.ownerJoinBtnAuth.isEnabled =
-                    checkPhoneValidation(binding.ownerJoinEditPhone.text.toString())
+                    !isClickedSendBtn && checkPhoneValidation(binding.ownerJoinEditPhone.text.toString())
             }
         })
         binding.ownerJoinBtnAuth.setOnClickListener {
             val phone = "+82" + binding.ownerJoinEditPhone.text.toString().substring(1)
             Log.d("전화번호", phone)
-            sendMessage(phone)
+
+            if (!isClickedSendBtn) {
+                sendMessage(phone)
+            } else {
+                resendMessage(phone, resendToken)
+            }
+
+            mCountDown().cancel()
+
+            isClickedSendBtn = true
+            binding.ownerJoinBtnAuth.isEnabled = false
+            binding.ownerJoinBtnAuth.setText(R.string.resend)
+            binding.ownerJoinTextRemainTime.isVisible = true
+            mCountDown().start()
         }
 
         binding.ownerJoinEditAuthenticationNum.doAfterTextChanged {
             binding.ownerJoinBtnCheck.isEnabled =
-                binding.ownerJoinEditAuthenticationNum.toString().length >= 6
+                binding.ownerJoinEditAuthenticationNum.text.toString().length == 6
         }
 
         binding.ownerJoinBtnCheck.setOnClickListener {
@@ -70,10 +111,24 @@ class OwnerJoinActivity : AppCompatActivity() {
             )
             verifyPhoneNumberWithCode(credential)
         }
+    }
 
-        binding.ownerJoinBtnNext.setOnClickListener {
-            val intent = Intent(this, OwnerJoinInfoActivity::class.java)
-            startActivity(intent)
+    private fun updateRemainTime(remainMillis: Long) {
+        val remainSeconds = remainMillis / 1000
+
+        val remainTimeText =
+            String.format(getString(R.string.remainTime), remainSeconds / 60, remainSeconds % 60)
+        binding.ownerJoinTextRemainTime.text = remainTimeText
+    }
+
+    private fun mCountDown(): CountDownTimer = object : CountDownTimer(90000, 100) {
+        override fun onTick(millisUntilFinished: Long) {
+            updateRemainTime(millisUntilFinished)
+        }
+
+        override fun onFinish() {
+            updateRemainTime(0)
+            binding.ownerJoinBtnAuth.isEnabled = true
         }
     }
 
@@ -92,11 +147,14 @@ class OwnerJoinActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     //인증성공
-                    binding.ownerJoinBtnNext.isEnabled = true
                     customDialog = CustomDialog(this, getString(R.string.auth_success))
                     customDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
                     customDialog.show()
-                    customDialog.shutdownClick.setOnClickListener { customDialog.dismiss() }
+                    customDialog.shutdownClick.setOnClickListener {
+                        mCountDown().cancel()
+                        startActivity(Intent(this, OwnerJoinInfoActivity::class.java))
+                        customDialog.dismiss()
+                    }
                 } else {
                     //인증실패
                     customDialog = CustomDialog(this, getString(R.string.auth_fail))
@@ -108,22 +166,9 @@ class OwnerJoinActivity : AppCompatActivity() {
     }
 
     private fun sendMessage(phone: String) {
-        val callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-            override fun onVerificationCompleted(credential: PhoneAuthCredential) {}
-            override fun onVerificationFailed(e: FirebaseException) {}
-            override fun onCodeSent(
-                verificationId: String,
-                token: PhoneAuthProvider.ForceResendingToken
-            ) {
-                Log.d("TAG_sendMsg_callbacks", "onCodeSent:$verificationId")
-                resendToken = token
-                storedVerificationId = verificationId
-            }
-        }
-
         val options = PhoneAuthOptions.newBuilder(auth)
             .setPhoneNumber(phone)  // "+821012345678" 형식
-            .setTimeout(60L, TimeUnit.SECONDS)
+            .setTimeout(90L, TimeUnit.SECONDS)
             .setActivity(this)
             .setCallbacks(callbacks)
             .build()
@@ -131,6 +176,20 @@ class OwnerJoinActivity : AppCompatActivity() {
         PhoneAuthProvider.verifyPhoneNumber(options)
         auth.setLanguageCode("kr")
         Toast.makeText(applicationContext, "문자를 확인하여 인증을 완료해주세요", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun resendMessage(phone: String, token: PhoneAuthProvider.ForceResendingToken?) {
+        val options = PhoneAuthOptions.newBuilder(auth)
+            .setPhoneNumber(phone)  // "+821012345678" 형식
+            .setTimeout(90L, TimeUnit.SECONDS)
+            .setActivity(this)
+            .setCallbacks(callbacks)
+        if (token != null) {
+            options.setForceResendingToken(token)
+        }
+
+        PhoneAuthProvider.verifyPhoneNumber(options.build())
+        auth.setLanguageCode("kr")
     }
 
     private fun checkPhoneValidation(pw: String): Boolean {
