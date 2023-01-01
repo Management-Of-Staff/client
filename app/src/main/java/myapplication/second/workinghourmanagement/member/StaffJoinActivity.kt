@@ -1,23 +1,19 @@
-package myapplication.second.workinghourmanagement
+package myapplication.second.workinghourmanagement.member
 
-import android.content.Intent
 import android.os.Bundle
-import android.view.MenuItem
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import android.view.MenuItem
 import androidx.databinding.DataBindingUtil
-import myapplication.second.workinghourmanagement.databinding.ActivityOwnerTosBinding
+import myapplication.second.workinghourmanagement.R
+import myapplication.second.workinghourmanagement.databinding.ActivityStaffJoinBinding
 
-class OwnerTosActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityOwnerTosBinding
+class StaffJoinActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityStaffJoinBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_owner_tos)
-
-        binding.buttonNext.setOnClickListener {
-            val intent = Intent(this, OwnerJoinActivity::class.java)
-            startActivity(intent)
-        }
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_staff_join)
 
         setSupportActionBar(binding.toolbar)
         val actionBar: ActionBar = supportActionBar!!

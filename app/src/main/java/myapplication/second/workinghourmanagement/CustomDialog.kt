@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.content.Context
 import android.widget.Button
 import android.widget.TextView
+import myapplication.second.workinghourmanagement.R
 
 class CustomDialog(context: Context, contents: String) :
     Dialog(context) {
