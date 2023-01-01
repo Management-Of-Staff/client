@@ -1,4 +1,4 @@
-package myapplication.second.workinghourmanagement
+package myapplication.second.workinghourmanagement.member
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,6 +8,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import myapplication.second.workinghourmanagement.R
 import myapplication.second.workinghourmanagement.databinding.ActivityOwnerJoinInfoBinding
 
 class OwnerJoinInfoActivity : AppCompatActivity() {

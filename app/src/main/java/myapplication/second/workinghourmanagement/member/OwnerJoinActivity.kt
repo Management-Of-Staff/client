@@ -1,4 +1,4 @@
-package myapplication.second.workinghourmanagement
+package myapplication.second.workinghourmanagement.member
 
 import android.content.Intent
 import android.graphics.Color
@@ -20,6 +20,8 @@ import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.*
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import myapplication.second.workinghourmanagement.CustomDialog
+import myapplication.second.workinghourmanagement.R
 import myapplication.second.workinghourmanagement.databinding.ActivityOwnerJoinBinding
 import java.util.concurrent.TimeUnit
 

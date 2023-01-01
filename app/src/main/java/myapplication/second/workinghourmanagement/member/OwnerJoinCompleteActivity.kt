@@ -1,9 +1,10 @@
-package myapplication.second.workinghourmanagement
+package myapplication.second.workinghourmanagement.member
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import myapplication.second.workinghourmanagement.R
 import myapplication.second.workinghourmanagement.databinding.ActivityOwnerJoinCompleteBinding
 
 class OwnerJoinCompleteActivity : AppCompatActivity() {

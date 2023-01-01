@@ -1,17 +1,19 @@
-package myapplication.second.workinghourmanagement
+package myapplication.second.workinghourmanagement.member
 
 import android.os.Bundle
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.MenuItem
 import androidx.databinding.DataBindingUtil
-import myapplication.second.workinghourmanagement.databinding.ActivityCommonResetpwBinding
+import myapplication.second.workinghourmanagement.R
+import myapplication.second.workinghourmanagement.databinding.ActivityCommonFindpwBinding
 
-class ResetPasswdActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityCommonResetpwBinding
+class FindPasswdActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityCommonFindpwBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_common_resetpw)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_common_findpw)
 
         setSupportActionBar(binding.toolbar)
         val actionBar: ActionBar = supportActionBar!!

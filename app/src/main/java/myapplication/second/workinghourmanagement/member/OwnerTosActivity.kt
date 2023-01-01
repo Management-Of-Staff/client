@@ -1,18 +1,24 @@
-package myapplication.second.workinghourmanagement
+package myapplication.second.workinghourmanagement.member
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
-import android.view.MenuItem
 import androidx.databinding.DataBindingUtil
-import myapplication.second.workinghourmanagement.databinding.ActivityCommonFindpwBinding
+import myapplication.second.workinghourmanagement.R
+import myapplication.second.workinghourmanagement.databinding.ActivityOwnerTosBinding
 
-class FindPasswdActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityCommonFindpwBinding
-
+class OwnerTosActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityOwnerTosBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_common_findpw)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_owner_tos)
+
+        binding.buttonNext.setOnClickListener {
+            val intent = Intent(this, OwnerJoinActivity::class.java)
+            startActivity(intent)
+        }
 
         setSupportActionBar(binding.toolbar)
         val actionBar: ActionBar = supportActionBar!!

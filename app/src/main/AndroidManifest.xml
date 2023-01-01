@@ -22,7 +22,7 @@
             android:name=".OwnerRegisterStoreActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".member.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,25 +31,25 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".FindPasswdActivity"
+            android:name=".member.FindPasswdActivity"
             android:exported="true" />
         <activity
-            android:name=".ResetPasswdActivity"
+            android:name=".member.ResetPasswdActivity"
             android:exported="true" />
         <activity
-            android:name=".OwnerTosActivity"
+            android:name=".member.OwnerTosActivity"
             android:exported="true" />
         <activity
-            android:name=".OwnerJoinActivity"
+            android:name=".member.OwnerJoinActivity"
             android:exported="true" />
         <activity
-            android:name=".OwnerJoinInfoActivity"
+            android:name=".member.OwnerJoinInfoActivity"
             android:exported="true" />
         <activity
-            android:name=".OwnerJoinCompleteActivity"
+            android:name=".member.OwnerJoinCompleteActivity"
             android:exported="true" />
         <activity
-            android:name=".StaffJoinActivity"
+            android:name=".member.StaffJoinActivity"
             android:exported="true" />
     </application>
 
