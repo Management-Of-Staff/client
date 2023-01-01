@@ -1,4 +1,4 @@
-package myapplication.second.workinghourmanagement
+package myapplication.second.workinghourmanagement.store
 
 import android.content.Context
 import android.content.Intent
@@ -8,6 +8,7 @@ import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import myapplication.second.workinghourmanagement.R
 import myapplication.second.workinghourmanagement.databinding.ActivityOwnerSearchPrimaryAddressBinding
 
 class OwnerSearchPrimaryAddressActivity : AppCompatActivity(), View.OnClickListener {
@@ -18,7 +19,8 @@ class OwnerSearchPrimaryAddressActivity : AppCompatActivity(), View.OnClickListe
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_owner_search_primary_address)
+        binding = DataBindingUtil.setContentView(this,
+            R.layout.activity_owner_search_primary_address)
 
         binding.lifecycleOwner = this
 
@@ -56,6 +58,5 @@ class OwnerSearchPrimaryAddressActivity : AppCompatActivity(), View.OnClickListe
     }
 
     override fun onClick(view: View) {
-
     }
 }
