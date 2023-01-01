@@ -7,16 +7,16 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import myapplication.second.workinghourmanagement.databinding.ActivityOwnerConvertStoreBinding
+import myapplication.second.workinghourmanagement.databinding.ActivityOwnerStoreConversionBinding
 
-class OwnerConvertStoreActivity: AppCompatActivity(), View.OnClickListener {
+class OwnerStoreConversionActivity: AppCompatActivity(), View.OnClickListener {
 
-    private lateinit var binding: ActivityOwnerConvertStoreBinding
-    private lateinit var ownerConvertStoreAdapter: OwnerConvertStoreAdapter
+    private lateinit var binding: ActivityOwnerStoreConversionBinding
+    private lateinit var ownerStoreConversionAdapter: OwnerStoreConversionAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_owner_convert_store)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_owner_store_conversion)
 
         binding.lifecycleOwner = this
 
@@ -29,7 +29,7 @@ class OwnerConvertStoreActivity: AppCompatActivity(), View.OnClickListener {
     }
 
     private fun initRecyclerView(recyclerView: RecyclerView) {
-        ownerConvertStoreAdapter = OwnerConvertStoreAdapter()
+        ownerStoreConversionAdapter = OwnerStoreConversionAdapter()
 
         recyclerView.run {
             setHasFixedSize(true)
@@ -48,7 +48,7 @@ class OwnerConvertStoreActivity: AppCompatActivity(), View.OnClickListener {
         }
 
         binding.buttonDeleteStore.setOnClickListener {
-            binding.tvTitleConvertStore.text = "매장 삭제"
+            binding.tvTitleConvertStore.text = getString(R.string.delete_store)
 
             binding.buttonRegisterStore.visibility = View.GONE
             binding.buttonDeleteStore.visibility = View.GONE
@@ -61,16 +61,16 @@ class OwnerConvertStoreActivity: AppCompatActivity(), View.OnClickListener {
     }
 
     private fun openDeleteStoreDialog() {
-        val deleteMessage = "매장을 삭제하시겠습니까?"
+        val deleteMessage = getString(R.string.do_you_want_to_delete_store)
         MaterialAlertDialogBuilder(this)
             .setMessage(deleteMessage)
-            .setNegativeButton("아니오")
+            .setNegativeButton(getString(R.string.no))
             { dialog, _ ->
                 dialog.dismiss()
             }
-            .setPositiveButton("예")
+            .setPositiveButton(getString(R.string.yes))
             { dialog, _ ->
-                // 매장 삭제 기능 구현
+                // TODO: 매장 삭제 기능 구현
                 dialog.dismiss()
             }
             .create()

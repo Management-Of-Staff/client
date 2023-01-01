@@ -15,18 +15,18 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
-        android:text="출퇴근 정보"
+        android:text="@string/title_commute_info"
         android:textSize="@dimen/head_text_size"
         android:textColor="@color/black"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/tv_title_allow_latency"
+        android:id="@+id/tv_title_allow_late"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="45dp"
         android:layout_marginStart="20dp"
-        android:text="지각 허용 시간"
+        android:text="@string/title_allow_late"
         android:textSize="@dimen/small_text_size"
         android:textColor="@color/black"
         android:textStyle="bold" />
@@ -43,35 +43,35 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:text="0분"
+            android:text="@string/min_zero"
             android:textSize="@dimen/body_text_size" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:text="5분"
+            android:text="@string/min_five"
             android:textSize="@dimen/body_text_size" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:text="10분"
+            android:text="@string/min_ten"
             android:textSize="@dimen/body_text_size" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:text="15분"
+            android:text="@string/min_fifteen"
             android:textSize="@dimen/body_text_size" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:text="20분"
+            android:text="@string/min_twenty"
             android:textSize="@dimen/body_text_size" />
 
     </GridLayout>
@@ -82,7 +82,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="45dp"
         android:layout_marginStart="20dp"
-        android:text="조퇴 허용 시간"
+        android:text="@string/title_allow_early_leave"
         android:textSize="@dimen/small_text_size"
         android:textColor="@color/black"
         android:textStyle="bold" />
@@ -99,35 +99,35 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:text="0분"
+            android:text="@string/min_zero"
             android:textSize="@dimen/body_text_size" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:text="5분"
+            android:text="@string/min_five"
             android:textSize="@dimen/body_text_size" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:text="10분"
+            android:text="@string/min_ten"
             android:textSize="@dimen/body_text_size" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:text="15분"
+            android:text="@string/min_fifteen"
             android:textSize="@dimen/body_text_size" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:text="20분"
+            android:text="@string/min_twenty"
             android:textSize="@dimen/body_text_size" />
 
     </GridLayout>

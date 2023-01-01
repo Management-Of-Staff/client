@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginStart="20dp"
-            tools:text="07997"
+            tools:text="@string/value_zip_code"
             android:textSize="@dimen/title_text_size"
             android:textColor="#E44F15"
             android:textStyle="bold" />
@@ -32,7 +32,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="도로명"
+                android:text="@string/title_doro_address"
                 android:textSize="@dimen/body_text_size"
                 android:textColor="#24ACCD" />
 
@@ -41,7 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                tools:text="서울 양천구 목동서로 155 (목동파라곤)"
+                tools:text="@string/value_doro_address"
                 android:textSize="@dimen/body_text_size"
                 android:textColor="@color/black" />
 
@@ -57,7 +57,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="지번"
+                android:text="@string/title_jibun_address"
                 android:textSize="@dimen/body_text_size"
                 android:textColor="#24ACCD" />
 
@@ -66,7 +66,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="33dp"
-                tools:text="서울 양천구 목동 917"
+                tools:text="@string/value_jibun_address"
                 android:textSize="@dimen/body_text_size"
                 android:textColor="@color/black" />
 
@@ -91,14 +91,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="1"
+                    android:text="@string/primary_address_no"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=" / 1" />
+                    android:text="@string/primary_address_total_count" />
 
             </LinearLayout>
 

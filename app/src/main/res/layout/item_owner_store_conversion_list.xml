@@ -35,7 +35,7 @@
                 android:id="@+id/tv_store_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="메가커피"
+                android:text="@string/store_item_name"
                 android:textSize="@dimen/head_text_size"
                 android:textColor="@color/black"
                 android:textStyle="bold"
@@ -45,7 +45,7 @@
                 android:id="@+id/tv_store_subtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="서울대학교 병원 2호점"
+                android:text="@string/store_item_sub_name"
                 android:textSize="@dimen/body_text_size"
                 android:textColor="@color/black" />
 

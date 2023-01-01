@@ -52,4 +52,76 @@
     <string name="remainTime">%02d:%02d</string>
     <string name="complete_join">\'오직\' 회원이 되셨어요!</string>
 
+
+    // 매장 관리 string list
+    <string name="store_item_name">메가커피</string>
+    <string name="store_item_sub_name">서울대학교 병원 2호점</string>
+    <string name="title_store_conversion">매장 전환</string>
+    <string name="register_store">매장 등록</string>
+    <string name="modify_store_info">매장 정보 수정</string>
+    <string name="delete_store">매장 삭제</string>
+    <string name="delete">삭제하기</string>
+
+
+    // 주소 검색 string list
+    <string name="title_search_address">주소 검색</string>
+    <string name="search_address_tip">아래와 같은 조합으로 검색을 하시면 더욱 정확한\n결과가 검색됩니다</string>
+    <string name="tip">Tip</string>
+    <string name="doro_plus_dept_no">도로명+건물번호</string>
+    <string name="address_example2">예) 판교역로 235, 제주 첨단로 242</string>
+    <string name="address_example1">예) 판교역로 235, 분당 주공, 삼평동 681</string>
+    <string name="region_dong_li_address">지역명(동/리)+번지</string>
+    <string name="region_dong_li_address_plus_dept_name">지역명(동/리)+건물명(아파트명)</string>
+    <string name="mailbox_plus_no">사서함명+번호</string>
+
+    <string name="value_zip_code">07997</string>
+    <string name="title_doro_address">도로명</string>
+    <string name="value_doro_address">서울 양천구 목동서로 155 (목동파라곤)</string>
+    <string name="title_jibun_address">지번</string>
+    <string name="value_jibun_address">서울 양천구 목동 917</string>
+    <string name="primary_address_no">1</string>
+    <string name="primary_address_total_count">/ 1</string>
+
+
+    // 출퇴근 정보 string list
+    <string name="title_commute_info">출퇴근 정보</string>
+    <string name="title_allow_late">지각 허용 시간</string>
+    <string name="title_allow_early_leave">조퇴 허용 시간</string>
+    <string name="min_zero">0분</string>
+    <string name="min_five">5분</string>
+    <string name="min_ten">10분</string>
+    <string name="min_fifteen">15분</string>
+    <string name="min_twenty">20분</string>
+
+
+    // 사업장 분류 string list
+    <string name="title_store_type">사업장 분류</string>
+    <string name="cafeteria">음식점</string>
+    <string name="cafe">카페</string>
+    <string name="convenience_store">편의점</string>
+    <string name="pc_room">PC방</string>
+    <string name="fitness_club">헬스장</string>
+    <string name="academy">학원</string>
+    <string name="office_help">사무보조</string>
+    <string name="etc">기타</string>
+
+
+    <string name="do_you_want_to_delete_store">매장을 삭제하시겠습니까?</string>
+    <string name="do_you_want_to_register_store">매장을 등록하시겠습니까?</string>
+    <string name="no">아니오</string>
+    <string name="yes">예</string>
+
+
+    <string name="title_store_info">매장 정보</string>
+    <string name="store_branch_name_choice">지점명 (선택)</string>
+    <string name="please_enter_branch_name">지점명을 입력해주세요.</string>
+    <string name="primary_address">기본 주소</string>
+    <string name="search_address">주소 검색</string>
+    <string name="detail_address">상세 주소</string>
+    <string name="please_enter_detail_address">상세 주소를 입력해주세요.</string>
+    <string name="choose">선택하기</string>
+    <string name="register">등록하기</string>
+    <string name="modify">수정하기</string>
+    <string name="please_enter_store_name">매장명을 입력해주세요.</string>
+
 </resources>
