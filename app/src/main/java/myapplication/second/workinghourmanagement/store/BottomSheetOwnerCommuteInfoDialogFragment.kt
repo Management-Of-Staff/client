@@ -1,4 +1,4 @@
-package myapplication.second.workinghourmanagement
+package myapplication.second.workinghourmanagement.store
 
 import android.os.Bundle
 import android.view.LayoutInflater

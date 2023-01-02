@@ -1,20 +1,21 @@
-package myapplication.second.workinghourmanagement
+package myapplication.second.workinghourmanagement.store
 
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import myapplication.second.workinghourmanagement.databinding.ActivityOwnerStoreInfoModificationBinding
+import myapplication.second.workinghourmanagement.R
+import myapplication.second.workinghourmanagement.databinding.ActivityOwnerStoreRegistrationBinding
 
-class OwnerStoreInfoModificationActivity : AppCompatActivity(), View.OnClickListener {
+class OwnerStoreRegistrationActivity : AppCompatActivity(), View.OnClickListener {
 
-    private lateinit var binding: ActivityOwnerStoreInfoModificationBinding
+    private lateinit var binding: ActivityOwnerStoreRegistrationBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_owner_store_info_modification)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_owner_store_registration)
 
         binding.lifecycleOwner = this
 
@@ -55,7 +56,7 @@ class OwnerStoreInfoModificationActivity : AppCompatActivity(), View.OnClickList
             }
             .setPositiveButton(getString(R.string.yes))
             { dialog, _ ->
-                // TODO: 매장 정보 수정 기능 구현
+                // TODO: 매장 등록 기능 구현
                 dialog.dismiss()
             }
             .create()
@@ -68,6 +69,5 @@ class OwnerStoreInfoModificationActivity : AppCompatActivity(), View.OnClickList
     }
 
     override fun onClick(view: View) {
-
     }
 }

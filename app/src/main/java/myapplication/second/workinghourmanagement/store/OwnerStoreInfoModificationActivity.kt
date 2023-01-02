@@ -1,20 +1,24 @@
-package myapplication.second.workinghourmanagement
+package myapplication.second.workinghourmanagement.store
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import myapplication.second.workinghourmanagement.databinding.ActivityOwnerStoreRegistrationBinding
+import myapplication.second.workinghourmanagement.R
+import myapplication.second.workinghourmanagement.databinding.ActivityOwnerStoreInfoModificationBinding
 
-class OwnerStoreRegistrationActivity : AppCompatActivity(), View.OnClickListener {
+class OwnerStoreInfoModificationActivity : AppCompatActivity(), View.OnClickListener {
 
-    private lateinit var binding: ActivityOwnerStoreRegistrationBinding
+    private lateinit var binding: ActivityOwnerStoreInfoModificationBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_owner_store_registration)
+        binding = DataBindingUtil.setContentView(this,
+            R.layout.activity_owner_store_info_modification)
 
         binding.lifecycleOwner = this
 
@@ -55,7 +59,7 @@ class OwnerStoreRegistrationActivity : AppCompatActivity(), View.OnClickListener
             }
             .setPositiveButton(getString(R.string.yes))
             { dialog, _ ->
-                // TODO: 매장 등록 기능 구현
+                // TODO: 매장 정보 수정 기능 구현
                 dialog.dismiss()
             }
             .create()
@@ -67,7 +71,11 @@ class OwnerStoreRegistrationActivity : AppCompatActivity(), View.OnClickListener
         startActivity(intent)
     }
 
-    override fun onClick(view: View) {
+    companion object {
+        fun getIntent(context: Context) =
+            Intent(context, OwnerStoreInfoModificationActivity::class.java)
+    }
 
+    override fun onClick(view: View) {
     }
 }

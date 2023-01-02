@@ -1,4 +1,4 @@
-package myapplication.second.workinghourmanagement
+package myapplication.second.workinghourmanagement.store
 
 import android.os.Bundle
 import android.view.View
@@ -7,6 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import myapplication.second.workinghourmanagement.R
 import myapplication.second.workinghourmanagement.databinding.ActivityOwnerStoreConversionBinding
 
 class OwnerStoreConversionActivity: AppCompatActivity(), View.OnClickListener {
@@ -39,25 +40,32 @@ class OwnerStoreConversionActivity: AppCompatActivity(), View.OnClickListener {
     }
 
     private fun setupListener() {
-        binding.ivOptionMenu.setOnClickListener {
+        binding.btnOptionMenu.setOnClickListener {
+            intentModifyStore()
+        }
+
+        binding.btnRegisterStore.setOnClickListener {
 
         }
 
-        binding.buttonRegisterStore.setOnClickListener {
-
-        }
-
-        binding.buttonDeleteStore.setOnClickListener {
+        binding.btnDeleteStore.setOnClickListener {
             binding.tvTitleConvertStore.text = getString(R.string.delete_store)
 
-            binding.buttonRegisterStore.visibility = View.GONE
-            binding.buttonDeleteStore.visibility = View.GONE
+            binding.btnRegisterStore.visibility = View.GONE
+            binding.btnDeleteStore.visibility = View.GONE
             binding.buttonChoiceDeleteStore.visibility = View.VISIBLE
         }
 
         binding.buttonChoiceDeleteStore.setOnClickListener {
             openDeleteStoreDialog()
         }
+    }
+
+
+
+    private fun intentModifyStore() {
+        val intent = OwnerStoreInfoModificationActivity.getIntent(this)
+        startActivity(intent)
     }
 
     private fun openDeleteStoreDialog() {
