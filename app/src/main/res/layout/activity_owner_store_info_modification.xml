@@ -102,19 +102,20 @@
                 android:layout_marginTop="20dp"
                 android:text="@string/primary_address" />
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content" >
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/edit_primary_address"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
                     android:text=""
                     android:textSize="@dimen/small_text_size"
-                    android:inputType="text" />
+                    android:inputType="text"
+                    android:maxLines="1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
 
                 <Button
                     android:id="@+id/btn_search_primary_address"
@@ -122,11 +123,13 @@
                     android:layout_width="0dp"
                     android:layout_height="35dp"
                     android:layout_marginStart="12dp"
-                    android:layout_weight="1"
                     android:background="@drawable/round_appcolor_background"
-                    android:text="@string/search_address" />
+                    android:text="@string/search_address"
+                    android:textSize="@dimen/body_text_size"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
                 style="@style/neo_regular_black_style"
@@ -151,20 +154,20 @@
                 android:layout_marginTop="20dp"
                 android:text="@string/title_store_type" />
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:orientation="horizontal">
+                android:layout_height="wrap_content" >
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/edit_classify_business_type"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
                     android:text=""
                     android:textSize="@dimen/small_text_size"
-                    android:inputType="text" />
+                    android:inputType="text"
+                    android:maxLines="1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
 
                 <Button
                     android:id="@+id/btn_classify_business_type"
@@ -172,11 +175,12 @@
                     android:layout_width="0dp"
                     android:layout_height="35dp"
                     android:layout_marginStart="12dp"
-                    android:layout_weight="1"
                     android:background="@drawable/round_appcolor_background"
-                    android:text="@string/choose" />
+                    android:text="@string/choose"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -210,7 +214,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-
+                android:layout_marginTop="5dp"
                 android:background="@color/black" />
 
             <LinearLayout
