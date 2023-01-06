@@ -87,15 +87,28 @@
                 android:id="@+id/resetPw_edit_passwd_confirm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number" />
+                android:inputType="textPassword" />
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:fontFamily="@font/spoqahansansneo_regular"
-                android:gravity="end"
-                android:text="@string/num_char20" />
+                android:layout_marginHorizontal="10dp">
+
+                <TextView
+                    android:id="@+id/password_confirm_validator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/spoqahansansneo_regular"
+                    android:textColor="@color/b1"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/spoqahansansneo_regular"
+                    android:gravity="end"
+                    android:text="@string/num_char20" />
+            </LinearLayout>
         </LinearLayout>
 
         <Button
