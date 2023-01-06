@@ -7,13 +7,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginHorizontal="20dp"
-            android:background="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/toolbar" />
-
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -21,71 +14,103 @@
             tools:ignore="MissingConstraints">
 
             <TextView
-                android:id="@+id/title"
+                style="@style/neo_bold_black_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@string/reset_passwd"
-                android:textSize="17sp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
         </androidx.appcompat.widget.Toolbar>
 
         <LinearLayout
-            android:id="@+id/linear_newPasswd"
+            android:id="@+id/phoneAuth_layout_resetPw"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="50dp"
-            android:layout_marginVertical="10dp"
-            app:layout_constraintBottom_toTopOf="@id/linear_newPasswd_certification"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed">
+            android:orientation="vertical"
+            android:padding="22dp"
+            app:layout_constraintTop_toBottomOf="@id/toolbar">
 
             <TextView
-                android:id="@+id/resetPasswd_text_passwd"
-                android:layout_width="0dp"
+                style="@style/neo_bold_black_style"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/new_passwd" />
+                android:layout_marginTop="22dp"
+                android:layout_marginBottom="70dp"
+                android:text="@string/input_newPw"
+                android:textSize="24sp" />
+
+            <TextView
+                style="@style/neo_regular_black_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="@string/passwd" />
 
             <EditText
-                android:id="@+id/resetPasswd_edit_passwd"
-                android:layout_width="0dp"
+                android:id="@+id/resetPw_edit_passwd"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
                 android:inputType="textPassword" />
-        </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/linear_newPasswd_certification"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="50dp"
-            android:layout_marginVertical="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/linear_newPasswd">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp">
+
+                <TextView
+                    android:id="@+id/password_validator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/spoqahansansneo_regular"
+                    android:text="@string/password_format"
+                    android:textColor="@color/b1"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/spoqahansansneo_regular"
+                    android:gravity="end"
+                    android:text="@string/num_char20" />
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/findPasswd_text_remainMin"
-                android:layout_width="0dp"
+                style="@style/neo_regular_black_style"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="30dp"
                 android:text="@string/confirm_passwd" />
 
             <EditText
-                android:id="@+id/findPasswd_edit_num"
-                android:layout_width="0dp"
+                android:id="@+id/resetPw_edit_passwd_confirm"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:inputType="textPassword" />
+                android:inputType="number" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:fontFamily="@font/spoqahansansneo_regular"
+                android:gravity="end"
+                android:text="@string/num_char20" />
         </LinearLayout>
 
         <Button
-            android:id="@+id/resetPasswd_btn_reset"
+            android:id="@+id/resetPw_btn_check"
+            style="@style/neo_medium_white_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/app_color"
-            android:text="@string/ok"
-            android:textColor="@color/text_color"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            android:layout_marginHorizontal="22dp"
+            android:layout_marginBottom="64dp"
+            android:background="@drawable/button_selector_drawable"
+            android:enabled="false"
+            android:text="@string/reset_passwd"
+            android:textColor="@drawable/button_selector_text_color"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
