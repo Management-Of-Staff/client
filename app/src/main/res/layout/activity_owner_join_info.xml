@@ -108,14 +108,14 @@
                         android:layout_height="wrap_content"
                         android:inputType="textPassword" />
 
-                    <ImageView
+                    <CheckBox
                         android:id="@+id/password_show"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
                         android:layout_marginEnd="10dp"
                         android:contentDescription="@string/show_password"
-                        android:src="@drawable/ic_baseline_visibility_24" />
+                        android:button="@drawable/ic_baseline_visibility_24" />
                 </FrameLayout>
 
                 <LinearLayout
@@ -161,14 +161,14 @@
                         android:layout_height="wrap_content"
                         android:inputType="textPassword" />
 
-                    <ImageView
+                    <CheckBox
                         android:id="@+id/password_confirm_show"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
                         android:layout_marginEnd="10dp"
                         android:contentDescription="@string/show_password"
-                        android:src="@drawable/ic_baseline_visibility_24" />
+                        android:button="@drawable/ic_baseline_visibility_24" />
                 </FrameLayout>
 
                 <LinearLayout
