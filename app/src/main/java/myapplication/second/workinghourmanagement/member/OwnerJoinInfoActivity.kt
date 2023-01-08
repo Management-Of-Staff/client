@@ -6,6 +6,8 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBar
@@ -75,6 +77,16 @@ class OwnerJoinInfoActivity : AppCompatActivity() {
             }
         })
 
+        binding.passwordShow.setOnCheckedChangeListener { _, isChecked ->
+            if (!isChecked) {
+                binding.ownerJoinEditPassword.transformationMethod =
+                    PasswordTransformationMethod.getInstance()
+            } else {
+                binding.ownerJoinEditPassword.transformationMethod =
+                    HideReturnsTransformationMethod.getInstance()
+            }
+            binding.ownerJoinEditPassword.setSelection(binding.ownerJoinEditPassword.text.length)
+        }
         binding.ownerJoinEditPasswordConfirm.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun afterTextChanged(s: Editable?) {}
@@ -92,12 +104,21 @@ class OwnerJoinInfoActivity : AppCompatActivity() {
                 } else {
                     binding.passwordConfirmValidator.setText(R.string.password_match)
                     binding.passwordConfirmValidator.setTextColor(resources.getColor(R.color.success1))
-
                     //todo 모든 정보 입력했는지 확인한 후 enabled = true 설정!
                     binding.ownerJoinBtnJoin.isEnabled = true
                 }
             }
         })
+        binding.passwordConfirmShow.setOnCheckedChangeListener { _, isChecked ->
+            if (!isChecked) {
+                binding.ownerJoinEditPasswordConfirm.transformationMethod =
+                    PasswordTransformationMethod.getInstance()
+            } else {
+                binding.ownerJoinEditPasswordConfirm.transformationMethod =
+                    HideReturnsTransformationMethod.getInstance()
+            }
+        }
+        binding.ownerJoinEditPassword.setSelection(binding.ownerJoinEditPassword.text.length)
     }
 
     private fun joinSuccess() {
