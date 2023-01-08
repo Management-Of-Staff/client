@@ -97,11 +97,26 @@
                     android:layout_marginTop="36dp"
                     android:text="@string/passwd" />
 
-                <EditText
-                    android:id="@+id/owner_join_edit_password"
+                <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPassword" />
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/owner_join_edit_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword" />
+
+                    <ImageView
+                        android:id="@+id/password_show"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_marginEnd="10dp"
+                        android:contentDescription="@string/show_password"
+                        android:src="@drawable/ic_baseline_visibility_24" />
+                </FrameLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -118,6 +133,7 @@
                         android:textSize="12sp" />
 
                     <TextView
+                        android:id="@+id/password_count_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/spoqahansansneo_regular"
@@ -134,11 +150,26 @@
                     android:layout_marginTop="30dp"
                     android:text="@string/confirm_passwd" />
 
-                <EditText
-                    android:id="@+id/owner_join_edit_passwordConfirm"
+                <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPassword" />
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/owner_join_edit_passwordConfirm"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword" />
+
+                    <ImageView
+                        android:id="@+id/password_confirm_show"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_marginEnd="10dp"
+                        android:contentDescription="@string/show_password"
+                        android:src="@drawable/ic_baseline_visibility_24" />
+                </FrameLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -155,6 +186,7 @@
                         android:textSize="12sp" />
 
                     <TextView
+                        android:id="@+id/password_confirm_count_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/spoqahansansneo_regular"
