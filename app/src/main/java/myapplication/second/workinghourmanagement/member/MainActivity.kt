@@ -5,11 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.databinding.DataBindingUtil
-import myapplication.second.workinghourmanagement.PostResult
 import myapplication.second.workinghourmanagement.R
 import myapplication.second.workinghourmanagement.RetrofitManager
 import myapplication.second.workinghourmanagement.RetrofitService
 import myapplication.second.workinghourmanagement.databinding.ActivityCommonLoginBinding
+import myapplication.second.workinghourmanagement.dto.ResultLogin
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -28,24 +28,35 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, OwnerTosActivity::class.java)
             startActivity(intent)
         }
+        binding.textFindPassword.setOnClickListener {
+            val intent = Intent(this, FindPasswdActivity::class.java)
+            startActivity(intent)
+        }
 
         binding.buttonLogin.setOnClickListener {
-            getPosts()
+            login()
         }
     }
 
-    private fun getPosts() {
-        service.getPosts("1").enqueue(object: Callback<PostResult>{
-            override fun onResponse(call: Call<PostResult>, response: Response<PostResult>) {
-                if(response.isSuccessful.not()){
+    private fun login() {
+        val loginRequestParams = HashMap<String, String>()
+        loginRequestParams["phone"] = binding.editPhone.text.toString()
+        loginRequestParams["password"] = binding.editPassword.text.toString()
+
+        service.loginOwner(loginRequestParams).enqueue(object : Callback<ResultLogin> {
+            override fun onResponse(call: Call<ResultLogin>, response: Response<ResultLogin>) {
+                if (response.isSuccessful.not()) {
+//                    Log.d("ㄱ half success", "${response.raw()}")
                     return
                 }
-                response.body()?.let {
-                    Log.d("getPosts success", "\n$it")
+                val body = response.body()
+                if (body != null) {
+                    Log.d("accessToken", body.accessToken)
+                    Log.d("refreshToken", body.refreshToken)
                 }
             }
 
-            override fun onFailure(call: Call<PostResult>, t: Throwable) {
+            override fun onFailure(call: Call<ResultLogin>, t: Throwable) {
                 Log.d("getPosts fail", "[Fail]$t")
             }
         })
