@@ -61,6 +61,11 @@ class OwnerJoinInfoActivity : AppCompatActivity() {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun afterTextChanged(s: Editable?) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                val pwCount = String.format(
+                    getString(R.string.passwd_count),
+                    binding.ownerJoinEditPassword.length()
+                )
+                binding.passwordCountText.text = pwCount
                 val password = binding.ownerJoinEditPassword.text.toString()
                 if (checkPasswordValidation(password)) {
                     binding.passwordValidator.setTextColor(resources.getColor(R.color.success1))
@@ -74,6 +79,12 @@ class OwnerJoinInfoActivity : AppCompatActivity() {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun afterTextChanged(s: Editable?) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                val pwCount = String.format(
+                    getString(R.string.passwd_count),
+                    binding.ownerJoinEditPassword.length()
+                )
+                binding.passwordConfirmCountText.text = pwCount
+
                 if (binding.ownerJoinEditPassword.text.toString() != binding.ownerJoinEditPasswordConfirm.text.toString()) {
                     binding.passwordConfirmValidator.setText(R.string.password_disMatch)
                     binding.passwordConfirmValidator.setTextColor(resources.getColor(R.color.error1))
