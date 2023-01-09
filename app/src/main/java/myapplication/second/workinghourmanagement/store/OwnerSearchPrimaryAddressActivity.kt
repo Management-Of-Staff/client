@@ -19,8 +19,7 @@ class OwnerSearchPrimaryAddressActivity : AppCompatActivity(), View.OnClickListe
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = DataBindingUtil.setContentView(this,
-            R.layout.activity_owner_search_primary_address)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_owner_search_primary_address)
 
         binding.lifecycleOwner = this
 

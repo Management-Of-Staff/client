@@ -41,7 +41,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="60dp"
                     android:layout_marginBottom="20dp"
-                    android:background="@drawable/round_edge_backgound"
+                    android:background="@drawable/round_edge_background"
                     android:padding="10dp">
 
                     <CheckBox

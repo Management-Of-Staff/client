@@ -34,45 +34,95 @@
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
         android:rowCount="1"
         android:columnCount="5"
         android:layout_marginTop="20dp"
         android:orientation="horizontal" >
 
-        <TextView
+        <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:text="@string/min_zero"
-            android:textSize="@dimen/body_text_size" />
+            app:cardElevation="0dp" >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:text="@string/min_five"
-            android:textSize="@dimen/body_text_size" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="5dp"
+                android:background="@drawable/round_transparent_border"
+                android:text="@string/min_zero"
+                android:textSize="@dimen/body_text_size" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:text="@string/min_ten"
-            android:textSize="@dimen/body_text_size" />
+        </androidx.cardview.widget.CardView>
 
-        <TextView
+        <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:text="@string/min_fifteen"
-            android:textSize="@dimen/body_text_size" />
+            app:cardElevation="0dp" >
 
-        <TextView
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="5dp"
+                android:background="@drawable/round_transparent_border"
+                android:text="@string/min_five"
+                android:textSize="@dimen/body_text_size" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:text="@string/min_twenty"
-            android:textSize="@dimen/body_text_size" />
+            app:cardElevation="0dp" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="5dp"
+                android:background="@drawable/round_transparent_border"
+                android:text="@string/min_ten"
+                android:textSize="@dimen/body_text_size" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            app:cardElevation="0dp" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="5dp"
+                android:background="@drawable/round_transparent_border"
+                android:text="@string/min_fifteen"
+                android:textSize="@dimen/body_text_size" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            app:cardElevation="0dp" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="5dp"
+                android:background="@drawable/round_transparent_border"
+                android:text="@string/min_twenty"
+                android:textSize="@dimen/body_text_size" />
+
+        </androidx.cardview.widget.CardView>
 
     </GridLayout>
 
@@ -90,45 +140,95 @@
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
         android:rowCount="1"
         android:columnCount="5"
         android:layout_marginTop="20dp"
         android:orientation="horizontal" >
 
-        <TextView
+        <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:text="@string/min_zero"
-            android:textSize="@dimen/body_text_size" />
+            app:cardElevation="0dp" >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:text="@string/min_five"
-            android:textSize="@dimen/body_text_size" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="5dp"
+                android:background="@drawable/round_transparent_border"
+                android:text="@string/min_zero"
+                android:textSize="@dimen/body_text_size" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:text="@string/min_ten"
-            android:textSize="@dimen/body_text_size" />
+        </androidx.cardview.widget.CardView>
 
-        <TextView
+        <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:text="@string/min_fifteen"
-            android:textSize="@dimen/body_text_size" />
+            app:cardElevation="0dp" >
 
-        <TextView
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="5dp"
+                android:background="@drawable/round_transparent_border"
+                android:text="@string/min_five"
+                android:textSize="@dimen/body_text_size" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:text="@string/min_twenty"
-            android:textSize="@dimen/body_text_size" />
+            app:cardElevation="0dp" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="5dp"
+                android:background="@drawable/round_transparent_border"
+                android:text="@string/min_ten"
+                android:textSize="@dimen/body_text_size" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            app:cardElevation="0dp" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="5dp"
+                android:background="@drawable/round_transparent_border"
+                android:text="@string/min_fifteen"
+                android:textSize="@dimen/body_text_size" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            app:cardElevation="0dp" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="5dp"
+                android:background="@drawable/round_transparent_border"
+                android:text="@string/min_twenty"
+                android:textSize="@dimen/body_text_size" />
+
+        </androidx.cardview.widget.CardView>
 
     </GridLayout>
 
