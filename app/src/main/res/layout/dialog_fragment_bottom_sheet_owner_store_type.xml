@@ -5,30 +5,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    app:behavior_hideable="true"
     app:behavior_draggable="true"
-    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior" >
+    app:behavior_hideable="true"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
     <TextView
         android:id="@+id/tv_title_store_type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
         android:text="@string/title_store_type"
-        android:textSize="@dimen/head_text_size"
         android:textColor="@color/black"
+        android:textSize="@dimen/head_text_size"
         android:textStyle="bold" />
 
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:rowCount="4"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="20dp"
         android:columnCount="2"
         android:orientation="horizontal"
-        android:layout_marginTop="35dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp" >
+        android:rowCount="4">
 
         <Button
             android:id="@+id/btn_cafeteria"
@@ -37,12 +37,12 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:background="#FFFFFF"
-            app:strokeColor="@color/blue4"
-            app:strokeWidth="1dp"
             android:text="@string/cafeteria"
             android:textColor="@color/blue4"
             android:textSize="@dimen/body_text_size"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            app:strokeColor="@color/blue4"
+            app:strokeWidth="1dp" />
 
         <Button
             android:id="@+id/btn_cafe"
@@ -51,12 +51,12 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:background="#FFFFFF"
-            app:strokeColor="@color/blue4"
-            app:strokeWidth="1dp"
             android:text="@string/cafe"
             android:textColor="@color/blue4"
             android:textSize="@dimen/body_text_size"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            app:strokeColor="@color/blue4"
+            app:strokeWidth="1dp" />
 
         <Button
             android:id="@+id/btn_convenience_store"
@@ -65,12 +65,12 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:background="#FFFFFF"
-            app:strokeColor="@color/blue4"
-            app:strokeWidth="1dp"
             android:text="@string/convenience_store"
             android:textColor="@color/blue4"
             android:textSize="@dimen/body_text_size"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            app:strokeColor="@color/blue4"
+            app:strokeWidth="1dp" />
 
         <Button
             android:id="@+id/btn_pc_room"
@@ -79,12 +79,12 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:background="#FFFFFF"
-            app:strokeColor="@color/blue4"
-            app:strokeWidth="1dp"
             android:text="@string/pc_room"
             android:textColor="@color/blue4"
             android:textSize="@dimen/body_text_size"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            app:strokeColor="@color/blue4"
+            app:strokeWidth="1dp" />
 
         <Button
             android:id="@+id/btn_fitness_club"
@@ -93,12 +93,12 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:background="#FFFFFF"
-            app:strokeColor="@color/blue4"
-            app:strokeWidth="1dp"
             android:text="@string/fitness_club"
             android:textColor="@color/blue4"
             android:textSize="@dimen/body_text_size"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            app:strokeColor="@color/blue4"
+            app:strokeWidth="1dp" />
 
         <Button
             android:id="@+id/btn_academy"
@@ -107,12 +107,12 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:background="#FFFFFF"
-            app:strokeColor="@color/blue4"
-            app:strokeWidth="1dp"
             android:text="@string/academy"
             android:textColor="@color/blue4"
             android:textSize="@dimen/body_text_size"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            app:strokeColor="@color/blue4"
+            app:strokeWidth="1dp" />
 
         <Button
             android:id="@+id/btn_office_help"
@@ -121,12 +121,12 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:background="#FFFFFF"
-            app:strokeColor="@color/blue4"
-            app:strokeWidth="1dp"
             android:text="@string/office_help"
             android:textColor="@color/blue4"
             android:textSize="@dimen/body_text_size"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            app:strokeColor="@color/blue4"
+            app:strokeWidth="1dp" />
 
         <Button
             android:id="@+id/btn_etc"
@@ -135,27 +135,27 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:background="#FFFFFF"
-            app:strokeColor="@color/blue4"
-            app:strokeWidth="1dp"
             android:text="@string/etc"
             android:textColor="@color/blue4"
             android:textSize="@dimen/body_text_size"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            app:strokeColor="@color/blue4"
+            app:strokeWidth="1dp" />
 
     </GridLayout>
 
 
     <Button
         android:id="@+id/btn_choose_store_type"
+        style="@style/neo_medium_white_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/neo_medium_white_style"
-        android:layout_marginTop="30dp"
+        android:layout_gravity="center"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="20dp"
-        android:background="@drawable/round_appcolor_background"
+        android:background="@drawable/round_app_color_background"
         android:text="확인"
-        android:textSize="@dimen/title_text_size"
-        android:layout_gravity="center" />
+        android:textSize="@dimen/title_text_size" />
 
 </LinearLayout>

@@ -154,7 +154,10 @@ class OwnerJoinActivity : AppCompatActivity() {
                     customDialog.show()
                     customDialog.shutdownClick.setOnClickListener {
                         mCountDown().cancel()
-                        startActivity(Intent(this, OwnerJoinInfoActivity::class.java))
+                        val myIntent = Intent(this, OwnerJoinInfoActivity::class.java)
+                        myIntent.putExtra("phone", binding.ownerJoinEditPhone.text.toString())
+                        myIntent.putExtra("uuid", storedVerificationId)
+                        startActivity(myIntent)
                         customDialog.dismiss()
                     }
                 } else {

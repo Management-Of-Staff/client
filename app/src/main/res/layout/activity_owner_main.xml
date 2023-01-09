@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_staff_main"
@@ -20,6 +20,7 @@
                 android:id="@+id/iv_menu"
                 android:layout_width="?attr/actionBarSize"
                 android:layout_height="match_parent"
+                android:contentDescription="@string/menu"
                 android:padding="17dp"
                 app:srcCompat="@drawable/ic_hamburger_menu" />
 
@@ -27,7 +28,8 @@
                 android:id="@+id/icon_myPage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toLeftOf="@id/icon_notification"
+                android:layout_toStartOf="@id/icon_notification"
+                android:contentDescription="@string/myPage"
                 android:padding="12dp"
                 app:srcCompat="@drawable/ic_baseline_person_outline_24" />
 
@@ -36,6 +38,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
+                android:contentDescription="@string/notification"
                 android:padding="12dp"
                 app:srcCompat="@drawable/ic_baseline_notifications_24" />
 
@@ -67,7 +70,8 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right"
+                    android:layout_gravity="end"
+                    android:contentDescription="@string/close"
                     android:padding="18dp"
                     app:srcCompat="@drawable/ic_close_drawer" />
 
@@ -107,7 +111,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
-        android:background="@drawable/round_appcolor_background"
+        android:background="@drawable/round_app_color_background"
         android:text="직원관리"
         android:textSize="28sp"
         app:layout_constraintBottom_toTopOf="@id/button_time_management"
@@ -119,7 +123,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
-        android:background="@drawable/round_appcolor_background"
+        android:background="@drawable/round_app_color_background"
         android:text="타임관리"
         android:textSize="28sp"
         app:layout_constraintBottom_toTopOf="@id/button_work_management"
@@ -131,7 +135,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
-        android:background="@drawable/round_appcolor_background"
+        android:background="@drawable/round_app_color_background"
         android:text="근무관리"
         android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"

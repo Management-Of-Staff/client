@@ -25,6 +25,9 @@
     <string name="resend">재전송하기</string>
     <string name="authentication_num">인증번호</string>
 
+    <string name="bn_success">올바른 사업자 정보입니다.</string>
+    <string name="bn_fail">사업자 정보를 찾을 수 없습니다.</string>
+
     <string name="auth_fail">인증에 실패했습니다.\n다시 시도해 주세요.</string>
     <string name="age_check_fail">만 14세 이상만\n가입할 수 있습니다.</string>
     <string name="already_join">이미 가입했어요!</string>
@@ -34,20 +37,28 @@
     <string name="reset_passwd">비밀번호 재설정</string>
     <string name="passwd">비밀번호</string>
     <string name="confirm_passwd">비밀번호 재입력</string>
+    <string name="pre_passwd">현재 비밀번호</string>
     <string name="new_passwd">새로운 비밀번호</string>
+    <string name="passwd_count">%d/20</string>
     <string name="account_entry_reason">* 알바비 지급을 위한 수집</string>
     <string name="account">계좌번호</string>
+
+    <string name="withdrawal">회원탈퇴</string>
+    <string name="Withdrawal_confirmation">회원 데이터를 모두 삭제하고\n오직에서 탈퇴하시겠습니까?></string>
+    <string name="withdrawal_success">탈퇴가 완료되었습니다.</string>
 
     <string name="next">다음</string>
     <string name="ok">확인</string>
     <string name="check">조회</string>
 
     <string name="password_format">영문, 숫자 포함 8자리 이상</string>
-    <string name="num_char20">0 / 20</string>
+    <string name="num_char20">0/20</string>
     <string name="password_disMatch">비밀번호가 일치하지 않습니다.</string>
     <string name="password_match">비밀번호 일치</string>
     <string name="input_info">회원 정보를 입력해주세요</string>
     <string name="input_phone">핸드폰번호를 인증해주세요</string>
+    <string name="input_newPw">새로운 비밀번호를 입력해주세요</string>
+
     <string name="input_phone_detail">본인 확인을 위해 번호를 인증해주세요</string>
     <string name="remainTime">%02d:%02d</string>
     <string name="complete_join">\'오직\' 회원이 되셨어요!</string>
@@ -124,5 +135,11 @@
     <string name="modify">수정하기</string>
     <string name="please_enter_store_name">매장명을 입력해주세요.</string>
     <string name="store_info_modify">매장 정보 수정</string>
+    <string name="show_password">입력한 비밀번호 보기</string>
+
+    <string name="notification">알림</string>
+    <string name="menu">메뉴</string>
+    <string name="myPage">마이페이지</string>
+    <string name="close">닫기</string>
 
 </resources>
