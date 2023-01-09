@@ -11,7 +11,6 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import myapplication.second.workinghourmanagement.databinding.DialogFragmentBottomSheetOwnerStoreTypeBinding
 
 class BottomSheetOwnerStoreTypeDialogFragment: BottomSheetDialogFragment(), View.OnClickListener {
-
     private var _binding: DialogFragmentBottomSheetOwnerStoreTypeBinding? = null
     private val binding: DialogFragmentBottomSheetOwnerStoreTypeBinding
         get() = _binding!!
