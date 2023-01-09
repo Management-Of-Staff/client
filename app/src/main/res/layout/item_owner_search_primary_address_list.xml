@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="200dp"
-    app:cardCornerRadius="10dp" >
+    app:cardCornerRadius="4dp"
+    android:background="@drawable/round_grey_color_background">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,7 +20,7 @@
             android:layout_marginStart="20dp"
             tools:text="@string/value_zip_code"
             android:textSize="@dimen/title_text_size"
-            android:textColor="#E44F15"
+            android:textColor="@color/orange_900"
             android:textStyle="bold" />
 
         <LinearLayout
@@ -34,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/title_doro_address"
                 android:textSize="@dimen/body_text_size"
-                android:textColor="#24ACCD" />
+                android:textColor="@color/main_color" />
 
             <TextView
                 android:id="@+id/tv_doro_address"
@@ -59,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/title_jibun_address"
                 android:textSize="@dimen/body_text_size"
-                android:textColor="#24ACCD" />
+                android:textColor="@color/main_color" />
 
             <TextView
                 android:id="@+id/tv_jibun_address"
@@ -72,38 +73,34 @@
 
         </LinearLayout>
 
-        <com.google.android.material.card.MaterialCardView
+        <View
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="#D8D8D8"
-            android:layout_marginTop="10dp"
-            android:layout_marginVertical="10dp"
-            android:layout_gravity="center_horizontal" >
+            android:layout_height="1dp"
+            android:layout_marginTop="30dp"
+            android:background="@color/grey_500" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:background="#D8D8D8"
-                android:layout_marginVertical="10dp"
-                android:gravity="center" >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:background="@color/grey_300"
+            android:gravity="center" >
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/primary_address_no"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="3dp"
+                android:text="@string/primary_address_no"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/primary_address_total_count" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/primary_address_total_count" />
 
-            </LinearLayout>
-
-        </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
 
     </LinearLayout>
 
-</com.google.android.material.card.MaterialCardView>
+</androidx.cardview.widget.CardView>
