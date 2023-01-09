@@ -57,6 +57,9 @@
         <activity
             android:name=".member.StaffJoinActivity"
             android:exported="true" />
+        <activity
+            android:name=".home.OwnerHomeActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
