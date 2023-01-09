@@ -124,5 +124,24 @@
     <string name="modify">수정하기</string>
     <string name="please_enter_store_name">매장명을 입력해주세요.</string>
     <string name="store_info_modify">매장 정보 수정</string>
+    <string name="title_important_schedule">중요 일정</string>
+    <string name="twelve">12</string>
+    <string name="month">월</string>
+    <string name="nineteen">19</string>
+    <string name="day">일</string>
+    <string name="title_post_schedule">일정 등록</string>
+    <string name="title">제목</string>
+    <string name="input_schedule_content">일정 내용을 입력해 주세요.</string>
+    <string name="color">컬러</string>
+    <string name="date">날짜</string>
+    <string name="time">시간</string>
+    <string name="title_modify_schedule">일정 수정</string>
+    <string name="modify_complete">수정 완료</string>
+    <string name="choose_complete">선택 완료</string>
+    <string name="title_set_date">날짜 설정</string>
+    <string name="title_set_time">시간 설정</string>
+    <string name="schedule_is_modified">일정이 수정되었어요.</string>
+    <string name="new_schedule_is_posted">새로운 일정이 등록 되었어요.</string>
+    <string name="will_you_delete_schedule">일정을 삭제하시겠습니까?</string>
 
 </resources>
