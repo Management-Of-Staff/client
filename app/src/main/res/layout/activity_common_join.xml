@@ -22,7 +22,7 @@
                 android:id="@+id/button_owner_join"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/round_appcolor_background"
+                android:background="@drawable/round_app_color_background"
                 android:text="@string/owner"
                 android:textColor="@color/text_color" />
 
@@ -43,7 +43,7 @@
                 android:id="@+id/button_staff_join"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/round_appcolor_background"
+                android:background="@drawable/round_app_color_background"
                 android:text="@string/staff"
                 android:textColor="@color/text_color" />
         </LinearLayout>
