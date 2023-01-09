@@ -20,7 +20,7 @@
     <string name="representative_name">대표자명</string>
     <string name="store_name">매장명</string>
     <string name="name">이름</string>
-    <string name="phone">핸드폰번호</string>
+    <string name="phone">휴대폰번호</string>
     <string name="certification">인증요청</string>
     <string name="resend">재전송하기</string>
     <string name="authentication_num">인증번호</string>
@@ -56,7 +56,7 @@
     <string name="password_disMatch">비밀번호가 일치하지 않습니다.</string>
     <string name="password_match">비밀번호 일치</string>
     <string name="input_info">회원 정보를 입력해주세요</string>
-    <string name="input_phone">핸드폰번호를 인증해주세요</string>
+    <string name="auth_phone">휴대폰번호를 인증해주세요</string>
     <string name="input_newPw">새로운 비밀번호를 입력해주세요</string>
 
     <string name="input_phone_detail">본인 확인을 위해 번호를 인증해주세요</string>
@@ -160,5 +160,8 @@
     <string name="menu">메뉴</string>
     <string name="myPage">마이페이지</string>
     <string name="close">닫기</string>
+    <string name="input_authNum">인증번호를 입력해주세요</string>
+    <string name="input_phone">휴대폰 번호를 입력해주세요</string>
+    <string name="start">시작하기</string>
 
 </resources>
