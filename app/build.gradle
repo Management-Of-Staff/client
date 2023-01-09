@@ -85,4 +85,10 @@ dependencies {
 
     // Scalars 변환기 라이브러리
     implementation 'com.squareup.retrofit2:converter-scalars:2.6.4'
+
+    // Material 달력 라이브러리
+    implementation 'com.github.prolificinteractive:material-calendarview:2.0.0'
+
+    // ElasticViews 라이브러리
+    implementation 'com.github.skydoves:elasticviews:2.1.0'
 }
