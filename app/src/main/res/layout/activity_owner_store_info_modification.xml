@@ -29,12 +29,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:text="@string/modify_store_info"
-                android:textSize="@dimen/head_text_size"
                 android:textColor="@color/black"
+                android:textSize="@dimen/head_text_size"
                 android:textStyle="bold" />
 
         </androidx.appcompat.widget.Toolbar>
-
 
 
         <LinearLayout
@@ -42,9 +41,9 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            android:padding="22dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:padding="22dp">
+            app:layout_constraintTop_toBottomOf="@id/toolbar">
 
             <TextView
                 android:id="@+id/tv_title_store_info"
@@ -52,7 +51,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/title_store_info"
-                android:textSize="@dimen/title_text_size"/>
+                android:textSize="@dimen/title_text_size" />
 
             <View
                 android:layout_width="match_parent"
@@ -74,9 +73,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:hint="@string/please_enter_store_name"
+                android:inputType="text"
                 android:text=""
-                android:textSize="@dimen/small_text_size"
-                android:inputType="text" />
+                android:textSize="@dimen/small_text_size" />
 
             <TextView
                 style="@style/neo_regular_black_style"
@@ -91,9 +90,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:hint="@string/please_enter_branch_name"
+                android:inputType="text"
                 android:text=""
-                android:textSize="@dimen/small_text_size"
-                android:inputType="text" />
+                android:textSize="@dimen/small_text_size" />
 
             <TextView
                 style="@style/neo_regular_black_style"
@@ -112,9 +111,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
+                    android:inputType="text"
                     android:text=""
-                    android:textSize="@dimen/small_text_size"
-                    android:inputType="text" />
+                    android:textSize="@dimen/small_text_size" />
 
                 <Button
                     android:id="@+id/btn_search_primary_address"
@@ -123,7 +122,7 @@
                     android:layout_height="35dp"
                     android:layout_marginStart="12dp"
                     android:layout_weight="1"
-                    android:background="@drawable/round_appcolor_background"
+                    android:background="@drawable/round_app_color_background"
                     android:text="@string/search_address" />
 
             </LinearLayout>
@@ -140,9 +139,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/please_enter_detail_address"
+                android:inputType="text"
                 android:text=""
-                android:textSize="@dimen/small_text_size"
-                android:inputType="text" />
+                android:textSize="@dimen/small_text_size" />
 
             <TextView
                 style="@style/neo_regular_black_style"
@@ -162,9 +161,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
+                    android:inputType="text"
                     android:text=""
-                    android:textSize="@dimen/small_text_size"
-                    android:inputType="text" />
+                    android:textSize="@dimen/small_text_size" />
 
                 <Button
                     android:id="@+id/btn_classify_business_type"
@@ -173,7 +172,7 @@
                     android:layout_height="35dp"
                     android:layout_marginStart="12dp"
                     android:layout_weight="1"
-                    android:background="@drawable/round_appcolor_background"
+                    android:background="@drawable/round_app_color_background"
                     android:text="@string/choose" />
 
             </LinearLayout>
@@ -191,8 +190,8 @@
                     android:layout_gravity="start"
                     android:layout_weight="3"
                     android:text="@string/title_commute_info"
-                    android:textSize="@dimen/title_text_size"
                     android:textColor="@color/black"
+                    android:textSize="@dimen/title_text_size"
                     android:textStyle="bold" />
 
                 <Button
@@ -202,7 +201,7 @@
                     android:layout_height="35dp"
                     android:layout_marginStart="12dp"
                     android:layout_weight="1"
-                    android:background="@drawable/round_appcolor_background"
+                    android:background="@drawable/round_app_color_background"
                     android:text="수정하기" />
 
             </LinearLayout>
@@ -226,8 +225,8 @@
                     android:layout_gravity="start"
                     android:layout_weight="3"
                     android:text="@string/title_allow_late"
-                    android:textSize="@dimen/body_text_size"
                     android:textColor="@color/black"
+                    android:textSize="@dimen/body_text_size"
                     android:textStyle="bold" />
 
                 <TextView
@@ -236,10 +235,10 @@
                     android:layout_height="35dp"
                     android:layout_marginStart="12dp"
                     android:layout_weight="1"
-                    tools:text="20분"
                     android:textColor="#2045B1"
                     android:textSize="@dimen/title_text_size"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    tools:text="20분" />
 
             </LinearLayout>
 
@@ -256,8 +255,8 @@
                     android:layout_gravity="start"
                     android:layout_weight="3"
                     android:text="@string/title_allow_early_leave"
-                    android:textSize="@dimen/body_text_size"
                     android:textColor="@color/black"
+                    android:textSize="@dimen/body_text_size"
                     android:textStyle="bold" />
 
                 <TextView
@@ -266,10 +265,10 @@
                     android:layout_height="35dp"
                     android:layout_marginStart="12dp"
                     android:layout_weight="1"
-                    tools:text="20분"
                     android:textColor="#2045B1"
                     android:textSize="@dimen/title_text_size"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    tools:text="20분" />
 
             </LinearLayout>
 
