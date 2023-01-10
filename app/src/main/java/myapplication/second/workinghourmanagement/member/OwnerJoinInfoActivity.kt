@@ -15,10 +15,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import myapplication.second.workinghourmanagement.*
 import myapplication.second.workinghourmanagement.databinding.ActivityOwnerJoinInfoBinding
+import myapplication.second.workinghourmanagement.dto.ResultBnumCheck
 import myapplication.second.workinghourmanagement.dto.ResultResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class OwnerJoinInfoActivity : AppCompatActivity() {
     private lateinit var binding: ActivityOwnerJoinInfoBinding
@@ -31,7 +34,10 @@ class OwnerJoinInfoActivity : AppCompatActivity() {
 
         service = RetrofitManager.retrofit.create(RetrofitService::class.java)
         bind()
+        initActionBar()
+    }
 
+    private fun initActionBar() {
         setSupportActionBar(binding.toolbar)
         val actionBar: ActionBar = supportActionBar!!
         actionBar.setDisplayShowTitleEnabled(false)
@@ -41,22 +47,52 @@ class OwnerJoinInfoActivity : AppCompatActivity() {
     private fun bind() {
         binding.ownerJoinEditBusinessNum.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
             override fun afterTextChanged(s: Editable?) {
                 val bn = binding.ownerJoinEditBusinessNum.text.toString()
                 binding.ownerJoinBtnBnCheck.isEnabled = checkBusinessNumValidation(bn)
             }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         })
-        binding.ownerJoinBtnBnCheck.setOnClickListener {
-            customDialog = CustomDialog(this, getString(R.string.bn_success))
-            customDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            customDialog.show()
-            customDialog.shutdownClick.setOnClickListener { customDialog.dismiss() }
-        }
 
-        binding.ownerJoinBtnJoin.setOnClickListener {
-            registerUser()
+        binding.ownerJoinBtnBnCheck.setOnClickListener {
+            // todo 사업자 등록번호 조회
+            val retrofit_bnum = Retrofit.Builder()
+                .baseUrl("https://api.odcloud.kr/api/nts-businessman/v1/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+
+            val bn = HashMap<String, List<String>>()
+            bn["b_no"] = listOf(binding.ownerJoinEditBusinessNum.text.toString())
+
+            val serviceKey = BuildConfig.BNUM_KEY
+            retrofit_bnum.create(RetrofitService::class.java)
+                .checkBNum(serviceKey = serviceKey, bn)
+                .enqueue(object : Callback<ResultBnumCheck> {
+                    override fun onResponse(
+                        call: Call<ResultBnumCheck>,
+                        response: Response<ResultBnumCheck>
+                    ) {
+                        if (response.isSuccessful.not()) {
+                            Log.d("보내는 지는데,,,", response.raw().toString())
+                            return
+                        }
+                        val body = response.body()
+                        if (body != null) {
+                            val data = body.data!![0].tax_type
+                            if (data == "부가가치세 일반과세자") {
+                                errorMessageDialog("올바른 사업자등록번호입니다.")
+                            } else {
+                                errorMessageDialog(data)
+                                binding.ownerJoinEditBusinessNum.text = null
+                            }
+                            Log.d("tax_type", body.data[0].tax_type)
+                        }
+                    }
+
+                    override fun onFailure(call: Call<ResultBnumCheck>, t: Throwable) {
+                        Log.d("getPosts fail", "[Fail]$t")
+                    }
+                })
         }
 
         binding.ownerJoinEditPassword.addTextChangedListener(object : TextWatcher {
@@ -87,6 +123,7 @@ class OwnerJoinInfoActivity : AppCompatActivity() {
             }
             binding.ownerJoinEditPassword.setSelection(binding.ownerJoinEditPassword.text.length)
         }
+
         binding.ownerJoinEditPasswordConfirm.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun afterTextChanged(s: Editable?) {}
@@ -96,7 +133,6 @@ class OwnerJoinInfoActivity : AppCompatActivity() {
                     binding.ownerJoinEditPassword.length()
                 )
                 binding.passwordConfirmCountText.text = pwCount
-
                 if (binding.ownerJoinEditPassword.text.toString() != binding.ownerJoinEditPasswordConfirm.text.toString()) {
                     binding.passwordConfirmValidator.setText(R.string.password_disMatch)
                     binding.passwordConfirmValidator.setTextColor(resources.getColor(R.color.error1))
@@ -109,6 +145,7 @@ class OwnerJoinInfoActivity : AppCompatActivity() {
                 }
             }
         })
+
         binding.passwordConfirmShow.setOnCheckedChangeListener { _, isChecked ->
             if (!isChecked) {
                 binding.ownerJoinEditPasswordConfirm.transformationMethod =
@@ -117,8 +154,12 @@ class OwnerJoinInfoActivity : AppCompatActivity() {
                 binding.ownerJoinEditPasswordConfirm.transformationMethod =
                     HideReturnsTransformationMethod.getInstance()
             }
+            binding.ownerJoinEditPasswordConfirm.setSelection(binding.ownerJoinEditPasswordConfirm.text.length)
         }
-        binding.ownerJoinEditPassword.setSelection(binding.ownerJoinEditPassword.text.length)
+
+        binding.ownerJoinBtnJoin.setOnClickListener {
+            registerUser()
+        }
     }
 
     private fun joinSuccess() {
@@ -127,23 +168,21 @@ class OwnerJoinInfoActivity : AppCompatActivity() {
         finishAffinity()
     }
 
+    private fun errorMessageDialog(message: String) {
+        customDialog = CustomDialog(this, message)
+        customDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        customDialog.show()
+        customDialog.shutdownClick.setOnClickListener { customDialog.dismiss() }
+    }
+
     private fun registerUser() {
         val myIntent = intent
         val phone = myIntent.getStringExtra("phone")!!
         val uuid = myIntent.getStringExtra("uuid")!!
-//        val user = User(
-//            uuid,
-//            binding.ownerJoinEditOwnerName.text.toString(),
-//            "01000000003",
-//            binding.ownerJoinEditPassword.text.toString(),
-//            "OWNER"
-//        )
         val userInfo = HashMap<String, String>()
-//        userInfo["uuid"] = uuid
+        userInfo["uuid"] = uuid
         userInfo["name"] = binding.ownerJoinEditOwnerName.text.toString()
-        userInfo["phone"] = "01000000004"
-        //todo 유저 입력으로 변경하기(지금은 테스트용)
-//        userInfo["phone"] = phone
+        userInfo["phone"] = phone
         userInfo["password"] = binding.ownerJoinEditPassword.text.toString()
         userInfo["role"] = "OWNER"
 
@@ -155,17 +194,19 @@ class OwnerJoinInfoActivity : AppCompatActivity() {
                     response: Response<ResultResponse>
                 ) {
                     if (response.isSuccessful.not()) {
+                        if (response.code() == 500) errorMessageDialog("서버 내부에 문제가 발생했습니다.\n잠시후 다시시도 해주세요.")
 //                        Log.d("보내긴함 근데 실패,,,", "${response.body()}")
 //                        Log.d("response는 뭐가 나와?", "${response.raw()}")
                         return
                     }
                     val body = response.body()
                     if (body != null) {
-                        Log.d("data", body.data.toString())
                         Log.d("statusCode", body.statusCode.toString())
                         Log.d("message", body.message)
 
                         if (body.statusCode == 200) joinSuccess()
+                        else if (body.statusCode == 400) errorMessageDialog(body.message)
+//                            Log.d("회원가입 response", "회원가입 실패")
                     }
 //                    response.body()?.let {
 //                        Log.d("getPosts success", "\n$it")
@@ -173,7 +214,7 @@ class OwnerJoinInfoActivity : AppCompatActivity() {
                 }
 
                 override fun onFailure(call: Call<ResultResponse>, t: Throwable) {
-                    Log.d("getPosts fail", "[Fail]$t")
+                    Log.d("[Retrofit]", "[registerOwner Fail]$t")
                 }
             })
     }
