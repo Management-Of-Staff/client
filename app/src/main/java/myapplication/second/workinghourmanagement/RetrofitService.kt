@@ -20,7 +20,7 @@ interface RetrofitService {
     ): Call<ResultResponse>
 
     @POST("auth/login")
-    fun loginOwner(
+    fun login(
         @Body params: HashMap<String, String>,
     ): Call<ResultLogin>
 
