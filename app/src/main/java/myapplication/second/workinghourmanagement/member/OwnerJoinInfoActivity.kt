@@ -55,7 +55,6 @@ class OwnerJoinInfoActivity : AppCompatActivity() {
         })
 
         binding.ownerJoinBtnBnCheck.setOnClickListener {
-            // todo 사업자 등록번호 조회
             val retrofit_bnum = Retrofit.Builder()
                 .baseUrl("https://api.odcloud.kr/api/nts-businessman/v1/")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -158,6 +157,7 @@ class OwnerJoinInfoActivity : AppCompatActivity() {
         }
 
         binding.ownerJoinBtnJoin.setOnClickListener {
+            // todo 모든 필드가 입력되었는지 체크하기
             registerUser()
         }
     }
@@ -186,7 +186,6 @@ class OwnerJoinInfoActivity : AppCompatActivity() {
         userInfo["password"] = binding.ownerJoinEditPassword.text.toString()
         userInfo["role"] = "OWNER"
 
-//        service.registerOwner(user.name, user.phone, user.password, user.role)
         service.registerOwner(userInfo)
             .enqueue(object : Callback<ResultResponse> {
                 override fun onResponse(
@@ -195,8 +194,6 @@ class OwnerJoinInfoActivity : AppCompatActivity() {
                 ) {
                     if (response.isSuccessful.not()) {
                         if (response.code() == 500) errorMessageDialog("서버 내부에 문제가 발생했습니다.\n잠시후 다시시도 해주세요.")
-//                        Log.d("보내긴함 근데 실패,,,", "${response.body()}")
-//                        Log.d("response는 뭐가 나와?", "${response.raw()}")
                         return
                     }
                     val body = response.body()
@@ -206,11 +203,7 @@ class OwnerJoinInfoActivity : AppCompatActivity() {
 
                         if (body.statusCode == 200) joinSuccess()
                         else if (body.statusCode == 400) errorMessageDialog(body.message)
-//                            Log.d("회원가입 response", "회원가입 실패")
                     }
-//                    response.body()?.let {
-//                        Log.d("getPosts success", "\n$it")
-//                    }
                 }
 
                 override fun onFailure(call: Call<ResultResponse>, t: Throwable) {
