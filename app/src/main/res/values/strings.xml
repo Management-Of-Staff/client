@@ -57,6 +57,7 @@
     <string name="password_match">비밀번호 일치</string>
     <string name="input_info">회원 정보를 입력해주세요</string>
     <string name="auth_phone">휴대폰번호를 인증해주세요</string>
+    <string name="input_pw">비밀번호를 입력해주세요</string>
     <string name="input_newPw">새로운 비밀번호를 입력해주세요</string>
 
     <string name="input_phone_detail">본인 확인을 위해 번호를 인증해주세요</string>
@@ -169,5 +170,6 @@
     <string name="WORK">근무</string>
     <string name="JUNG">정산</string>
     <string name="MY">MY</string>
+    <string name="clear">초기화</string>
 
 </resources>
