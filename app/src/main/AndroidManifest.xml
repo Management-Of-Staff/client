@@ -12,6 +12,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:name=".MyApplication"
         android:theme="@style/Theme.WorkingHourManagement"
         tools:targetApi="31">
         <activity
@@ -64,5 +65,4 @@
             android:name=".home.OwnerHomeActivity"
             android:exported="true" />
     </application>
-
 </manifest>
