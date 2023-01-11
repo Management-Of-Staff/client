@@ -1,11 +1,13 @@
 <resources>
     <string name="app_name">WorkingHourManagement</string>
+    <string name="show_tos">약관 보기</string>
     <string name="all_agree">전체 약관 동의</string>
     <string name="privacy_agree">(필수) 개인정보 수집 및 이용 동의</string>
     <string name="service_agree">(필수) 서비스 이용 동의</string>
     <string name="check_age">(필수) 만 15세 입니다</string>
 
     <string name="login">로그인</string>
+    <string name="logout">로그아웃</string>
     <string name="owner_login">오너 로그인</string>
     <string name="staff_login">직원 로그인</string>
 
@@ -15,7 +17,7 @@
     <string name="owner_join">오너회원가입</string>
     <string name="staff_join">직원회원가입</string>
 
-    <string name="birth">생년월일</string>
+    <string name="birth">생년월일(선택)</string>
     <string name="business_num">사업자등록번호</string>
     <string name="representative_name">대표자명</string>
     <string name="store_name">매장명</string>
@@ -33,6 +35,7 @@
     <string name="already_join">이미 가입했어요!</string>
     <string name="auth_success">인증이 완료되었습니다.</string>
 
+    <string name="change_passwd">비밀번호 변경</string>
     <string name="find_passwd">비밀번호 찾기</string>
     <string name="reset_passwd">비밀번호 재설정</string>
     <string name="passwd">비밀번호</string>
@@ -158,6 +161,7 @@
 
     <string name="show_password">입력한 비밀번호 보기</string>
     <string name="notification">알림</string>
+    <string name="setting_notification">알림 설정</string>
     <string name="menu">메뉴</string>
     <string name="myPage">마이페이지</string>
     <string name="close">닫기</string>
@@ -171,5 +175,15 @@
     <string name="JUNG">정산</string>
     <string name="MY">MY</string>
     <string name="clear">초기화</string>
+    <string name="select">선택</string>
+    <string name="profile_image">프로필 이미지</string>
+    <string name="designation_owner">사장님</string>
+    <string name="view_profile">프로필 보기</string>
+    <string name="app_version">앱 버전</string>
+    <string name="profile_info">프로필 정보</string>
+    <string name="secession">탈퇴</string>
+    <string name="email">이메일(선택)</string>
+    <string name="save">저장하기</string>
+    <string name="change">변경</string>
 
 </resources>
