@@ -26,6 +26,7 @@ android {
 
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         buildConfigField "String", "BASE_URL", properties["retrofit.baseUrl"]
+        buildConfigField "String", "BNUM_KEY", properties["openApi.key"]
     }
 
     buildTypes {

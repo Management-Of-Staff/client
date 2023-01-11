@@ -6,4 +6,29 @@
     <dimen name="title_text_size">17sp</dimen>
     <dimen name="head_text_size">20sp</dimen>
     <dimen name="big_text_size">30sp</dimen>
+
+
+    <dimen name="text_size_12sp">12sp</dimen>
+    <dimen name="text_size_14sp">14sp</dimen>
+    <dimen name="text_size_16sp">16sp</dimen>
+    <dimen name="text_size_20sp">20sp</dimen>
+    <dimen name="text_size_24sp">24sp</dimen>
+    <dimen name="button_L_text_size">16sp</dimen>
+    <dimen name="button_M_text_size">12sp</dimen>
+    <dimen name="button_S_text_size">12sp</dimen>
+
+    <dimen name="edit_text_width">312dp</dimen>
+    <dimen name="edit_text_height">59dp</dimen>
+
+    <dimen name="button_L_width">312dp</dimen>
+    <dimen name="button_L_height">52dp</dimen>
+    <dimen name="button_M_width">150dp</dimen>
+    <dimen name="button_M_height">52dp</dimen>
+    <dimen name="button_S_width">84dp</dimen>
+    <dimen name="button_S_height">31sp</dimen>
+    <dimen name="button_popUp1_width">139dp</dimen>
+    <dimen name="button_popUp1_height">44dp</dimen>
+    <dimen name="button_popUp2_width">128dp</dimen>
+    <dimen name="button_popUp2_height">44dp</dimen>
+
 </resources>

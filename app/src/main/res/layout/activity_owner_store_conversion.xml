@@ -16,12 +16,11 @@
             android:id="@+id/toolbar_owner_convert_store"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:background="@drawable/round_app_color_background"
             app:contentInsetStart="0dp"
             android:background="@color/app_color"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintEnd_toEndOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -30,11 +29,11 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="25dp"
-                    android:layout_marginTop="20dp"
                     android:orientation="vertical"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="25dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
 
                     <TextView
                         android:id="@+id/tv_store_title"
@@ -52,20 +51,16 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/store_item_sub_name"
-                        android:textColor="@color/white"
                         android:textSize="@dimen/body_text_size"
+                        android:textColor="@color/white"
                         tools:text="서울대학교 병원 2호점" />
 
                 </LinearLayout>
 
                 <Button
                     android:id="@+id/btn_option_menu"
-                    style="@style/neo_medium_white_style"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:layout_marginEnd="20dp"
-                    android:background="@color/white"
-                    android:padding="5dp"
                     android:text="@string/store_info_modify"
                     android:textColor="@color/blue4"
                     android:textStyle="normal"
@@ -76,8 +71,7 @@
                     android:layout_marginEnd="20dp"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintEnd_toEndOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -94,14 +88,14 @@
                 android:id="@+id/tv_title_convert_store"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="25dp"
                 android:text="@string/title_store_conversion"
-                android:textColor="@color/white"
                 android:textSize="@dimen/head_text_size"
+                android:textColor="@color/white"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginStart="25dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -112,15 +106,15 @@
             android:orientation="vertical"
             android:layout_marginTop="30dp"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginBottom="30dp"
             android:layout_marginEnd="10dp"
             android:background="#DFE2F3"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toTopOf="@id/linear_layout_buttons"
-            app:layout_constraintEnd_toEndOf="parent"
+            tools:listitem="@layout/item_owner_store_conversion_list"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/constraint_layout_title_convert_store"
-            tools:listitem="@layout/item_owner_store_conversion_list" />
+            app:layout_constraintBottom_toTopOf="@id/linear_layout_buttons" />
 
         <LinearLayout
             android:id="@+id/linear_layout_buttons"
@@ -137,31 +131,31 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/round_app_color_background"
                 android:text="@string/register_store"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:layout_gravity="center" />
 
             <Button
                 android:id="@+id/btn_delete_store"
                 style="@style/neo_medium_white_style"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/round_app_color_background"
                 android:text="@string/delete_store"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:layout_gravity="center" />
 
             <Button
                 android:id="@+id/button_choice_delete_store"
                 style="@style/neo_medium_white_style"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:visibility="gone"
                 android:background="@drawable/round_app_color_background"
                 android:text="@string/delete"
                 android:textSize="20sp"
-                android:visibility="gone" />
+                android:layout_gravity="center" />
 
         </LinearLayout>
 

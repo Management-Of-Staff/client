@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <RadioGroup
             android:id="@+id/radio_group_role"
-            android:layout_width="match_parent"
+            android:layout_width="@dimen/edit_text_width"
             android:layout_height="45dp"
-            android:layout_marginHorizontal="24dp"
             android:background="@drawable/round_blue4_20_background"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@id/linearlayout_login">
+            app:layout_constraintBottom_toTopOf="@id/edit_phone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
             <RadioButton
                 android:id="@+id/radio_button_owner"
@@ -43,72 +44,106 @@
                 android:textColor="@drawable/radio_selector_text_color" />
         </RadioGroup>
 
+        <EditText
+            android:id="@+id/edit_phone"
+            android:layout_width="@dimen/edit_text_width"
+            android:layout_height="@dimen/edit_text_height"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/round_neutral2_background"
+            android:fontFamily="@font/spoqahansansneo_regular"
+            android:hint="@string/input_phone"
+            android:importantForAutofill="no"
+            android:inputType="phone"
+            android:padding="15dp"
+            android:textSize="@dimen/text_size_14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/radio_group_role"
+            tools:targetApi="o" />
+
+        <EditText
+            android:id="@+id/edit_password"
+            android:layout_width="@dimen/edit_text_width"
+            android:layout_height="@dimen/edit_text_height"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/round_neutral2_background"
+            android:fontFamily="@font/spoqahansansneo_regular"
+            android:hint="@string/input_pw"
+            android:importantForAutofill="no"
+            android:inputType="textPassword"
+            android:padding="15dp"
+            android:textSize="@dimen/text_size_14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edit_phone"
+            tools:targetApi="o" />
+
+        <ImageView
+            android:id="@+id/password_clear"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/clear"
+            android:src="@drawable/ic_close"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/edit_password"
+            app:layout_constraintEnd_toStartOf="@id/password_visible_checkbox"
+            app:layout_constraintTop_toTopOf="@id/edit_password" />
+
+        <CheckBox
+            android:id="@+id/password_visible_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:button="@drawable/ic_password_visible"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/edit_password"
+            app:layout_constraintEnd_toEndOf="@id/edit_password"
+            app:layout_constraintTop_toTopOf="@id/edit_password" />
+
+        <Button
+            android:id="@+id/button_login"
+            style="@style/neo_medium_white_style"
+            android:layout_width="@dimen/button_L_width"
+            android:layout_height="@dimen/button_L_height"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/round_app_color_background"
+            android:text="@string/login"
+            android:textSize="@dimen/button_L_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edit_password" />
+
         <LinearLayout
-            android:id="@+id/linearlayout_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="24dp"
-            app:layout_constraintBottom_toBottomOf="parent">
+            android:layout_marginHorizontal="44dp"
+            android:layout_marginTop="70dp"
+            android:layout_marginBottom="42dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/button_login">
 
-            <EditText
-                android:id="@+id/edit_phone"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/text_find_password"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/round_neutral2_background"
-                android:fontFamily="@font/spoqahansansneo_regular"
-                android:hint="@string/phone"
-                android:inputType="phone"
-                android:padding="15dp" />
+                android:layout_weight="1"
+                android:fontFamily="@font/spoqahansansneo_bold"
+                android:gravity="center"
+                android:text="@string/find_passwd"
+                android:textColor="@color/b4"
+                android:textSize="@dimen/button_L_text_size" />
 
-            <EditText
-                android:id="@+id/edit_password"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/text_join"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:background="@drawable/round_neutral2_background"
-                android:fontFamily="@font/spoqahansansneo_regular"
-                android:hint="@string/passwd"
-                android:inputType="textPassword"
-                android:padding="15dp" />
-
-            <Button
-                android:id="@+id/button_login"
-                style="@style/neo_medium_white_style"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="45dp"
-                android:background="@drawable/round_app_color_background"
-                android:text="@string/login"
-                android:textSize="20sp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:layout_marginBottom="20dp">
-
-                <TextView
-                    android:id="@+id/text_join"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/spoqahansansneo_medium"
-                    android:gravity="center"
-                    android:text="@string/join"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/text_find_password"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/spoqahansansneo_medium"
-                    android:gravity="center"
-                    android:text="@string/find_passwd"
-                    android:textSize="16sp" />
-            </LinearLayout>
+                android:layout_weight="1"
+                android:fontFamily="@font/spoqahansansneo_bold"
+                android:gravity="center"
+                android:text="@string/join"
+                android:textColor="@color/app_color"
+                android:textSize="@dimen/button_L_text_size" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
