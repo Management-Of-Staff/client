@@ -213,7 +213,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:background="@drawable/round_app_color_background"
-        android:text="확인"
+        android:text="@string/confirm"
         android:textSize="@dimen/title_text_size"
         android:layout_gravity="center" />
 
