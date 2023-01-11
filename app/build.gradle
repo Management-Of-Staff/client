@@ -92,4 +92,7 @@ dependencies {
 
     // ElasticViews 라이브러리
     implementation 'com.github.skydoves:elasticviews:2.1.0'
+
+    // CircleImageView
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 }
