@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                style="@style/neo_bold_black_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/profile_info"
+                android:textSize="@dimen/head_text_size" />
+        </androidx.appcompat.widget.Toolbar>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:fontFamily="@font/spoqahansansneo_medium"
+            android:text="@string/secession"
+            android:textColor="@color/disabled_text"
+            android:textSize="@dimen/text_size_20sp"
+            app:layout_constraintBottom_toBottomOf="@id/toolbar"
+            app:layout_constraintEnd_toEndOf="@id/toolbar"
+            app:layout_constraintTop_toTopOf="@id/toolbar" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="86dp"
+            android:layout_height="86dp"
+            android:layout_marginTop="25dp"
+            android:src="@drawable/default_profile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+        <TextView
+            android:id="@+id/textView_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="@string/name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_14sp"
+            app:layout_constraintStart_toStartOf="@id/name"
+            app:layout_constraintTop_toBottomOf="@id/profile_image" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="@dimen/edit_text_width"
+            android:layout_height="@dimen/edit_text_height"
+            android:background="@drawable/custom_edit_text_background"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="15dp"
+            android:textColor="@color/b1"
+            android:textSize="@dimen/text_size_14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView_name"
+            tools:text="권희경" />
+
+        <TextView
+            android:id="@+id/textView_birth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="@string/birth"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_14sp"
+            app:layout_constraintStart_toStartOf="@id/name"
+            app:layout_constraintTop_toBottomOf="@id/name" />
+
+        <TextView
+            android:id="@+id/birth"
+            android:layout_width="@dimen/edit_text_width"
+            android:layout_height="@dimen/edit_text_height"
+            android:background="@drawable/custom_edit_text_background"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="15dp"
+            android:textColor="@color/b1"
+            android:textSize="@dimen/text_size_14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView_birth"
+            tools:text="생년월일을 입력하세요" />
+
+        <Button
+            android:id="@+id/btn_setting_birth"
+            android:layout_width="@dimen/button_S_width"
+            android:layout_height="@dimen/button_S_height"
+            android:background="@drawable/button_selector_drawable"
+            android:fontFamily="@font/spoqahansansneo_medium"
+            android:text="@string/select"
+            android:textColor="@drawable/button_selector_text_color"
+            android:textSize="@dimen/button_S_text_size"
+            app:layout_constraintBottom_toBottomOf="@id/birth"
+            app:layout_constraintEnd_toEndOf="@id/birth"
+            app:layout_constraintTop_toTopOf="@id/birth" />
+
+        <TextView
+            android:id="@+id/textView_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="@string/email"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_14sp"
+            app:layout_constraintStart_toStartOf="@id/birth"
+            app:layout_constraintTop_toBottomOf="@id/birth" />
+
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="@dimen/edit_text_width"
+            android:layout_height="@dimen/edit_text_height"
+            android:background="@drawable/custom_edit_text_background"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="15dp"
+            android:textColor="@color/b1"
+            android:textSize="@dimen/text_size_14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView_email"
+            tools:text="이메일 주소를 입력하세요" />
+
+        <TextView
+            android:id="@+id/textView_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="@string/phone"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_14sp"
+            app:layout_constraintStart_toStartOf="@id/email"
+            app:layout_constraintTop_toBottomOf="@id/email" />
+
+        <TextView
+            android:id="@+id/phone"
+            android:layout_width="@dimen/edit_text_width"
+            android:layout_height="@dimen/edit_text_height"
+            android:fontFamily="@font/spoqahansansneo_regular"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="15dp"
+            android:textColor="@color/b1"
+            android:textSize="@dimen/text_size_14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView_phone"
+            tools:text="010-4864-8745" />
+
+        <Button
+            android:id="@+id/btn_change_phone"
+            android:layout_width="@dimen/button_S_width"
+            android:layout_height="@dimen/button_S_height"
+            android:background="@drawable/button_selector_drawable"
+            android:fontFamily="@font/spoqahansansneo_medium"
+            android:text="@string/change"
+            android:textColor="@drawable/button_selector_text_color"
+            android:textSize="@dimen/button_S_text_size"
+            app:layout_constraintBottom_toBottomOf="@id/phone"
+            app:layout_constraintEnd_toEndOf="@id/phone"
+            app:layout_constraintTop_toTopOf="@id/phone" />
+
+        <TextView
+            android:id="@+id/textView_passwd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:paddingVertical="8dp"
+            android:text="@string/passwd"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_14sp"
+            app:layout_constraintStart_toStartOf="@id/phone"
+            app:layout_constraintTop_toBottomOf="@id/phone" />
+
+        <Button
+            android:id="@+id/btn_change_passwd"
+            android:layout_width="@dimen/button_S_width"
+            android:layout_height="@dimen/button_S_height"
+            android:background="@drawable/button_selector_drawable"
+            android:fontFamily="@font/spoqahansansneo_medium"
+            android:text="@string/change"
+            android:textColor="@drawable/button_selector_text_color"
+            android:textSize="@dimen/button_S_text_size"
+            app:layout_constraintBottom_toBottomOf="@id/textView_passwd"
+            app:layout_constraintEnd_toEndOf="@id/btn_change_phone"
+            app:layout_constraintTop_toTopOf="@id/textView_passwd" />
+<!--        <Button-->
+<!--            android:id="@+id/btn_save_profile"-->
+<!--            android:layout_width="@dimen/button_L_width"-->
+<!--            android:layout_height="@dimen/button_L_height"-->
+<!--            android:layout_marginBottom="23dp"-->
+<!--            android:background="@drawable/button_selector_drawable"-->
+<!--            android:fontFamily="@font/spoqahansansneo_medium"-->
+<!--            android:text="@string/save"-->
+<!--            android:textColor="@drawable/button_selector_text_color"-->
+<!--            android:textSize="@dimen/button_L_text_size"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent" />-->
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
