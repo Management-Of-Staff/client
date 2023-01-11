@@ -1,16 +1,192 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
 
-
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_profile"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="profile" />
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="53dp"
+            android:background="@color/white"
+            android:paddingHorizontal="22dp"
+            android:paddingVertical="16dp"
+            app:layout_constraintBottom_toTopOf="@id/tv_change_password"
+            app:layout_constraintTop_toTopOf="parent">
 
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imageView_profile"
+                android:layout_width="66dp"
+                android:layout_height="66dp"
+                android:contentDescription="@string/profile_image"
+                android:src="@drawable/default_profile"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="17dp"
+                android:fontFamily="@font/spoqahansansneo_bold"
+                android:textSize="@dimen/text_size_16sp"
+                app:layout_constraintBottom_toTopOf="@id/textView_phone"
+                app:layout_constraintStart_toEndOf="@id/imageView_profile"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="권희경" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/spoqahansansneo_medium"
+                android:text="@string/designation_owner"
+                android:textSize="@dimen/text_size_16sp"
+                app:layout_constraintBottom_toBottomOf="@id/textView_name"
+                app:layout_constraintStart_toEndOf="@id/textView_name"
+                app:layout_constraintTop_toTopOf="@id/textView_name" />
+
+            <TextView
+                android:id="@+id/textView_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/spoqahansansneo_regular"
+                android:textSize="@dimen/text_size_14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@id/textView_name"
+                app:layout_constraintTop_toBottomOf="@id/textView_name"
+                tools:text="010-5585-7845" />
+
+            <ImageView
+                android:id="@+id/btn_view_profile"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:contentDescription="@string/view_profile"
+                android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tv_change_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="53dp"
+            android:background="@color/white"
+            android:fontFamily="@font/spoqahansansneo_medium"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="16dp"
+            android:text="@string/change_passwd"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16sp"
+            app:layout_constraintTop_toBottomOf="@id/layout_profile" />
+
+        <ImageView
+            android:id="@+id/btn_change_passwd"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginEnd="32dp"
+            android:contentDescription="@string/change_passwd"
+            android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
+            app:layout_constraintBottom_toBottomOf="@id/tv_change_password"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_change_password" />
+
+        <TextView
+            android:id="@+id/tv_setting_notification"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:fontFamily="@font/spoqahansansneo_medium"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="16dp"
+            android:text="@string/setting_notification"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16sp"
+            app:layout_constraintTop_toBottomOf="@id/tv_change_password" />
+
+        <ImageView
+            android:id="@+id/btn_setting_notification"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginEnd="32dp"
+            android:contentDescription="@string/change_passwd"
+            android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
+            app:layout_constraintBottom_toBottomOf="@id/tv_setting_notification"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_setting_notification" />
+
+        <TextView
+            android:id="@+id/tv_show_tos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:fontFamily="@font/spoqahansansneo_medium"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="16dp"
+            android:text="@string/show_tos"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16sp"
+            app:layout_constraintTop_toBottomOf="@id/tv_setting_notification" />
+
+        <ImageView
+            android:id="@+id/btn_show_tos"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginEnd="32dp"
+            android:contentDescription="@string/change_passwd"
+            android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
+            app:layout_constraintBottom_toBottomOf="@id/tv_show_tos"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_show_tos" />
+
+        <TextView
+            android:id="@+id/tv_app_version"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:fontFamily="@font/spoqahansansneo_medium"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="16dp"
+            android:text="@string/app_version"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16sp"
+            app:layout_constraintTop_toBottomOf="@id/tv_show_tos" />
+
+
+        <TextView
+            android:id="@+id/tv_logout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:fontFamily="@font/spoqahansansneo_medium"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="16dp"
+            android:text="@string/logout"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16sp"
+            app:layout_constraintTop_toBottomOf="@id/tv_app_version" />
+
+        <ImageView
+            android:id="@+id/btn_logout"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginEnd="32dp"
+            android:contentDescription="@string/change_passwd"
+            android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
+            app:layout_constraintBottom_toBottomOf="@id/tv_logout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_logout" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
