@@ -67,6 +67,7 @@
 
     <string name="input_phone_detail">본인 확인을 위해 번호를 인증해주세요</string>
     <string name="remainTime">%02d:%02d</string>
+    <string name="birthDate">%d.%d.%d</string>
     <string name="complete_join">\'오직\' 회원이 되셨어요!</string>
 
 
