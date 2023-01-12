@@ -12,8 +12,6 @@ import android.view.ViewGroup
 import android.webkit.*
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -58,11 +56,11 @@ class OwnerSearchPrimaryAddressActivity : AppCompatActivity(), View.OnClickListe
 
         binding.ivSearchPrimaryAddress.setOnClickListener {
             // TODO: 기본주소 검색 기능 구현
-            showKakaoAddressWebView()
+            showDaumAddressWebView()
         }
     }
 
-    private fun showKakaoAddressWebView() {
+    private fun showDaumAddressWebView() {
 
         binding.layoutTip.isVisible = false
         binding.webView.isVisible = true
@@ -95,10 +93,10 @@ class OwnerSearchPrimaryAddressActivity : AppCompatActivity(), View.OnClickListe
     private inner class WebViewData {
         @JavascriptInterface
         fun getAddress(zoneCode: String, roadAddress: String, buildingName: String) {
-
             CoroutineScope(Dispatchers.Default).launch {
                 withContext(CoroutineScope(Dispatchers.Main).coroutineContext) {
                     binding.editSearchPrimaryAddress.setText("($zoneCode) $roadAddress $buildingName")
+                    showDaumAddressWebView()
                 }
             }
         }
