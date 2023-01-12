@@ -29,7 +29,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.util.concurrent.TimeUnit
 
-class OwnerJoinActivity : AppCompatActivity() {
+class PhoneAuthActivity : AppCompatActivity() {
     private lateinit var binding: ActivityOwnerJoinBinding
     private lateinit var auth: FirebaseAuth
     private var resendToken: PhoneAuthProvider.ForceResendingToken? = null

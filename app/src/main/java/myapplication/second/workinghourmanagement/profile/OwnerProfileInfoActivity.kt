@@ -14,6 +14,7 @@ import myapplication.second.workinghourmanagement.*
 import myapplication.second.workinghourmanagement.databinding.ActivityOwnerProfileInfoBinding
 import myapplication.second.workinghourmanagement.dto.ResultResponse
 import myapplication.second.workinghourmanagement.dto.UserParcelable
+import myapplication.second.workinghourmanagement.member.PhoneAuthActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -49,7 +50,7 @@ class OwnerProfileInfoActivity : AppCompatActivity() {
 
         }
         binding.btnChangePhone.setOnClickListener {
-
+            intentPage(PhoneAuthActivity::class.java)
         }
         binding.btnChangePasswd.setOnClickListener {
             intentPage(CheckCurrentPwActivity::class.java)
