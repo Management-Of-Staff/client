@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="MissingConstraints">
+
+            <TextView
+                style="@style/neo_bold_black_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/reset_passwd"
+                android:textSize="@dimen/head_text_size" />
+        </androidx.appcompat.widget.Toolbar>
+
+        <TextView
+            android:id="@+id/tv_title_newPw"
+            style="@style/neo_bold_black_style"
+            android:layout_width="@dimen/edit_text_width"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="44dp"
+            android:text="@string/input_newPw"
+            android:textSize="@dimen/text_size_24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+        <TextView
+            android:id="@+id/tv_input_passwd"
+            style="@style/neo_regular_black_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="70dp"
+            android:text="@string/passwd"
+            android:textSize="@dimen/input_info_text_size"
+            app:layout_constraintStart_toStartOf="@id/tv_title_newPw"
+            app:layout_constraintTop_toBottomOf="@id/tv_title_newPw" />
+
+        <EditText
+            android:id="@+id/edit_newPw"
+            style="@style/edit_text_custom"
+            android:layout_width="@dimen/edit_text_width"
+            android:inputType="textPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_input_passwd" />
+
+        <TextView
+            android:id="@+id/tv_newPw_validator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/spoqahansansneo_regular"
+            android:padding="10dp"
+            android:text="@string/password_format"
+            android:textColor="@color/b1"
+            android:textSize="@dimen/small_text_size"
+            app:layout_constraintStart_toStartOf="@id/edit_newPw"
+            app:layout_constraintTop_toBottomOf="@id/edit_newPw" />
+
+        <TextView
+            android:id="@+id/text_count_newPw"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="@font/spoqahansansneo_regular"
+            android:gravity="end"
+            android:text="@string/num_char20"
+            android:textSize="@dimen/small_text_size"
+            app:layout_constraintBottom_toBottomOf="@id/tv_newPw_validator"
+            app:layout_constraintEnd_toEndOf="@id/edit_newPw"
+            app:layout_constraintTop_toTopOf="@id/tv_newPw_validator" />
+
+        <TextView
+            android:id="@+id/tv_input_passwd_confirm"
+            style="@style/neo_regular_black_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="46dp"
+            android:text="@string/confirm_passwd"
+            app:layout_constraintStart_toStartOf="@id/tv_newPw_validator"
+            app:layout_constraintTop_toBottomOf="@id/tv_newPw_validator" />
+
+        <EditText
+            android:id="@+id/edit_newPw_confirm"
+            style="@style/edit_text_custom"
+            android:layout_width="@dimen/edit_text_width"
+            android:inputType="textPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_input_passwd_confirm" />
+
+        <TextView
+            android:id="@+id/tv_confirm_validator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/spoqahansansneo_regular"
+            android:padding="10dp"
+            android:textColor="@color/b1"
+            android:textSize="@dimen/small_text_size"
+            app:layout_constraintStart_toStartOf="@id/edit_newPw_confirm"
+            app:layout_constraintTop_toBottomOf="@id/edit_newPw_confirm" />
+
+        <TextView
+            android:id="@+id/tv_count_newPw_confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="@font/spoqahansansneo_regular"
+            android:gravity="end"
+            android:text="@string/num_char20"
+            android:textSize="@dimen/small_text_size"
+            app:layout_constraintBottom_toBottomOf="@id/tv_confirm_validator"
+            app:layout_constraintEnd_toEndOf="@id/edit_newPw_confirm"
+            app:layout_constraintTop_toTopOf="@id/tv_confirm_validator" />
+
+        <Button
+            android:id="@+id/btn_changePw"
+            style="@style/neo_medium_white_style"
+            android:layout_width="@dimen/button_L_width"
+            android:layout_height="@dimen/button_L_height"
+            android:layout_marginBottom="64dp"
+            android:background="@drawable/button_selector_drawable"
+            android:enabled="false"
+            android:text="@string/change_passwd"
+            android:textColor="@drawable/button_selector_text_color"
+            android:textSize="@dimen/button_L_text_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
