@@ -17,6 +17,9 @@
     <dimen name="button_M_text_size">12sp</dimen>
     <dimen name="button_S_text_size">12sp</dimen>
 
+
+    <dimen name="myPage_edit_text_width">258dp</dimen>
+    <dimen name="myPage_edit_text_height">56dp</dimen>
     <dimen name="edit_text_width">312dp</dimen>
     <dimen name="edit_text_height">59dp</dimen>
 
@@ -25,7 +28,7 @@
     <dimen name="button_M_width">150dp</dimen>
     <dimen name="button_M_height">52dp</dimen>
     <dimen name="button_S_width">84dp</dimen>
-    <dimen name="button_S_height">31sp</dimen>
+    <dimen name="button_S_height">31dp</dimen>
     <dimen name="button_popUp1_width">139dp</dimen>
     <dimen name="button_popUp1_height">44dp</dimen>
     <dimen name="button_popUp2_width">128dp</dimen>

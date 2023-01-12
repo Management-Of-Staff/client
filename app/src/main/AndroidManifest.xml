@@ -64,5 +64,8 @@
         <activity
             android:name=".home.OwnerHomeActivity"
             android:exported="true" />
+        <activity
+            android:name=".profile.OwnerProfileInfoActivity"
+            android:exported="true" />
     </application>
 </manifest>

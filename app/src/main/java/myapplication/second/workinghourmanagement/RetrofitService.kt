@@ -4,6 +4,7 @@ import myapplication.second.workinghourmanagement.dto.ResultGetStore
 import myapplication.second.workinghourmanagement.dto.ResultBnumCheck
 import myapplication.second.workinghourmanagement.dto.ResultLogin
 import myapplication.second.workinghourmanagement.dto.ResultResponse
+import myapplication.second.workinghourmanagement.dto.ResultUserInfo
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -11,8 +12,19 @@ import retrofit2.http.Path
 import retrofit2.http.*
 
 interface RetrofitService {
+    @POST("auth/check-password")
+    fun checkPassword(
+        @Header("Authorization") token: String,
+        @Body params: HashMap<String, String>,
+    ): Call<ResultResponse>
 
     // Owner
+    @GET("owners/")
+    fun selectOwnerInfo(
+        @Header("Authorization") token: String,
+    ): Call<ResultUserInfo>
+
+    // 사업자 등록번호 조회
     @Headers("Content-Type: application/json")
     @POST("status")
     fun checkBNum(
@@ -37,12 +49,11 @@ interface RetrofitService {
         @Body params: HashMap<String, String>,
     ): Call<ResultLogin>
 
-    @GET("owners/{token}")
-    fun getOwner(
-        @Path("token") token: String?
-    ): Call<PostResult>
-
     // Staff
+    @GET("staffs/")
+    fun selectStaffInfo(
+        @Header("Authorization") token: String,
+    ): Call<ResultUserInfo>
 
     @GET("posts/{post}")
     fun getPosts(
