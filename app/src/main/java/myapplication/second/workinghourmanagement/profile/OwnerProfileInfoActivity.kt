@@ -1,13 +1,13 @@
 package myapplication.second.workinghourmanagement.profile
 
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import myapplication.second.workinghourmanagement.R
 import myapplication.second.workinghourmanagement.databinding.ActivityOwnerProfileInfoBinding
+import myapplication.second.workinghourmanagement.dto.UserParcelable
 
 class OwnerProfileInfoActivity : AppCompatActivity() {
     private lateinit var binding: ActivityOwnerProfileInfoBinding
@@ -16,12 +16,13 @@ class OwnerProfileInfoActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_owner_profile_info)
 
         val myIntent = intent
-        binding.name.text = myIntent.getStringExtra("name")
-        binding.phone.text = myIntent.getStringExtra("phone")
+        val user = myIntent.getParcelableExtra<UserParcelable>("userInfo")!!
 
-        val birth = myIntent.getStringExtra("birth")
-        val email = myIntent.getStringExtra("email")
-        Log.d("birth", "${birth}, $email")
+        binding.name.text = user.name
+        binding.phone.text = user.phone
+
+        val birth = user.birthDate
+        val email = user.email
 
         if (birth.isNullOrBlank()) binding.birth.text = "생일을 입력해주세요"
         else binding.birth.text = birth

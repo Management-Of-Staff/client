@@ -53,12 +53,7 @@ class ProfileFragment : Fragment() {
                         val data = body.data
                         Log.d(" tag[200],", data.toString())
                         val intent = Intent(context, OwnerProfileInfoActivity::class.java)
-                        intent.putExtra("name", data.name)
-                        intent.putExtra("phone", data.phone)
-                        intent.putExtra("email", data.email)
-                        intent.putExtra("birth", data.birthDate)
-                        //intent.putExtra("role", data.role)
-                        //intent.putExtra("uuid", data.uuid)
+                        intent.putExtra("userInfo", data)
                         startActivity(intent)
                     } else {
                         Log.d(" tag[400],", body.message)
