@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import myapplication.second.workinghourmanagement.MyApplication
 import myapplication.second.workinghourmanagement.R
 import myapplication.second.workinghourmanagement.RetrofitManager
 import myapplication.second.workinghourmanagement.RetrofitService
@@ -81,10 +82,12 @@ class OwnerStoreRegistrationActivity : AppCompatActivity(), View.OnClickListener
     private fun registerStore() {
         val storeInfo = HashMap<String, String>()
 
+        val token = MyApplication.prefs.getString("accessToken")
+
         storeInfo["branchName"] = binding.editBranchName.text.toString()
         storeInfo["detailAddress"] = binding.editDetailedAddress.text.toString()
         storeInfo["earlyLeaveTime"] = binding.tvSetAllowEarlyLeave.text.toString()
-        storeInfo["ownerId"] = "1"
+        storeInfo["ownerId"] = token
         storeInfo["primaryAddress"] = binding.editPrimaryAddress.text.toString()
         storeInfo["storeClassification"] = binding.editClassifyBusinessType.text.toString()
         storeInfo["storeName"] = binding.editStoreName.text.toString()
@@ -111,7 +114,7 @@ class OwnerStoreRegistrationActivity : AppCompatActivity(), View.OnClickListener
                 }
 
                 override fun onFailure(call: Call<ResultResponse>, t: Throwable) {
-                    Log.d("registration fail", "[Fail]$t")
+                    Log.d("store registration fail", "[Fail] $t")
                 }
             })
     }
