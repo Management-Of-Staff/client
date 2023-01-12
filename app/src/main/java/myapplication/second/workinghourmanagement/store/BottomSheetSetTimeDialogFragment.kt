@@ -28,7 +28,7 @@ class BottomSheetSetTimeDialogFragment: BottomSheetDialogFragment() {
 
     private fun setupListeners() {
         binding.ivBack.setOnClickListener {
-            requireActivity().finish()
+            dismiss()
         }
 
         binding.btnConfirm.setOnClickListener {
