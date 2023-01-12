@@ -1,5 +1,7 @@
 package myapplication.second.workinghourmanagement.store
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -8,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import myapplication.second.workinghourmanagement.MyApplication
 import myapplication.second.workinghourmanagement.R
 import myapplication.second.workinghourmanagement.RetrofitManager
 import myapplication.second.workinghourmanagement.RetrofitService
@@ -36,7 +39,8 @@ class OwnerStoreConversionActivity: AppCompatActivity(), View.OnClickListener {
 
     private fun setupView() {
         val myIntent = intent
-        val ownerId = myIntent.getStringExtra("uuid").orEmpty()
+
+        val token = MyApplication.prefs.getString("accessToken")
 
         val storeInfo = HashMap<String, String>()
 
@@ -44,7 +48,7 @@ class OwnerStoreConversionActivity: AppCompatActivity(), View.OnClickListener {
         storeInfo["storeName"] = "string"
         storeInfo["primaryAddress"] = "string"
 
-        service.getStoreList(ownerId)
+        service.getStoreList(token)
             .enqueue(object : Callback<List<ResultGetStore>> {
                 override fun onResponse(
                     call: Call<List<ResultGetStore>>,
@@ -52,6 +56,7 @@ class OwnerStoreConversionActivity: AppCompatActivity(), View.OnClickListener {
                 ) {
                     if (response.isSuccessful) {
                         val body = response.body()
+
                         body?.let {
                             initRecyclerView(binding.rvStoreList)
                         }
@@ -99,6 +104,8 @@ class OwnerStoreConversionActivity: AppCompatActivity(), View.OnClickListener {
             binding.btnRegisterStore.visibility = View.GONE
             binding.btnDeleteStore.visibility = View.GONE
             binding.buttonChoiceDeleteStore.visibility = View.VISIBLE
+
+            ownerStoreConversionAdapter.toggleRadioButtonVisibility()
         }
 
         binding.buttonChoiceDeleteStore.setOnClickListener {
@@ -127,11 +134,20 @@ class OwnerStoreConversionActivity: AppCompatActivity(), View.OnClickListener {
             }
             .setPositiveButton(getString(R.string.yes))
             { dialog, _ ->
-                // TODO: 매장 삭제 기능 구현
+                deleteStore()
                 dialog.dismiss()
             }
             .create()
             .show()
+    }
+
+    private fun deleteStore() {
+        // TODO: 매장 삭제 기능 구현
+    }
+
+    companion object {
+        fun getIntent(context: Context) =
+            Intent(context, OwnerStoreConversionActivity::class.java)
     }
 
     override fun onClick(view: View) {

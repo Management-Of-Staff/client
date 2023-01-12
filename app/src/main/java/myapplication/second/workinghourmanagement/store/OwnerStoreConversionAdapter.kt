@@ -1,7 +1,9 @@
 package myapplication.second.workinghourmanagement.store
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -13,9 +15,10 @@ class OwnerStoreConversionAdapter(
 ): ListAdapter<ResultGetStore, OwnerStoreConversionAdapter.ConvertStoreViewHolder>(DiffCallback()) {
 
     private val storeList = mutableListOf<ResultGetStore>()
+    private var isRadioButtonVisible = false
 
     class ConvertStoreViewHolder(
-        private val binding: ItemOwnerStoreConversionListBinding,
+        val binding: ItemOwnerStoreConversionListBinding,
         private val onClick: (ResultGetStore) -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {
 
@@ -38,6 +41,13 @@ class OwnerStoreConversionAdapter(
 
     override fun onBindViewHolder(holder: ConvertStoreViewHolder, position: Int) {
         val storeItem = storeList[position]
+
+        if (isRadioButtonVisible) {
+            holder.binding.rbChoiceConvertStore.visibility = View.VISIBLE
+        } else {
+            holder.binding.rbChoiceConvertStore.visibility = View.GONE
+        }
+
         holder.bind(storeItem)
     }
 
@@ -60,6 +70,11 @@ class OwnerStoreConversionAdapter(
         val index = storeList.indexOf(store)
         storeList[index] = store
         notifyItemChanged(index)
+    }
+
+    fun toggleRadioButtonVisibility() {
+        isRadioButtonVisible = !isRadioButtonVisible
+        notifyDataSetChanged()
     }
 }
 

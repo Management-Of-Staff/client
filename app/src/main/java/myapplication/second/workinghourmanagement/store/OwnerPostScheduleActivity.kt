@@ -6,11 +6,13 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import myapplication.second.workinghourmanagement.R
+import myapplication.second.workinghourmanagement.RetrofitService
 import myapplication.second.workinghourmanagement.databinding.ActivityOwnerPostScheduleBinding
 
 class OwnerPostScheduleActivity: AppCompatActivity() {
 
     private lateinit var binding: ActivityOwnerPostScheduleBinding
+    private lateinit var service: RetrofitService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,17 +51,18 @@ class OwnerPostScheduleActivity: AppCompatActivity() {
     }
 
     private fun postSchedule() {
+        // TODO: 일정 등록할 때 필요한 API 구현
         val scheduleInfo = HashMap<String, String>()
     }
 
     private fun openSetDateBottomSheetDialogFragment() {
-        val intent = BottomSheetSetDateDialogFragment.getIntent(this)
-        startActivity(intent)
+        val bottomSheet = BottomSheetSetDateDialogFragment()
+        bottomSheet.show(supportFragmentManager, bottomSheet.tag)
     }
 
     private fun openSetTimeBottomSheetDialogFragment() {
-        val intent = BottomSheetSetTimeDialogFragment.getIntent(this)
-        startActivity(intent)
+        val bottomSheet = BottomSheetSetTimeDialogFragment()
+        bottomSheet.show(supportFragmentManager, bottomSheet.tag)
     }
 
     private fun intentSelectColorPalette() {

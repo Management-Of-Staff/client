@@ -66,7 +66,7 @@ interface RetrofitService {
     // 매장 리스트 불러오기
     @GET("stores")
     fun getStoreList(
-        @Path("ownerId") ownerId: String
+        @Header("token") token: String
     ): Call<List<ResultGetStore>>
 
     // 매장 등록
