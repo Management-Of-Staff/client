@@ -101,13 +101,13 @@
                     android:layout_height="@dimen/edit_text_height"
                     android:background="@drawable/custom_edit_text_background"
                     android:gravity="center_vertical"
+                    android:hint="@string/yyyy_mm_dd"
                     android:paddingHorizontal="15dp"
                     android:textColor="@color/b1"
                     android:textSize="@dimen/text_size_14sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/textView_birth"
-                    tools:text="생년월일을 입력하세요" />
+                    app:layout_constraintTop_toBottomOf="@id/textView_birth" />
 
                 <Button
                     android:id="@+id/btn_setting_birth"
@@ -133,19 +133,21 @@
                     app:layout_constraintStart_toStartOf="@id/birth"
                     app:layout_constraintTop_toBottomOf="@id/birth" />
 
-                <TextView
+                <EditText
                     android:id="@+id/email"
                     android:layout_width="@dimen/edit_text_width"
                     android:layout_height="@dimen/edit_text_height"
                     android:background="@drawable/custom_edit_text_background"
                     android:gravity="center_vertical"
+                    android:hint="@string/input_email"
+                    android:importantForAutofill="no"
+                    android:inputType="textEmailAddress"
                     android:paddingHorizontal="15dp"
                     android:textColor="@color/b1"
                     android:textSize="@dimen/text_size_14sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/textView_email"
-                    tools:text="이메일 주소를 입력하세요" />
+                    app:layout_constraintTop_toBottomOf="@id/textView_email" />
 
                 <TextView
                     android:id="@+id/textView_phone"
