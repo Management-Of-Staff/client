@@ -90,7 +90,7 @@ class MainActivity : AppCompatActivity() {
 
         // 비밀번호 찾기
         binding.textFindPassword.setOnClickListener {
-            intentPage(FindPasswdActivity::class.java)
+            intentPage(PhoneAuthActivity::class.java)
         }
     }
 
