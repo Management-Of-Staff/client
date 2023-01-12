@@ -82,12 +82,11 @@ class OwnerStoreRegistrationActivity : AppCompatActivity(), View.OnClickListener
     private fun registerStore() {
         val storeInfo = HashMap<String, String>()
 
-        val token = MyApplication.prefs.getString("accessToken")
+//        val token = MyApplication.prefs.getString("accessToken")
 
         storeInfo["branchName"] = binding.editBranchName.text.toString()
         storeInfo["detailAddress"] = binding.editDetailedAddress.text.toString()
         storeInfo["earlyLeaveTime"] = binding.tvSetAllowEarlyLeave.text.toString()
-        storeInfo["ownerId"] = token
         storeInfo["primaryAddress"] = binding.editPrimaryAddress.text.toString()
         storeInfo["storeClassification"] = binding.editClassifyBusinessType.text.toString()
         storeInfo["storeName"] = binding.editStoreName.text.toString()
