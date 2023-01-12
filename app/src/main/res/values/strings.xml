@@ -189,5 +189,7 @@
     <string name="save">저장하기</string>
     <string name="change">변경</string>
     <string name="reason_input_passwd">비밀번호 변경을 위해서 현재 비밀번호가 필요해요</string>
+    <string name="input_email">이메일을 입력해주세요</string>
+    <string name="yyyy_mm_dd">YYYY.MM.DD</string>
 
 </resources>
