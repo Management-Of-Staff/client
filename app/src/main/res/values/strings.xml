@@ -38,6 +38,7 @@
     <string name="change_passwd">비밀번호 변경</string>
     <string name="find_passwd">비밀번호 찾기</string>
     <string name="reset_passwd">비밀번호 재설정</string>
+    <string name="current_passwd">현재 비밀번호</string>
     <string name="passwd">비밀번호</string>
     <string name="confirm_passwd">비밀번호 재입력</string>
     <string name="pre_passwd">현재 비밀번호</string>
@@ -60,8 +61,9 @@
     <string name="password_match">비밀번호 일치</string>
     <string name="input_info">회원 정보를 입력해주세요</string>
     <string name="auth_phone">휴대폰번호를 인증해주세요</string>
+    <string name="input_current_pw">현재 비밀번호를 입력해주세요</string>
     <string name="input_pw">비밀번호를 입력해주세요</string>
-    <string name="input_newPw">새로운 비밀번호를 입력해주세요</string>
+    <string name="input_newPw">새 비밀번호를 입력해주세요</string>
 
     <string name="input_phone_detail">본인 확인을 위해 번호를 인증해주세요</string>
     <string name="remainTime">%02d:%02d</string>
@@ -185,5 +187,6 @@
     <string name="email">이메일(선택)</string>
     <string name="save">저장하기</string>
     <string name="change">변경</string>
+    <string name="reason_input_passwd">비밀번호 변경을 위해서 현재 비밀번호가 필요해요</string>
 
 </resources>
