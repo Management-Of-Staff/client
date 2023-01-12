@@ -37,6 +37,12 @@ class ProfileFragment : Fragment() {
         return binding.root
     }
 
+    companion object {
+        fun newInstance(): ProfileFragment {
+            return ProfileFragment()
+        }
+    }
+
     // 회원정보 조회
     private fun getUserInfo() {
         val tok = "Bearer " + MyApplication.prefs.getString("accessToken")

@@ -17,11 +17,11 @@ class OwnerHomeActivity : AppCompatActivity() {
         binding.navigation.setOnItemSelectedListener { item ->
             changeFragment(
                 when (item.itemId) {
-                    R.id.home -> HomeFragment()
-                    R.id.store -> StoreFragment()
-                    R.id.work -> WorkFragment()
-                    R.id.jungsan -> JungSanFragment()
-                    else -> ProfileFragment()
+                    R.id.home -> HomeFragment.newInstance()
+                    R.id.store -> StoreFragment.newInstance()
+                    R.id.work -> WorkFragment.newInstance()
+                    R.id.jungsan -> JungSanFragment.newInstance()
+                    else -> ProfileFragment.newInstance()
                 }
             )
             true
