@@ -44,8 +44,12 @@ class OwnerPostScheduleActivity: AppCompatActivity() {
         }
 
         binding.btnPostSchedule.setOnClickListener {
-
+            postSchedule()
         }
+    }
+
+    private fun postSchedule() {
+        val scheduleInfo = HashMap<String, String>()
     }
 
     private fun openSetDateBottomSheetDialogFragment() {

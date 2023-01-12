@@ -165,6 +165,8 @@
     <string name="menu">메뉴</string>
     <string name="myPage">마이페이지</string>
     <string name="close">닫기</string>
+    <string name="completed_store_registration">매장 등록을 완료했어요!</string>
+    <string name="confirm">확인</string>
     <string name="input_authNum">인증번호를 입력해주세요</string>
     <string name="input_phone">휴대폰 번호를 입력해주세요</string>
     <string name="start">시작하기</string>
