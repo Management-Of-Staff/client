@@ -15,7 +15,7 @@
             android:background="@color/white"
             android:paddingHorizontal="22dp"
             android:paddingVertical="16dp"
-            app:layout_constraintBottom_toTopOf="@id/tv_change_password"
+            app:layout_constraintBottom_toTopOf="@id/tv_setting_notification"
             app:layout_constraintTop_toTopOf="parent">
 
             <de.hdodenhof.circleimageview.CircleImageView
@@ -74,7 +74,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
-            android:id="@+id/tv_change_password"
+            android:id="@+id/tv_setting_notification"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="53dp"
@@ -83,35 +83,10 @@
             android:gravity="center_vertical"
             android:paddingHorizontal="24dp"
             android:paddingVertical="16dp"
-            android:text="@string/change_passwd"
-            android:textColor="@color/black"
-            android:textSize="@dimen/text_size_16sp"
-            app:layout_constraintTop_toBottomOf="@id/layout_profile" />
-
-        <ImageView
-            android:id="@+id/btn_change_passwd"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
-            android:layout_marginEnd="32dp"
-            android:contentDescription="@string/change_passwd"
-            android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
-            app:layout_constraintBottom_toBottomOf="@id/tv_change_password"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tv_change_password" />
-
-        <TextView
-            android:id="@+id/tv_setting_notification"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:fontFamily="@font/spoqahansansneo_medium"
-            android:gravity="center_vertical"
-            android:paddingHorizontal="24dp"
-            android:paddingVertical="16dp"
             android:text="@string/setting_notification"
             android:textColor="@color/black"
             android:textSize="@dimen/text_size_16sp"
-            app:layout_constraintTop_toBottomOf="@id/tv_change_password" />
+            app:layout_constraintTop_toBottomOf="@id/layout_profile" />
 
         <ImageView
             android:id="@+id/btn_setting_notification"
