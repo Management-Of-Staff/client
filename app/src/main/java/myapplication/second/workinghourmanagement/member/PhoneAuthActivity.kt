@@ -37,7 +37,8 @@ class PhoneAuthActivity : AppCompatActivity() {
     private lateinit var customDialog: CustomDialog
     private var isClickedSendBtn = false
     private lateinit var service: RetrofitService
-    private var state = UPDATE
+    private var state = FINDPW
+    //todo state 설정해주기!!
 
     private val callbacks by lazy {
         object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
@@ -68,9 +69,12 @@ class PhoneAuthActivity : AppCompatActivity() {
         auth = Firebase.auth
         service = RetrofitManager.retrofit.create(RetrofitService::class.java)
 
-        if (state == UPDATE) {
-            binding.titleToolbar.setText(R.string.update_phone)
+        when (state) {
+            UPDATE -> binding.titleToolbar.setText(R.string.update_phone)
+            FINDPW -> binding.titleToolbar.setText(R.string.find_passwd)
+            else -> binding.titleToolbar.setText(R.string.owner_join)
         }
+
         bind()
 
         setSupportActionBar(binding.toolbar)
@@ -162,23 +166,38 @@ class PhoneAuthActivity : AppCompatActivity() {
                     customDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
                     customDialog.show()
 
-                    if (state == UPDATE) {
-                        customDialog.shutdownClick.setOnClickListener {
-                            updatePhone()
-                            mCountDown().cancel()
-                            finish()
-                            customDialog.dismiss()
+                    when (state) {
+                        UPDATE -> {
+                            customDialog.shutdownClick.setOnClickListener {
+                                updatePhone()
+                                mCountDown().cancel()
+                                finish()
+                                customDialog.dismiss()
+                            }
                         }
-                    } else {
-                        customDialog.shutdownClick.setOnClickListener {
-                            mCountDown().cancel()
-                            val myIntent = Intent(this, OwnerJoinInfoActivity::class.java)
-                            myIntent.putExtra("phone", binding.ownerJoinEditPhone.text.toString())
-                            myIntent.putExtra("uuid", storedVerificationId)
-                            startActivity(myIntent)
-                            customDialog.dismiss()
+                        JOIN -> {
+                            customDialog.shutdownClick.setOnClickListener {
+                                mCountDown().cancel()
+                                val myIntent = Intent(this, OwnerJoinInfoActivity::class.java)
+                                myIntent.putExtra(
+                                    "phone",
+                                    binding.ownerJoinEditPhone.text.toString()
+                                )
+                                myIntent.putExtra("uuid", storedVerificationId)
+                                startActivity(myIntent)
+                                customDialog.dismiss()
+                            }
+                        }
+                        FINDPW -> {
+                            customDialog.shutdownClick.setOnClickListener {
+                                mCountDown().cancel()
+                                val myIntent = Intent(this, ResetPasswdActivity::class.java)
+                                startActivity(myIntent)
+                                customDialog.dismiss()
+                            }
                         }
                     }
+
                 } else {
                     //인증실패
                     customDialog = CustomDialog(this, getString(R.string.auth_fail))
@@ -242,6 +261,7 @@ class PhoneAuthActivity : AppCompatActivity() {
 
     companion object {
         private const val UPDATE = "999"
+        private const val FINDPW = "777"
         private const val JOIN = "111"
     }
 }
