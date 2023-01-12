@@ -22,7 +22,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import myapplication.second.workinghourmanagement.*
 import myapplication.second.workinghourmanagement.R
-import myapplication.second.workinghourmanagement.databinding.ActivityOwnerJoinBinding
+import myapplication.second.workinghourmanagement.databinding.ActivityPhoneAuthBinding
 import myapplication.second.workinghourmanagement.dto.ResultResponse
 import retrofit2.Call
 import retrofit2.Callback
@@ -30,7 +30,7 @@ import retrofit2.Response
 import java.util.concurrent.TimeUnit
 
 class PhoneAuthActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityOwnerJoinBinding
+    private lateinit var binding: ActivityPhoneAuthBinding
     private lateinit var auth: FirebaseAuth
     private var resendToken: PhoneAuthProvider.ForceResendingToken? = null
     private var storedVerificationId = ""   //인증완료시 부여되는 Id
@@ -65,7 +65,7 @@ class PhoneAuthActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_owner_join)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_phone_auth)
         auth = Firebase.auth
         service = RetrofitManager.retrofit.create(RetrofitService::class.java)
 
