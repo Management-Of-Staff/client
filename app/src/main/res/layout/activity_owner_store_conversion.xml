@@ -105,9 +105,8 @@
             android:layout_height="0dp"
             android:orientation="vertical"
             android:layout_marginTop="30dp"
-            android:layout_marginStart="10dp"
+            android:layout_marginHorizontal="10dp"
             android:layout_marginBottom="30dp"
-            android:layout_marginEnd="10dp"
             android:background="#DFE2F3"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/item_owner_store_conversion_list"
@@ -120,29 +119,37 @@
             android:id="@+id/linear_layout_buttons"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:orientation="vertical"
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="32dp"
             android:layout_marginBottom="40dp"
             app:layout_constraintBottom_toBottomOf="parent">
 
             <Button
-                android:id="@+id/btn_register_store"
-                style="@style/neo_medium_white_style"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/round_app_color_background"
-                android:text="@string/register_store"
-                android:textSize="20sp"
-                android:layout_gravity="center" />
-
-            <Button
                 android:id="@+id/btn_delete_store"
                 style="@style/neo_medium_white_style"
-                android:layout_width="300dp"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/round_app_color_background"
+                android:layout_weight="1"
+                android:background="@drawable/round_app_color_corner_white_background"
                 android:text="@string/delete_store"
-                android:textSize="20sp"
+                android:textColor="@color/app_color"
+                android:textSize="@dimen/body_text_size"
+                android:layout_gravity="center" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.1" />
+
+            <Button
+                android:id="@+id/btn_register_store"
+                style="@style/neo_medium_white_style"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/round_app_color_background"
+                android:text="@string/register_store"
+                android:textSize="@dimen/body_text_size"
                 android:layout_gravity="center" />
 
             <Button
