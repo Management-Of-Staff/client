@@ -67,5 +67,11 @@
         <activity
             android:name=".profile.OwnerProfileInfoActivity"
             android:exported="true" />
+        <activity
+            android:name=".profile.CheckCurrentPwActivity"
+            android:exported="true" />
+        <activity
+            android:name=".profile.ModifyPwActivity"
+            android:exported="true" />
     </application>
 </manifest>
