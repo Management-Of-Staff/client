@@ -3,11 +3,11 @@ package myapplication.second.workinghourmanagement.dto
 import android.os.Parcel
 import android.os.Parcelable
 
-class UserParcelable constructor(
+class UserParcelable(
     val name: String,
     val phone: String,
     val email: String?,
-    val birthDate: String?,
+    val birthDate: ArrayList<Int>?,
     val role: String,
     val uuid: String
 ) : Parcelable {
@@ -15,7 +15,7 @@ class UserParcelable constructor(
         parcel.readString()!!,
         parcel.readString()!!,
         parcel.readString(),
-        parcel.readString(),
+        parcel.readSerializable() as ArrayList<Int>?,
         parcel.readString()!!,
         parcel.readString()!!
     )
@@ -24,7 +24,7 @@ class UserParcelable constructor(
         parcel.writeString(name)
         parcel.writeString(phone)
         parcel.writeString(email)
-        parcel.writeString(birthDate)
+        parcel.writeSerializable(birthDate)
         parcel.writeString(role)
         parcel.writeString(uuid)
     }

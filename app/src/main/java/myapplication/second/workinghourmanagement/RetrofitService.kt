@@ -12,8 +12,19 @@ import retrofit2.http.Path
 import retrofit2.http.*
 
 interface RetrofitService {
+    @POST("auth/login")
+    fun login(
+        @Body params: HashMap<String, String>,
+    ): Call<ResultLogin>
+
     @POST("auth/check-password")
     fun checkPassword(
+        @Header("Authorization") token: String,
+        @Body params: HashMap<String, String>,
+    ): Call<ResultResponse>
+
+    @POST("auth/update-password")
+    fun updatePassword(
         @Header("Authorization") token: String,
         @Body params: HashMap<String, String>,
     ): Call<ResultResponse>
@@ -43,11 +54,6 @@ interface RetrofitService {
 //        @Field("role") role: String,
         @Body params: HashMap<String, String>
     ): Call<ResultResponse>
-
-    @POST("auth/login")
-    fun login(
-        @Body params: HashMap<String, String>,
-    ): Call<ResultLogin>
 
     // Staff
     @GET("staffs/")
