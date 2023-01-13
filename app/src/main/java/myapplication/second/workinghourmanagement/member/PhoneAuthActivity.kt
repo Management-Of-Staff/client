@@ -37,7 +37,7 @@ class PhoneAuthActivity : AppCompatActivity() {
     private lateinit var customDialog: CustomDialog
     private var isClickedSendBtn = false
     private lateinit var service: RetrofitService
-    private var state = FINDPW
+    private var state = ""
     //todo state 설정해주기!!
 
     private val callbacks by lazy {
@@ -69,9 +69,12 @@ class PhoneAuthActivity : AppCompatActivity() {
         auth = Firebase.auth
         service = RetrofitManager.retrofit.create(RetrofitService::class.java)
 
+        state = if (intent.getStringExtra("state").isNullOrBlank()) JOIN
+        else intent.getStringExtra("state")!!
+
         when (state) {
-            UPDATE -> binding.titleToolbar.setText(R.string.update_phone)
-            FINDPW -> binding.titleToolbar.setText(R.string.find_passwd)
+            UPDATE_PHONE -> binding.titleToolbar.setText(R.string.update_phone)
+            FIND_PW -> binding.titleToolbar.setText(R.string.find_passwd)
             else -> binding.titleToolbar.setText(R.string.owner_join)
         }
 
@@ -167,7 +170,7 @@ class PhoneAuthActivity : AppCompatActivity() {
                     customDialog.show()
 
                     when (state) {
-                        UPDATE -> {
+                        UPDATE_PHONE -> {
                             customDialog.shutdownClick.setOnClickListener {
                                 updatePhone()
                                 mCountDown().cancel()
@@ -188,7 +191,7 @@ class PhoneAuthActivity : AppCompatActivity() {
                                 customDialog.dismiss()
                             }
                         }
-                        FINDPW -> {
+                        FIND_PW -> {
                             customDialog.shutdownClick.setOnClickListener {
                                 mCountDown().cancel()
                                 val myIntent = Intent(this, ResetPasswdActivity::class.java)
@@ -260,8 +263,8 @@ class PhoneAuthActivity : AppCompatActivity() {
     }
 
     companion object {
-        private const val UPDATE = "999"
-        private const val FINDPW = "777"
-        private const val JOIN = "111"
+        private const val UPDATE_PHONE = "update"
+        private const val FIND_PW = "find"
+        private const val JOIN = "join"
     }
 }
