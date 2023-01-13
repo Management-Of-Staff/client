@@ -10,6 +10,8 @@ import android.view.MenuItem
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import myapplication.second.workinghourmanagement.MyApplication
+import myapplication.second.workinghourmanagement.RetrofitService
 import myapplication.second.workinghourmanagement.*
 import myapplication.second.workinghourmanagement.databinding.ActivityOwnerProfileInfoBinding
 import myapplication.second.workinghourmanagement.dto.ResultResponse
@@ -47,13 +49,26 @@ class OwnerProfileInfoActivity : AppCompatActivity() {
             }
         })
         binding.btnSettingBirth.setOnClickListener {
+//            val dialog = BottomSheetDialog(this)
+//            dialog.setContentView(R.layout.dialog_fragment_bottom_sheet_birth)
+//            val btn = dialog.findViewById<Button>(R.id.btn_confirm)
+//            val birth = dialog.findViewById<Spinner>(R.id.datePicker)
+//
+////            btn?.setOnClickListener {
+////                binding.birth.text = birth.year.toString() + "/" + (birth.month + 1).toString() + "/" + birth.dayOfMonth.toString()
+////                Toast.makeText(this, "버튼 클릭", Toast.LENGTH_SHORT).show()
+////                dialog.dismiss()
+////            }
+//            dialog.show()
 
+            val newFragment = SetBirthDialog()
+            newFragment.show(supportFragmentManager, "datePicker")
         }
         binding.btnChangePhone.setOnClickListener {
-            intentPage(PhoneAuthActivity::class.java)
+            intentPage(PhoneAuthActivity::class.java, "update")
         }
         binding.btnChangePasswd.setOnClickListener {
-            intentPage(CheckCurrentPwActivity::class.java)
+            intentPage(CheckCurrentPwActivity::class.java, null)
         }
         binding.btnSaveProfile.setOnClickListener {
             val birth = binding.birth.text.toString().split(".")
@@ -82,8 +97,15 @@ class OwnerProfileInfoActivity : AppCompatActivity() {
         })
     }
 
-    private fun intentPage(where: Class<*>) {
+    fun getDate(year: Int, month: Int, day: Int){
+        val birth = String.format(getString(R.string.birth_format), year, month+1, day)
+        binding.birth.text = birth
+    }
+    private fun intentPage(where: Class<*>, state: String?) {
         val intent = Intent(this, where)
+        if(!state.isNullOrBlank()){
+            intent.putExtra("state", state)
+        }
         startActivity(intent)
     }
 
