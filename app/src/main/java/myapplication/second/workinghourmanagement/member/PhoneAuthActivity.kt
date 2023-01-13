@@ -20,18 +20,25 @@ import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.*
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import myapplication.second.workinghourmanagement.CustomDialog
+import myapplication.second.workinghourmanagement.*
 import myapplication.second.workinghourmanagement.R
-import myapplication.second.workinghourmanagement.databinding.ActivityOwnerJoinBinding
+import myapplication.second.workinghourmanagement.databinding.ActivityPhoneAuthBinding
+import myapplication.second.workinghourmanagement.dto.ResultResponse
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.util.concurrent.TimeUnit
 
-class OwnerJoinActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityOwnerJoinBinding
+class PhoneAuthActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityPhoneAuthBinding
     private lateinit var auth: FirebaseAuth
     private var resendToken: PhoneAuthProvider.ForceResendingToken? = null
     private var storedVerificationId = ""   //인증완료시 부여되는 Id
     private lateinit var customDialog: CustomDialog
     private var isClickedSendBtn = false
+    private lateinit var service: RetrofitService
+    private var state = ""
+    //todo state 설정해주기!!
 
     private val callbacks by lazy {
         object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
@@ -58,8 +65,18 @@ class OwnerJoinActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_owner_join)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_phone_auth)
         auth = Firebase.auth
+        service = RetrofitManager.retrofit.create(RetrofitService::class.java)
+
+        state = if (intent.getStringExtra("state").isNullOrBlank()) JOIN
+        else intent.getStringExtra("state")!!
+
+        when (state) {
+            UPDATE_PHONE -> binding.titleToolbar.setText(R.string.update_phone)
+            FIND_PW -> binding.titleToolbar.setText(R.string.find_passwd)
+            else -> binding.titleToolbar.setText(R.string.owner_join)
+        }
 
         bind()
 
@@ -93,7 +110,6 @@ class OwnerJoinActivity : AppCompatActivity() {
             }
 
             mCountDown().cancel()
-
             isClickedSendBtn = true
             binding.ownerJoinBtnAuth.isEnabled = false
             binding.ownerJoinBtnAuth.setText(R.string.resend)
@@ -152,14 +168,39 @@ class OwnerJoinActivity : AppCompatActivity() {
                     customDialog = CustomDialog(this, getString(R.string.auth_success))
                     customDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
                     customDialog.show()
-                    customDialog.shutdownClick.setOnClickListener {
-                        mCountDown().cancel()
-                        val myIntent = Intent(this, OwnerJoinInfoActivity::class.java)
-                        myIntent.putExtra("phone", binding.ownerJoinEditPhone.text.toString())
-                        myIntent.putExtra("uuid", storedVerificationId)
-                        startActivity(myIntent)
-                        customDialog.dismiss()
+
+                    when (state) {
+                        UPDATE_PHONE -> {
+                            customDialog.shutdownClick.setOnClickListener {
+                                updatePhone()
+                                mCountDown().cancel()
+                                finish()
+                                customDialog.dismiss()
+                            }
+                        }
+                        JOIN -> {
+                            customDialog.shutdownClick.setOnClickListener {
+                                mCountDown().cancel()
+                                val myIntent = Intent(this, OwnerJoinInfoActivity::class.java)
+                                myIntent.putExtra(
+                                    "phone",
+                                    binding.ownerJoinEditPhone.text.toString()
+                                )
+                                myIntent.putExtra("uuid", storedVerificationId)
+                                startActivity(myIntent)
+                                customDialog.dismiss()
+                            }
+                        }
+                        FIND_PW -> {
+                            customDialog.shutdownClick.setOnClickListener {
+                                mCountDown().cancel()
+                                val myIntent = Intent(this, ResetPasswdActivity::class.java)
+                                startActivity(myIntent)
+                                customDialog.dismiss()
+                            }
+                        }
                     }
+
                 } else {
                     //인증실패
                     customDialog = CustomDialog(this, getString(R.string.auth_fail))
@@ -168,6 +209,26 @@ class OwnerJoinActivity : AppCompatActivity() {
                     customDialog.shutdownClick.setOnClickListener { customDialog.dismiss() }
                 }
             }
+    }
+
+    private fun updatePhone() {
+        val token = "Bearer " + MyApplication.prefs.getString("accessToken")
+        val phone = HashMap<String, String>()
+        phone["phone"] = binding.ownerJoinEditPhone.text.toString()
+        phone["uuid"] = storedVerificationId
+        service.updatePhone(token, phone).enqueue(object : Callback<ResultResponse> {
+            override fun onFailure(call: Call<ResultResponse>, t: Throwable) {
+                Log.e("updatePhone", "실패: $t")
+            }
+
+            override fun onResponse(
+                call: Call<ResultResponse>, response: Response<ResultResponse>
+            ) {
+                if (response.body()!!.statusCode == 200) {
+                    Log.d("updatePhone", "성공?")
+                }
+            }
+        })
     }
 
     private fun sendMessage(phone: String) {
@@ -199,5 +260,11 @@ class OwnerJoinActivity : AppCompatActivity() {
 
     private fun checkPhoneValidation(pw: String): Boolean {
         return pw.matches("^01(?:0|1|[6-9])(?:\\d{3}|\\d{4})\\d{4}\$".toRegex())
+    }
+
+    companion object {
+        private const val UPDATE_PHONE = "update"
+        private const val FIND_PW = "find"
+        private const val JOIN = "join"
     }
 }

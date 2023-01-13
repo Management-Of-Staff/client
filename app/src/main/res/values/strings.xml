@@ -23,6 +23,7 @@
     <string name="store_name">매장명</string>
     <string name="name">이름</string>
     <string name="phone">휴대폰번호</string>
+    <string name="update_phone">휴대폰번호 변경</string>
     <string name="certification">인증요청</string>
     <string name="resend">재전송하기</string>
     <string name="authentication_num">인증번호</string>
@@ -191,5 +192,9 @@
     <string name="save">저장하기</string>
     <string name="change">변경</string>
     <string name="reason_input_passwd">비밀번호 변경을 위해서 현재 비밀번호가 필요해요</string>
+    <string name="input_email">이메일을 입력해주세요</string>
+    <string name="yyyy_mm_dd">YYYY.MM.DD</string>
+    <string name="birth_format">%04d.%02d.%02d</string>
+    <string name="set_date">날짜 설정</string>
 
 </resources>

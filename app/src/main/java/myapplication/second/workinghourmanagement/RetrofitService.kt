@@ -29,6 +29,20 @@ interface RetrofitService {
         @Body params: HashMap<String, String>,
     ): Call<ResultResponse>
 
+    @POST("auth/update-phone")
+    fun updatePhone(
+        @Header("Authorization") token: String,
+        @Body params: HashMap<String, String>,
+    ): Call<ResultResponse>
+
+    @Multipart
+    @POST("auth/update-profile")
+    fun updateProfile(
+        @Header("Authorization") token: String,
+        @Part("profile") profile: HashMap<String, String>,
+       // @Part imageFile: MultipartBody.Part
+    ): Call<ResultResponse>
+
     // Owner
     @GET("owners/")
     fun selectOwnerInfo(

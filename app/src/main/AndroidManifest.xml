@@ -51,16 +51,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".member.FindPasswdActivity"
-            android:exported="true" />
-        <activity
             android:name=".member.ResetPasswdActivity"
             android:exported="true" />
         <activity
             android:name=".member.OwnerTosActivity"
             android:exported="true" />
         <activity
-            android:name=".member.OwnerJoinActivity"
+            android:name=".member.PhoneAuthActivity"
             android:exported="true" />
         <activity
             android:name=".member.OwnerJoinInfoActivity"

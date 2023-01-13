@@ -16,7 +16,7 @@ class OwnerTosActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_owner_tos)
 
         binding.buttonNext.setOnClickListener {
-            val intent = Intent(this, OwnerJoinActivity::class.java)
+            val intent = Intent(this, PhoneAuthActivity::class.java)
             startActivity(intent)
         }
 

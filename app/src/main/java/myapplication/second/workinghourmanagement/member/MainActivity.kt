@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
 
         // todo 지금은 prefs에 토큰값있으면 그냥 자동 로그인 -> 토큰 만료되었는지 확인하는거 추가하기
         if(MyApplication.prefs.getString("accessToken").isNotBlank()){
-            intentPage(OwnerHomeActivity::class.java)
+            intentPage(OwnerHomeActivity::class.java, null)
             finish()
         }
 
@@ -84,18 +84,19 @@ class MainActivity : AppCompatActivity() {
         // 회원가입
         binding.textJoin.setOnClickListener {
             if (binding.radioGroupRole.checkedRadioButtonId == R.id.radio_button_staff)
-                intentPage(StaffTosActivity::class.java)
-            else intentPage(OwnerTosActivity::class.java)
+                intentPage(StaffTosActivity::class.java, null)
+            else intentPage(OwnerTosActivity::class.java, null)
         }
 
         // 비밀번호 찾기
         binding.textFindPassword.setOnClickListener {
-            intentPage(FindPasswdActivity::class.java)
+            intentPage(PhoneAuthActivity::class.java, "find")
         }
     }
 
-    private fun intentPage(where: Class<*>) {
+    private fun intentPage(where: Class<*>, state: String?) {
         val intent = Intent(this, where)
+        if (!state.isNullOrBlank()) intent.putExtra("state", state)
         startActivity(intent)
     }
 
@@ -135,7 +136,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun loginStaffSuccess() {
         //todo StaffHomeActivity::class.java 로 바꿔야 함
-        intentPage(OwnerHomeActivity::class.java)
+        intentPage(OwnerHomeActivity::class.java, null)
 //        startActivity(Intent(this, OwnerHomeActivity::class.java))
         finish()
     }
@@ -148,7 +149,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun loginOwnerSuccess() {
-        intentPage(OwnerHomeActivity::class.java)
+        intentPage(OwnerHomeActivity::class.java, null)
         finish()
     }
 }
