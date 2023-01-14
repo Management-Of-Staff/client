@@ -3,7 +3,7 @@ package myapplication.second.workinghourmanagement.dto
 import android.os.Parcel
 import android.os.Parcelable
 
-class UserParcelable(
+class User(
     val name: String,
     val phone: String,
     val email: String?,
@@ -33,12 +33,12 @@ class UserParcelable(
         return 0
     }
 
-    companion object CREATOR : Parcelable.Creator<UserParcelable> {
-        override fun createFromParcel(parcel: Parcel): UserParcelable {
-            return UserParcelable(parcel)
+    companion object CREATOR : Parcelable.Creator<User> {
+        override fun createFromParcel(parcel: Parcel): User {
+            return User(parcel)
         }
 
-        override fun newArray(size: Int): Array<UserParcelable?> {
+        override fun newArray(size: Int): Array<User?> {
             return arrayOfNulls(size)
         }
     }
