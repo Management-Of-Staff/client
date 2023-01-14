@@ -15,7 +15,7 @@ class OwnerJoinCompleteActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_owner_join_complete)
 
         binding.btnOk.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             finishAffinity()
         }
