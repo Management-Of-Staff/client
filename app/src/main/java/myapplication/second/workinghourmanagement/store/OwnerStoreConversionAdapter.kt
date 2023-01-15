@@ -76,14 +76,14 @@ class OwnerStoreConversionAdapter(
         isRadioButtonVisible = !isRadioButtonVisible
         notifyDataSetChanged()
     }
-}
 
-private class DiffCallback : DiffUtil.ItemCallback<ResultGetStore>(){
-    override fun areItemsTheSame(oldItem: ResultGetStore, newItem: ResultGetStore): Boolean {
-        return oldItem.storeId == newItem.storeId
-    }
+    private class DiffCallback : DiffUtil.ItemCallback<ResultGetStore>(){
+        override fun areItemsTheSame(oldItem: ResultGetStore, newItem: ResultGetStore): Boolean {
+            return oldItem.storeId == newItem.storeId
+        }
 
-    override fun areContentsTheSame(oldItem: ResultGetStore, newItem: ResultGetStore): Boolean {
-        return oldItem == newItem
+        override fun areContentsTheSame(oldItem: ResultGetStore, newItem: ResultGetStore): Boolean {
+            return oldItem == newItem
+        }
     }
 }

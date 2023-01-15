@@ -1,12 +1,10 @@
 package myapplication.second.workinghourmanagement.store
 
-import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil.setContentView
-import androidx.fragment.app.DialogFragment
+import android.widget.GridLayout
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import myapplication.second.workinghourmanagement.databinding.DialogFragmentBottomSheetOwnerStoreTypeBinding
 
@@ -28,7 +26,20 @@ class BottomSheetOwnerStoreTypeDialogFragment: BottomSheetDialogFragment(), View
         return binding.root
     }
 
+    private fun setupStoreTypeListener(gridLayout: GridLayout) {
+        val totalCount = gridLayout.childCount
+
+        for (i: Int in 0 until totalCount) {
+            val storeType = gridLayout.getChildAt(i)
+            storeType.setOnClickListener {
+
+            }
+        }
+    }
+
     private fun setupListeners() {
+        setupStoreTypeListener(binding.gridLayoutStoreType)
+
         binding.btnChooseStoreType.setOnClickListener {
             // TODO: 사업장 분류 확인 버튼 클릭시 API 연동
         }

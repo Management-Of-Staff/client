@@ -2,9 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="myapplication.second.workinghourmanagement">
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -12,12 +14,25 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name=".MyApplication"
         android:theme="@style/Theme.WorkingHourManagement"
         tools:targetApi="31">
-        <activity android:name=".store.SelectColorPaletteActivity"
+        <activity
+            android:name=".store.OwnerModifyStaffTodoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".store.OwnerPostStaffTodoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".store.OwnerStaffTodoDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".store.OwnerStaffTodoManagementActivity"
+            android:exported="false" />
+        <activity
+            android:name=".store.SelectColorPaletteActivity"
             android:exported="true" />
-        <activity android:name=".store.OwnerModifyScheduleActivity"
+        <activity
+            android:name=".store.OwnerModifyScheduleActivity"
             android:exported="true" />
         <activity
             android:name=".store.OwnerPostScheduleActivity"
@@ -43,7 +58,6 @@
         <activity
             android:name=".member.MainActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -84,4 +98,5 @@
             android:name=".profile.ModifyPwActivity"
             android:exported="true" />
     </application>
+
 </manifest>

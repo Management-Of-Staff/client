@@ -4,11 +4,11 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import androidx.databinding.DataBindingUtil
-import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import myapplication.second.workinghourmanagement.MyApplication
 import myapplication.second.workinghourmanagement.R
@@ -25,6 +25,8 @@ class OwnerStoreRegistrationActivity : AppCompatActivity(), View.OnClickListener
     private lateinit var binding: ActivityOwnerStoreRegistrationBinding
     private lateinit var service: RetrofitService
 
+    private var isTextNotEmpty: Boolean = false;
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -33,6 +35,9 @@ class OwnerStoreRegistrationActivity : AppCompatActivity(), View.OnClickListener
 
         binding.lifecycleOwner = this
 
+        if (checkEditTextNotEmpty()) {
+            binding.btnRegisterStore.isClickable = true
+        }
 
         setupListeners()
     }
@@ -57,7 +62,14 @@ class OwnerStoreRegistrationActivity : AppCompatActivity(), View.OnClickListener
         }
 
         binding.btnRegisterStore.setOnClickListener {
-            openRegisterStoreDialog()
+            if (binding.editStoreName.text?.isNotEmpty() == true &&
+                binding.editBranchName.text?.isNotEmpty() == true &&
+                binding.editPrimaryAddress.text?.isNotEmpty() == true &&
+                binding.editDetailedAddress.text?.isNotEmpty() == true &&
+                binding.editClassifyBusinessType.text?.isNotEmpty() == true) {
+
+                openRegisterStoreDialog()
+            }
         }
     }
 
@@ -80,9 +92,9 @@ class OwnerStoreRegistrationActivity : AppCompatActivity(), View.OnClickListener
     }
 
     private fun registerStore() {
-        val storeInfo = HashMap<String, String>()
+        val token = "Bearer " + MyApplication.prefs.getString("accessToken")
 
-//        val token = MyApplication.prefs.getString("accessToken")
+        val storeInfo = HashMap<String, String>()
 
         storeInfo["branchName"] = binding.editBranchName.text.toString()
         storeInfo["detailAddress"] = binding.editDetailedAddress.text.toString()
@@ -92,7 +104,7 @@ class OwnerStoreRegistrationActivity : AppCompatActivity(), View.OnClickListener
         storeInfo["storeName"] = binding.editStoreName.text.toString()
         storeInfo["lateTime"] = binding.tvSetAllowLateTime.text.toString()
 
-        service.postStore(storeInfo)
+        service.postStore(token, storeInfo)
             .enqueue(object : Callback<ResultResponse> {
                 override fun onResponse(
                     call: Call<ResultResponse>,
@@ -105,7 +117,10 @@ class OwnerStoreRegistrationActivity : AppCompatActivity(), View.OnClickListener
                             Log.d("statusCode", body.statusCode.toString())
                             Log.d("message", body.message)
 
-                            if (body.statusCode == 200) onRegistrationSuccess()
+                            if (body.statusCode == 200) {
+                                finish()
+                                onRegistrationSuccess()
+                            }
                         }
                     } else {
                         return
@@ -113,7 +128,7 @@ class OwnerStoreRegistrationActivity : AppCompatActivity(), View.OnClickListener
                 }
 
                 override fun onFailure(call: Call<ResultResponse>, t: Throwable) {
-                    Log.d("store registration fail", "[Fail] $t")
+                    Log.e("fail", "store registration failed... Why? : " + t.message.orEmpty())
                 }
             })
     }
@@ -131,6 +146,70 @@ class OwnerStoreRegistrationActivity : AppCompatActivity(), View.OnClickListener
     companion object {
         fun getIntent(context: Context) =
             Intent(context, OwnerStoreRegistrationActivity::class.java)
+    }
+
+    private fun checkEditTextNotEmpty(): Boolean {
+        binding.editStoreName.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+                isTextNotEmpty = binding.editStoreName.text?.isNotEmpty() != true
+            }
+        })
+
+        binding.editBranchName.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+                isTextNotEmpty = binding.editBranchName.text?.isNotEmpty() != true
+            }
+        })
+
+        binding.editPrimaryAddress.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+                isTextNotEmpty = binding.editPrimaryAddress.text?.isNotEmpty() != true
+            }
+        })
+
+        binding.editDetailedAddress.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+                isTextNotEmpty = binding.editDetailedAddress.text?.isNotEmpty() != true
+            }
+        })
+
+        binding.editClassifyBusinessType.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+                isTextNotEmpty = binding.editClassifyBusinessType.text?.isNotEmpty() != true
+            }
+        })
+
+        return isTextNotEmpty
     }
 
     override fun onClick(view: View) {

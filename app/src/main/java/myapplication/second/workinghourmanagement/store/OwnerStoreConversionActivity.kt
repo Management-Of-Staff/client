@@ -16,6 +16,7 @@ import myapplication.second.workinghourmanagement.RetrofitManager
 import myapplication.second.workinghourmanagement.RetrofitService
 import myapplication.second.workinghourmanagement.databinding.ActivityOwnerStoreConversionBinding
 import myapplication.second.workinghourmanagement.dto.ResultGetStore
+import myapplication.second.workinghourmanagement.dto.ResultGetStoreList
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -38,8 +39,6 @@ class OwnerStoreConversionActivity: AppCompatActivity(), View.OnClickListener {
     }
 
     private fun setupView() {
-        val myIntent = intent
-
         val token = MyApplication.prefs.getString("accessToken")
 
         val storeInfo = HashMap<String, String>()
@@ -49,10 +48,10 @@ class OwnerStoreConversionActivity: AppCompatActivity(), View.OnClickListener {
         storeInfo["primaryAddress"] = "string"
 
         service.getStoreList(token)
-            .enqueue(object : Callback<List<ResultGetStore>> {
+            .enqueue(object : Callback<ResultGetStoreList> {
                 override fun onResponse(
-                    call: Call<List<ResultGetStore>>,
-                    response: Response<List<ResultGetStore>>
+                    call: Call<ResultGetStoreList>,
+                    response: Response<ResultGetStoreList>
                 ) {
                     if (response.isSuccessful) {
                         val body = response.body()
@@ -65,8 +64,8 @@ class OwnerStoreConversionActivity: AppCompatActivity(), View.OnClickListener {
                     }
                 }
 
-                override fun onFailure(call: Call<List<ResultGetStore>>, t: Throwable) {
-                    Log.d("getStoreList fail", "[Fail]$t")
+                override fun onFailure(call: Call<ResultGetStoreList>, t: Throwable) {
+                    Log.e("fail", "get store list failed... Why? : " + t.message.orEmpty())
                 }
             })
         initRecyclerView(binding.rvStoreList)
@@ -143,6 +142,28 @@ class OwnerStoreConversionActivity: AppCompatActivity(), View.OnClickListener {
 
     private fun deleteStore() {
         // TODO: 매장 삭제 기능 구현
+//        service.deleteStore()
+//            .enqueue(object : Callback<Unit> {
+//                override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
+//                    if (response.isSuccessful) {
+//                        val body = response.body()
+//                        if (body != null) {
+//                            Log.d("data", body.data.toString())
+//                            Log.d("statusCode", body.statusCode.toString())
+//                            Log.d("message", body.message)
+//
+//                            if (body.statusCode == 200) onRegistrationSuccess()
+//                        }
+//                    } else {
+//                        return
+//                    }
+//                }
+//
+//                override fun onFailure(call: Call<Unit>, t: Throwable) {
+//                    Log.e("fail", "store delete failed... Why? : " + t.message.orEmpty())
+//                }
+//
+//            })
     }
 
     companion object {
