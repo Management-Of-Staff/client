@@ -32,6 +32,7 @@
         android:textStyle="bold" />
 
     <GridLayout
+        android:id="@+id/grid_layout_allow_late"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -138,6 +139,7 @@
         android:textStyle="bold" />
 
     <GridLayout
+        android:id="@+id/grid_layout_allow_early_leave"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
