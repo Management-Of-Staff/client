@@ -21,7 +21,7 @@
                 android:id="@+id/iv_back"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:src="@drawable/ic_back_arrow" />
+                android:src="@drawable/ic_back_arrow_black" />
 
             <TextView
                 android:id="@+id/tv_title_register_store"
@@ -294,6 +294,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
+                    android:enabled="false"
                     android:background="@drawable/round_light_grey_color_background"
                     android:text="@string/register"
                     android:textColor="@color/grey_500"
