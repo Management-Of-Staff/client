@@ -75,7 +75,7 @@
     // 매장 관리 string list
     <string name="store_item_name">메가커피</string>
     <string name="store_item_sub_name">서울대학교 병원 2호점</string>
-    <string name="title_store_conversion">매장전환</string>
+    <string name="title_store_conversion">매장 전환</string>
     <string name="register_store">매장 등록</string>
     <string name="modify_store_info">매장 정보 수정</string>
     <string name="delete_store">매장 삭제</string>
@@ -196,5 +196,17 @@
     <string name="yyyy_mm_dd">YYYY.MM.DD</string>
     <string name="birth_format">%04d.%02d.%02d</string>
     <string name="set_date">날짜 설정</string>
+    <string name="do_you_want_to_modify_store_info">매장을 수정하시겠습니까?</string>
+    <string name="completed_store_modification">매장 수정을 완료했어요!</string>
+    <string name="tv_title_schedule_detail">일정 상세</string>
+    <string name="title_staff_todo">해야할 일</string>
+    <string name="title_staff_todo_detail">해야할 일 상세</string>
+    <string name="todo">할 일</string>
+    <string name="todo_start_time">업무 시작 시간</string>
+    <string name="title_owner_post_staff_todo">해야할 일 등록</string>
+    <string name="please_input">입력하세요</string>
+    <string name="do_you_want_to_post_staff_todo">해야할 일을 등록하시겠습니까?</string>
+    <string name="owner_completed_post_staff_todo">새로운 해야할 일을 등록했습니다.</string>
+    <string name="title_owner_modify_staff_todo">해야할 일 수정</string>
 
 </resources>
