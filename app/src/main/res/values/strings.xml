@@ -208,5 +208,12 @@
     <string name="do_you_want_to_post_staff_todo">해야할 일을 등록하시겠습니까?</string>
     <string name="owner_completed_post_staff_todo">새로운 해야할 일을 등록했습니다.</string>
     <string name="title_owner_modify_staff_todo">해야할 일 수정</string>
+    <string name="title_owner_notice_list">공지사항</string>
+    <string name="title_owner_notice_detail">공지사항 상세</string>
+    <string name="title_owner_post_notice">공지사항 등록</string>
+    <string name="please_input_notice_title">제목을 입력해주세요.</string>
+    <string name="please_input_notice_desc">내용을 입력해주세요.</string>
+    <string name="num_char700">0/700</string>
+    <string name="title_owner_modify_notice">공지사항 수정</string>
 
 </resources>

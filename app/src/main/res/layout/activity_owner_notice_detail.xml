@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".store.OwnerNoticeDetailActivity">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_back"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_back_arrow_black" />
+
+            <TextView
+                android:id="@+id/tv_title_owner_notice_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:text="@string/title_owner_notice_detail"
+                android:textColor="@color/black"
+                android:textSize="@dimen/head_text_size"
+                android:textStyle="bold" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <TextView
+            android:id="@+id/edit_title_notice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:text="쓰레기봉투"
+            android:textColor="@color/black"
+            android:textSize="@dimen/body_text_size"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+        <View
+            android:id="@+id/view_boundary"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/disable1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edit_title_notice" />
+
+        <TextView
+            android:id="@+id/timestamp_notice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:text="2022.10.03 사장님"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_boundary" />
+
+        <View
+            android:id="@+id/empty_view_1"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            app:layout_constraintTop_toBottomOf="@id/timestamp_notice"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_desc_notice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginHorizontal="20dp"
+            android:text="카운터 찬장 맨 왼쪽 부분에 있어요"
+            app:layout_constraintTop_toBottomOf="@id/empty_view_1"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/layout_owner_notice_image_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_desc_notice">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/tv_owner_notice_image1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/grey_300"
+                android:src="@drawable/ic_work" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/tv_owner_notice_image2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@color/grey_300"
+                android:src="@drawable/ic_work" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_staff_name_notice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/grey_300"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_owner_notice_image_list">
+
+            <TextView
+                android:id="@+id/tv_staff_name1_notice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="\@김주현"
+                android:textColor="@color/black"
+                android:textSize="@dimen/body_text_size" />
+
+            <TextView
+                android:id="@+id/tv_staff_name2_notice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="\@권희경"
+                android:textColor="@color/black"
+                android:textSize="@dimen/body_text_size" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linear_layout_buttons"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="40dp"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <Button
+                android:id="@+id/btn_delete_notice"
+                style="@style/neo_medium_white_style"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/round_app_color_corner_white_background"
+                android:text="@string/delete"
+                android:textColor="@color/app_color"
+                android:textSize="@dimen/body_text_size"
+                android:layout_gravity="center" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.1" />
+
+            <Button
+                android:id="@+id/btn_modify_notice"
+                style="@style/neo_medium_white_style"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/round_app_color_background"
+                android:text="@string/modify"
+                android:textSize="@dimen/body_text_size"
+                android:layout_gravity="center" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

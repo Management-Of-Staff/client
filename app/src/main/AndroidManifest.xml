@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="myapplication.second.workinghourmanagement">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -16,6 +17,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WorkingHourManagement"
         tools:targetApi="31">
+        <activity
+            android:name=".store.OwnerModifyNoticeActivity"
+            android:windowSoftInputMode="adjustNothing"
+            android:exported="false" />
+        <activity
+            android:name=".store.OwnerPostNoticeActivity"
+            android:windowSoftInputMode="adjustNothing"
+            android:exported="false" />
+        <activity
+            android:name=".store.OwnerNoticeDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".store.OwnerNoticeListActivity"
+            android:exported="true" />
         <activity
             android:name=".store.OwnerModifyStaffTodoActivity"
             android:exported="false" />
@@ -58,11 +73,13 @@
         <activity
             android:name=".member.MainActivity"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity
             android:name=".member.ResetPasswdActivity"
