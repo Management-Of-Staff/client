@@ -46,17 +46,17 @@ class OwnerModifyScheduleActivity: AppCompatActivity() {
         }
 
         binding.btnModifySchedule.setOnClickListener {
-            // TODO: 2023-01-09 스케줄 변경할 때의 API 연동 구현
+            // TODO: 스케줄 변경할 때의 API 연동 구현
         }
     }
 
     private fun openSetDateBottomSheetDialogFragment() {
-        val intent = BottomSheetSetDateDialogFragment.getIntent(this)
+        val intent = BottomSheetSetDate.getIntent(this)
         startActivity(intent)
     }
 
     private fun openSetTimeBottomSheetDialogFragment() {
-        val intent = BottomSheetSetTimeDialogFragment.getIntent(this)
+        val intent = BottomSheetSetTime.getIntent(this)
         startActivity(intent)
     }
 

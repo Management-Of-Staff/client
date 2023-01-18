@@ -6,11 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.GridLayout
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import myapplication.second.workinghourmanagement.databinding.DialogFragmentBottomSheetOwnerCommuteInfoBinding
+import myapplication.second.workinghourmanagement.databinding.BottomSheetOwnerCommuteInfoBinding
 
-class BottomSheetOwnerCommuteInfoDialogFragment: BottomSheetDialogFragment(), View.OnClickListener {
-    private var _binding: DialogFragmentBottomSheetOwnerCommuteInfoBinding? = null
-    private val binding: DialogFragmentBottomSheetOwnerCommuteInfoBinding
+class BottomSheetOwnerCommuteInfo: BottomSheetDialogFragment(), View.OnClickListener {
+    private var _binding: BottomSheetOwnerCommuteInfoBinding? = null
+    private val binding: BottomSheetOwnerCommuteInfoBinding
         get() = _binding!!
 
     override fun onCreateView(
@@ -18,7 +18,7 @@ class BottomSheetOwnerCommuteInfoDialogFragment: BottomSheetDialogFragment(), Vi
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = DialogFragmentBottomSheetOwnerCommuteInfoBinding.inflate(inflater, container, false)
+        _binding = BottomSheetOwnerCommuteInfoBinding.inflate(inflater, container, false)
 
         setupListeners()
 

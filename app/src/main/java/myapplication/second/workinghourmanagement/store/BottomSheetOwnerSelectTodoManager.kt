@@ -9,22 +9,22 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import myapplication.second.workinghourmanagement.databinding.DialogFragmentBottomSheetOwnerChooseTodoManagerBinding
+import myapplication.second.workinghourmanagement.databinding.BottomSheetOwnerSelectTodoManagerBinding
 import myapplication.second.workinghourmanagement.dto.ResultGetStaff
 
-class BottomSheetOwnerChooseTodoManagerDialogFragment: BottomSheetDialogFragment() {
-    private var _binding: DialogFragmentBottomSheetOwnerChooseTodoManagerBinding? = null
+class BottomSheetOwnerSelectTodoManager: BottomSheetDialogFragment() {
+    private var _binding: BottomSheetOwnerSelectTodoManagerBinding? = null
     private val binding
         get() = _binding!!
 
-    private lateinit var ownerChooseTodoManagerListAdapter: OwnerChooseTodoManagerListAdapter
+    private lateinit var ownerSelectTodoManagerListAdapter: OwnerSelectTodoManagerListAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = DialogFragmentBottomSheetOwnerChooseTodoManagerBinding.inflate(inflater, container, false)
+        _binding = BottomSheetOwnerSelectTodoManagerBinding.inflate(inflater, container, false)
 
         initRecyclerView(binding.rvStaffList)
 
@@ -34,7 +34,7 @@ class BottomSheetOwnerChooseTodoManagerDialogFragment: BottomSheetDialogFragment
     }
 
     private fun initRecyclerView(recyclerView: RecyclerView) {
-        ownerChooseTodoManagerListAdapter = OwnerChooseTodoManagerListAdapter(
+        ownerSelectTodoManagerListAdapter = OwnerSelectTodoManagerListAdapter(
             onClick = ::addManagers
         )
 
@@ -47,7 +47,7 @@ class BottomSheetOwnerChooseTodoManagerDialogFragment: BottomSheetDialogFragment
                     }
                 }
             }
-            adapter = ownerChooseTodoManagerListAdapter
+            adapter = ownerSelectTodoManagerListAdapter
         }
     }
 
@@ -63,7 +63,7 @@ class BottomSheetOwnerChooseTodoManagerDialogFragment: BottomSheetDialogFragment
 
     companion object {
         fun getIntent(context: Context) =
-            Intent(context, DialogFragmentBottomSheetOwnerChooseTodoManagerBinding::class.java)
+            Intent(context, BottomSheetOwnerSelectTodoManagerBinding::class.java)
     }
 
     override fun onDestroyView() {

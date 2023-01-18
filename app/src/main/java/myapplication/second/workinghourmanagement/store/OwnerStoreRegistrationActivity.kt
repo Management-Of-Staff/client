@@ -52,12 +52,12 @@ class OwnerStoreRegistrationActivity : AppCompatActivity(), View.OnClickListener
         }
 
         binding.btnClassifyBusinessType.setOnClickListener {
-            val bottomSheetOwnerStoreTypeDialog = BottomSheetOwnerStoreTypeDialogFragment()
+            val bottomSheetOwnerStoreTypeDialog = BottomSheetOwnerStoreType()
             bottomSheetOwnerStoreTypeDialog.show(supportFragmentManager, bottomSheetOwnerStoreTypeDialog.tag)
         }
 
         binding.btnModifyCommuteInfo.setOnClickListener {
-            val bottomSheetOwnerCommuteInfoDialog = BottomSheetOwnerCommuteInfoDialogFragment()
+            val bottomSheetOwnerCommuteInfoDialog = BottomSheetOwnerCommuteInfo()
             bottomSheetOwnerCommuteInfoDialog.show(supportFragmentManager, bottomSheetOwnerCommuteInfoDialog.tag)
         }
 
@@ -134,7 +134,7 @@ class OwnerStoreRegistrationActivity : AppCompatActivity(), View.OnClickListener
     }
 
     private fun onRegistrationSuccess() {
-        val bottomSheetDialogFragment = BottomSheetOwnerCompletedStoreRegistrationDialogFragment()
+        val bottomSheetDialogFragment = BottomSheetOwnerCompletedStoreRegistration()
         bottomSheetDialogFragment.show(supportFragmentManager, bottomSheetDialogFragment.tag)
     }
 

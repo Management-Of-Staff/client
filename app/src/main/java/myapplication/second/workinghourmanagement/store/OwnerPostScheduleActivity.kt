@@ -56,12 +56,12 @@ class OwnerPostScheduleActivity: AppCompatActivity() {
     }
 
     private fun openSetDateBottomSheetDialogFragment() {
-        val bottomSheet = BottomSheetSetDateDialogFragment()
+        val bottomSheet = BottomSheetSetDate()
         bottomSheet.show(supportFragmentManager, bottomSheet.tag)
     }
 
     private fun openSetTimeBottomSheetDialogFragment() {
-        val bottomSheet = BottomSheetSetTimeDialogFragment()
+        val bottomSheet = BottomSheetSetTime()
         bottomSheet.show(supportFragmentManager, bottomSheet.tag)
     }
 

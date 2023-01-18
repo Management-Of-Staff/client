@@ -9,7 +9,6 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import myapplication.second.workinghourmanagement.MyApplication
 import myapplication.second.workinghourmanagement.R
 import myapplication.second.workinghourmanagement.RetrofitManager
@@ -52,12 +51,12 @@ class OwnerStoreInfoModificationActivity : AppCompatActivity(), View.OnClickList
         }
 
         binding.btnClassifyBusinessType.setOnClickListener {
-            val bottomSheetOwnerStoreTypeDialog = BottomSheetOwnerStoreTypeDialogFragment()
+            val bottomSheetOwnerStoreTypeDialog = BottomSheetOwnerStoreType()
             bottomSheetOwnerStoreTypeDialog.show(supportFragmentManager, bottomSheetOwnerStoreTypeDialog.tag)
         }
 
         binding.btnModifyCommuteInfo.setOnClickListener {
-            val bottomSheetOwnerCommuteInfoDialog = BottomSheetOwnerCommuteInfoDialogFragment()
+            val bottomSheetOwnerCommuteInfoDialog = BottomSheetOwnerCommuteInfo()
             bottomSheetOwnerCommuteInfoDialog.show(supportFragmentManager, bottomSheetOwnerCommuteInfoDialog.tag)
         }
 
@@ -111,7 +110,7 @@ class OwnerStoreInfoModificationActivity : AppCompatActivity(), View.OnClickList
     }
 
     private fun onModificationSuccess() {
-        val bottomSheetDialogFragment = BottomSheetOwnerCompletedStoreModificationDialogFragment()
+        val bottomSheetDialogFragment = BottomSheetOwnerCompletedStoreModification()
         bottomSheetDialogFragment.show(supportFragmentManager, bottomSheetDialogFragment.tag)
     }
 
