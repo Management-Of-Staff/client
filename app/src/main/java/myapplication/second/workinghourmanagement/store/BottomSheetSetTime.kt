@@ -7,10 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import myapplication.second.workinghourmanagement.databinding.DialogFragmentBottomSheetSetTimeBinding
+import myapplication.second.workinghourmanagement.databinding.BottomSheetSetTimeBinding
 
-class BottomSheetSetTimeDialogFragment: BottomSheetDialogFragment() {
-    private var _binding: DialogFragmentBottomSheetSetTimeBinding? = null
+class BottomSheetSetTime: BottomSheetDialogFragment() {
+    private var _binding: BottomSheetSetTimeBinding? = null
     private val binding
         get() = _binding!!
 
@@ -19,7 +19,7 @@ class BottomSheetSetTimeDialogFragment: BottomSheetDialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = DialogFragmentBottomSheetSetTimeBinding.inflate(inflater, container, false)
+        _binding = BottomSheetSetTimeBinding.inflate(inflater, container, false)
 
         setupListeners()
 
@@ -38,7 +38,7 @@ class BottomSheetSetTimeDialogFragment: BottomSheetDialogFragment() {
 
     companion object {
         fun getIntent(context: Context) =
-            Intent(context, BottomSheetSetTimeDialogFragment::class.java)
+            Intent(context, BottomSheetSetTime::class.java)
     }
 
     override fun onDestroyView() {

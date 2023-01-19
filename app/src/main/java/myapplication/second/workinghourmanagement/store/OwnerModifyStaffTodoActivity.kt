@@ -8,7 +8,6 @@ import myapplication.second.workinghourmanagement.R
 import myapplication.second.workinghourmanagement.RetrofitManager
 import myapplication.second.workinghourmanagement.RetrofitService
 import myapplication.second.workinghourmanagement.databinding.ActivityOwnerModifyStaffTodoBinding
-import myapplication.second.workinghourmanagement.databinding.ActivityOwnerPostStaffTodoBinding
 
 class OwnerModifyStaffTodoActivity : AppCompatActivity() {
 
@@ -57,12 +56,12 @@ class OwnerModifyStaffTodoActivity : AppCompatActivity() {
     }
 
     private fun openSetDateBottomSheetDialogFragment() {
-        val bottomSheet = BottomSheetSetDateDialogFragment()
+        val bottomSheet = BottomSheetSetDate()
         bottomSheet.show(supportFragmentManager, bottomSheet.tag)
     }
 
     private fun openSetTimeBottomSheetDialogFragment() {
-        val bottomSheet = BottomSheetOwnerSetStaffTodoStartTimeDialogFragment()
+        val bottomSheet = BottomSheetOwnerSetStaffTodoStartTime()
         bottomSheet.show(supportFragmentManager, bottomSheet.tag)
     }
 

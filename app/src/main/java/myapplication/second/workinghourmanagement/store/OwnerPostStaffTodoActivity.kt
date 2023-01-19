@@ -75,17 +75,17 @@ class OwnerPostStaffTodoActivity : AppCompatActivity() {
     }
 
     private fun openSetDateBottomSheet() {
-        val bottomSheet = BottomSheetSetDateDialogFragment()
+        val bottomSheet = BottomSheetSetDate()
         bottomSheet.show(supportFragmentManager, bottomSheet.tag)
     }
 
     private fun openSetTimeBottomSheet() {
-        val bottomSheet = BottomSheetOwnerSetStaffTodoStartTimeDialogFragment()
+        val bottomSheet = BottomSheetOwnerSetStaffTodoStartTime()
         bottomSheet.show(supportFragmentManager, bottomSheet.tag)
     }
 
     private fun openTodoManagerChoiceBottomSheet() {
-        val bottomsheet = BottomSheetOwnerChooseTodoManagerDialogFragment()
+        val bottomsheet = BottomSheetOwnerSelectTodoManager()
         bottomsheet.show(supportFragmentManager, bottomsheet.tag)
     }
 

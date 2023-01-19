@@ -1,7 +1,6 @@
 package myapplication.second.workinghourmanagement.store
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -9,9 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import myapplication.second.workinghourmanagement.databinding.ItemTodoStaffBinding
 import myapplication.second.workinghourmanagement.dto.ResultGetStaff
 
-class OwnerChooseTodoManagerListAdapter(
+class OwnerSelectTodoManagerListAdapter(
     private val onClick: (ResultGetStaff) -> Unit
-): ListAdapter<ResultGetStaff, OwnerChooseTodoManagerListAdapter.OwnerChooseTodoManagerListViewHolder>(DiffCallback()) {
+): ListAdapter<ResultGetStaff, OwnerSelectTodoManagerListAdapter.OwnerChooseTodoManagerListViewHolder>(DiffCallback()) {
 
     private val staffList = mutableListOf<ResultGetStaff>()
 
@@ -31,13 +30,13 @@ class OwnerChooseTodoManagerListAdapter(
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OwnerChooseTodoManagerListAdapter.OwnerChooseTodoManagerListViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OwnerSelectTodoManagerListAdapter.OwnerChooseTodoManagerListViewHolder {
         val binding = ItemTodoStaffBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
-        return OwnerChooseTodoManagerListAdapter.OwnerChooseTodoManagerListViewHolder(binding, onClick)
+        return OwnerSelectTodoManagerListAdapter.OwnerChooseTodoManagerListViewHolder(binding, onClick)
     }
 
-    override fun onBindViewHolder(holder: OwnerChooseTodoManagerListAdapter.OwnerChooseTodoManagerListViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: OwnerSelectTodoManagerListAdapter.OwnerChooseTodoManagerListViewHolder, position: Int) {
         val staffItem = staffList[position]
 
         holder.bind(staffItem)

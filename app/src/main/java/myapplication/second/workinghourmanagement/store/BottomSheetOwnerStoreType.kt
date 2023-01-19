@@ -6,11 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.GridLayout
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import myapplication.second.workinghourmanagement.databinding.DialogFragmentBottomSheetOwnerStoreTypeBinding
+import myapplication.second.workinghourmanagement.databinding.BottomSheetOwnerStoreTypeBinding
 
-class BottomSheetOwnerStoreTypeDialogFragment: BottomSheetDialogFragment(), View.OnClickListener {
-    private var _binding: DialogFragmentBottomSheetOwnerStoreTypeBinding? = null
-    private val binding: DialogFragmentBottomSheetOwnerStoreTypeBinding
+class BottomSheetOwnerStoreType: BottomSheetDialogFragment(), View.OnClickListener {
+    private var _binding: BottomSheetOwnerStoreTypeBinding? = null
+    private val binding: BottomSheetOwnerStoreTypeBinding
         get() = _binding!!
 
 
@@ -19,7 +19,7 @@ class BottomSheetOwnerStoreTypeDialogFragment: BottomSheetDialogFragment(), View
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = DialogFragmentBottomSheetOwnerStoreTypeBinding.inflate(inflater, container, false)
+        _binding = BottomSheetOwnerStoreTypeBinding.inflate(inflater, container, false)
 
         setupListeners()
 

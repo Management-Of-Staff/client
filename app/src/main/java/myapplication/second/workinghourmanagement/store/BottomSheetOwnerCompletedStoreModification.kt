@@ -5,11 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import myapplication.second.workinghourmanagement.databinding.DialogFragmentBottomSheetOwnerStoreCompleteRegistrationBinding
+import myapplication.second.workinghourmanagement.databinding.BottomSheetOwnerStoreCompleteModificationBinding
 
-class BottomSheetOwnerCompletedStoreRegistrationDialogFragment: BottomSheetDialogFragment(), View.OnClickListener {
-    private var _binding: DialogFragmentBottomSheetOwnerStoreCompleteRegistrationBinding? = null
-    private val binding: DialogFragmentBottomSheetOwnerStoreCompleteRegistrationBinding
+class BottomSheetOwnerCompletedStoreModification: BottomSheetDialogFragment(), View.OnClickListener {
+    private var _binding: BottomSheetOwnerStoreCompleteModificationBinding? = null
+    private val binding: BottomSheetOwnerStoreCompleteModificationBinding
         get() = _binding!!
 
     override fun onCreateView(
@@ -17,7 +17,7 @@ class BottomSheetOwnerCompletedStoreRegistrationDialogFragment: BottomSheetDialo
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = DialogFragmentBottomSheetOwnerStoreCompleteRegistrationBinding.inflate(inflater, container, false)
+        _binding = BottomSheetOwnerStoreCompleteModificationBinding.inflate(inflater, container, false)
 
         setupListeners()
 

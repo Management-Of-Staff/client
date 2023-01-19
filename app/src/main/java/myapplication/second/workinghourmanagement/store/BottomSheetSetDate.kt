@@ -7,11 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import myapplication.second.workinghourmanagement.databinding.DialogFragmentBottomSheetOwnerSetStaffTodoStartTimeBinding
-import myapplication.second.workinghourmanagement.databinding.DialogFragmentBottomSheetSetTimeBinding
+import myapplication.second.workinghourmanagement.databinding.BottomSheetSetDateBinding
 
-class BottomSheetOwnerSetStaffTodoStartTimeDialogFragment: BottomSheetDialogFragment() {
-    private var _binding: DialogFragmentBottomSheetOwnerSetStaffTodoStartTimeBinding? = null
+class BottomSheetSetDate: BottomSheetDialogFragment() {
+    private var _binding: BottomSheetSetDateBinding? = null
     private val binding
         get() = _binding!!
 
@@ -20,7 +19,7 @@ class BottomSheetOwnerSetStaffTodoStartTimeDialogFragment: BottomSheetDialogFrag
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = DialogFragmentBottomSheetOwnerSetStaffTodoStartTimeBinding.inflate(inflater, container, false)
+        _binding = BottomSheetSetDateBinding.inflate(inflater, container, false)
 
         setupListeners()
 
@@ -33,13 +32,13 @@ class BottomSheetOwnerSetStaffTodoStartTimeDialogFragment: BottomSheetDialogFrag
         }
 
         binding.btnConfirm.setOnClickListener {
-            // TODO: 시간을 선택하여 확인 버튼을 눌렀을 때 결과를 구현
+            // TODO: 날짜를 선택하여 확인 버튼을 눌렀을 때 결과를 구현
         }
     }
 
     companion object {
         fun getIntent(context: Context) =
-            Intent(context, DialogFragmentBottomSheetOwnerSetStaffTodoStartTimeBinding::class.java)
+            Intent(context, BottomSheetSetDate::class.java)
     }
 
     override fun onDestroyView() {
