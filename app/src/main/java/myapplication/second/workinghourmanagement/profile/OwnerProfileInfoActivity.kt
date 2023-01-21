@@ -10,13 +10,15 @@ import android.view.MenuItem
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import myapplication.second.workinghourmanagement.MyApplication
 import myapplication.second.workinghourmanagement.RetrofitService
 import myapplication.second.workinghourmanagement.*
 import myapplication.second.workinghourmanagement.databinding.ActivityOwnerProfileInfoBinding
 import myapplication.second.workinghourmanagement.dto.ResultResponse
-import myapplication.second.workinghourmanagement.dto.UserParcelable
+import myapplication.second.workinghourmanagement.dto.User
 import myapplication.second.workinghourmanagement.member.PhoneAuthActivity
+import myapplication.second.workinghourmanagement.vm.UserInfoViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -24,15 +26,20 @@ import retrofit2.Response
 class OwnerProfileInfoActivity : AppCompatActivity() {
     private lateinit var binding: ActivityOwnerProfileInfoBinding
     private lateinit var service: RetrofitService
+    private lateinit var viewModel: UserInfoViewModel
     private val token = "Bearer " + MyApplication.prefs.getString("accessToken")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_owner_profile_info)
+        viewModel = ViewModelProvider(this)[UserInfoViewModel::class.java]
+        binding.vm = viewModel
+        binding.lifecycleOwner = this
+
         service = RetrofitManager.retrofit.create(RetrofitService::class.java)
 
         bind()
-        initProfile()
+        //initProfile()
         initActionbar()
     }
 
@@ -97,13 +104,14 @@ class OwnerProfileInfoActivity : AppCompatActivity() {
         })
     }
 
-    fun getDate(year: Int, month: Int, day: Int){
-        val birth = String.format(getString(R.string.birth_format), year, month+1, day)
+    fun getDate(year: Int, month: Int, day: Int) {
+        val birth = String.format(getString(R.string.birth_format), year, month + 1, day)
         binding.birth.text = birth
     }
+
     private fun intentPage(where: Class<*>, state: String?) {
         val intent = Intent(this, where)
-        if(!state.isNullOrBlank()){
+        if (!state.isNullOrBlank()) {
             intent.putExtra("state", state)
         }
         startActivity(intent)
@@ -111,7 +119,7 @@ class OwnerProfileInfoActivity : AppCompatActivity() {
 
     private fun initProfile() {
         val myIntent = intent
-        val user = myIntent.getParcelableExtra<UserParcelable>("userInfo")!!
+        val user = myIntent.getParcelableExtra<User>("userInfo")!!
 
         binding.name.text = user.name
         binding.phone.text = user.phone
