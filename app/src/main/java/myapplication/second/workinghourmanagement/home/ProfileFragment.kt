@@ -7,9 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import myapplication.second.workinghourmanagement.MyApplication
 import myapplication.second.workinghourmanagement.RetrofitManager
 import myapplication.second.workinghourmanagement.RetrofitService
 import myapplication.second.workinghourmanagement.databinding.FragmentOwnerProfileBinding
+import myapplication.second.workinghourmanagement.member.LoginActivity
 import myapplication.second.workinghourmanagement.profile.OwnerProfileInfoActivity
 import myapplication.second.workinghourmanagement.vm.UserInfoViewModel
 
@@ -35,6 +37,15 @@ class ProfileFragment : Fragment() {
         binding.btnViewProfile.setOnClickListener {
             activity?.let {
                 val intent = Intent(context, OwnerProfileInfoActivity::class.java)
+                startActivity(intent)
+            }
+        }
+
+        binding.btnLogout.setOnClickListener {
+            activity?.let {
+                val intent = Intent(context, LoginActivity::class.java)
+                MyApplication.prefs.setString("accessToken", "")
+                MyApplication.prefs.setString("refreshToken", "")
                 startActivity(intent)
             }
         }
