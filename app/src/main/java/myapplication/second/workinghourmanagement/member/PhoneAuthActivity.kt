@@ -174,8 +174,12 @@ class PhoneAuthActivity : AppCompatActivity() {
                             customDialog.shutdownClick.setOnClickListener {
                                 updatePhone()
                                 mCountDown().cancel()
-                                finish()
-                                customDialog.dismiss()
+
+                                val myIntent = Intent(this, LoginActivity::class.java)
+                                MyApplication.prefs.setString("accessToken", "")
+                                MyApplication.prefs.setString("refreshToken", "")
+                                startActivity(myIntent)
+                                finishAffinity()
                             }
                         }
                         JOIN -> {
