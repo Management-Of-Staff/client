@@ -54,6 +54,31 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_input_passwd" />
 
+        <ImageView
+            android:id="@+id/password_clear"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/clear"
+            android:src="@drawable/ic_close"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/edit_newPw"
+            app:layout_constraintEnd_toStartOf="@id/password_show"
+            app:layout_constraintTop_toTopOf="@id/edit_newPw" />
+
+        <CheckBox
+            android:id="@+id/password_show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="10dp"
+            android:button="@drawable/ic_password_visible"
+            android:contentDescription="@string/show_password"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/edit_newPw"
+            app:layout_constraintEnd_toEndOf="@id/edit_newPw"
+            app:layout_constraintTop_toTopOf="@id/edit_newPw" />
+
         <TextView
             android:id="@+id/tv_newPw_validator"
             android:layout_width="wrap_content"
@@ -97,6 +122,31 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_input_passwd_confirm" />
+
+        <ImageView
+            android:id="@+id/password_confirm_clear"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/clear"
+            android:src="@drawable/ic_close"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/edit_newPw_confirm"
+            app:layout_constraintEnd_toStartOf="@id/password_confirm_show"
+            app:layout_constraintTop_toTopOf="@id/edit_newPw_confirm" />
+
+        <CheckBox
+            android:id="@+id/password_confirm_show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="10dp"
+            android:button="@drawable/ic_password_visible"
+            android:contentDescription="@string/show_password"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/edit_newPw_confirm"
+            app:layout_constraintEnd_toEndOf="@id/edit_newPw_confirm"
+            app:layout_constraintTop_toTopOf="@id/edit_newPw_confirm" />
 
         <TextView
             android:id="@+id/tv_confirm_validator"

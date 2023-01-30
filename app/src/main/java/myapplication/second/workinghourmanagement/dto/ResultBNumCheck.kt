@@ -1,6 +1,6 @@
 package myapplication.second.workinghourmanagement.dto
 
-data class ResultBnumCheck (
+data class ResultBNumCheck (
     val request_cnt: Int?,
     val match_cnt: Int?,
     val status_code: String,

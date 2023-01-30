@@ -1,6 +1,7 @@
 package myapplication.second.workinghourmanagement
 
 import myapplication.second.workinghourmanagement.dto.*
+
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -51,7 +52,7 @@ interface RetrofitService {
     fun checkBNum(
         @Query("serviceKey") serviceKey: String,
         @Body params: HashMap<String, List<String>>
-    ): Call<ResultBnumCheck>
+    ): Call<ResultBNumCheck>
 
     //    @FormUrlEncoded
     @Headers("Content-Type: application/json")

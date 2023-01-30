@@ -20,7 +20,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MainActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCommonLoginBinding
     private lateinit var service: RetrofitService
     private lateinit var customDialog: CustomDialog

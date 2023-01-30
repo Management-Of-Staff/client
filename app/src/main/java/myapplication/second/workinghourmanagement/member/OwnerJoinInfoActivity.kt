@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import myapplication.second.workinghourmanagement.*
 import myapplication.second.workinghourmanagement.databinding.ActivityOwnerJoinInfoBinding
-import myapplication.second.workinghourmanagement.dto.ResultBnumCheck
+import myapplication.second.workinghourmanagement.dto.ResultBNumCheck
 import myapplication.second.workinghourmanagement.dto.ResultResponse
 import retrofit2.Call
 import retrofit2.Callback
@@ -66,10 +66,9 @@ class OwnerJoinInfoActivity : AppCompatActivity() {
             val serviceKey = BuildConfig.BNUM_KEY
             retrofit_bnum.create(RetrofitService::class.java)
                 .checkBNum(serviceKey = serviceKey, bn)
-                .enqueue(object : Callback<ResultBnumCheck> {
+                .enqueue(object : Callback<ResultBNumCheck> {
                     override fun onResponse(
-                        call: Call<ResultBnumCheck>,
-                        response: Response<ResultBnumCheck>
+                        call: Call<ResultBNumCheck>, response: Response<ResultBNumCheck>
                     ) {
                         if (response.isSuccessful.not()) {
                             Log.d("보내는 지는데,,,", response.raw().toString())
@@ -88,7 +87,7 @@ class OwnerJoinInfoActivity : AppCompatActivity() {
                         }
                     }
 
-                    override fun onFailure(call: Call<ResultBnumCheck>, t: Throwable) {
+                    override fun onFailure(call: Call<ResultBNumCheck>, t: Throwable) {
                         Log.d("getPosts fail", "[Fail]$t")
                     }
                 })

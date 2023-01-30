@@ -14,7 +14,7 @@ import androidx.databinding.DataBindingUtil
 import myapplication.second.workinghourmanagement.*
 import myapplication.second.workinghourmanagement.databinding.ActivityModifyPasswdBinding
 import myapplication.second.workinghourmanagement.dto.ResultResponse
-import myapplication.second.workinghourmanagement.member.MainActivity
+import myapplication.second.workinghourmanagement.member.LoginActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -80,7 +80,7 @@ class ModifyPwActivity : AppCompatActivity() {
         customDialog.show()
         customDialog.shutdownClick.setOnClickListener {
             customDialog.dismiss()
-            intentPage(MainActivity::class.java)
+            intentPage(LoginActivity::class.java)
         }
     }
 

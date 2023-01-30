@@ -20,7 +20,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@string/owner_join"
-                android:textSize="20sp" />
+                android:textSize="@dimen/head_text_size" />
         </androidx.appcompat.widget.Toolbar>
 
         <ScrollView
@@ -114,8 +114,8 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
                         android:layout_marginEnd="10dp"
-                        android:contentDescription="@string/show_password"
-                        android:button="@drawable/ic_baseline_visibility_24" />
+                        android:button="@drawable/ic_password_visible"
+                        android:contentDescription="@string/show_password" />
                 </FrameLayout>
 
                 <LinearLayout
@@ -167,8 +167,8 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
                         android:layout_marginEnd="10dp"
-                        android:contentDescription="@string/show_password"
-                        android:button="@drawable/ic_baseline_visibility_24" />
+                        android:button="@drawable/ic_password_visible"
+                        android:contentDescription="@string/show_password" />
                 </FrameLayout>
 
                 <LinearLayout
@@ -197,15 +197,15 @@
                 <Button
                     android:id="@+id/owner_join_btn_join"
                     style="@style/neo_medium_white_style"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/button_L_width"
+                    android:layout_height="@dimen/button_L_height"
                     android:layout_marginHorizontal="22dp"
                     android:layout_marginTop="40dp"
                     android:background="@drawable/button_selector_drawable"
                     android:enabled="false"
                     android:text="@string/join"
                     android:textColor="@drawable/button_selector_text_color"
-                    android:textSize="20sp" />
+                    android:textSize="@dimen/button_L_text_size" />
             </LinearLayout>
         </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>

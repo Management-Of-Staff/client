@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <!--        android:networkSecurityConfig="@xml/network_security_config"-->
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -71,7 +72,7 @@
             android:name=".store.OwnerStoreInfoModificationActivity"
             android:exported="false" />
         <activity
-            android:name=".member.MainActivity"
+            android:name=".member.LoginActivity"
             android:exported="true">
 
             <intent-filter>
