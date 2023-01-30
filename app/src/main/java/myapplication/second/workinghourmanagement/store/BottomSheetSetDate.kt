@@ -7,10 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import myapplication.second.workinghourmanagement.databinding.DialogFragmentBottomSheetSetDateBinding
+import myapplication.second.workinghourmanagement.databinding.BottomSheetSetDateBinding
 
-class BottomSheetSetDateDialogFragment: BottomSheetDialogFragment() {
-    private var _binding: DialogFragmentBottomSheetSetDateBinding? = null
+class BottomSheetSetDate: BottomSheetDialogFragment() {
+    private var _binding: BottomSheetSetDateBinding? = null
     private val binding
         get() = _binding!!
 
@@ -19,7 +19,7 @@ class BottomSheetSetDateDialogFragment: BottomSheetDialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = DialogFragmentBottomSheetSetDateBinding.inflate(inflater, container, false)
+        _binding = BottomSheetSetDateBinding.inflate(inflater, container, false)
 
         setupListeners()
 
@@ -28,7 +28,7 @@ class BottomSheetSetDateDialogFragment: BottomSheetDialogFragment() {
 
     private fun setupListeners() {
         binding.ivBack.setOnClickListener {
-            requireActivity().finish()
+            dismiss()
         }
 
         binding.btnConfirm.setOnClickListener {
@@ -38,7 +38,7 @@ class BottomSheetSetDateDialogFragment: BottomSheetDialogFragment() {
 
     companion object {
         fun getIntent(context: Context) =
-            Intent(context, BottomSheetSetDateDialogFragment::class.java)
+            Intent(context, BottomSheetSetDate::class.java)
     }
 
     override fun onDestroyView() {

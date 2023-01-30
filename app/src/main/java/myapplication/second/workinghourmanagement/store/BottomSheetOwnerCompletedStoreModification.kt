@@ -5,12 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import myapplication.second.workinghourmanagement.databinding.DialogFragmentBottomSheetScheduleModificationConfirmBinding
+import myapplication.second.workinghourmanagement.databinding.BottomSheetOwnerStoreCompleteModificationBinding
 
-class BottomSheetScheduleModificationConfirmDialogFragment: BottomSheetDialogFragment(), View.OnClickListener {
-
-    private var _binding: DialogFragmentBottomSheetScheduleModificationConfirmBinding? = null
-    private val binding
+class BottomSheetOwnerCompletedStoreModification: BottomSheetDialogFragment(), View.OnClickListener {
+    private var _binding: BottomSheetOwnerStoreCompleteModificationBinding? = null
+    private val binding: BottomSheetOwnerStoreCompleteModificationBinding
         get() = _binding!!
 
     override fun onCreateView(
@@ -18,7 +17,7 @@ class BottomSheetScheduleModificationConfirmDialogFragment: BottomSheetDialogFra
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = DialogFragmentBottomSheetScheduleModificationConfirmBinding.inflate(inflater, container, false)
+        _binding = BottomSheetOwnerStoreCompleteModificationBinding.inflate(inflater, container, false)
 
         setupListeners()
 
@@ -29,11 +28,6 @@ class BottomSheetScheduleModificationConfirmDialogFragment: BottomSheetDialogFra
         binding.btnConfirm.setOnClickListener {
             requireActivity().finish()
         }
-    }
-
-    override fun onDestroyView() {
-        _binding = null
-        super.onDestroyView()
     }
 
     override fun onClick(view: View) {

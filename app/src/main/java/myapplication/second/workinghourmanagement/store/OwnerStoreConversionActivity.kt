@@ -1,23 +1,36 @@
 package myapplication.second.workinghourmanagement.store
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import myapplication.second.workinghourmanagement.MyApplication
 import myapplication.second.workinghourmanagement.R
+import myapplication.second.workinghourmanagement.RetrofitManager
+import myapplication.second.workinghourmanagement.RetrofitService
 import myapplication.second.workinghourmanagement.databinding.ActivityOwnerStoreConversionBinding
+import myapplication.second.workinghourmanagement.dto.ResultGetStore
+import myapplication.second.workinghourmanagement.dto.ResultGetStoreList
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class OwnerStoreConversionActivity: AppCompatActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivityOwnerStoreConversionBinding
     private lateinit var ownerStoreConversionAdapter: OwnerStoreConversionAdapter
+    private lateinit var service: RetrofitService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_owner_store_conversion)
+        service = RetrofitManager.retrofit.create(RetrofitService::class.java)
 
         binding.lifecycleOwner = this
 
@@ -26,17 +39,53 @@ class OwnerStoreConversionActivity: AppCompatActivity(), View.OnClickListener {
     }
 
     private fun setupView() {
+        val token = MyApplication.prefs.getString("accessToken")
+
+        val storeInfo = HashMap<String, String>()
+
+        storeInfo["storeId"] = "1"
+        storeInfo["storeName"] = "string"
+        storeInfo["primaryAddress"] = "string"
+
+        service.getStoreList(token)
+            .enqueue(object : Callback<ResultGetStoreList> {
+                override fun onResponse(
+                    call: Call<ResultGetStoreList>,
+                    response: Response<ResultGetStoreList>
+                ) {
+                    if (response.isSuccessful) {
+                        val body = response.body()
+
+                        body?.let {
+                            initRecyclerView(binding.rvStoreList)
+                        }
+                    } else {
+                        return
+                    }
+                }
+
+                override fun onFailure(call: Call<ResultGetStoreList>, t: Throwable) {
+                    Log.e("fail", "get store list failed... Why? : " + t.message.orEmpty())
+                }
+            })
         initRecyclerView(binding.rvStoreList)
     }
 
     private fun initRecyclerView(recyclerView: RecyclerView) {
-        ownerStoreConversionAdapter = OwnerStoreConversionAdapter()
+        ownerStoreConversionAdapter = OwnerStoreConversionAdapter(
+            onClick = ::showStoreDetail
+        )
 
         recyclerView.run {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(context)
-//            adapter = ownerConvertStoreAdapter
+            adapter = ownerStoreConversionAdapter
         }
+    }
+
+    private fun showStoreDetail(resultGetStore: ResultGetStore) {
+//        val intent = StoreDetailActivity.getIntent(this, resultGetStore.storeId)
+//        startActivity(intent)
     }
 
     private fun setupListener() {
@@ -45,7 +94,7 @@ class OwnerStoreConversionActivity: AppCompatActivity(), View.OnClickListener {
         }
 
         binding.btnRegisterStore.setOnClickListener {
-
+            intentRegisterStore()
         }
 
         binding.btnDeleteStore.setOnClickListener {
@@ -54,6 +103,8 @@ class OwnerStoreConversionActivity: AppCompatActivity(), View.OnClickListener {
             binding.btnRegisterStore.visibility = View.GONE
             binding.btnDeleteStore.visibility = View.GONE
             binding.buttonChoiceDeleteStore.visibility = View.VISIBLE
+
+            ownerStoreConversionAdapter.toggleRadioButtonVisibility()
         }
 
         binding.buttonChoiceDeleteStore.setOnClickListener {
@@ -61,6 +112,10 @@ class OwnerStoreConversionActivity: AppCompatActivity(), View.OnClickListener {
         }
     }
 
+    private fun intentRegisterStore() {
+        val intent = OwnerStoreRegistrationActivity.getIntent(this)
+        startActivity(intent)
+    }
 
 
     private fun intentModifyStore() {
@@ -78,11 +133,42 @@ class OwnerStoreConversionActivity: AppCompatActivity(), View.OnClickListener {
             }
             .setPositiveButton(getString(R.string.yes))
             { dialog, _ ->
-                // TODO: 매장 삭제 기능 구현
+                deleteStore()
                 dialog.dismiss()
             }
             .create()
             .show()
+    }
+
+    private fun deleteStore() {
+        // TODO: 매장 삭제 기능 구현
+//        service.deleteStore()
+//            .enqueue(object : Callback<Unit> {
+//                override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
+//                    if (response.isSuccessful) {
+//                        val body = response.body()
+//                        if (body != null) {
+//                            Log.d("data", body.data.toString())
+//                            Log.d("statusCode", body.statusCode.toString())
+//                            Log.d("message", body.message)
+//
+//                            if (body.statusCode == 200) onRegistrationSuccess()
+//                        }
+//                    } else {
+//                        return
+//                    }
+//                }
+//
+//                override fun onFailure(call: Call<Unit>, t: Throwable) {
+//                    Log.e("fail", "store delete failed... Why? : " + t.message.orEmpty())
+//                }
+//
+//            })
+    }
+
+    companion object {
+        fun getIntent(context: Context) =
+            Intent(context, OwnerStoreConversionActivity::class.java)
     }
 
     override fun onClick(view: View) {

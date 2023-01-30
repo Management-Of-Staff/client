@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="noticeItem"
+            type="myapplication.second.workinghourmanagement.dto.ResultGetNotice" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/round_app_color_corner_white_background"
+            android:layout_marginHorizontal="18dp"
+            android:layout_marginVertical="18dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/title_notice"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="쓰레기봉투"
+                    android:textSize="@dimen/title_text_size" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.2" />
+
+                <TextView
+                    android:id="@+id/timestamp_notice"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="2022.10.03 사장님" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_desc_notice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:maxLines="3"
+                android:text="카운터 찬장 맨 왼쪽 부분에 있어요. 카운터 찬장 맨 왼쪽 부분에 있어요 카운터 찬장 맨 왼쪽 부분에 있어요카운터 찬장 맨 왼쪽 부분에 있어요  .... 더보기" />
+
+            <LinearLayout
+                android:id="@+id/layout_staff_name_notice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/grey_300"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_staff_name1_notice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="\@김주현"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/body_text_size" />
+
+                <TextView
+                    android:id="@+id/tv_staff_name2_notice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:text="\@권희경"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/body_text_size" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_owner_notice_image_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/tv_owner_notice_image1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/grey_300"
+                    android:src="@drawable/ic_work" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/tv_owner_notice_image2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/grey_300"
+                    android:layout_marginStart="25dp"
+                    android:src="@drawable/ic_work" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

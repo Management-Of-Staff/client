@@ -44,12 +44,11 @@
 
     </androidx.appcompat.widget.Toolbar>
 
-    <DatePicker
-        android:id="@+id/datePicker"
+    <TimePicker
+        android:id="@+id/timePicker"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:datePickerMode="spinner"
-        android:calendarViewShown="false" />
+        android:timePickerMode="spinner" />
 
     <Button
         android:id="@+id/btn_confirm"

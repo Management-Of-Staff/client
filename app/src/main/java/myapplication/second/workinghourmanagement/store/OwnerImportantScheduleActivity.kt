@@ -1,5 +1,7 @@
 package myapplication.second.workinghourmanagement.store
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -51,5 +53,10 @@ class OwnerImportantScheduleActivity : AppCompatActivity() {
     private fun intentPostSchedule() {
         val intent = OwnerPostScheduleActivity.getIntent(this)
         startActivity(intent)
+    }
+
+    companion object {
+        fun getIntent(context: Context) =
+            Intent(context, OwnerImportantScheduleActivity::class.java)
     }
 }

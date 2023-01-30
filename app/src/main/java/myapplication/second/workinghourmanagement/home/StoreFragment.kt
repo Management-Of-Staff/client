@@ -6,6 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import myapplication.second.workinghourmanagement.databinding.FragmentOwnerStoreBinding
+import myapplication.second.workinghourmanagement.store.OwnerImportantScheduleActivity
+import myapplication.second.workinghourmanagement.store.OwnerNoticeListActivity
+import myapplication.second.workinghourmanagement.store.OwnerStaffTodoManagementActivity
 
 class StoreFragment: Fragment() {
     private lateinit var binding: FragmentOwnerStoreBinding
@@ -17,7 +20,31 @@ class StoreFragment: Fragment() {
     ): View {
         binding = FragmentOwnerStoreBinding.inflate(layoutInflater)
 
+        setupListeners()
+
         return binding.root
+    }
+
+    private fun setupListeners() {
+        binding.btnStoreNoticeList.setOnClickListener {
+            val intent = OwnerNoticeListActivity.getIntent(requireActivity())
+            startActivity(intent)
+        }
+
+        binding.btnManageStaffTodo.setOnClickListener {
+            val intent = OwnerStaffTodoManagementActivity.getIntent(requireActivity())
+            startActivity(intent)
+        }
+
+        binding.btnStoreSchedule.setOnClickListener {
+            val intent = OwnerImportantScheduleActivity.getIntent(requireActivity())
+            startActivity(intent)
+        }
+
+        binding.btnManageStaffInfo.setOnClickListener {
+//            val intent = OwnerImportantScheduleActivity.getIntent(requireActivity())
+//            startActivity(intent)
+        }
     }
 
     companion object{

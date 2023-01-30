@@ -20,9 +20,9 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/iv_back"
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:src="@drawable/ic_back_arrow"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_back_arrow_black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -118,7 +118,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
-            android:src="@drawable/ic_post_schedule"
+            android:src="@drawable/ic_post"
             app:backgroundTint="@color/white"
             app:fabSize="normal"
             app:layout_constraintBottom_toBottomOf="parent"

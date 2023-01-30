@@ -21,7 +21,7 @@
                 android:id="@+id/iv_back"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:src="@drawable/ic_back_arrow" />
+                android:src="@drawable/ic_back_arrow_black" />
 
             <TextView
                 android:id="@+id/tv_title_register_store"
@@ -69,89 +69,103 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="vertical"
-            android:layout_marginTop="35dp"
-            android:layout_marginStart="30dp"
-            app:layout_constraintTop_toBottomOf="@id/linear_layout_search_primary_address">
+            app:layout_constraintTop_toBottomOf="@id/linear_layout_search_primary_address" >
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tip"
-                android:textSize="@dimen/head_text_size"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
+            <WebView
+                android:id="@+id/webView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/search_address_tip"
-                android:textSize="@dimen/body_text_size"
-                android:textColor="@color/black"
-                android:layout_marginTop="10dp" />
+            <LinearLayout
+                android:id="@+id/layout_tip"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="35dp"
+                android:layout_marginStart="30dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/doro_plus_dept_no"
-                android:textSize="@dimen/body_text_size"
-                android:textColor="@color/black"
-                android:layout_marginTop="25dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tip"
+                    android:textSize="@dimen/head_text_size"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/address_example2"
-                android:textSize="@dimen/body_text_size"
-                android:textColor="@color/light_blue_A700"
-                android:layout_marginTop="10dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/search_address_tip"
+                    android:textSize="@dimen/body_text_size"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="10dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/region_dong_li_address"
-                android:textSize="@dimen/body_text_size"
-                android:textColor="@color/black"
-                android:layout_marginTop="20dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/doro_plus_dept_no"
+                    android:textSize="@dimen/body_text_size"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="25dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/address_example2"
-                android:textSize="@dimen/body_text_size"
-                android:textColor="@color/light_blue_A700"
-                android:layout_marginTop="10dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/address_example2"
+                    android:textSize="@dimen/body_text_size"
+                    android:textColor="@color/light_blue_A700"
+                    android:layout_marginTop="10dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/region_dong_li_address_plus_dept_name"
-                android:textSize="@dimen/body_text_size"
-                android:textColor="@color/black"
-                android:layout_marginTop="20dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/region_dong_li_address"
+                    android:textSize="@dimen/body_text_size"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="20dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/address_example2"
-                android:textSize="@dimen/body_text_size"
-                android:textColor="@color/light_blue_A700"
-                android:layout_marginTop="10dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/address_example2"
+                    android:textSize="@dimen/body_text_size"
+                    android:textColor="@color/light_blue_A700"
+                    android:layout_marginTop="10dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="@string/mailbox_plus_no"
-                android:textColor="@color/black"
-                android:textSize="@dimen/body_text_size" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/region_dong_li_address_plus_dept_name"
+                    android:textSize="@dimen/body_text_size"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="20dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/address_example2"
-                android:textSize="@dimen/body_text_size"
-                android:textColor="@color/light_blue_A700"
-                android:layout_marginTop="10dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/address_example2"
+                    android:textSize="@dimen/body_text_size"
+                    android:textColor="@color/light_blue_A700"
+                    android:layout_marginTop="10dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/mailbox_plus_no"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/body_text_size" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/address_example2"
+                    android:textSize="@dimen/body_text_size"
+                    android:textColor="@color/light_blue_A700"
+                    android:layout_marginTop="10dp" />
+
+            </LinearLayout>
 
         </LinearLayout>
 

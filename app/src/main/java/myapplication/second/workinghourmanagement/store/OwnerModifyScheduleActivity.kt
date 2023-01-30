@@ -1,14 +1,18 @@
 package myapplication.second.workinghourmanagement.store
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import myapplication.second.workinghourmanagement.R
+import myapplication.second.workinghourmanagement.RetrofitService
 import myapplication.second.workinghourmanagement.databinding.ActivityOwnerModifyScheduleBinding
 
 class OwnerModifyScheduleActivity: AppCompatActivity() {
 
     private lateinit var binding: ActivityOwnerModifyScheduleBinding
+    private lateinit var service: RetrofitService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,22 +46,27 @@ class OwnerModifyScheduleActivity: AppCompatActivity() {
         }
 
         binding.btnModifySchedule.setOnClickListener {
-            // TODO: 2023-01-09 스케줄 변경할 때의 API 연동 구현
+            // TODO: 스케줄 변경할 때의 API 연동 구현
         }
     }
 
     private fun openSetDateBottomSheetDialogFragment() {
-        val intent = BottomSheetSetDateDialogFragment.getIntent(this)
+        val intent = BottomSheetSetDate.getIntent(this)
         startActivity(intent)
     }
 
     private fun openSetTimeBottomSheetDialogFragment() {
-        val intent = BottomSheetSetTimeDialogFragment.getIntent(this)
+        val intent = BottomSheetSetTime.getIntent(this)
         startActivity(intent)
     }
 
     private fun intentSelectColorPalette() {
         val intent = SelectColorPaletteActivity.getIntent(this)
         startActivity(intent)
+    }
+
+    companion object {
+        fun getIntent(context: Context) =
+            Intent(context, OwnerModifyScheduleActivity::class.java)
     }
 }
