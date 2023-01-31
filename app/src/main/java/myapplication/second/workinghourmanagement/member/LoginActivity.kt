@@ -14,11 +14,10 @@ import android.view.View
 import androidx.databinding.DataBindingUtil
 import myapplication.second.workinghourmanagement.*
 import myapplication.second.workinghourmanagement.databinding.ActivityCommonLoginBinding
-import myapplication.second.workinghourmanagement.dto.ResultLogin
+import myapplication.second.workinghourmanagement.dto.ResultToken
 import myapplication.second.workinghourmanagement.home.OwnerHomeActivity
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import retrofit2.*
+import java.util.*
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCommonLoginBinding
@@ -105,8 +104,8 @@ class LoginActivity : AppCompatActivity() {
         loginRequestParams["phone"] = binding.editPhone.text.toString()
         loginRequestParams["password"] = binding.editPassword.text.toString()
 
-        service.login(loginRequestParams).enqueue(object : Callback<ResultLogin> {
-            override fun onResponse(call: Call<ResultLogin>, response: Response<ResultLogin>) {
+        service.login(loginRequestParams).enqueue(object : Callback<ResultToken> {
+            override fun onResponse(call: Call<ResultToken>, response: Response<ResultToken>) {
                 if (response.isSuccessful.not()) {
                     if (response.code() == 500) errorMessageDialog("서버 내부에 문제가 발생했습니다.\n잠시후 다시시도 해주세요.")
                     return
@@ -128,7 +127,7 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
 
-            override fun onFailure(call: Call<ResultLogin>, t: Throwable) {
+            override fun onFailure(call: Call<ResultToken>, t: Throwable) {
                 Log.d("getPosts fail", "[Fail]$t")
             }
         })
