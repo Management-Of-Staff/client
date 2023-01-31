@@ -17,11 +17,13 @@ import myapplication.second.workinghourmanagement.*
 import myapplication.second.workinghourmanagement.databinding.ActivityOwnerProfileInfoBinding
 import myapplication.second.workinghourmanagement.dto.ResultResponse
 import myapplication.second.workinghourmanagement.dto.User
+import myapplication.second.workinghourmanagement.member.LoginActivity
 import myapplication.second.workinghourmanagement.member.PhoneAuthActivity
 import myapplication.second.workinghourmanagement.vm.UserInfoViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
 
 class OwnerProfileInfoActivity : AppCompatActivity() {
     private lateinit var binding: ActivityOwnerProfileInfoBinding
@@ -55,6 +57,9 @@ class OwnerProfileInfoActivity : AppCompatActivity() {
                 }
             }
         })
+        binding.btnWithdraw.setOnClickListener {
+            withDraw(token)
+        }
         binding.btnSettingBirth.setOnClickListener {
 //            val dialog = BottomSheetDialog(this)
 //            dialog.setContentView(R.layout.dialog_fragment_bottom_sheet_birth)
@@ -84,6 +89,29 @@ class OwnerProfileInfoActivity : AppCompatActivity() {
             profile["birthDate"] = birth[0] + "-" + birth[1] + "-" + birth[2]
             updateProfile(token, profile)
         }
+    }
+
+    private fun withDraw(token: String) {
+        service.withDraw(token).enqueue(object : Callback<ResultResponse> {
+            override fun onResponse(
+                call: Call<ResultResponse>, response: Response<ResultResponse>
+            ) {
+                if (response.body()!!.statusCode == 200) {
+                    MyApplication.prefs.setString("accessToken", "")
+                    MyApplication.prefs.setString("refreshToken", "")
+                    intentPage(LoginActivity::class.java)
+                }
+            }
+            override fun onFailure(call: Call<ResultResponse>, t: Throwable) {
+                Log.e("withdraw call", "실패: $t")
+            }
+        })
+    }
+
+    private fun intentPage(where: Class<*>) {
+        val intent = Intent(this, where)
+        startActivity(intent)
+        finishAffinity()
     }
 
     private fun updateProfile(token: String, profile: HashMap<String, String>) {

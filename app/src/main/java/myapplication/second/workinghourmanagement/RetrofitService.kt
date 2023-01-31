@@ -7,12 +7,19 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 import retrofit2.http.*
+import java.util.*
 
 interface RetrofitService {
+    @POST("auth/reissue")
+    fun reissue(
+        @Header("Authorization") token: String,
+        @Body params: HashMap<String, String>
+    ): Call<ResultToken>
+
     @POST("auth/login")
     fun login(
-        @Body params: HashMap<String, String>,
-    ): Call<ResultLogin>
+        @Body params: HashMap<String, String>
+    ): Call<ResultToken>
 
     @POST("auth/check-password")
     fun checkPassword(
@@ -38,6 +45,11 @@ interface RetrofitService {
         @Header("Authorization") token: String,
         @Part("profile") profile: HashMap<String, String>,
        // @Part imageFile: MultipartBody.Part
+    ): Call<ResultResponse>
+
+    @POST("auth/withdrawal-member")
+    fun withDraw(
+        @Header("Authorization") token: String
     ): Call<ResultResponse>
 
     // Owner
