@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="storeItem"
+            type="myapplication.second.workinghourmanagement.dto.ResultGetStore" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="@dimen/edit_text_width"
+        android:layout_height="90dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgView"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/default_profile" />
+
+        <TextView
+            android:id="@+id/tv_staff_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:fontFamily="@font/spoqahansansneo_regular"
+            android:textColor="@color/b1"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/imgView"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="권희경" />
+
+        <TextView
+            android:id="@+id/tv_staff_time"
+            android:layout_width="97dp"
+            android:layout_height="47dp"
+            android:layout_marginStart="23dp"
+            android:gravity="center_vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_staff_name"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="월수금\n09:00 - 12:00" />
+
+        <TextView
+            android:id="@+id/tv_staff_attendance"
+            android:layout_width="62dp"
+            android:layout_height="27dp"
+            android:background="@color/error1"
+            android:gravity="center"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="지각" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
