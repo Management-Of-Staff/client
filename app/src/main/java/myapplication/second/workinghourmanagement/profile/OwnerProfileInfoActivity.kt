@@ -29,7 +29,6 @@ class OwnerProfileInfoActivity : AppCompatActivity() {
     private lateinit var binding: ActivityOwnerProfileInfoBinding
     private lateinit var service: RetrofitService
     private lateinit var viewModel: UserInfoViewModel
-    private val token = "Bearer " + MyApplication.prefs.getString("accessToken")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,7 +57,7 @@ class OwnerProfileInfoActivity : AppCompatActivity() {
             }
         })
         binding.btnWithdraw.setOnClickListener {
-            withDraw(token)
+            withDraw()
         }
         binding.btnSettingBirth.setOnClickListener {
 //            val dialog = BottomSheetDialog(this)
@@ -87,12 +86,12 @@ class OwnerProfileInfoActivity : AppCompatActivity() {
             val profile = HashMap<String, String>()
             profile["email"] = binding.email.text.toString()
             profile["birthDate"] = birth[0] + "-" + birth[1] + "-" + birth[2]
-            updateProfile(token, profile)
+            updateProfile(profile)
         }
     }
 
-    private fun withDraw(token: String) {
-        service.withDraw(token).enqueue(object : Callback<ResultResponse> {
+    private fun withDraw() {
+        service.withDraw().enqueue(object : Callback<ResultResponse> {
             override fun onResponse(
                 call: Call<ResultResponse>, response: Response<ResultResponse>
             ) {
@@ -114,8 +113,8 @@ class OwnerProfileInfoActivity : AppCompatActivity() {
         finishAffinity()
     }
 
-    private fun updateProfile(token: String, profile: HashMap<String, String>) {
-        service.updateProfile(token, profile).enqueue(object : Callback<ResultResponse> {
+    private fun updateProfile(profile: HashMap<String, String>) {
+        service.updateProfile(profile).enqueue(object : Callback<ResultResponse> {
             override fun onResponse(
                 call: Call<ResultResponse>, response: Response<ResultResponse>
             ) {

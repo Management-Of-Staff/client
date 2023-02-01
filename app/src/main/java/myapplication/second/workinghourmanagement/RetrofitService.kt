@@ -12,7 +12,7 @@ import java.util.*
 interface RetrofitService {
     @POST("auth/reissue")
     fun reissue(
-        @Header("Authorization") token: String,
+//        @Header("refresh") token: String,
         @Body params: HashMap<String, String>
     ): Call<ResultToken>
 
@@ -23,39 +23,33 @@ interface RetrofitService {
 
     @POST("auth/check-password")
     fun checkPassword(
-        @Header("Authorization") token: String,
         @Body params: HashMap<String, String>,
     ): Call<ResultResponse>
 
     @POST("auth/update-password")
     fun updatePassword(
-        @Header("Authorization") token: String,
         @Body params: HashMap<String, String>,
     ): Call<ResultResponse>
 
     @POST("auth/update-phone")
     fun updatePhone(
-        @Header("Authorization") token: String,
         @Body params: HashMap<String, String>,
     ): Call<ResultResponse>
 
     @Multipart
     @POST("auth/update-profile")
     fun updateProfile(
-        @Header("Authorization") token: String,
         @Part("profile") profile: HashMap<String, String>,
        // @Part imageFile: MultipartBody.Part
     ): Call<ResultResponse>
 
     @POST("auth/withdrawal-member")
     fun withDraw(
-        @Header("Authorization") token: String
     ): Call<ResultResponse>
 
     // Owner
     @GET("owners/")
     fun selectOwnerInfo(
-        @Header("Authorization") token: String,
     ): Call<ResultUserInfo>
 
     // 사업자 등록번호 조회
@@ -83,12 +77,6 @@ interface RetrofitService {
     fun selectStaffInfo(
         @Header("Authorization") token: String,
     ): Call<ResultUserInfo>
-
-    @GET("posts/{post}")
-    fun getPosts(
-        @Path("post") post: String?
-    ): Call<PostResult>
-
 
 /***    매장 관리    ***/
 /***    Owner    ***/

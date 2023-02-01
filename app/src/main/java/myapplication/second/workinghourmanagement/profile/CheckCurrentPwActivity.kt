@@ -15,6 +15,7 @@ import myapplication.second.workinghourmanagement.dto.ResultResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
 
 class CheckCurrentPwActivity : AppCompatActivity() {
     private lateinit var service: RetrofitService
@@ -38,10 +39,7 @@ class CheckCurrentPwActivity : AppCompatActivity() {
     private fun checkPassword() {
         val currentPassword = HashMap<String, String>()
         currentPassword["password"] = binding.editCurrentPassword.text.toString()
-        val tok = "Bearer " + MyApplication.prefs.getString("accessToken")
-        service.checkPassword(
-            tok, currentPassword
-        ).enqueue(object : Callback<ResultResponse> {
+        service.checkPassword(currentPassword).enqueue(object : Callback<ResultResponse> {
             override fun onResponse(
                 call: Call<ResultResponse>,
                 response: Response<ResultResponse>
