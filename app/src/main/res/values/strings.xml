@@ -215,5 +215,8 @@
     <string name="please_input_notice_desc">내용을 입력해주세요.</string>
     <string name="num_char700">0/700</string>
     <string name="title_owner_modify_notice">공지사항 수정</string>
+    <string name="invite">초대</string>
+    <string name="personal_info">인적사항</string>
+    <string name="manage_staff">직원 관리</string>
 
 </resources>
