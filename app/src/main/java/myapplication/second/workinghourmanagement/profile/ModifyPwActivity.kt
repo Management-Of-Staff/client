@@ -18,6 +18,7 @@ import myapplication.second.workinghourmanagement.member.LoginActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
 
 class ModifyPwActivity : AppCompatActivity() {
     private lateinit var customDialog: CustomDialog
@@ -55,11 +56,10 @@ class ModifyPwActivity : AppCompatActivity() {
     }
 
     private fun changePassword() {
-        val token = "Bearer " + MyApplication.prefs.getString("accessToken")
         val body = HashMap<String, String>()
         body["newPassword"] = binding.editNewPw.text.toString()
         body["oldPassword"] = intent.getStringExtra("currentPassword")!!
-        service.updatePassword(token, body).enqueue(object : Callback<ResultResponse> {
+        service.updatePassword(body).enqueue(object : Callback<ResultResponse> {
             override fun onResponse(
                 call: Call<ResultResponse>,
                 response: Response<ResultResponse>

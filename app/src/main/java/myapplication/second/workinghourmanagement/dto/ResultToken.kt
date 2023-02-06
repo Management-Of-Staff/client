@@ -1,6 +1,6 @@
 package myapplication.second.workinghourmanagement.dto
 
-data class ResultLogin(
+data class ResultToken(
     val accessToken: String?,
     val refreshToken: String?,
 

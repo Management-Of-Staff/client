@@ -216,11 +216,10 @@ class PhoneAuthActivity : AppCompatActivity() {
     }
 
     private fun updatePhone() {
-        val token = "Bearer " + MyApplication.prefs.getString("accessToken")
         val phone = HashMap<String, String>()
         phone["phone"] = binding.ownerJoinEditPhone.text.toString()
         phone["uuid"] = storedVerificationId
-        service.updatePhone(token, phone).enqueue(object : Callback<ResultResponse> {
+        service.updatePhone(phone).enqueue(object : Callback<ResultResponse> {
             override fun onFailure(call: Call<ResultResponse>, t: Throwable) {
                 Log.e("updatePhone", "실패: $t")
             }

@@ -4,7 +4,6 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import myapplication.second.workinghourmanagement.MyApplication
 import myapplication.second.workinghourmanagement.RetrofitManager
 import myapplication.second.workinghourmanagement.RetrofitService
 import myapplication.second.workinghourmanagement.dto.ResultUserInfo
@@ -41,8 +40,7 @@ class UserInfoViewModel : ViewModel() {
 
     // 회원정보 조회
     private fun getUserInfo() {
-        val tok = "Bearer " + MyApplication.prefs.getString("accessToken")
-        service.selectOwnerInfo(tok).enqueue(object : Callback<ResultUserInfo> {
+        service.selectOwnerInfo().enqueue(object : Callback<ResultUserInfo> {
             override fun onResponse(
                 call: Call<ResultUserInfo>, response: Response<ResultUserInfo>
             ) {
