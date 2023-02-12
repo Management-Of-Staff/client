@@ -1,7 +1,9 @@
 package myapplication.second.workinghourmanagement
 
+import android.util.Log
 import okhttp3.Interceptor
 import okhttp3.Response
+import org.json.JSONObject
 
 class AuthInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
@@ -10,22 +12,26 @@ class AuthInterceptor : Interceptor {
             .addHeader("Authorization", "Bearer $accessToken")
             .build()
         val response = chain.proceed(request)
-        when(response.code){
-            400 -> {
 
-            }
-            401 -> {
-               val refreshToken = MyApplication.prefs.getString("refreshToken")
-                if(refreshToken != ""){
-                    val newRequest = chain.request().newBuilder()
-                        .addHeader("Authorization", "Bearer $refreshToken")
-                        .build()
-
-                    return chain.proceed(newRequest)
-                }
-            }
-        }
+        val responseJson = response.extractResponseJson()
+        val bodyCode = responseJson.getString("status")
+        Log.d("bodyCode 출력", bodyCode)
 
         return response
+    }
+
+    private fun Response.extractResponseJson(): JSONObject {
+        val jsonString = this.peekBody(Long.MAX_VALUE).string()
+        Log.d("im jsonString :)", jsonString)
+        return try {
+            JSONObject(jsonString)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            JSONObject(EMPTY_JSON)
+        }
+    }
+
+    companion object {
+        private const val EMPTY_JSON = "{}"
     }
 }
