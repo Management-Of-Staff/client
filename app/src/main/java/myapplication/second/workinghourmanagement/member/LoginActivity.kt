@@ -3,7 +3,6 @@ package myapplication.second.workinghourmanagement.member
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -11,13 +10,15 @@ import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.util.Log
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import myapplication.second.workinghourmanagement.*
 import myapplication.second.workinghourmanagement.databinding.ActivityCommonLoginBinding
 import myapplication.second.workinghourmanagement.dto.ResultToken
 import myapplication.second.workinghourmanagement.home.OwnerHomeActivity
-import retrofit2.*
-import java.util.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCommonLoginBinding
@@ -34,7 +35,7 @@ class LoginActivity : AppCompatActivity() {
             finish()
         }
 
-        service = RetrofitManager.retrofit.create(RetrofitService::class.java)
+        service = RetrofitManager.loginRetrofit.create(RetrofitService::class.java)
         bind()
     }
 
@@ -119,7 +120,6 @@ class LoginActivity : AppCompatActivity() {
                         MyApplication.prefs.setString("refreshToken", body.refreshToken)
                         if (role == R.id.radio_button_owner) loginOwnerSuccess()
                         else loginStaffSuccess()
-//                        Log.d("response success: 로그인성공", body.accessToken)
                     } else {
 //                        Log.d("response.message", body.message!!)
                         errorMessageDialog(body.message!!)

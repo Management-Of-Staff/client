@@ -5,14 +5,19 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class RetrofitManager {
-    companion object{
-        private val BASE_URL: String = BuildConfig.BASE_URL
+    companion object {
+        private const val BASE_URL: String = BuildConfig.BASE_URL
 
-        val client = OkHttpClient.Builder()
+        val loginRetrofit: Retrofit = Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        private val client = OkHttpClient.Builder()
             .addInterceptor(AuthInterceptor())
             .build()
 
-        val retrofit = Retrofit.Builder()
+        val retrofit: Retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
             .client(client)
             .addConverterFactory(GsonConverterFactory.create())
