@@ -6,6 +6,11 @@ import retrofit2.Call
 import retrofit2.http.*
 
 interface RetrofitService {
+    @POST("auth/reissue")
+    fun reissue(
+        @Header("Authorization") token: String
+    ): Call<ResultToken>
+
     @POST("auth/login")
     fun login(
         @Body params: HashMap<String, String>
