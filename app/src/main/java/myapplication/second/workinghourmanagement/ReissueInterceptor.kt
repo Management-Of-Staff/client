@@ -35,7 +35,6 @@ class ReissueInterceptor : Interceptor {
 
     private fun Response.extractResponseJson(): JSONObject {
         val jsonString = this.peekBody(Long.MAX_VALUE).string()
-        Log.d("im jsonString :)", jsonString)
         return try {
             JSONObject(jsonString)
         } catch (e: Exception) {
