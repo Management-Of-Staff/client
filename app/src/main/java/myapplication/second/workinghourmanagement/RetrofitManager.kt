@@ -13,6 +13,12 @@ class RetrofitManager {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
+        val reissueRetrofit: Retrofit = Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .client(OkHttpClient.Builder().addInterceptor(ReissueInterceptor()).build())
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
         private val client = OkHttpClient.Builder()
             .addInterceptor(AuthInterceptor())
             .build()
