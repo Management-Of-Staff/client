@@ -1,7 +1,6 @@
 package myapplication.second.workinghourmanagement
 
 import android.util.Log
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import myapplication.second.workinghourmanagement.dto.ResultToken
 import okhttp3.Interceptor
@@ -23,8 +22,7 @@ class AuthInterceptor : Interceptor {
             403 -> {
                 response.close()
                 val newRequest: Request = runBlocking {
-                    launch { reissue() }
-                    // todo 동기처리!! reissue 완료된 후에 newRequest 날리도록!
+                    runBlocking { reissue() }
                     return@runBlocking newRequest(chain)
                 }
                 return chain.proceed(newRequest)
