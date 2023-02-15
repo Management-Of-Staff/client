@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:fontFamily="@font/spoqahansansneo_bold"
-                android:text="@string/manage_staff"
+                android:text="@string/staff_list"
                 android:textColor="@color/black"
                 android:textSize="@dimen/head_text_size" />
 
@@ -55,6 +55,15 @@
             app:layout_constraintTop_toBottomOf="@id/toolbar"
             app:queryHint="Search" />
 
+        <Button
+            android:id="@+id/btn_test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/manage_staff"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/search_view" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_staff"
             android:layout_width="wrap_content"
@@ -63,7 +72,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/search_view"
-            tools:listitem="@layout/item_staff_list" />
+            tools:listitem="@layout/item_list_staff" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
