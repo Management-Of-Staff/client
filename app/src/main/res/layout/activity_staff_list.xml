@@ -6,42 +6,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.Toolbar
+        <include
             android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/iv_back"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_back_arrow_black" />
-
-            <TextView
-                android:id="@+id/tv_title_manage_staff"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:fontFamily="@font/spoqahansansneo_bold"
-                android:text="@string/staff_list"
-                android:textColor="@color/black"
-                android:textSize="@dimen/head_text_size" />
-
-        </androidx.appcompat.widget.Toolbar>
-
-        <TextView
-            android:id="@+id/btn_invite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:fontFamily="@font/spoqahansansneo_medium"
-            android:text="@string/invite"
-            android:textColor="@color/blue4"
-            android:textSize="@dimen/head_text_size"
-            app:layout_constraintBottom_toBottomOf="@id/toolbar"
-            app:layout_constraintEnd_toEndOf="@id/search_view"
-            app:layout_constraintTop_toTopOf="@id/toolbar" />
+            layout="@layout/layout_toolbar"
+            app:rightText="@{@string/invite}"
+            app:rightTextColor="@{true}"
+            app:titleText="@{@string/staff_list}" />
 
         <androidx.appcompat.widget.SearchView
             android:id="@+id/search_view"

@@ -45,12 +45,12 @@
         </androidx.appcompat.widget.Toolbar>
 
         <TextView
-            android:id="@+id/btn_end"
+            android:id="@+id/btn_right_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="24dp"
             android:fontFamily="@font/spoqahansansneo_medium"
-            android:text="@{rightText == null ? `Default Title Text` : rightText}"
+            android:text="@{rightText == null ? `rightText == null` : rightText}"
             android:textColor="@{rightTextColor == null || !rightTextColor ?  @color/b1 : @color/app_color}"
             android:textSize="@dimen/head_text_size"
             android:visibility="@{rightText == null ? View.GONE : View.VISIBLE}"
