@@ -2,6 +2,7 @@
 <layout>
 
     <data>
+
         <variable
             name="vm"
             type="myapplication.second.workinghourmanagement.vm.UserInfoViewModel" />
@@ -13,33 +14,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.Toolbar
+        <include
             android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                style="@style/neo_bold_black_style"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/profile_info"
-                android:textSize="@dimen/head_text_size" />
-        </androidx.appcompat.widget.Toolbar>
-
-        <TextView
-            android:id="@+id/btn_withdraw"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
-            android:fontFamily="@font/spoqahansansneo_medium"
-            android:text="@string/secession"
-            android:textColor="@color/disabled_text"
-            android:textSize="@dimen/text_size_20sp"
-            app:layout_constraintBottom_toBottomOf="@id/toolbar"
-            app:layout_constraintEnd_toEndOf="@id/toolbar"
-            app:layout_constraintTop_toTopOf="@id/toolbar" />
+            layout="@layout/layout_toolbar"
+            app:rightText="@{@string/secession}"
+            app:titleText="@{@string/profile_info}" />
 
         <ScrollView
             android:id="@+id/scrollView"
@@ -84,9 +63,9 @@
                     android:background="@drawable/custom_edit_text_background"
                     android:gravity="center_vertical"
                     android:paddingHorizontal="15dp"
+                    android:text="@{vm.name}"
                     android:textColor="@color/b1"
                     android:textSize="@dimen/text_size_14sp"
-                    android:text="@{vm.name}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/textView_name"
@@ -105,13 +84,13 @@
 
                 <TextView
                     android:id="@+id/birth"
-                    android:text="@{vm.birth}"
                     android:layout_width="@dimen/edit_text_width"
                     android:layout_height="@dimen/edit_text_height"
                     android:background="@drawable/custom_edit_text_background"
                     android:gravity="center_vertical"
                     android:hint="@string/yyyy_mm_dd"
                     android:paddingHorizontal="15dp"
+                    android:text="@{vm.birth}"
                     android:textColor="@color/b1"
                     android:textSize="@dimen/text_size_14sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -144,7 +123,6 @@
 
                 <EditText
                     android:id="@+id/email"
-                    android:text="@{vm.email}"
                     android:layout_width="@dimen/edit_text_width"
                     android:layout_height="@dimen/edit_text_height"
                     android:background="@drawable/custom_edit_text_background"
@@ -153,6 +131,7 @@
                     android:importantForAutofill="no"
                     android:inputType="textEmailAddress"
                     android:paddingHorizontal="15dp"
+                    android:text="@{vm.email}"
                     android:textColor="@color/b1"
                     android:textSize="@dimen/text_size_14sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -171,13 +150,13 @@
                     app:layout_constraintTop_toBottomOf="@id/email" />
 
                 <TextView
-                    android:text="@{vm.phone}"
                     android:id="@+id/phone"
                     android:layout_width="@dimen/edit_text_width"
                     android:layout_height="@dimen/edit_text_height"
                     android:fontFamily="@font/spoqahansansneo_regular"
                     android:gravity="center_vertical"
                     android:paddingHorizontal="15dp"
+                    android:text="@{vm.phone}"
                     android:textColor="@color/b1"
                     android:textSize="@dimen/text_size_14sp"
                     app:layout_constraintEnd_toEndOf="parent"

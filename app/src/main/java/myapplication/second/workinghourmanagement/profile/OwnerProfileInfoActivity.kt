@@ -41,7 +41,6 @@ class OwnerProfileInfoActivity : AppCompatActivity() {
 
         bind()
         //initProfile()
-        initActionbar()
     }
 
     private fun bind() {
@@ -56,7 +55,7 @@ class OwnerProfileInfoActivity : AppCompatActivity() {
                 }
             }
         })
-        binding.btnWithdraw.setOnClickListener {
+        binding.toolbar.btnRightText.setOnClickListener {
             withDraw()
         }
         binding.btnSettingBirth.setOnClickListener {
@@ -162,24 +161,7 @@ class OwnerProfileInfoActivity : AppCompatActivity() {
         else binding.email.setText(email)
     }
 
-    private fun initActionbar() {
-        setSupportActionBar(binding.toolbar)
-        val actionBar: ActionBar = supportActionBar!!
-        actionBar.setDisplayShowTitleEnabled(false)
-        actionBar.setDisplayHomeAsUpEnabled(true)
-    }
-
     fun checkEmail(email: String): Boolean {
         return Patterns.EMAIL_ADDRESS.matcher(email).matches() // 서로 패턴이 맞닝?
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            android.R.id.home -> {
-                finish()
-                return true
-            }
-        }
-        return super.onOptionsItemSelected(item)
     }
 }

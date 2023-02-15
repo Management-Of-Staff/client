@@ -34,17 +34,12 @@ class OwnerJoinInfoActivity : AppCompatActivity() {
 
         service = RetrofitManager.retrofit.create(RetrofitService::class.java)
         bind()
-        initActionBar()
-    }
-
-    private fun initActionBar() {
-        setSupportActionBar(binding.toolbar)
-        val actionBar: ActionBar = supportActionBar!!
-        actionBar.setDisplayShowTitleEnabled(false)
-        actionBar.setDisplayHomeAsUpEnabled(true)
     }
 
     private fun bind() {
+        binding.toolbar.ivBack.setOnClickListener {
+            finish()
+        }
         binding.ownerJoinEditBusinessNum.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
@@ -209,16 +204,6 @@ class OwnerJoinInfoActivity : AppCompatActivity() {
                     Log.d("[Retrofit]", "[registerOwner Fail]$t")
                 }
             })
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            android.R.id.home -> {
-                finish()
-                return true
-            }
-        }
-        return super.onOptionsItemSelected(item)
     }
 
     private fun checkPasswordValidation(pw: String): Boolean {

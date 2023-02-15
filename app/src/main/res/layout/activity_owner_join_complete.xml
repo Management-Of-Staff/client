@@ -6,21 +6,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.Toolbar
+        <include
             android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:id="@+id/title"
-                style="@style/neo_bold_black_style"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/owner_join"
-                android:textSize="@dimen/head_text_size" />
-        </androidx.appcompat.widget.Toolbar>
+            layout="@layout/layout_toolbar"
+            app:titleText="@{@string/owner_join}"/>
 
         <TextView
             style="@style/neo_bold_black_style"
