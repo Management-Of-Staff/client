@@ -19,7 +19,7 @@ class StaffListActivity : AppCompatActivity() {
     }
 
     private fun bind() {
-        binding.btnInvite.setOnClickListener {
+        binding.toolbar.btnRightText.setOnClickListener {
             val intent = Intent(this, InviteStaffActivity::class.java)
             startActivity(intent)
         }
