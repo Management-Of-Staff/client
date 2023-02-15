@@ -121,6 +121,9 @@
         <activity
             android:name=".manageStaff.InviteStaffActivity"
             android:exported="true" />
+        <activity
+            android:name=".manageStaff.ManageStaffActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

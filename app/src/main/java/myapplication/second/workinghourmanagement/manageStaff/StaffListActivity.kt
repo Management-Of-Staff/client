@@ -6,14 +6,14 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import myapplication.second.workinghourmanagement.R
-import myapplication.second.workinghourmanagement.databinding.ActivityOwnerManageStaffBinding
+import myapplication.second.workinghourmanagement.databinding.ActivityStaffListBinding
 
 class StaffListActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityOwnerManageStaffBinding
+    private lateinit var binding: ActivityStaffListBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_owner_manage_staff)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_staff_list)
 
         bind()
     }
@@ -21,6 +21,11 @@ class StaffListActivity : AppCompatActivity() {
     private fun bind() {
         binding.btnInvite.setOnClickListener {
             val intent = Intent(this, InviteStaffActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.btnTest.setOnClickListener {
+            val intent = Intent(this, ManageStaffActivity::class.java)
             startActivity(intent)
         }
     }
