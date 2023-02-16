@@ -5,12 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.Toast
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import myapplication.second.workinghourmanagement.R
 import myapplication.second.workinghourmanagement.databinding.BottomSheetAddWorkScheduleBinding
-import myapplication.second.workinghourmanagement.databinding.FragmentOwnerProfileBinding
 
 class BottomSheetAddWorkSchedule(context: Context) : BottomSheetDialogFragment() {
     private lateinit var binding: BottomSheetAddWorkScheduleBinding
@@ -37,11 +34,4 @@ class BottomSheetAddWorkSchedule(context: Context) : BottomSheetDialogFragment()
         }
         return binding.root
     }
-
-//    override fun onActivityCreated(savedInstanceState: Bundle?) {
-//        super.onActivityCreated(savedInstanceState)
-//        view?.findViewById<Button>(R.id.btn_add_schedule)?.setOnClickListener {
-//
-//        }
-//    }
 }
