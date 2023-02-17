@@ -1,5 +1,6 @@
 package myapplication.second.workinghourmanagement.profile
 
+import android.Manifest
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
@@ -7,10 +8,13 @@ import android.text.TextWatcher
 import android.util.Log
 import android.util.Patterns
 import android.view.MenuItem
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import coil.load
 import myapplication.second.workinghourmanagement.MyApplication
 import myapplication.second.workinghourmanagement.R
 import myapplication.second.workinghourmanagement.RetrofitManager
@@ -30,6 +34,26 @@ class OwnerProfileInfoActivity : AppCompatActivity() {
     private lateinit var service: RetrofitService
     private lateinit var viewModel: UserInfoViewModel
 
+
+    private val permissionList = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE)
+
+    // 권한 요청
+    private val requestMultiplePermission =
+        registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { results ->
+            results.forEach {
+                if (!it.value) {
+                    Toast.makeText(applicationContext, "${it.key} 권한 허용 필요", Toast.LENGTH_SHORT)
+                        .show()
+                    finish()
+                }
+            }
+        }
+    private val readImage = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
+        binding.profileImage.load(uri) {
+            placeholder(R.drawable.default_profile)
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_owner_profile_info)
@@ -44,6 +68,11 @@ class OwnerProfileInfoActivity : AppCompatActivity() {
     }
 
     private fun bind() {
+        binding.profileImage.setOnClickListener {
+            requestMultiplePermission.launch(permissionList)
+            readImage.launch("image/*")
+        }
+
         binding.email.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {}
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -58,6 +87,7 @@ class OwnerProfileInfoActivity : AppCompatActivity() {
         binding.toolbar.btnRightText.setOnClickListener {
             withDraw()
         }
+
         binding.btnSettingBirth.setOnClickListener {
 //            val dialog = BottomSheetDialog(this)
 //            dialog.setContentView(R.layout.dialog_fragment_bottom_sheet_birth)
@@ -100,6 +130,7 @@ class OwnerProfileInfoActivity : AppCompatActivity() {
                     intentPage(LoginActivity::class.java)
                 }
             }
+
             override fun onFailure(call: Call<ResultResponse>, t: Throwable) {
                 Log.e("withdraw call", "실패: $t")
             }
