@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 직급 -->
+    <string-array name="position">
+        <item> 매니저 </item>
+        <item> 정직원 </item>
+        <item> 아르바이트 </item>
+        <item> 선택안함 </item>
+    </string-array>
+</resources>

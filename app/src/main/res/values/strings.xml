@@ -243,4 +243,5 @@
     <string name="work_schedule">근무 일정</string>
     <string name="deleted">삭제</string>
     <string name="please_add_work_schedule">근무 일정을 추가해주세요</string>
+    <string name="select_staff_position">직급 선택</string>
 </resources>
