@@ -124,6 +124,9 @@
         <activity
             android:name=".manageStaff.ManageStaffActivity"
             android:exported="true" />
+        <activity
+            android:name=".manageStaff.StaffPersonalInfoActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
