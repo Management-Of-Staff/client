@@ -29,11 +29,14 @@ class ModifyPwActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_modify_passwd)
         service = RetrofitManager.retrofit.create(RetrofitService::class.java)
 
-        initActionbar()
         bind()
     }
 
     private fun bind() {
+        binding.toolbar.ivBack.setOnClickListener {
+            finish()
+        }
+
         binding.editNewPw.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {}
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -88,23 +91,6 @@ class ModifyPwActivity : AppCompatActivity() {
         val intent = Intent(this, where)
         startActivity(intent)
         finishAffinity()
-    }
-
-    private fun initActionbar() {
-        setSupportActionBar(binding.toolbar)
-        val actionBar: ActionBar = supportActionBar!!
-        actionBar.setDisplayShowTitleEnabled(false)
-        actionBar.setDisplayHomeAsUpEnabled(true)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            android.R.id.home -> {
-                finish()
-                return true
-            }
-        }
-        return super.onOptionsItemSelected(item)
     }
 
     private fun checkPasswordValidation(pw: String): Boolean {

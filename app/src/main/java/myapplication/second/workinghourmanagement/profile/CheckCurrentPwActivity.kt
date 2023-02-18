@@ -27,10 +27,12 @@ class CheckCurrentPwActivity : AppCompatActivity() {
         service = RetrofitManager.retrofit.create(RetrofitService::class.java)
 
         bind()
-        initActionbar()
     }
 
     private fun bind() {
+        binding.toolbar.ivBack.setOnClickListener {
+            finish()
+        }
         binding.buttonCheckCurrentPw.setOnClickListener {
             checkPassword()
         }
@@ -72,22 +74,5 @@ class CheckCurrentPwActivity : AppCompatActivity() {
         customDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         customDialog.show()
         customDialog.shutdownClick.setOnClickListener { customDialog.dismiss() }
-    }
-
-    private fun initActionbar() {
-        setSupportActionBar(binding.toolbar)
-        val actionBar: ActionBar = supportActionBar!!
-        actionBar.setDisplayShowTitleEnabled(false)
-        actionBar.setDisplayHomeAsUpEnabled(true)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            android.R.id.home -> {
-                finish()
-                return true
-            }
-        }
-        return super.onOptionsItemSelected(item)
     }
 }

@@ -15,6 +15,7 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.core.widget.doAfterTextChanged
 import androidx.databinding.DataBindingUtil
+import androidx.databinding.adapters.TextViewBindingAdapter.setText
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.*
@@ -71,22 +72,17 @@ class PhoneAuthActivity : AppCompatActivity() {
 
         state = if (intent.getStringExtra("state").isNullOrBlank()) JOIN
         else intent.getStringExtra("state")!!
-
         when (state) {
-            UPDATE_PHONE -> binding.titleToolbar.setText(R.string.update_phone)
-            FIND_PW -> binding.titleToolbar.setText(R.string.find_passwd)
-            else -> binding.titleToolbar.setText(R.string.owner_join)
+            UPDATE_PHONE -> binding.toolbar.tvTitle.setText(R.string.update_phone)
+            FIND_PW -> binding.toolbar.tvTitle.setText(R.string.find_passwd)
+            else -> binding.toolbar.tvTitle.setText(R.string.owner_join)
         }
 
         bind()
-
-        setSupportActionBar(binding.toolbar)
-        val actionBar: ActionBar = supportActionBar!!
-        actionBar.setDisplayShowTitleEnabled(false)
-        actionBar.setDisplayHomeAsUpEnabled(true)
     }
 
     private fun bind() {
+        binding.toolbar.ivBack.setOnClickListener { finish() }
         binding.ownerJoinEditPhone.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
@@ -148,16 +144,6 @@ class PhoneAuthActivity : AppCompatActivity() {
             updateRemainTime(0)
             binding.ownerJoinBtnAuth.isEnabled = true
         }
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            android.R.id.home -> {
-                finish()
-                return true
-            }
-        }
-        return super.onOptionsItemSelected(item)
     }
 
     private fun verifyPhoneNumberWithCode(credential: PhoneAuthCredential) {

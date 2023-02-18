@@ -6,5 +6,5 @@ data class ResultResponse(
     val message: String,
     val data: String,
     val statusCode: Int,
-    val timestamp: List<Int>,
+    val timestamp: String,
 )

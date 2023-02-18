@@ -12,8 +12,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import myapplication.second.workinghourmanagement.MyApplication
+import myapplication.second.workinghourmanagement.R
+import myapplication.second.workinghourmanagement.RetrofitManager
 import myapplication.second.workinghourmanagement.RetrofitService
-import myapplication.second.workinghourmanagement.*
 import myapplication.second.workinghourmanagement.databinding.ActivityOwnerProfileInfoBinding
 import myapplication.second.workinghourmanagement.dto.ResultResponse
 import myapplication.second.workinghourmanagement.dto.User
@@ -23,7 +24,6 @@ import myapplication.second.workinghourmanagement.vm.UserInfoViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.*
 
 class OwnerProfileInfoActivity : AppCompatActivity() {
     private lateinit var binding: ActivityOwnerProfileInfoBinding
@@ -41,7 +41,6 @@ class OwnerProfileInfoActivity : AppCompatActivity() {
 
         bind()
         //initProfile()
-        initActionbar()
     }
 
     private fun bind() {
@@ -56,7 +55,7 @@ class OwnerProfileInfoActivity : AppCompatActivity() {
                 }
             }
         })
-        binding.btnWithdraw.setOnClickListener {
+        binding.toolbar.btnRightText.setOnClickListener {
             withDraw()
         }
         binding.btnSettingBirth.setOnClickListener {
@@ -114,7 +113,7 @@ class OwnerProfileInfoActivity : AppCompatActivity() {
     }
 
     private fun updateProfile(profile: HashMap<String, String>) {
-        service.updateProfile(profile).enqueue(object : Callback<ResultResponse> {
+        service.updateProfile(null, profile).enqueue(object : Callback<ResultResponse> {
             override fun onResponse(
                 call: Call<ResultResponse>, response: Response<ResultResponse>
             ) {
@@ -162,24 +161,7 @@ class OwnerProfileInfoActivity : AppCompatActivity() {
         else binding.email.setText(email)
     }
 
-    private fun initActionbar() {
-        setSupportActionBar(binding.toolbar)
-        val actionBar: ActionBar = supportActionBar!!
-        actionBar.setDisplayShowTitleEnabled(false)
-        actionBar.setDisplayHomeAsUpEnabled(true)
-    }
-
     fun checkEmail(email: String): Boolean {
         return Patterns.EMAIL_ADDRESS.matcher(email).matches() // 서로 패턴이 맞닝?
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            android.R.id.home -> {
-                finish()
-                return true
-            }
-        }
-        return super.onOptionsItemSelected(item)
     }
 }

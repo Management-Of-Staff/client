@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <import type="android.view.View" />
+        <!--    title 텍스트 지정    -->
+        <variable
+            name="titleText"
+            type="java.lang.String" />
+        <!--    오른쪽 텍스트 지정    -->
+        <variable
+            name="rightText"
+            type="java.lang.String" />
+        <!--   오른쪽 텍스트 컬러지정 - true: app_color, false 또는 null : b1     -->
+        <variable
+            name="rightTextColor"
+            type="Boolean" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_back"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_back_arrow_black" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:fontFamily="@font/spoqahansansneo_bold"
+                android:text="@{titleText == null ? `Default Title Text` : titleText}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/head_text_size"
+                tools:text="titleText" />
+        </androidx.appcompat.widget.Toolbar>
+
+        <TextView
+            android:id="@+id/btn_right_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:fontFamily="@font/spoqahansansneo_medium"
+            android:text="@{rightText == null ? `rightText == null` : rightText}"
+            android:textColor="@{rightTextColor == null || !rightTextColor ?  @color/disabled_text : @color/app_color}"
+            android:textSize="@dimen/head_text_size"
+            android:visibility="@{rightText == null ? View.GONE : View.VISIBLE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="rightText" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -6,5 +6,5 @@ data class ResultUserInfo(
     val message: String,
     val data: User,
     val statusCode: Int,
-    val timestamp: List<Int>,
+    val timestamp: String,
 )

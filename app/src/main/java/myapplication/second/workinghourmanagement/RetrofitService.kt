@@ -1,20 +1,13 @@
 package myapplication.second.workinghourmanagement
 
 import myapplication.second.workinghourmanagement.dto.*
-
+import okhttp3.MultipartBody
 import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.Path
-
 import retrofit2.http.*
-import java.util.*
 
 interface RetrofitService {
     @POST("auth/reissue")
-    fun reissue(
-//        @Header("refresh") token: String,
-        @Body params: HashMap<String, String>
-    ): Call<ResultToken>
+    fun reissue(): Call<ResultToken>
 
     @POST("auth/login")
     fun login(
@@ -39,8 +32,8 @@ interface RetrofitService {
     @Multipart
     @POST("auth/update-profile")
     fun updateProfile(
-        @Part("profile") profile: HashMap<String, String>,
-       // @Part imageFile: MultipartBody.Part
+        @Part imageFile: MultipartBody.Part?,
+        @Part("profile") profile: HashMap<String, String>
     ): Call<ResultResponse>
 
     @POST("auth/withdrawal-member")
@@ -78,8 +71,8 @@ interface RetrofitService {
         @Header("Authorization") token: String,
     ): Call<ResultUserInfo>
 
-/***    매장 관리    ***/
-/***    Owner    ***/
+    /***    매장 관리    ***/
+    /***    Owner    ***/
     // 매장 리스트 불러오기 (가장 최신 매장이 위에 오도록 정렬해야 함)
     @GET("stores/")
     fun getStoreList(
@@ -109,6 +102,6 @@ interface RetrofitService {
     ): Call<Unit>
 
 
-/***    매장 일정    ***/
-/***    Owner    ***/
+    /***    매장 일정    ***/
+    /***    Owner    ***/
 }
