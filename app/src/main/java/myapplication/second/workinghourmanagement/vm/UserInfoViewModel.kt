@@ -51,9 +51,7 @@ class UserInfoViewModel : ViewModel() {
 
                         _name.value = data.name
                         _phone.value = data.phone
-                        _birth.value =
-                            data.birthDate?.get(0).toString() + "-" + data.birthDate?.get(1)
-                                .toString() + "-" + data.birthDate?.get(2).toString()
+                        _birth.value = data.birthDate
                         _email.value = data.email
                         _role.value = data.role
                         _uuid.value = data.uuid
