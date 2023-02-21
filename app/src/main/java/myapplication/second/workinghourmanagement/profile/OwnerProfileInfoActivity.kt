@@ -1,19 +1,27 @@
 package myapplication.second.workinghourmanagement.profile
 
+import android.Manifest
+import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.database.Cursor
+import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.util.Patterns
-import android.view.MenuItem
-import androidx.appcompat.app.ActionBar
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import myapplication.second.workinghourmanagement.MyApplication
 import myapplication.second.workinghourmanagement.R
-import myapplication.second.workinghourmanagement.RetrofitManager
+import myapplication.second.workinghourmanagement.RetrofitManager.Companion.retrofit
 import myapplication.second.workinghourmanagement.RetrofitService
 import myapplication.second.workinghourmanagement.databinding.ActivityOwnerProfileInfoBinding
 import myapplication.second.workinghourmanagement.dto.ResultResponse
@@ -21,14 +29,26 @@ import myapplication.second.workinghourmanagement.dto.User
 import myapplication.second.workinghourmanagement.member.LoginActivity
 import myapplication.second.workinghourmanagement.member.PhoneAuthActivity
 import myapplication.second.workinghourmanagement.vm.UserInfoViewModel
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MultipartBody
+import okhttp3.MultipartBody.Part.Companion.createFormData
+import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.asRequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.io.File
 
 class OwnerProfileInfoActivity : AppCompatActivity() {
     private lateinit var binding: ActivityOwnerProfileInfoBinding
     private lateinit var service: RetrofitService
     private lateinit var viewModel: UserInfoViewModel
+    private lateinit var profileImg: MultipartBody.Part
+
+    private val permissionList = arrayOf(
+        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+        Manifest.permission.READ_EXTERNAL_STORAGE
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,13 +57,92 @@ class OwnerProfileInfoActivity : AppCompatActivity() {
         binding.vm = viewModel
         binding.lifecycleOwner = this
 
-        service = RetrofitManager.retrofit.create(RetrofitService::class.java)
+        service = retrofit.create(RetrofitService::class.java)
 
         bind()
         //initProfile()
     }
 
+    private fun selectGallery() {
+        val writePermission = ContextCompat.checkSelfPermission(
+            this, Manifest.permission.WRITE_EXTERNAL_STORAGE
+        )
+        val readPermission = ContextCompat.checkSelfPermission(
+            this, Manifest.permission.READ_EXTERNAL_STORAGE
+        )
+
+        if (writePermission == PackageManager.PERMISSION_DENIED ||
+            readPermission == PackageManager.PERMISSION_DENIED
+        ) {
+            ActivityCompat.requestPermissions(this, permissionList, REQ_GALLERY)
+        } else {
+            val intent = Intent(Intent.ACTION_PICK)
+            intent.setDataAndType(
+                MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                "image/*"
+            )
+            imageResult.launch(intent)
+        }
+    }
+
+    // 절대경로 변환
+    private fun absolutelyPath(path: Uri?, context: Context): String {
+        val proj: Array<String> = arrayOf(MediaStore.Images.Media.DATA)
+        val c: Cursor? = context.contentResolver.query(path!!, proj, null, null, null)
+        val index = c?.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+        c?.moveToFirst()
+
+        val result = c?.getString(index!!)
+
+        return result!!
+    }
+
+
+    private val imageResult = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            val imageUri = result.data?.data ?: return@registerForActivityResult
+
+            val file = File(absolutelyPath(imageUri, this))
+
+            val requestBody: RequestBody = file.asRequestBody("image/jpeg".toMediaType())
+            profileImg = createFormData("image", file.name, requestBody)
+
+            Log.d("testProfile-b", profileImg.body.toString())
+            Log.d("testProfile-h", profileImg.headers.toString())
+            Log.d("testProfile-f", file.name)
+
+//            val requestFile: RequestBody =
+//                RequestBody.create(MediaType.parse("multipart/form-data"), file)
+//            profileImg = createFormData("uploaded_file", file.name, requestFile)
+////            val requestFile = RequestBody.create("image/*".toMediaTypeOrNull(), file)
+//            profileImg = createFormData("profile", file.name, requestFile)
+            binding.profileImage.setImageURI(imageUri)
+        }
+    }
+
     private fun bind() {
+//        launcher =
+//            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+//                if (result.resultCode == RESULT_OK) {
+//                    val intent = checkNotNull(result.data)
+//                    val imageUri = intent.data
+//
+//                    //            val imageUri = result.data?.data ?: return@registerForActivityResult
+////
+//                    val file = File(absolutelyPath(imageUri, this))
+//                    val requestFile = RequestBody.create("image/*".toMediaTypeOrNull(), file)
+//                    profileImg =
+//                        MultipartBody.Part.createFormData("profile", file.name, requestFile)
+//                    binding.profileImage.setImageURI(imageUri)
+////                Glide.with(this)
+////                    .load(imageUri)
+////                    .into(imageview)
+//                }
+//            }
+
+        binding.profileImage.setOnClickListener { selectGallery() }
         binding.email.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {}
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -100,6 +199,7 @@ class OwnerProfileInfoActivity : AppCompatActivity() {
                     intentPage(LoginActivity::class.java)
                 }
             }
+
             override fun onFailure(call: Call<ResultResponse>, t: Throwable) {
                 Log.e("withdraw call", "실패: $t")
             }
@@ -113,14 +213,17 @@ class OwnerProfileInfoActivity : AppCompatActivity() {
     }
 
     private fun updateProfile(profile: HashMap<String, String>) {
-        service.updateProfile(null, profile).enqueue(object : Callback<ResultResponse> {
+        service.updateProfile(profileImg, profile).enqueue(object : Callback<ResultResponse> {
             override fun onResponse(
                 call: Call<ResultResponse>, response: Response<ResultResponse>
             ) {
+                Log.d("tagUpdateProfile", response.raw().toString())
+                Log.d("tagUpdateDetail", response.body()!!.message)
+                Log.d("tagUpdateDetail", response.body()!!.statusCode.toString())
                 if (response.body()!!.statusCode == 200) {
                     finish()
                     //todo 뷰 다시그리기(initProfile 에서 정보조회 콜하는걸로 바꿀까?)
-                    Log.d("tag", "성공")
+                    Log.d("tagUpdateProfile", "성공")
                 }
             }
 
@@ -163,5 +266,9 @@ class OwnerProfileInfoActivity : AppCompatActivity() {
 
     fun checkEmail(email: String): Boolean {
         return Patterns.EMAIL_ADDRESS.matcher(email).matches() // 서로 패턴이 맞닝?
+    }
+
+    companion object {
+        const val REQ_GALLERY = 1
     }
 }

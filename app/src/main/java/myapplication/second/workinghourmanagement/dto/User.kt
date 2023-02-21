@@ -7,7 +7,7 @@ class User(
     val name: String,
     val phone: String,
     val email: String?,
-    val birthDate: ArrayList<Int>?,
+    val birthDate: String?,
     val role: String,
     val uuid: String
 ) : Parcelable {
@@ -15,7 +15,7 @@ class User(
         parcel.readString()!!,
         parcel.readString()!!,
         parcel.readString(),
-        parcel.readSerializable() as ArrayList<Int>?,
+        parcel.readString(),
         parcel.readString()!!,
         parcel.readString()!!
     )
@@ -24,7 +24,7 @@ class User(
         parcel.writeString(name)
         parcel.writeString(phone)
         parcel.writeString(email)
-        parcel.writeSerializable(birthDate)
+        parcel.writeString(birthDate)
         parcel.writeString(role)
         parcel.writeString(uuid)
     }
@@ -42,5 +42,4 @@ class User(
             return arrayOfNulls(size)
         }
     }
-
 }
