@@ -13,12 +13,13 @@ import myapplication.second.workinghourmanagement.RetrofitService
 import myapplication.second.workinghourmanagement.databinding.FragmentOwnerProfileBinding
 import myapplication.second.workinghourmanagement.member.LoginActivity
 import myapplication.second.workinghourmanagement.profile.OwnerProfileInfoActivity
+import myapplication.second.workinghourmanagement.profile.SettingNotificationActivity
 import myapplication.second.workinghourmanagement.vm.UserInfoViewModel
 
 class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentOwnerProfileBinding
     private lateinit var service: RetrofitService
-    private lateinit var viewModel : UserInfoViewModel
+    private lateinit var viewModel: UserInfoViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +47,13 @@ class ProfileFragment : Fragment() {
                 val intent = Intent(context, LoginActivity::class.java)
                 MyApplication.prefs.setString("accessToken", "")
                 MyApplication.prefs.setString("refreshToken", "")
+                startActivity(intent)
+            }
+        }
+
+        binding.btnSettingNotification.setOnClickListener {
+            activity?.let {
+                val intent = Intent(context, SettingNotificationActivity::class.java)
                 startActivity(intent)
             }
         }
