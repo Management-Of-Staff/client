@@ -14,6 +14,7 @@ import myapplication.second.workinghourmanagement.databinding.FragmentOwnerProfi
 import myapplication.second.workinghourmanagement.member.LoginActivity
 import myapplication.second.workinghourmanagement.profile.OwnerProfileInfoActivity
 import myapplication.second.workinghourmanagement.profile.SettingNotificationActivity
+import myapplication.second.workinghourmanagement.profile.ShowTosActivity
 import myapplication.second.workinghourmanagement.vm.UserInfoViewModel
 
 class ProfileFragment : Fragment() {
@@ -54,6 +55,13 @@ class ProfileFragment : Fragment() {
         binding.btnSettingNotification.setOnClickListener {
             activity?.let {
                 val intent = Intent(context, SettingNotificationActivity::class.java)
+                startActivity(intent)
+            }
+        }
+
+        binding.btnShowTos.setOnClickListener {
+            activity?.let{
+                val intent = Intent(context, ShowTosActivity::class.java)
                 startActivity(intent)
             }
         }
