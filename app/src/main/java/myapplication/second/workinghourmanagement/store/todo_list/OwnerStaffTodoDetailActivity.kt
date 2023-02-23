@@ -1,17 +1,23 @@
-package myapplication.second.workinghourmanagement.store
+package myapplication.second.workinghourmanagement.store.todo_list
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
+import android.util.Log
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import myapplication.second.workinghourmanagement.MyApplication
 import myapplication.second.workinghourmanagement.R
 import myapplication.second.workinghourmanagement.RetrofitManager
 import myapplication.second.workinghourmanagement.RetrofitService
 import myapplication.second.workinghourmanagement.databinding.ActivityOwnerStaffTodoDetailBinding
+import myapplication.second.workinghourmanagement.dto.todo_list.ResponseGetStaffTodo
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class OwnerStaffTodoDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityOwnerStaffTodoDetailBinding
@@ -30,7 +36,48 @@ class OwnerStaffTodoDetailActivity : AppCompatActivity() {
     }
 
     private fun setupView() {
+        val todoListId = MyApplication.prefs.getString("todoListId")
 
+        service.getStaffTodo(todoListId)
+            .enqueue(object : Callback<ResponseGetStaffTodo> {
+                override fun onResponse(
+                    call: Call<ResponseGetStaffTodo>,
+                    response: Response<ResponseGetStaffTodo>
+                ) {
+                    if (response.isSuccessful) {
+                        val body = response.body()
+
+                        body?.let {
+                            initRecyclerView(binding.rvStaffTodoList)
+                        }
+                    } else if (response.code() == 401) {
+                        Toast.makeText(
+                            this@OwnerStaffTodoDetailActivity,
+                            "Unauthorized",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    } else if (response.code() == 403) {
+                        Toast.makeText(
+                            this@OwnerStaffTodoDetailActivity,
+                            "Forbidden",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    } else if (response.code() == 404) {
+                        Toast.makeText(
+                            this@OwnerStaffTodoDetailActivity,
+                            "Not Found",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }  else {
+                        return
+                    }
+                }
+
+                override fun onFailure(call: Call<ResponseGetStaffTodo>, t: Throwable) {
+                    Log.e("fail", "get staff todo failed... Why? : " + t.message.orEmpty())
+                }
+
+            })
     }
 
     private fun initRecyclerView(recyclerView: RecyclerView) {
@@ -73,7 +120,8 @@ class OwnerStaffTodoDetailActivity : AppCompatActivity() {
     }
 
     private fun intentModifyStaffTodo() {
-        TODO("Not yet implemented")
+        val intent = OwnerModifyStaffTodoActivity.getIntent(this)
+        startActivity(intent)
     }
 
     companion object {

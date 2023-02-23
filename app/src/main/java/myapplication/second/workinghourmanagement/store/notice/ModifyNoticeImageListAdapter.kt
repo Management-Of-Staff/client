@@ -1,4 +1,4 @@
-package myapplication.second.workinghourmanagement.store
+package myapplication.second.workinghourmanagement.store.notice
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

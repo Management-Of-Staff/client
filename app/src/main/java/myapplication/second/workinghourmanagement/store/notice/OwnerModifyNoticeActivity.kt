@@ -1,4 +1,4 @@
-package myapplication.second.workinghourmanagement.store
+package myapplication.second.workinghourmanagement.store.notice
 
 import android.Manifest
 import android.app.Activity
@@ -22,13 +22,13 @@ import androidx.recyclerview.widget.RecyclerView
 import myapplication.second.workinghourmanagement.R
 import myapplication.second.workinghourmanagement.RetrofitManager
 import myapplication.second.workinghourmanagement.RetrofitService
-import myapplication.second.workinghourmanagement.databinding.ActivityOwnerPostNoticeBinding
+import myapplication.second.workinghourmanagement.databinding.ActivityOwnerModifyNoticeBinding
 
-class OwnerPostNoticeActivity : AppCompatActivity() {
+class OwnerModifyNoticeActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityOwnerPostNoticeBinding
+    private lateinit var binding: ActivityOwnerModifyNoticeBinding
     private lateinit var service: RetrofitService
-    private lateinit var postNoticeImageListAdapter: PostNoticeImageListAdapter
+    private lateinit var modifyNoticeImageListAdapter: ModifyNoticeImageListAdapter
 
     private val openGalleryResultLauncher: ActivityResultLauncher<Intent> =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
@@ -67,15 +67,15 @@ class OwnerPostNoticeActivity : AppCompatActivity() {
 
                 binding.rvNoticeImages.visibility = View.VISIBLE
                 if (binding.editTitleNotice.text.toString().isNotEmpty()) {
-                    binding.btnPostNotice.setTextColor(ContextCompat.getColor(this, R.color.app_color))
-                    binding.btnPostNotice.isClickable = true
+                    binding.btnModifyNotice.setTextColor(ContextCompat.getColor(this, R.color.app_color))
+                    binding.btnModifyNotice.isClickable = true
                 }
             }
         }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_owner_post_notice)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_owner_modify_notice)
 
         service = RetrofitManager.retrofit.create(RetrofitService::class.java)
 
@@ -88,7 +88,7 @@ class OwnerPostNoticeActivity : AppCompatActivity() {
     }
 
     private fun initRecyclerView(recyclerView: RecyclerView) {
-        postNoticeImageListAdapter = PostNoticeImageListAdapter(
+        modifyNoticeImageListAdapter = ModifyNoticeImageListAdapter(
             onClick = ::intentPhoto,
             onCancelClick = ::deletePhoto
         )
@@ -96,9 +96,9 @@ class OwnerPostNoticeActivity : AppCompatActivity() {
         recyclerView.run {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-            adapter = postNoticeImageListAdapter
+            adapter = modifyNoticeImageListAdapter
             val spaceDecoration = HorizontalSpaceItemDecoration(1)
-            removeItemDecoration(object : DividerItemDecoration(this@OwnerPostNoticeActivity, HORIZONTAL) {
+            removeItemDecoration(object : DividerItemDecoration(this@OwnerModifyNoticeActivity, HORIZONTAL) {
 
             })
             addItemDecoration(spaceDecoration)
@@ -150,12 +150,12 @@ class OwnerPostNoticeActivity : AppCompatActivity() {
             }
         }
 
-        binding.btnPostNotice.setOnClickListener {
-            openPostNoticeDialog()
+        binding.btnModifyNotice.setOnClickListener {
+            modifyNotice()
         }
     }
 
-    private fun openPostNoticeDialog() {
+    private fun modifyNotice() {
 
     }
 
@@ -205,6 +205,6 @@ class OwnerPostNoticeActivity : AppCompatActivity() {
         const val PERMISSION_REQ_CODE = 1010
 
         fun getIntent(context: Context) =
-            Intent(context, OwnerPostNoticeActivity::class.java)
+            Intent(context, OwnerModifyNoticeActivity::class.java)
     }
 }

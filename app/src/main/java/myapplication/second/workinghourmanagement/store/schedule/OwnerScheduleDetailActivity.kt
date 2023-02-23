@@ -1,4 +1,4 @@
-package myapplication.second.workinghourmanagement.store
+package myapplication.second.workinghourmanagement.store.schedule
 
 import android.content.Context
 import android.content.Intent
@@ -6,7 +6,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import myapplication.second.workinghourmanagement.RetrofitService
 import myapplication.second.workinghourmanagement.databinding.ActivityOwnerScheduleDetailBinding
-import myapplication.second.workinghourmanagement.store.AskDeleteScheduleDialogFragment.Companion.TAG
+import myapplication.second.workinghourmanagement.store.schedule.AskDeleteScheduleDialogFragment.Companion.TAG
 
 
 class OwnerScheduleDetailActivity: AppCompatActivity() {

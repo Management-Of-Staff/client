@@ -1,4 +1,4 @@
-package myapplication.second.workinghourmanagement.store
+package myapplication.second.workinghourmanagement.store.schedule
 
 import android.content.Context
 import android.content.Intent
@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import myapplication.second.workinghourmanagement.R
 import myapplication.second.workinghourmanagement.databinding.ActivityOwnerImportantScheduleBinding
 
 class OwnerImportantScheduleActivity : AppCompatActivity() {

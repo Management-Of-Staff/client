@@ -1,4 +1,4 @@
-package myapplication.second.workinghourmanagement.store
+package myapplication.second.workinghourmanagement.store.schedule
 
 import android.content.Context
 import android.content.Intent
@@ -7,17 +7,19 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import myapplication.second.workinghourmanagement.R
 import myapplication.second.workinghourmanagement.RetrofitService
-import myapplication.second.workinghourmanagement.databinding.ActivityOwnerModifyScheduleBinding
+import myapplication.second.workinghourmanagement.databinding.ActivityOwnerPostScheduleBinding
+import myapplication.second.workinghourmanagement.store.todo_list.BottomSheetSetDate
+import myapplication.second.workinghourmanagement.store.todo_list.BottomSheetSetTime
 
-class OwnerModifyScheduleActivity: AppCompatActivity() {
+class OwnerPostScheduleActivity: AppCompatActivity() {
 
-    private lateinit var binding: ActivityOwnerModifyScheduleBinding
+    private lateinit var binding: ActivityOwnerPostScheduleBinding
     private lateinit var service: RetrofitService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_owner_modify_schedule)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_owner_post_schedule)
         binding.lifecycleOwner = this
 
         setupView()
@@ -25,7 +27,7 @@ class OwnerModifyScheduleActivity: AppCompatActivity() {
     }
 
     private fun setupView() {
-        TODO("Not yet implemented")
+
     }
 
     private fun setupListeners() {
@@ -45,19 +47,24 @@ class OwnerModifyScheduleActivity: AppCompatActivity() {
             openSetTimeBottomSheetDialogFragment()
         }
 
-        binding.btnModifySchedule.setOnClickListener {
-            // TODO: 스케줄 변경할 때의 API 연동 구현
+        binding.btnPostSchedule.setOnClickListener {
+            postSchedule()
         }
     }
 
+    private fun postSchedule() {
+        // TODO: 일정 등록할 때 필요한 API 구현
+        val scheduleInfo = HashMap<String, String>()
+    }
+
     private fun openSetDateBottomSheetDialogFragment() {
-        val intent = BottomSheetSetDate.getIntent(this)
-        startActivity(intent)
+        val bottomSheet = BottomSheetSetDate()
+        bottomSheet.show(supportFragmentManager, bottomSheet.tag)
     }
 
     private fun openSetTimeBottomSheetDialogFragment() {
-        val intent = BottomSheetSetTime.getIntent(this)
-        startActivity(intent)
+        val bottomSheet = BottomSheetSetTime()
+        bottomSheet.show(supportFragmentManager, bottomSheet.tag)
     }
 
     private fun intentSelectColorPalette() {
@@ -67,6 +74,6 @@ class OwnerModifyScheduleActivity: AppCompatActivity() {
 
     companion object {
         fun getIntent(context: Context) =
-            Intent(context, OwnerModifyScheduleActivity::class.java)
+            Intent(context, OwnerPostScheduleActivity::class.java)
     }
 }

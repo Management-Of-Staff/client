@@ -1,4 +1,4 @@
-package myapplication.second.workinghourmanagement.store
+package myapplication.second.workinghourmanagement.store.notice
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import myapplication.second.workinghourmanagement.databinding.ItemNoticeImageBinding
-import myapplication.second.workinghourmanagement.dto.ResultGetOwnerStaffTodo
 
 class PostNoticeImageListAdapter(
     private val onClick: (String) -> Unit,

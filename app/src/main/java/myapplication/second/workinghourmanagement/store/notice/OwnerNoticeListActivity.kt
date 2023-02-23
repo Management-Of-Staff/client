@@ -1,4 +1,4 @@
-package myapplication.second.workinghourmanagement.store
+package myapplication.second.workinghourmanagement.store.notice
 
 import android.content.Context
 import android.content.Intent
@@ -6,13 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.coroutines.NonCancellable.start
 import myapplication.second.workinghourmanagement.R
 import myapplication.second.workinghourmanagement.RetrofitManager
 import myapplication.second.workinghourmanagement.RetrofitService
 import myapplication.second.workinghourmanagement.databinding.ActivityOwnerNoticeListBinding
-import myapplication.second.workinghourmanagement.databinding.ActivityOwnerStaffTodoDetailBinding
-import myapplication.second.workinghourmanagement.dto.ResultGetNotice
+import myapplication.second.workinghourmanagement.dto.notice.ResponseGetNotice
 
 class OwnerNoticeListActivity : AppCompatActivity() {
 
@@ -43,7 +41,7 @@ class OwnerNoticeListActivity : AppCompatActivity() {
         )
     }
 
-    private fun intentNoticeDetail(resultGetNotice: ResultGetNotice) {
+    private fun intentNoticeDetail(responseGetNotice: ResponseGetNotice) {
         val intent = OwnerNoticeDetailActivity.getIntent(this)
         startActivity(intent)
     }

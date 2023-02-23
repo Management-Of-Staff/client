@@ -1,4 +1,4 @@
-package myapplication.second.workinghourmanagement.store
+package myapplication.second.workinghourmanagement.store.schedule
 
 import android.content.Context
 import android.content.Intent
