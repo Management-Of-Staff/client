@@ -11,5 +11,11 @@ class ShowTosActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_show_tos)
+
+        bind()
+    }
+
+    private fun bind() {
+        binding.toolbar.ivBack.setOnClickListener { finish() }
     }
 }

@@ -11,5 +11,11 @@ class SettingNotificationActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_setting_notification)
+
+        bind()
+    }
+
+    private fun bind() {
+        binding.toolbar.ivBack.setOnClickListener { finish() }
     }
 }
