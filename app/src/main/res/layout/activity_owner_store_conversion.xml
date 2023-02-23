@@ -118,7 +118,6 @@
             android:layout_marginHorizontal="10dp"
             android:layout_marginBottom="30dp"
             android:background="#DFE2F3"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/item_owner_store_conversion_list"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
