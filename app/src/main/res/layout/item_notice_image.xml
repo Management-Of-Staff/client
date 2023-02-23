@@ -9,7 +9,7 @@
 
         <variable
             name="noticeImage"
-            type="myapplication.second.workinghourmanagement.dto.ResultGetNotice" />
+            type="myapplication.second.workinghourmanagement.dto.notice.ResponseGetNotice" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
