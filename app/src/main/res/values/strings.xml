@@ -244,4 +244,5 @@
     <string name="deleted">삭제</string>
     <string name="please_add_work_schedule">근무 일정을 추가해주세요</string>
     <string name="select_staff_position">직급 선택</string>
+    <string name="owner_completed_modify_staff_todo">해야할 일을 수정했습니다.</string>
 </resources>

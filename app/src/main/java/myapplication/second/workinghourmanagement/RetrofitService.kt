@@ -1,6 +1,13 @@
 package myapplication.second.workinghourmanagement
 
 import myapplication.second.workinghourmanagement.dto.*
+import myapplication.second.workinghourmanagement.dto.store.ResponseGetStoreList
+import myapplication.second.workinghourmanagement.dto.store.ResponseModifyStore
+import myapplication.second.workinghourmanagement.dto.store.ResponseRegisterStore
+import myapplication.second.workinghourmanagement.dto.todo_list.ResponseGetStaffTodo
+import myapplication.second.workinghourmanagement.dto.todo_list.ResponseGetStaffTodoList
+import myapplication.second.workinghourmanagement.dto.todo_list.ResponseModifyStaffTodo
+import myapplication.second.workinghourmanagement.dto.todo_list.ResponsePostStaffTodo
 import okhttp3.MultipartBody
 import retrofit2.Call
 import retrofit2.http.*
@@ -71,37 +78,70 @@ interface RetrofitService {
         @Header("Authorization") token: String,
     ): Call<ResultUserInfo>
 
+
+
+
     /***    매장 관리    ***/
     /***    Owner    ***/
     // 매장 리스트 불러오기 (가장 최신 매장이 위에 오도록 정렬해야 함)
     @GET("stores/")
     fun getStoreList(
-        @Header("Authorization") token: String,
-//        @Query("timestamp") timestamp: List<Int>
-    ): Call<ResultGetStoreList>
+    ): Call<ResponseGetStoreList>
 
-    // 매장 등록
+    // 매장 생성
     @POST("stores/")
     fun postStore(
-        @Header("Authorization") token: String,
         @Body params: HashMap<String, String>
-    ): Call<ResultResponse>
+    ): Call<ResponseRegisterStore>
 
     // 매장 수정
     @POST("stores/{storeId}")
     fun modifyStore(
-        @Header("Authorization") token: String,
-        @Body params: HashMap<String, String>,
-        @Path("storeId") storeId: String
-    ): Call<ResultResponse>
+        @Path("storeId") storeId: Int,
+        @Body params: HashMap<String, String>
+    ): Call<ResponseModifyStore>
 
     // 매장 삭제
     @DELETE("stores/{storeId}")
     fun deleteStore(
-        @Path("storeId") storeId: String
+        @Path("storeId") storeId: Int
     ): Call<Unit>
 
 
     /***    매장 일정    ***/
     /***    Owner    ***/
+
+    /***    해야할 일    ***/
+    // 직원 해야할 일 목록 불러오기
+    @GET("todoList/")
+    fun getStaffTodoList(
+        @Query("storeId") storeId: String
+    ): Call<ResponseGetStaffTodoList>
+
+    // 직원 해야할 일 등록
+    @POST("todoList/")
+    fun postStaffTodo(
+        @Query("storeId") storeId: String,
+        @Body params: HashMap<String, String>
+    ): Call<ResponsePostStaffTodo>
+
+    // 직원 해야할 일 상세 정보 불러오기
+    @GET("todoList/{todoListId}")
+    fun getStaffTodo(
+        @Path("todoListId") todoListId: String
+    ): Call<ResponseGetStaffTodo>
+
+    // 직원 해야할 일 수정
+    @POST("todoList/{todoListId}")
+    fun modifyStaffTodo(
+        @Query("storeId") storeId: String,
+        @Path("todoListId") todoListId: String,
+        @Body params: HashMap<String, String>
+    ): Call<ResponseModifyStaffTodo>
+
+    // 매장 삭제
+    @DELETE("todoList/{todoListId}")
+    fun deleteStaffTodo(
+        @Path("todoListId") todoListId: String
+    ): Call<Unit>
 }
