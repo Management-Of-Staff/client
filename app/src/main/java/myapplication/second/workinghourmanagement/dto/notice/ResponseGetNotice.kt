@@ -1,6 +1,6 @@
-package myapplication.second.workinghourmanagement.dto
+package myapplication.second.workinghourmanagement.dto.notice
 
-data class ResultGetNotice(
+data class ResponseGetNotice(
     val noticeId: Int,
     val noticeTitle: String,
     val noticeDesc: String,
