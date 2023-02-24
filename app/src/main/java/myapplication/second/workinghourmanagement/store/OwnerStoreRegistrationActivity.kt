@@ -2,12 +2,13 @@ package myapplication.second.workinghourmanagement.store
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import myapplication.second.workinghourmanagement.MyApplication
@@ -15,7 +16,7 @@ import myapplication.second.workinghourmanagement.R
 import myapplication.second.workinghourmanagement.RetrofitManager
 import myapplication.second.workinghourmanagement.RetrofitService
 import myapplication.second.workinghourmanagement.databinding.ActivityOwnerStoreRegistrationBinding
-import myapplication.second.workinghourmanagement.dto.ResultResponse
+import myapplication.second.workinghourmanagement.dto.store.ResponseRegisterStore
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -92,7 +93,7 @@ class OwnerStoreRegistrationActivity : AppCompatActivity(), View.OnClickListener
     }
 
     private fun registerStore() {
-        val token = "Bearer " + MyApplication.prefs.getString("accessToken")
+        val token = MyApplication.prefs.getString("accessToken")
 
         val storeInfo = HashMap<String, String>()
 
@@ -104,30 +105,44 @@ class OwnerStoreRegistrationActivity : AppCompatActivity(), View.OnClickListener
         storeInfo["storeName"] = binding.editStoreName.text.toString()
         storeInfo["lateTime"] = binding.tvSetAllowLateTime.text.toString()
 
-        service.postStore(token, storeInfo)
-            .enqueue(object : Callback<ResultResponse> {
+        service.postStore(storeInfo)
+            .enqueue(object : Callback<ResponseRegisterStore> {
                 override fun onResponse(
-                    call: Call<ResultResponse>,
-                    response: Response<ResultResponse>
+                    call: Call<ResponseRegisterStore>,
+                    response: Response<ResponseRegisterStore>
                 ) {
-                    if (response.isSuccessful) {
-                        val body = response.body()
-                        if (body != null) {
-                            Log.d("data", body.data.toString())
-                            Log.d("statusCode", body.statusCode.toString())
-                            Log.d("message", body.message)
+                    val body = response.body()
+                    if (response.isSuccessful && body != null) {
+                        Log.d("data", body.data)
+                        Log.d("statusCode", body.statusCode.toString())
+                        Log.d("message", body.message)
 
-                            if (body.statusCode == 200) {
-                                finish()
-                                onRegistrationSuccess()
-                            }
-                        }
+                        finish()
+                        onRegistrationSuccess()
+                    } else if (body?.statusCode == 401) {
+                        Toast.makeText(
+                            this@OwnerStoreRegistrationActivity,
+                            "Unauthorized",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    } else if (body?.statusCode == 403) {
+                        Toast.makeText(
+                            this@OwnerStoreRegistrationActivity,
+                            "Forbidden",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    } else if (body?.statusCode == 404) {
+                        Toast.makeText(
+                            this@OwnerStoreRegistrationActivity,
+                            "Not Found",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     } else {
                         return
                     }
                 }
 
-                override fun onFailure(call: Call<ResultResponse>, t: Throwable) {
+                override fun onFailure(call: Call<ResponseRegisterStore>, t: Throwable) {
                     Log.e("fail", "store registration failed... Why? : " + t.message.orEmpty())
                 }
             })

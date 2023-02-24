@@ -7,14 +7,15 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import myapplication.second.workinghourmanagement.MyApplication
 import myapplication.second.workinghourmanagement.R
 import myapplication.second.workinghourmanagement.RetrofitManager
 import myapplication.second.workinghourmanagement.RetrofitService
 import myapplication.second.workinghourmanagement.databinding.ActivityOwnerStoreInfoModificationBinding
-import myapplication.second.workinghourmanagement.dto.ResultResponse
+import myapplication.second.workinghourmanagement.dto.store.ResponseGetStore
+import myapplication.second.workinghourmanagement.dto.store.ResponseModifyStore
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -61,14 +62,15 @@ class OwnerStoreInfoModificationActivity : AppCompatActivity(), View.OnClickList
         }
 
         binding.btnModifyStore.setOnClickListener {
-            modifyStoreInfo()
+//            val responseGetStore = service.getStoreList().
+//            modifyStoreInfo(responseGetStore)
             finish()
         }
     }
 
     // TODO: 매장 정보 수정 기능 구현
-    private fun modifyStoreInfo() {
-        val token = "Bearer " + MyApplication.prefs.getString("accessToken")
+    private fun modifyStoreInfo(responseGetStore: ResponseGetStore) {
+        val storeId = responseGetStore.storeId
 
         val storeInfo = HashMap<String, String>()
 
@@ -80,30 +82,46 @@ class OwnerStoreInfoModificationActivity : AppCompatActivity(), View.OnClickList
         storeInfo["storeName"] = binding.editStoreName.text.toString()
         storeInfo["lateTime"] = binding.tvSetAllowLateTime.text.toString()
 
-        service.postStore(token, storeInfo)
-            .enqueue(object : Callback<ResultResponse> {
+        service.modifyStore(storeId, storeInfo)
+            .enqueue(object : Callback<ResponseModifyStore> {
                 override fun onResponse(
-                    call: Call<ResultResponse>,
-                    response: Response<ResultResponse>
+                    call: Call<ResponseModifyStore>,
+                    response: Response<ResponseModifyStore>
                 ) {
+                    val body = response.body()
                     if (response.isSuccessful) {
-                        val body = response.body()
                         if (body != null) {
-                            Log.d("data", body.data.toString())
+                            Log.d("data", body.data)
                             Log.d("statusCode", body.statusCode.toString())
                             Log.d("message", body.message)
 
-                            if (body.statusCode == 200) {
-                                finish()
-                                onModificationSuccess()
-                            }
+                            finish()
+                            onModificationSuccess()
                         }
+                    } else if (body?.statusCode == 401) {
+                        Toast.makeText(
+                            this@OwnerStoreInfoModificationActivity,
+                            "Unauthorized",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    } else if (body?.statusCode == 403) {
+                        Toast.makeText(
+                            this@OwnerStoreInfoModificationActivity,
+                            "Forbidden",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    } else if (body?.statusCode == 404) {
+                        Toast.makeText(
+                            this@OwnerStoreInfoModificationActivity,
+                            "Not Found",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     } else {
                         return
                     }
                 }
 
-                override fun onFailure(call: Call<ResultResponse>, t: Throwable) {
+                override fun onFailure(call: Call<ResponseModifyStore>, t: Throwable) {
                     Log.e("fail", "store modification failed... Why? : " + t.message.orEmpty())
                 }
             })
