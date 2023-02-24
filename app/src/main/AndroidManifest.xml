@@ -20,45 +20,45 @@
         android:theme="@style/Theme.WorkingHourManagement"
         tools:targetApi="31">
         <activity
-            android:name=".store.OwnerModifyNoticeActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustNothing" />
-        <activity
-            android:name=".store.OwnerPostNoticeActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustNothing" />
-        <activity
-            android:name=".store.OwnerNoticeDetailActivity"
+            android:name=".store.notice.OwnerModifyNoticeActivity"
+            android:windowSoftInputMode="adjustNothing"
             android:exported="false" />
         <activity
-            android:name=".store.OwnerNoticeListActivity"
-            android:exported="true" />
-        <activity
-            android:name=".store.OwnerModifyStaffTodoActivity"
+            android:name=".store.notice.OwnerPostNoticeActivity"
+            android:windowSoftInputMode="adjustNothing"
             android:exported="false" />
         <activity
-            android:name=".store.OwnerPostStaffTodoActivity"
+            android:name=".store.notice.OwnerNoticeDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".store.OwnerStaffTodoDetailActivity"
+            android:name=".store.notice.OwnerNoticeListActivity"
+            android:exported="true" />
+        <activity
+            android:name=".store.todo_list.OwnerModifyStaffTodoActivity"
             android:exported="false" />
         <activity
-            android:name=".store.OwnerStaffTodoManagementActivity"
+            android:name=".store.todo_list.OwnerPostStaffTodoActivity"
             android:exported="false" />
         <activity
-            android:name=".store.SelectColorPaletteActivity"
+            android:name=".store.todo_list.OwnerStaffTodoDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".store.todo_list.OwnerStaffTodoListManagementActivity"
+            android:exported="false" />
+        <activity
+            android:name=".store.schedule.SelectColorPaletteActivity"
             android:exported="true" />
         <activity
-            android:name=".store.OwnerModifyScheduleActivity"
+            android:name=".store.schedule.OwnerModifyScheduleActivity"
             android:exported="true" />
         <activity
-            android:name=".store.OwnerPostScheduleActivity"
+            android:name=".store.schedule.OwnerPostScheduleActivity"
             android:exported="true" />
         <activity
-            android:name=".store.OwnerScheduleDetailActivity"
+            android:name=".store.schedule.OwnerScheduleDetailActivity"
             android:exported="true" />
         <activity
-            android:name=".store.OwnerImportantScheduleActivity"
+            android:name=".store.schedule.OwnerImportantScheduleActivity"
             android:exported="false" />
         <activity
             android:name=".store.OwnerSearchPrimaryAddressActivity"

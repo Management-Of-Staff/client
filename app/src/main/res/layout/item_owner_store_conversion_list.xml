@@ -6,7 +6,7 @@
     <data>
         <variable
             name="storeItem"
-            type="myapplication.second.workinghourmanagement.dto.ResultGetStore" />
+            type="myapplication.second.workinghourmanagement.dto.store.ResponseGetStore" />
     </data>
 
     <androidx.cardview.widget.CardView

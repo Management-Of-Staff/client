@@ -3,26 +3,27 @@ package myapplication.second.workinghourmanagement.store
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import myapplication.second.workinghourmanagement.databinding.ItemOwnerStoreConversionListBinding
-import myapplication.second.workinghourmanagement.dto.ResultGetStore
+import myapplication.second.workinghourmanagement.dto.store.ResponseGetStore
 
 class OwnerStoreConversionAdapter(
-    private val onClick: (ResultGetStore) -> Unit
-): ListAdapter<ResultGetStore, OwnerStoreConversionAdapter.ConvertStoreViewHolder>(DiffCallback()) {
+    private val onClick: (ResponseGetStore) -> Unit
+): ListAdapter<ResponseGetStore, OwnerStoreConversionAdapter.ConvertStoreViewHolder>(DiffCallback()) {
 
-    private val storeList = mutableListOf<ResultGetStore>()
+    private val storeList = mutableListOf<ResponseGetStore>()
     private var isRadioButtonVisible = false
 
     class ConvertStoreViewHolder(
         val binding: ItemOwnerStoreConversionListBinding,
-        private val onClick: (ResultGetStore) -> Unit
+        private val onClick: (ResponseGetStore) -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(storeItem: ResultGetStore) {
+        fun bind(storeItem: ResponseGetStore) {
+            binding.tvStoreTitle.text = storeItem.storeName
+            binding.tvStoreSubtitle.text = storeItem.branchName
 
             binding.root.setOnClickListener {
                 onClick(storeItem)
@@ -40,33 +41,35 @@ class OwnerStoreConversionAdapter(
     }
 
     override fun onBindViewHolder(holder: ConvertStoreViewHolder, position: Int) {
-        val storeItem = storeList[position]
+        val storeItem = currentList[position]
 
         if (isRadioButtonVisible) {
             holder.binding.rbChoiceConvertStore.visibility = View.VISIBLE
+            holder.binding.ivChoiceConvertStore.visibility = View.GONE
         } else {
             holder.binding.rbChoiceConvertStore.visibility = View.GONE
+            holder.binding.ivChoiceConvertStore.visibility = View.VISIBLE
         }
 
         holder.bind(storeItem)
     }
 
     override fun getItemCount(): Int {
-        return storeList.size
+        return currentList.size
     }
 
-    fun setStoreList(store: List<ResultGetStore>) {
+    fun setStoreList(store: List<ResponseGetStore>) {
         storeList.clear()
         storeList.addAll(store)
         notifyDataSetChanged()
     }
 
-    fun add(position: Int, store: ResultGetStore) {
+    fun add(position: Int, store: ResponseGetStore) {
         storeList.add(position, store)
         notifyItemInserted(position)
     }
 
-    fun replaceItem(store: ResultGetStore) {
+    fun replaceItem(store: ResponseGetStore) {
         val index = storeList.indexOf(store)
         storeList[index] = store
         notifyItemChanged(index)
@@ -77,12 +80,12 @@ class OwnerStoreConversionAdapter(
         notifyDataSetChanged()
     }
 
-    private class DiffCallback : DiffUtil.ItemCallback<ResultGetStore>(){
-        override fun areItemsTheSame(oldItem: ResultGetStore, newItem: ResultGetStore): Boolean {
+    private class DiffCallback : DiffUtil.ItemCallback<ResponseGetStore>(){
+        override fun areItemsTheSame(oldItem: ResponseGetStore, newItem: ResponseGetStore): Boolean {
             return oldItem.storeId == newItem.storeId
         }
 
-        override fun areContentsTheSame(oldItem: ResultGetStore, newItem: ResultGetStore): Boolean {
+        override fun areContentsTheSame(oldItem: ResponseGetStore, newItem: ResponseGetStore): Boolean {
             return oldItem == newItem
         }
     }
