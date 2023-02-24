@@ -115,33 +115,33 @@ interface RetrofitService {
     // 직원 해야할 일 목록 불러오기
     @GET("todoList/")
     fun getStaffTodoList(
-        @Query("storeId") storeId: String
+        @Query("storeId") storeId: Int
     ): Call<ResponseGetStaffTodoList>
 
     // 직원 해야할 일 등록
     @POST("todoList/")
     fun postStaffTodo(
-        @Query("storeId") storeId: String,
+        @Query("storeId") storeId: Int,
         @Body params: HashMap<String, String>
     ): Call<ResponsePostStaffTodo>
 
     // 직원 해야할 일 상세 정보 불러오기
     @GET("todoList/{todoListId}")
     fun getStaffTodo(
-        @Path("todoListId") todoListId: String
+        @Path("todoListId") todoListId: Int
     ): Call<ResponseGetStaffTodo>
 
     // 직원 해야할 일 수정
     @POST("todoList/{todoListId}")
     fun modifyStaffTodo(
-        @Query("storeId") storeId: String,
-        @Path("todoListId") todoListId: String,
+        @Query("storeId") storeId: Int,
+        @Path("todoListId") todoListId: Int,
         @Body params: HashMap<String, String>
     ): Call<ResponseModifyStaffTodo>
 
     // 매장 삭제
     @DELETE("todoList/{todoListId}")
     fun deleteStaffTodo(
-        @Path("todoListId") todoListId: String
+        @Path("todoListId") todoListId: Int
     ): Call<Unit>
 }
