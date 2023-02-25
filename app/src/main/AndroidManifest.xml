@@ -131,6 +131,10 @@
         <activity
             android:name=".manageStaff.StaffPersonalInfoActivity"
             android:exported="true" />
+
+        <activity
+            android:name=".GpsTestActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
