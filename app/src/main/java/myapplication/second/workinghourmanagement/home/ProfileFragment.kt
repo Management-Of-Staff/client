@@ -58,10 +58,8 @@ class ProfileFragment : Fragment() {
         }
 
         binding.btnShowTos.setOnClickListener {
-            activity?.let{
-                val intent = Intent(context, ShowTosActivity::class.java)
-                startActivity(intent)
-            }
+            val intent = Intent(context, ShowTosActivity::class.java)
+            startActivity(intent)
         }
         return binding.root
     }
