@@ -14,6 +14,8 @@ import myapplication.second.workinghourmanagement.RetrofitService
 import myapplication.second.workinghourmanagement.databinding.FragmentOwnerProfileBinding
 import myapplication.second.workinghourmanagement.member.LoginActivity
 import myapplication.second.workinghourmanagement.profile.OwnerProfileInfoActivity
+import myapplication.second.workinghourmanagement.profile.SettingNotificationActivity
+import myapplication.second.workinghourmanagement.profile.ShowTosActivity
 import myapplication.second.workinghourmanagement.vm.UserInfoViewModel
 
 class ProfileFragment : Fragment() {
@@ -54,6 +56,16 @@ class ProfileFragment : Fragment() {
                 MyApplication.prefs.setString("refreshToken", "")
                 startActivity(intent)
             }
+        }
+
+        binding.btnSettingNotification.setOnClickListener {
+            val intent = Intent(context, SettingNotificationActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.btnShowTos.setOnClickListener {
+            val intent = Intent(context, ShowTosActivity::class.java)
+            startActivity(intent)
         }
         return binding.root
     }

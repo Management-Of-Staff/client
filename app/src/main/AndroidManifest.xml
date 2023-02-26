@@ -120,6 +120,12 @@
             android:name=".profile.ModifyPwActivity"
             android:exported="true" />
         <activity
+            android:name=".profile.ShowTosActivity"
+            android:exported="true" />
+        <activity
+            android:name=".profile.SettingNotificationActivity"
+            android:exported="true" />
+        <activity
             android:name=".manageStaff.StaffListActivity"
             android:exported="true" />
         <activity
