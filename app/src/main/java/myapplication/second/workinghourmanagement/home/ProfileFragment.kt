@@ -43,10 +43,8 @@ class ProfileFragment : Fragment() {
         }
 
         binding.btnGpsTest.setOnClickListener {
-            activity?.let {
-                val intent = Intent(context, GpsTestActivity::class.java)
-                startActivity(intent)
-            }
+            val intent = Intent(context, GpsTestActivity::class.java)
+            startActivity(intent)
         }
 
         binding.btnLogout.setOnClickListener {
