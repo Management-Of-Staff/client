@@ -53,10 +53,8 @@ class ProfileFragment : Fragment() {
         }
 
         binding.btnSettingNotification.setOnClickListener {
-            activity?.let {
-                val intent = Intent(context, SettingNotificationActivity::class.java)
-                startActivity(intent)
-            }
+            val intent = Intent(context, SettingNotificationActivity::class.java)
+            startActivity(intent)
         }
 
         binding.btnShowTos.setOnClickListener {
