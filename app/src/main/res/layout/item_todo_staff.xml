@@ -6,7 +6,7 @@
     <data>
         <variable
             name="staffItem"
-            type="myapplication.second.workinghourmanagement.dto.ResultGetStaff" />
+            type="myapplication.second.workinghourmanagement.dto.manageStaff.Staff" />
     </data>
 
     <androidx.cardview.widget.CardView

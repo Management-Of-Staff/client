@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import myapplication.second.workinghourmanagement.databinding.BottomSheetOwnerSelectTodoManagerBinding
-import myapplication.second.workinghourmanagement.dto.ResultGetStaff
+import myapplication.second.workinghourmanagement.dto.manageStaff.Staff
 
 class BottomSheetOwnerSelectTodoManager: BottomSheetDialogFragment() {
     private var _binding: BottomSheetOwnerSelectTodoManagerBinding? = null
@@ -51,7 +51,7 @@ class BottomSheetOwnerSelectTodoManager: BottomSheetDialogFragment() {
         }
     }
 
-    private fun addManagers(resultGetStaff: ResultGetStaff) {
+    private fun addManagers(staff: Staff) {
 
     }
 
