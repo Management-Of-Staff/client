@@ -36,7 +36,7 @@
                     app:layout_constraintStart_toStartOf="parent">
 
                     <TextView
-                        android:id="@+id/tv_store_title"
+                        android:id="@+id/tv_store_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="7dp"
@@ -47,7 +47,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/tv_store_subtitle"
+                        android:id="@+id/tv_store_branch_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/store_item_sub_name"

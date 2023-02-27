@@ -13,7 +13,6 @@ class OwnerStaffTodoListManagementAdapter(
 ): ListAdapter<ResponseGetStaffTodo, OwnerStaffTodoListManagementAdapter.StaffTodoListManagementViewHolder>(
     DiffCallback()
 ) {
-
     private val staffTodoList = mutableListOf<ResponseGetStaffTodo>()
     private var isRadioButtonVisible = false
 
@@ -40,7 +39,7 @@ class OwnerStaffTodoListManagementAdapter(
     }
 
     override fun onBindViewHolder(holder: StaffTodoListManagementViewHolder, position: Int) {
-        val ownerItem = staffTodoList[position]
+        val ownerItem = currentList[position]
 
         holder.bind(ownerItem)
     }

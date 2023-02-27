@@ -52,11 +52,9 @@ class OwnerStoreConversionActivity: AppCompatActivity(), View.OnClickListener {
                     val body = response.body()
                     if (response.isSuccessful) {
                         body?.let {
-                            binding.tvStoreTitle.text = body.data.firstOrNull()?.storeName
-                            binding.tvStoreSubtitle.text = body.data.firstOrNull()?.branchName
+                            binding.tvStoreName.text = body.data.firstOrNull()?.storeName
+                            binding.tvStoreBranchName.text = body.data.firstOrNull()?.branchName
                             initRecyclerView(body.data, binding.rvStoreList)
-                            Log.d("TAG", "onResponse: " + body.message)
-                            Log.d("TAG", "onResponse: " + body.data)
                         }
                     } else if (body?.statusCode == 401) {
                         Toast.makeText(
@@ -89,7 +87,7 @@ class OwnerStoreConversionActivity: AppCompatActivity(), View.OnClickListener {
 
     private fun initRecyclerView(storeList: List<ResponseGetStore>, recyclerView: RecyclerView) {
         ownerStoreConversionAdapter = OwnerStoreConversionAdapter(
-            onClick = ::showStoreDetail
+            onClick = ::onClickStore
         )
 
         recyclerView.run {
@@ -99,7 +97,6 @@ class OwnerStoreConversionActivity: AppCompatActivity(), View.OnClickListener {
         }
 
         ownerStoreConversionAdapter.submitList(storeList)
-        Log.d("TAG", "initRecyclerView: " + ownerStoreConversionAdapter.currentList)
     }
 
     private fun showStoreDetail(responseGetStore: ResponseGetStore) {
@@ -133,6 +130,11 @@ class OwnerStoreConversionActivity: AppCompatActivity(), View.OnClickListener {
         binding.buttonChoiceDeleteStore.setOnClickListener {
             openDeleteStoreDialog()
         }
+    }
+
+    private fun onClickStore(responseGetStore: ResponseGetStore) {
+        binding.tvStoreName.text = responseGetStore.storeName
+        binding.tvStoreBranchName.text = responseGetStore.branchName
     }
 
     private fun intentRegisterStore() {

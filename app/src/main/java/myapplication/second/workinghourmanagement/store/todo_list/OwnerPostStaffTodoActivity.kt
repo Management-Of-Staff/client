@@ -78,7 +78,7 @@ class OwnerPostStaffTodoActivity : AppCompatActivity() {
 
     private fun postStaffTodo() {
         // TODO: 일정 등록할 때 필요한 API 구현
-        val storeId = MyApplication.prefs.getString("storeId")
+        val storeId = MyApplication.prefs.getString("storeId").length
 
         val managerCreateDtoList = HashMap<String, String>()
 

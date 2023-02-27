@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import myapplication.second.workinghourmanagement.MyApplication
 import myapplication.second.workinghourmanagement.R
 import myapplication.second.workinghourmanagement.RetrofitManager
 import myapplication.second.workinghourmanagement.RetrofitService
@@ -36,7 +35,7 @@ class OwnerStaffTodoDetailActivity : AppCompatActivity() {
     }
 
     private fun setupView() {
-        val todoListId = MyApplication.prefs.getString("todoListId")
+        val todoListId = 0
 
         service.getStaffTodo(todoListId)
             .enqueue(object : Callback<ResponseGetStaffTodo> {
@@ -48,7 +47,7 @@ class OwnerStaffTodoDetailActivity : AppCompatActivity() {
                         val body = response.body()
 
                         body?.let {
-                            initRecyclerView(binding.rvStaffTodoList)
+//                            initRecyclerView(body.data, binding.rvStaffTodoList)
                         }
                     } else if (response.code() == 401) {
                         Toast.makeText(
@@ -80,7 +79,7 @@ class OwnerStaffTodoDetailActivity : AppCompatActivity() {
             })
     }
 
-    private fun initRecyclerView(recyclerView: RecyclerView) {
+    private fun initRecyclerView(staffTodoList: List<ResponseGetStaffTodo>,  recyclerView: RecyclerView) {
 
     }
 

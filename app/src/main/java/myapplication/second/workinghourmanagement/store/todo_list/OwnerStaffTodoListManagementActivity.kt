@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import myapplication.second.workinghourmanagement.MyApplication
 import myapplication.second.workinghourmanagement.R
 import myapplication.second.workinghourmanagement.RetrofitManager
 import myapplication.second.workinghourmanagement.RetrofitService
@@ -39,7 +38,7 @@ class OwnerStaffTodoListManagementActivity : AppCompatActivity() {
     }
 
     private fun setupView() {
-        val storeId = MyApplication.prefs.getString("storeId")
+        val storeId = 0
 
         service.getStaffTodoList(storeId)
             .enqueue(object : Callback<ResponseGetStaffTodoList> {
@@ -47,11 +46,10 @@ class OwnerStaffTodoListManagementActivity : AppCompatActivity() {
                     call: Call<ResponseGetStaffTodoList>,
                     response: Response<ResponseGetStaffTodoList>
                 ) {
+                    val body = response.body()
                     if (response.isSuccessful) {
-                        val body = response.body()
-
                         body?.let {
-                            initRecyclerView(binding.rvStaffTodoList)
+                            initRecyclerView(body.data, binding.rvStaffTodoList)
                         }
                     } else if (response.code() == 401) {
                         Toast.makeText(
@@ -83,7 +81,7 @@ class OwnerStaffTodoListManagementActivity : AppCompatActivity() {
 
     }
 
-    private fun initRecyclerView(recyclerView: RecyclerView) {
+    private fun initRecyclerView(staffTodoList: List<ResponseGetStaffTodo>, recyclerView: RecyclerView) {
         ownerStaffTodoListManagementAdapter = OwnerStaffTodoListManagementAdapter(
             onClick = ::showTodoDetail
         )
@@ -93,6 +91,8 @@ class OwnerStaffTodoListManagementActivity : AppCompatActivity() {
             layoutManager = LinearLayoutManager(context)
             adapter = ownerStaffTodoListManagementAdapter
         }
+
+        ownerStaffTodoListManagementAdapter.submitList(staffTodoList)
     }
 
     private fun setupListeners() {
