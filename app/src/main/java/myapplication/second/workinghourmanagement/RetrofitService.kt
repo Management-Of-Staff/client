@@ -1,6 +1,7 @@
 package myapplication.second.workinghourmanagement
 
 import myapplication.second.workinghourmanagement.dto.*
+import myapplication.second.workinghourmanagement.dto.manageStaff.StaffList
 import myapplication.second.workinghourmanagement.dto.store.ResponseGetStoreList
 import myapplication.second.workinghourmanagement.dto.store.ResponseModifyStore
 import myapplication.second.workinghourmanagement.dto.store.ResponseRegisterStore
@@ -78,7 +79,11 @@ interface RetrofitService {
         @Header("Authorization") token: String,
     ): Call<ResultUserInfo>
 
-
+    // 매장에서 근무하는 직원 목록
+    @GET("employment/read/")
+    fun getStaffList(
+        @Query("storeId") storeId: Int,
+    ): Call<StaffList>
 
 
     /***    매장 관리    ***/
