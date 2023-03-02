@@ -9,6 +9,7 @@
         <include
             android:id="@+id/toolbar"
             layout="@layout/layout_toolbar"
+            app:rightText="@{`직원삭제`}"
             app:titleText="@{@string/manage_staff}" />
 
         <ScrollView
@@ -127,29 +128,36 @@
 
                     <TextView
                         android:id="@+id/tv_money"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/spoqahansansneo_bold"
                         android:paddingVertical="12dp"
                         android:text="@string/hourly_wage"
                         android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@id/money"
                         app:layout_constraintHorizontal_weight="1"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tv_staff_position" />
 
+                    <EditText
+                        android:id="@+id/et_money"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:hint="10000"
+                        android:textAlignment="center"
+                        app:layout_constraintBottom_toBottomOf="@id/tv_money"
+                        app:layout_constraintEnd_toStartOf="@id/money"
+                        app:layout_constraintTop_toTopOf="@id/tv_money" />
+
                     <TextView
                         android:id="@+id/money"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text="@string/won"
                         android:textAlignment="textEnd"
                         app:layout_constraintBottom_toBottomOf="@id/tv_money"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_weight="1"
-                        app:layout_constraintStart_toEndOf="@id/tv_money"
-                        app:layout_constraintTop_toTopOf="@id/tv_money"
-                        tools:text="10000원" />
+                        app:layout_constraintTop_toTopOf="@id/tv_money" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -277,16 +285,16 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <Button
-                    android:id="@+id/btn_delete_staff"
-                    android:layout_width="@dimen/button_M_width"
-                    android:layout_height="@dimen/button_M_height"
+                    android:id="@+id/btn_save"
+                    android:layout_width="@dimen/button_L_width"
+                    android:layout_height="@dimen/button_L_height"
                     android:layout_gravity="center"
                     android:layout_marginTop="24dp"
                     android:layout_marginBottom="10dp"
-                    android:background="@drawable/round_app_color_corner_white_background"
+                    android:background="@drawable/round_app_color_background"
                     android:fontFamily="@font/spoqahansansneo_bold"
-                    android:text="@string/delete"
-                    android:textColor="@color/app_color"
+                    android:text=" 직원정보 저장하기"
+                    android:textColor="@color/white"
                     android:textSize="16sp" />
 
             </LinearLayout>
