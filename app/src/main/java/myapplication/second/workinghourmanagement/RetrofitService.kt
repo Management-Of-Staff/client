@@ -1,6 +1,11 @@
 package myapplication.second.workinghourmanagement
 
-import myapplication.second.workinghourmanagement.dto.*
+import myapplication.second.workinghourmanagement.dto.ResultBNumCheck
+import myapplication.second.workinghourmanagement.dto.ResultResponse
+import myapplication.second.workinghourmanagement.dto.ResultToken
+import myapplication.second.workinghourmanagement.dto.ResultUserInfo
+import myapplication.second.workinghourmanagement.dto.manageStaff.ResponseFindStaff
+import myapplication.second.workinghourmanagement.dto.manageStaff.ResponseGetStaffInfo
 import myapplication.second.workinghourmanagement.dto.manageStaff.StaffList
 import myapplication.second.workinghourmanagement.dto.store.ResponseGetStoreList
 import myapplication.second.workinghourmanagement.dto.store.ResponseModifyStore
@@ -61,15 +66,9 @@ interface RetrofitService {
         @Body params: HashMap<String, List<String>>
     ): Call<ResultBNumCheck>
 
-    //    @FormUrlEncoded
     @Headers("Content-Type: application/json")
     @POST("owners/register")
     fun registerOwner(
-//        @Field("uuid") uuid: String,
-//        @Field("name") name: String,
-//        @Field("phone") phone: String,
-//        @Field("password") password: String,
-//        @Field("role") role: String,
         @Body params: HashMap<String, String>
     ): Call<ResultResponse>
 
@@ -79,12 +78,23 @@ interface RetrofitService {
         @Header("Authorization") token: String,
     ): Call<ResultUserInfo>
 
+    // 직원 검색
+    @POST("employment/find-invitee")
+    fun findStaff(
+        @Body params: HashMap<String, String>
+    ): Call<ResponseFindStaff>
+
     // 매장에서 근무하는 직원 목록
     @GET("employment/read/")
     fun getStaffList(
         @Query("storeId") storeId: Int,
     ): Call<StaffList>
 
+//    @GET("employment/read/{staffId}")
+//    fun getStaffInfo(
+//        @Path("staffId") staffId: Int,
+//        @Query("storeId") storeId: Int
+//    ): Call<ResponseGetStaffInfo>
 
     /***    매장 관리    ***/
     /***    Owner    ***/
