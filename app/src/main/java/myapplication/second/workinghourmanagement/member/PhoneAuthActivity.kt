@@ -205,7 +205,7 @@ class PhoneAuthActivity : AppCompatActivity() {
         val phone = HashMap<String, String>()
         phone["phone"] = binding.ownerJoinEditPhone.text.toString()
         phone["uuid"] = storedVerificationId
-        service.updatePhone(phone).enqueue(object : Callback<ResultResponse> {
+        service.updatePhoneOwner(phone).enqueue(object : Callback<ResultResponse> {
             override fun onFailure(call: Call<ResultResponse>, t: Throwable) {
                 Log.e("updatePhone", "실패: $t")
             }

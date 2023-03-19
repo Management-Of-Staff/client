@@ -172,15 +172,12 @@ class OwnerJoinInfoActivity : AppCompatActivity() {
     private fun registerUser() {
         val myIntent = intent
         val phone = myIntent.getStringExtra("phone")!!
-        val uuid = myIntent.getStringExtra("uuid")!!
         val userInfo = HashMap<String, String>()
-        userInfo["uuid"] = uuid
         userInfo["name"] = binding.ownerJoinEditOwnerName.text.toString()
         userInfo["phone"] = phone
         userInfo["password"] = binding.ownerJoinEditPassword.text.toString()
-        userInfo["role"] = "OWNER"
 
-        service.registerOwner(userInfo)
+        service.signUpOwner(userInfo)
             .enqueue(object : Callback<ResultResponse> {
                 override fun onResponse(
                     call: Call<ResultResponse>,

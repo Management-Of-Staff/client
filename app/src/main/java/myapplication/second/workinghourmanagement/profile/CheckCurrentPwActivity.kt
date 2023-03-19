@@ -41,7 +41,7 @@ class CheckCurrentPwActivity : AppCompatActivity() {
     private fun checkPassword() {
         val currentPassword = HashMap<String, String>()
         currentPassword["password"] = binding.editCurrentPassword.text.toString()
-        service.checkPassword(currentPassword).enqueue(object : Callback<ResultResponse> {
+        service.passwordCheckOwner(currentPassword).enqueue(object : Callback<ResultResponse> {
             override fun onResponse(
                 call: Call<ResultResponse>,
                 response: Response<ResultResponse>
