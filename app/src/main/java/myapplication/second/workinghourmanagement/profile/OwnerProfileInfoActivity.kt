@@ -213,7 +213,7 @@ class OwnerProfileInfoActivity : AppCompatActivity() {
     }
 
     private fun updateProfile(profile: HashMap<String, String>) {
-        service.updateProfile(profileImg, profile).enqueue(object : Callback<ResultResponse> {
+        service.updateProfileOwner(profileImg, profile).enqueue(object : Callback<ResultResponse> {
             override fun onResponse(
                 call: Call<ResultResponse>, response: Response<ResultResponse>
             ) {

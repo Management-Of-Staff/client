@@ -62,7 +62,7 @@ class ModifyPwActivity : AppCompatActivity() {
         val body = HashMap<String, String>()
         body["newPassword"] = binding.editNewPw.text.toString()
         body["oldPassword"] = intent.getStringExtra("currentPassword")!!
-        service.updatePassword(body).enqueue(object : Callback<ResultResponse> {
+        service.updatePasswordOwner(body).enqueue(object : Callback<ResultResponse> {
             override fun onResponse(
                 call: Call<ResultResponse>,
                 response: Response<ResultResponse>

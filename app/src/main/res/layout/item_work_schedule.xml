@@ -17,25 +17,37 @@
             android:textColor="@color/b1"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/working_time"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="목, 금" />
 
         <TextView
-            android:id="@+id/working_time"
+            android:id="@+id/start_time"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/spoqahansansneo_regular"
             android:textAlignment="textEnd"
             android:textColor="@color/b3"
             android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/checkbox_delete"
-            app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toEndOf="@id/working_day"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/end_time"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="09:00 ~ 12:00" />
+            tools:text="09:00" />
+
+        <TextView
+            android:id="@+id/end_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/spoqahansansneo_regular"
+            android:textAlignment="textEnd"
+            android:textColor="@color/b3"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/start_time"
+            app:layout_constraintEnd_toStartOf="@id/checkbox_delete"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="12:00" />
 
         <CheckBox
             android:id="@+id/checkbox_delete"
@@ -44,7 +56,7 @@
             android:layout_marginStart="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/working_time"
+            app:layout_constraintStart_toEndOf="@id/end_time"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

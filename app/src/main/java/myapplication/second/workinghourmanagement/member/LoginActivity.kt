@@ -102,10 +102,10 @@ class LoginActivity : AppCompatActivity() {
 
     private fun login(role: Int) {
         val loginRequestParams = HashMap<String, String>()
-        loginRequestParams["phone"] = binding.editPhone.text.toString()
+        loginRequestParams["phoneNum"] = binding.editPhone.text.toString()
         loginRequestParams["password"] = binding.editPassword.text.toString()
 
-        service.login(loginRequestParams).enqueue(object : Callback<ResultToken> {
+        service.signInOwner(loginRequestParams).enqueue(object : Callback<ResultToken> {
             override fun onResponse(call: Call<ResultToken>, response: Response<ResultToken>) {
                 if (response.isSuccessful.not()) {
                     if (response.code() == 500) errorMessageDialog("서버 내부에 문제가 발생했습니다.\n잠시후 다시시도 해주세요.")
