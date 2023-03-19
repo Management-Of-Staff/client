@@ -16,13 +16,14 @@ import myapplication.second.workinghourmanagement.*
 import myapplication.second.workinghourmanagement.databinding.ActivityCommonLoginBinding
 import myapplication.second.workinghourmanagement.dto.ResultToken
 import myapplication.second.workinghourmanagement.home.OwnerHomeActivity
+import myapplication.second.workinghourmanagement.retrofit.LoginService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCommonLoginBinding
-    private lateinit var service: RetrofitService
+    private lateinit var service: LoginService
     private lateinit var customDialog: CustomDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,7 +36,7 @@ class LoginActivity : AppCompatActivity() {
             finish()
         }
 
-        service = RetrofitManager.loginRetrofit.create(RetrofitService::class.java)
+        service = RetrofitManager.loginRetrofit.create(LoginService::class.java)
         bind()
     }
 

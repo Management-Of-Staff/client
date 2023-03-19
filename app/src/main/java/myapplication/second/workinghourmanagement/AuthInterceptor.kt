@@ -3,6 +3,7 @@ package myapplication.second.workinghourmanagement
 import android.util.Log
 import kotlinx.coroutines.runBlocking
 import myapplication.second.workinghourmanagement.dto.ResultToken
+import myapplication.second.workinghourmanagement.retrofit.LoginService
 import okhttp3.Interceptor
 import okhttp3.Request
 import okhttp3.Response
@@ -41,7 +42,7 @@ class AuthInterceptor : Interceptor {
     }
 
     private fun reissue() {
-        RetrofitManager.reissueRetrofit.create(RetrofitService::class.java)
+        RetrofitManager.reissueRetrofit.create(LoginService::class.java)
             .reissue().enqueue(object : Callback<ResultToken> {
                 override fun onResponse(
                     call: Call<ResultToken>,
