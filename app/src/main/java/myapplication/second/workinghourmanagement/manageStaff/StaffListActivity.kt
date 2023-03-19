@@ -39,7 +39,7 @@ class StaffListActivity : AppCompatActivity() {
 
     private fun initStaffList() {
         //fixme storeId 로컬 db에서 가져오기
-        val storeId = 11
+        val storeId = 1
         service.getStaffList(storeId).enqueue(object : Callback<StaffList> {
             override fun onResponse(call: Call<StaffList>, response: Response<StaffList>) {
                 val body = response.body()
@@ -57,7 +57,15 @@ class StaffListActivity : AppCompatActivity() {
     }
 
     private fun initStaffRecyclerView(staffList: List<Staff>, recyclerView: RecyclerView) {
-        val staffListAdapter = StaffListAdapter()
+        val staffListAdapter = StaffListAdapter(object: StaffListAdapter.OnStaffClickListener{
+            override fun onClick(item: Staff, position: Int) {
+                //todo 액티비티 이동 및 staffid로 직원 조회
+                val intent = Intent(applicationContext, ManageStaffActivity::class.java)
+                intent.putExtra("staffId", item.staffId)
+                startActivity(intent)
+//                Log.e("ttttt", "$position 번 아이템 클릭 - name: ${item.staffName}, id: ${item.employmentId}")
+            }
+        })
         recyclerView.run {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(context)
@@ -69,11 +77,6 @@ class StaffListActivity : AppCompatActivity() {
     private fun bind() {
         binding.toolbar.btnRightText.setOnClickListener {
             val intent = Intent(this, InviteStaffActivity::class.java)
-            startActivity(intent)
-        }
-
-        binding.btnTest.setOnClickListener {
-            val intent = Intent(this, ManageStaffActivity::class.java)
             startActivity(intent)
         }
     }
