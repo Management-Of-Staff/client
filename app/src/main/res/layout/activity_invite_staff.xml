@@ -37,6 +37,7 @@
             android:layout_width="83dp"
             android:layout_height="83dp"
             android:src="@drawable/default_profile"
+            android:visibility="invisible"
             app:layout_constraintBottom_toTopOf="@id/tv_staff_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
