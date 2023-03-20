@@ -8,3 +8,10 @@ data class ResponseFindStaff(
     val statusCode: Int,
     val timestamp: String
 )
+
+data class FindStaff(
+    val staffId: Int,
+    val memberPhoneNum: String,
+    val memberName: String,
+    val profileImage: String?,
+)
