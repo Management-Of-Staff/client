@@ -3,7 +3,6 @@ package myapplication.second.workinghourmanagement.manageStaff
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -20,13 +19,21 @@ class StaffListAdapter(private val clickListener: OnStaffClickListener) :
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(staffItem: Staff) {
             binding.tvStaffName.text = staffItem.staffName
-            //fixme response 데이터 넣기
-            binding.tvStaffAttendance.text = staffItem.workingStatus
-            binding.imgView.setImageResource(R.drawable.default_profile)
-            //todo 근무시간
+            binding.tvStaffAttendance.text = staffItem.attendanceStatus
+            if (!staffItem.startTime.isNullOrBlank() && !staffItem.endTime.isNullOrBlank()) {
+                binding.tvStaffTime.text =
+                    "${staffItem.startTime.substring(0..4)} - ${staffItem.endTime.substring(0..4)}"
+            } else {
+                binding.tvStaffDay.visibility = View.INVISIBLE
+                binding.comment.visibility = View.VISIBLE
+                binding.tvStaffTime.visibility = View.INVISIBLE
+            }
+            if (staffItem.profileImage.isNullOrBlank()) {
+                binding.imgView.setImageResource(R.drawable.default_profile)
+            }
+            //todo 근무 요일
         }
     }
-
 
     interface OnStaffClickListener {
         fun onClick(item: Staff, position: Int)

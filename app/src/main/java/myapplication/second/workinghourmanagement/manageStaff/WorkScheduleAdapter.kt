@@ -6,31 +6,27 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import myapplication.second.workinghourmanagement.databinding.ItemWorkScheduleBinding
-import myapplication.second.workinghourmanagement.dto.manageStaff.WorkTimeRequest
+import myapplication.second.workinghourmanagement.dto.manageStaff.WorkTime
 
 class WorkScheduleAdapter :
-    ListAdapter<WorkTimeRequest, WorkScheduleAdapter.WorkScheduleViewHolder>(DiffCallback()) {
+    ListAdapter<WorkTime, WorkScheduleAdapter.WorkScheduleViewHolder>(DiffCallback()) {
     private lateinit var binding: ItemWorkScheduleBinding
 
     inner class WorkScheduleViewHolder(binding: ItemWorkScheduleBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(workItem: WorkTimeRequest) {
+        fun bind(workItem: WorkTime) {
             var day = ""
-            for(i in workItem.dayOfWeekList){
-                when(i){
-                    "MONDAY" -> day += "월, "
-                    "TUESDAY" -> day += "화, "
-                    "WEDNESDAY" -> day += "수, "
-                    "THURSDAY" -> day += "목, "
-                    "FRIDAY" -> day += "금, "
-                    "SATURDAY" -> day += "토, "
-                    "SUNDAY" -> day += "일, "
-                }
+            when(workItem.dayOfWeek){
+                "MONDAY" -> day = "월"
+                "TUESDAY" -> day = "화"
+                "WEDNESDAY" -> day = "수"
+                "THURSDAY" -> day = "목"
+                "FRIDAY" -> day = "금"
+                "SATURDAY" -> day = "토"
+                "SUNDAY" -> day = "일"
             }
-            binding.workingDay.text = day.substring(0 until day.length-2)
-            binding.startTime.text = workItem.startTime.substring(0..4) + " - "
-            binding.endTime.text = workItem.endTime.substring(0..4)
-//            binding.workingDay.text = workItem.dayOfWeekList
+            binding.workingDay.text = day
+            binding.workingTime.text = "${workItem.startTime.substring(0..4)} - ${workItem.endTime.substring(0..4)}"
         }
     }
 
@@ -48,15 +44,12 @@ class WorkScheduleAdapter :
         return currentList.size
     }
 
-    private class DiffCallback : DiffUtil.ItemCallback<WorkTimeRequest>() {
-        override fun areContentsTheSame(
-            oldItem: WorkTimeRequest,
-            newItem: WorkTimeRequest
-        ): Boolean {
-            return oldItem.dayOfWeekList == newItem.dayOfWeekList
+    private class DiffCallback : DiffUtil.ItemCallback<WorkTime>() {
+        override fun areContentsTheSame(oldItem: WorkTime, newItem: WorkTime): Boolean {
+            return oldItem.workTimeId == newItem.workTimeId
         }
 
-        override fun areItemsTheSame(oldItem: WorkTimeRequest, newItem: WorkTimeRequest): Boolean {
+        override fun areItemsTheSame(oldItem: WorkTime, newItem: WorkTime): Boolean {
             return oldItem == newItem
         }
     }
