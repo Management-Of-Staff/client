@@ -21,11 +21,13 @@ import myapplication.second.workinghourmanagement.retrofit.ManageStaffService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import kotlin.properties.Delegates
 
 class ManageStaffActivity : AppCompatActivity() {
     private lateinit var binding: ActivityManageStaffBinding
     private lateinit var service: ManageStaffService
     private lateinit var role: String
+    private var staffId by Delegates.notNull<Int>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,7 +72,8 @@ class ManageStaffActivity : AppCompatActivity() {
                         if (body.data.hourlyWage != null) {
                             binding.etMoney.setText(body.data.hourlyWage.toString())
                         }
-                        when(body.data.rank){
+                        staffId = body.data.staffId
+                        when (body.data.rank) {
                             "MANAGER" -> binding.spinnerStaffPosition.setSelection(0)
                             "PULL_TIME_EMPLOYEE" -> binding.spinnerStaffPosition.setSelection(1)
                             "PART_TIME_WORKER" -> binding.spinnerStaffPosition.setSelection(2)
@@ -150,7 +153,7 @@ class ManageStaffActivity : AppCompatActivity() {
         }
 
         binding.btnAddSchedule.setOnClickListener {
-            val bottomSheet = BottomSheetAddWorkSchedule(this)
+            val bottomSheet = BottomSheetAddWorkSchedule(this, employmentId, staffId)
             bottomSheet.show(supportFragmentManager, bottomSheet.tag)
         }
         binding.btnSave.setOnClickListener {
