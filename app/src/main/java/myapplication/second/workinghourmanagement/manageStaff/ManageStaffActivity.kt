@@ -28,13 +28,14 @@ class ManageStaffActivity : AppCompatActivity() {
     private lateinit var service: ManageStaffService
     private lateinit var role: String
     private var staffId by Delegates.notNull<Int>()
+    private var employmentId by Delegates.notNull<Int>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_manage_staff)
         service = RetrofitManager.retrofit.create(ManageStaffService::class.java)
 
-        val employmentId = intent.getIntExtra("employmentId", 2)
+        employmentId = intent.getIntExtra("employmentId", 2)
 
         initStaffInfo(employmentId)
         bind(employmentId)
@@ -103,7 +104,15 @@ class ManageStaffActivity : AppCompatActivity() {
     }
 
     private fun initWorkSchedule(workList: List<WorkTime>, recyclerView: RecyclerView) {
-        val workScheduleAdapter = WorkScheduleAdapter()
+        val workScheduleAdapter =
+            WorkScheduleAdapter(object : WorkScheduleAdapter.OnScheduleClickListener {
+                override fun onClick(item: WorkTime, position: Int) {
+                    val workTimeIds = mutableListOf(item.workTimeId)
+                    val bottomSheet =
+                        BottomSheetUpdateWorkSchedule(employmentId, staffId, workTimeIds)
+                    bottomSheet.show(supportFragmentManager, bottomSheet.tag)
+                }
+            })
 
         recyclerView.run {
             setHasFixedSize(true)
@@ -153,7 +162,7 @@ class ManageStaffActivity : AppCompatActivity() {
         }
 
         binding.btnAddSchedule.setOnClickListener {
-            val bottomSheet = BottomSheetAddWorkSchedule(this, employmentId, staffId)
+            val bottomSheet = BottomSheetAddWorkSchedule(employmentId, staffId)
             bottomSheet.show(supportFragmentManager, bottomSheet.tag)
         }
         binding.btnSave.setOnClickListener {
