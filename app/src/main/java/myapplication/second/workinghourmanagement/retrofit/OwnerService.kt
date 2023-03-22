@@ -9,53 +9,55 @@ import retrofit2.http.*
 
 interface OwnerService {
     // [사장] 정보 조회
-    @GET("member-account/owners")
+    @GET(path)
     fun selectOwnerInfo(
     ): Call<ResultUserInfo>
 
     // [사장] 회원 탈퇴
-    @PUT("member-account/owners")
+    @PUT(path)
     fun withDraw(
     ): Call<ResultResponse>
 
     // [사장] 비밀번호 변경
-    @POST("member-account/owners/password")
+    @POST("${path}/password")
     fun updatePasswordOwner(
         @Body params: HashMap<String, String>,
     ): Call<ResultResponse>
 
     //[사장] 비밀번호 확인
-    @POST("member-account/owners/password-check")
+    @POST("${path}s/password-check")
     fun passwordCheckOwner(
         @Body params: HashMap<String, String>,
     ): Call<ResultResponse>
 
     // [사장] 핸드폰 번호 수정
-    @POST("member-account/owners/phone")
+    @POST("${path}/phone")
     fun updatePhoneOwner(
         @Body params: HashMap<String, String>,
     ): Call<ResultResponse>
 
     //[사장] 프로필 정보 변경
     @Multipart
-    @POST("member-account/owners/profile")
+    @POST("${path}/profile")
     fun updateProfileOwner(
         @Part imageFile: MultipartBody.Part?,
         @Part("profile") profile: HashMap<String, String>
     ): Call<ResultResponse>
 
     // [사장] 회원 가입
-    @Headers("Content-Type: application/json")
-    @POST("member-account/owners/sign-up")
+    @POST("${path}/sign-up")
     fun signUpOwner(
         @Body params: HashMap<String, String>
     ): Call<ResultResponse>
 
     // 사업자 등록번호 조회
-    @Headers("Content-Type: application/json")
     @POST("status")
     fun checkBNum(
         @Query("serviceKey") serviceKey: String,
         @Body params: HashMap<String, List<String>>
     ): Call<ResultBNumCheck>
+
+    companion object {
+        const val path = "member-account/owners"
+    }
 }

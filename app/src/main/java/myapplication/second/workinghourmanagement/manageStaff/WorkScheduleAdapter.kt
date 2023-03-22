@@ -15,15 +15,15 @@ class WorkScheduleAdapter :
     inner class WorkScheduleViewHolder(binding: ItemWorkScheduleBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(workItem: WorkTime) {
-            var day = ""
-            when(workItem.dayOfWeek){
-                "MONDAY" -> day = "월"
-                "TUESDAY" -> day = "화"
-                "WEDNESDAY" -> day = "수"
-                "THURSDAY" -> day = "목"
-                "FRIDAY" -> day = "금"
-                "SATURDAY" -> day = "토"
-                "SUNDAY" -> day = "일"
+            val day = when(workItem.dayOfWeek){
+                "MONDAY" -> "월"
+                "TUESDAY" -> "화"
+                "WEDNESDAY" -> "수"
+                "THURSDAY" -> "목"
+                "FRIDAY" -> "금"
+                "SATURDAY" -> "토"
+                "SUNDAY" -> "일"
+                else -> "없음"
             }
             binding.workingDay.text = day
             binding.workingTime.text = "${workItem.startTime.substring(0..4)} - ${workItem.endTime.substring(0..4)}"

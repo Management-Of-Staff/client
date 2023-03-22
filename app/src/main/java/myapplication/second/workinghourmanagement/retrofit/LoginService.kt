@@ -8,19 +8,23 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface LoginService {
-    @GET("member-account/log-out")
+    @GET("${path}/log-out")
     fun logOut():Call<ResultResponse>
 
-    @POST("member-account/reissue")
+    @POST("${path}/reissue")
     fun reissue(): Call<ResultToken>
 
-    @POST("member-account/sign-in/owner")
+    @POST("${path}/sign-in/owner")
     fun signInOwner(
         @Body params: HashMap<String, String>
     ): Call<ResultToken>
 
-    @POST("member-account/sign-in/staff")
+    @POST("${path}/sign-in/staff")
     fun signInStaff(
         @Body params: HashMap<String, String>
     ): Call<ResultToken>
+
+    companion object {
+        const val path = "member-account"
+    }
 }
