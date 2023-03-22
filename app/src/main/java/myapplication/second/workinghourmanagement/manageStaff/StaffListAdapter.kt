@@ -1,6 +1,7 @@
 package myapplication.second.workinghourmanagement.manageStaff
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -9,32 +10,47 @@ import myapplication.second.workinghourmanagement.R
 import myapplication.second.workinghourmanagement.databinding.ItemListStaffBinding
 import myapplication.second.workinghourmanagement.dto.manageStaff.Staff
 
-class StaffListAdapter : ListAdapter<Staff, StaffListAdapter.StaffViewHolder>(DiffCallback()) {
-    class StaffViewHolder(
-        val binding: ItemListStaffBinding
+class StaffListAdapter(private val clickListener: OnStaffClickListener) :
+    ListAdapter<Staff, StaffListAdapter.StaffViewHolder>(DiffCallback()) {
+    private lateinit var binding: ItemListStaffBinding
+
+    inner class StaffViewHolder(
+        binding: ItemListStaffBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(staffItem: Staff) {
             binding.tvStaffName.text = staffItem.staffName
-            //fixme response 데이터 넣기
-            binding.tvStaffAttendance.text = "부재중"
-            binding.imgView.setImageResource(R.drawable.default_profile)
-            //todo 근무시간
+            binding.tvStaffAttendance.text = staffItem.attendanceStatus
+            if (!staffItem.startTime.isNullOrBlank() && !staffItem.endTime.isNullOrBlank()) {
+                binding.tvStaffTime.text =
+                    "${staffItem.startTime.substring(0..4)} - ${staffItem.endTime.substring(0..4)}"
+            } else {
+                binding.tvStaffDay.visibility = View.INVISIBLE
+                binding.comment.visibility = View.VISIBLE
+                binding.tvStaffTime.visibility = View.INVISIBLE
+            }
+            if (staffItem.profileImage.isNullOrBlank()) {
+                binding.imgView.setImageResource(R.drawable.default_profile)
+            }
+            //todo 근무 요일
         }
     }
 
+    interface OnStaffClickListener {
+        fun onClick(item: Staff, position: Int)
+    }
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StaffViewHolder {
-        return StaffViewHolder(
-            ItemListStaffBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
-        )
+        binding = ItemListStaffBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return StaffViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: StaffViewHolder, position: Int) {
-//        val staffItem = currentList[position]
-        holder.bind(currentList[position])
+        val staffItem = currentList[position]
+        holder.bind(staffItem)
+        binding.root.setOnClickListener {
+            clickListener.onClick(staffItem, position)
+        }
     }
 
     override fun getItemCount(): Int {

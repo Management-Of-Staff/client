@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import myapplication.second.workinghourmanagement.RetrofitManager
 import myapplication.second.workinghourmanagement.RetrofitService
 import myapplication.second.workinghourmanagement.dto.ResultUserInfo
+import myapplication.second.workinghourmanagement.retrofit.OwnerService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -18,8 +19,8 @@ class UserInfoViewModel : ViewModel() {
     private val _email = MutableLiveData<String?>()
     private val _role = MutableLiveData<String>()
     private val _uuid = MutableLiveData<String>()
-    private val service: RetrofitService =
-        RetrofitManager.retrofit.create(RetrofitService::class.java)
+    private val service: OwnerService =
+        RetrofitManager.retrofit.create(OwnerService::class.java)
 
     init {
         getUserInfo()

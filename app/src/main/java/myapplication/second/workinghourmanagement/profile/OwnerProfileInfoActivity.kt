@@ -22,12 +22,12 @@ import androidx.lifecycle.ViewModelProvider
 import myapplication.second.workinghourmanagement.MyApplication
 import myapplication.second.workinghourmanagement.R
 import myapplication.second.workinghourmanagement.RetrofitManager.Companion.retrofit
-import myapplication.second.workinghourmanagement.RetrofitService
 import myapplication.second.workinghourmanagement.databinding.ActivityOwnerProfileInfoBinding
 import myapplication.second.workinghourmanagement.dto.ResultResponse
 import myapplication.second.workinghourmanagement.dto.User
 import myapplication.second.workinghourmanagement.member.LoginActivity
 import myapplication.second.workinghourmanagement.member.PhoneAuthActivity
+import myapplication.second.workinghourmanagement.retrofit.OwnerService
 import myapplication.second.workinghourmanagement.vm.UserInfoViewModel
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MultipartBody
@@ -41,7 +41,7 @@ import java.io.File
 
 class OwnerProfileInfoActivity : AppCompatActivity() {
     private lateinit var binding: ActivityOwnerProfileInfoBinding
-    private lateinit var service: RetrofitService
+    private lateinit var service: OwnerService
     private lateinit var viewModel: UserInfoViewModel
     private lateinit var profileImg: MultipartBody.Part
 
@@ -57,7 +57,7 @@ class OwnerProfileInfoActivity : AppCompatActivity() {
         binding.vm = viewModel
         binding.lifecycleOwner = this
 
-        service = retrofit.create(RetrofitService::class.java)
+        service = retrofit.create(OwnerService::class.java)
 
         bind()
         //initProfile()
@@ -213,7 +213,7 @@ class OwnerProfileInfoActivity : AppCompatActivity() {
     }
 
     private fun updateProfile(profile: HashMap<String, String>) {
-        service.updateProfile(profileImg, profile).enqueue(object : Callback<ResultResponse> {
+        service.updateProfileOwner(profileImg, profile).enqueue(object : Callback<ResultResponse> {
             override fun onResponse(
                 call: Call<ResultResponse>, response: Response<ResultResponse>
             ) {

@@ -8,23 +8,23 @@ import android.os.CountDownTimer
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import androidx.appcompat.app.ActionBar
-import androidx.appcompat.app.AppCompatActivity
-import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.core.widget.doAfterTextChanged
 import androidx.databinding.DataBindingUtil
-import androidx.databinding.adapters.TextViewBindingAdapter.setText
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.*
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import myapplication.second.workinghourmanagement.*
+import myapplication.second.workinghourmanagement.CustomDialog
+import myapplication.second.workinghourmanagement.MyApplication
 import myapplication.second.workinghourmanagement.R
+import myapplication.second.workinghourmanagement.RetrofitManager
 import myapplication.second.workinghourmanagement.databinding.ActivityPhoneAuthBinding
 import myapplication.second.workinghourmanagement.dto.ResultResponse
+import myapplication.second.workinghourmanagement.retrofit.OwnerService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -37,7 +37,7 @@ class PhoneAuthActivity : AppCompatActivity() {
     private var storedVerificationId = ""   //인증완료시 부여되는 Id
     private lateinit var customDialog: CustomDialog
     private var isClickedSendBtn = false
-    private lateinit var service: RetrofitService
+    private lateinit var service: OwnerService
     private var state = ""
     //todo state 설정해주기!!
 
@@ -68,7 +68,7 @@ class PhoneAuthActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_phone_auth)
         auth = Firebase.auth
-        service = RetrofitManager.retrofit.create(RetrofitService::class.java)
+        service = RetrofitManager.retrofit.create(OwnerService::class.java)
 
         state = if (intent.getStringExtra("state").isNullOrBlank()) JOIN
         else intent.getStringExtra("state")!!
@@ -203,9 +203,8 @@ class PhoneAuthActivity : AppCompatActivity() {
 
     private fun updatePhone() {
         val phone = HashMap<String, String>()
-        phone["phone"] = binding.ownerJoinEditPhone.text.toString()
-        phone["uuid"] = storedVerificationId
-        service.updatePhone(phone).enqueue(object : Callback<ResultResponse> {
+        phone["phoneNum"] = binding.ownerJoinEditPhone.text.toString()
+        service.updatePhoneOwner(phone).enqueue(object : Callback<ResultResponse> {
             override fun onFailure(call: Call<ResultResponse>, t: Throwable) {
                 Log.e("updatePhone", "실패: $t")
             }

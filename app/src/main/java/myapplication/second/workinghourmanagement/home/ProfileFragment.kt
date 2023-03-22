@@ -9,8 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import myapplication.second.workinghourmanagement.GpsTestActivity
 import myapplication.second.workinghourmanagement.MyApplication
-import myapplication.second.workinghourmanagement.RetrofitManager
-import myapplication.second.workinghourmanagement.RetrofitService
 import myapplication.second.workinghourmanagement.databinding.FragmentOwnerProfileBinding
 import myapplication.second.workinghourmanagement.member.LoginActivity
 import myapplication.second.workinghourmanagement.profile.OwnerProfileInfoActivity
@@ -20,13 +18,11 @@ import myapplication.second.workinghourmanagement.vm.UserInfoViewModel
 
 class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentOwnerProfileBinding
-    private lateinit var service: RetrofitService
     private lateinit var viewModel: UserInfoViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = FragmentOwnerProfileBinding.inflate(layoutInflater)
-        service = RetrofitManager.retrofit.create(RetrofitService::class.java)
         viewModel = ViewModelProvider(this)[UserInfoViewModel::class.java]
         binding.vm = viewModel
         binding.lifecycleOwner = this

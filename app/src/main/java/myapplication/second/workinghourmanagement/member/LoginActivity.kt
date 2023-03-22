@@ -16,13 +16,14 @@ import myapplication.second.workinghourmanagement.*
 import myapplication.second.workinghourmanagement.databinding.ActivityCommonLoginBinding
 import myapplication.second.workinghourmanagement.dto.ResultToken
 import myapplication.second.workinghourmanagement.home.OwnerHomeActivity
+import myapplication.second.workinghourmanagement.retrofit.LoginService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCommonLoginBinding
-    private lateinit var service: RetrofitService
+    private lateinit var service: LoginService
     private lateinit var customDialog: CustomDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,7 +36,7 @@ class LoginActivity : AppCompatActivity() {
             finish()
         }
 
-        service = RetrofitManager.loginRetrofit.create(RetrofitService::class.java)
+        service = RetrofitManager.loginRetrofit.create(LoginService::class.java)
         bind()
     }
 
@@ -102,10 +103,10 @@ class LoginActivity : AppCompatActivity() {
 
     private fun login(role: Int) {
         val loginRequestParams = HashMap<String, String>()
-        loginRequestParams["phone"] = binding.editPhone.text.toString()
+        loginRequestParams["phoneNum"] = binding.editPhone.text.toString()
         loginRequestParams["password"] = binding.editPassword.text.toString()
 
-        service.login(loginRequestParams).enqueue(object : Callback<ResultToken> {
+        service.signInOwner(loginRequestParams).enqueue(object : Callback<ResultToken> {
             override fun onResponse(call: Call<ResultToken>, response: Response<ResultToken>) {
                 if (response.isSuccessful.not()) {
                     if (response.code() == 500) errorMessageDialog("서버 내부에 문제가 발생했습니다.\n잠시후 다시시도 해주세요.")

@@ -5,26 +5,26 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
-import android.view.MenuItem
-import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import myapplication.second.workinghourmanagement.*
+import myapplication.second.workinghourmanagement.CustomDialog
+import myapplication.second.workinghourmanagement.R
+import myapplication.second.workinghourmanagement.RetrofitManager
 import myapplication.second.workinghourmanagement.databinding.ActivityCheckCurrentPasswdBinding
 import myapplication.second.workinghourmanagement.dto.ResultResponse
+import myapplication.second.workinghourmanagement.retrofit.OwnerService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.*
 
 class CheckCurrentPwActivity : AppCompatActivity() {
-    private lateinit var service: RetrofitService
+    private lateinit var service: OwnerService
     private lateinit var customDialog: CustomDialog
     private lateinit var binding: ActivityCheckCurrentPasswdBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_check_current_passwd)
-        service = RetrofitManager.retrofit.create(RetrofitService::class.java)
+        service = RetrofitManager.retrofit.create(OwnerService::class.java)
 
         bind()
     }
@@ -41,7 +41,7 @@ class CheckCurrentPwActivity : AppCompatActivity() {
     private fun checkPassword() {
         val currentPassword = HashMap<String, String>()
         currentPassword["password"] = binding.editCurrentPassword.text.toString()
-        service.checkPassword(currentPassword).enqueue(object : Callback<ResultResponse> {
+        service.passwordCheckOwner(currentPassword).enqueue(object : Callback<ResultResponse> {
             override fun onResponse(
                 call: Call<ResultResponse>,
                 response: Response<ResultResponse>
@@ -65,7 +65,6 @@ class CheckCurrentPwActivity : AppCompatActivity() {
 
     private fun intentPage(where: Class<*>) {
         val intent = Intent(this, where)
-        intent.putExtra("currentPassword", binding.editCurrentPassword.text.toString())
         startActivity(intent)
     }
 

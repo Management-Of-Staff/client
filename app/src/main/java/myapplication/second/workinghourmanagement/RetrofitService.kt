@@ -1,6 +1,11 @@
 package myapplication.second.workinghourmanagement
 
-import myapplication.second.workinghourmanagement.dto.*
+import myapplication.second.workinghourmanagement.dto.ResultBNumCheck
+import myapplication.second.workinghourmanagement.dto.ResultResponse
+import myapplication.second.workinghourmanagement.dto.ResultToken
+import myapplication.second.workinghourmanagement.dto.ResultUserInfo
+import myapplication.second.workinghourmanagement.dto.manageStaff.ResponseFindStaff
+import myapplication.second.workinghourmanagement.dto.manageStaff.ResponseGetStaffInfo
 import myapplication.second.workinghourmanagement.dto.manageStaff.StaffList
 import myapplication.second.workinghourmanagement.dto.store.ResponseGetStoreList
 import myapplication.second.workinghourmanagement.dto.store.ResponseModifyStore
@@ -11,45 +16,53 @@ import myapplication.second.workinghourmanagement.dto.todo_list.ResponseModifySt
 import myapplication.second.workinghourmanagement.dto.todo_list.ResponsePostStaffTodo
 import okhttp3.MultipartBody
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.*
 
 interface RetrofitService {
-    @POST("auth/reissue")
+    @POST("member-account/reissue")
     fun reissue(): Call<ResultToken>
+
+    @GET("member-account/log-out")
+    fun logOut():Call<ResultResponse>
+
+    @POST("member-account/sign-in/owner")
+    fun signInOwner(
+        @Body params: HashMap<String, String>
+    ): Call<ResultToken>
 
     @POST("auth/login")
     fun login(
         @Body params: HashMap<String, String>
     ): Call<ResultToken>
 
-    @POST("auth/check-password")
-    fun checkPassword(
+    @POST("member-account/owners/password-check")
+    fun passwordCheckOwner(
         @Body params: HashMap<String, String>,
     ): Call<ResultResponse>
 
-    @POST("auth/update-password")
-    fun updatePassword(
+    @POST("member-account/owners/password")
+    fun updatePasswordOwner(
         @Body params: HashMap<String, String>,
     ): Call<ResultResponse>
 
-    @POST("auth/update-phone")
-    fun updatePhone(
+    @POST("member-account/owners/phone")
+    fun updatePhoneOwner(
         @Body params: HashMap<String, String>,
     ): Call<ResultResponse>
 
     @Multipart
-    @POST("auth/update-profile")
-    fun updateProfile(
+    @POST("member-account/owners/profile")
+    fun updateProfileOwner(
         @Part imageFile: MultipartBody.Part?,
         @Part("profile") profile: HashMap<String, String>
     ): Call<ResultResponse>
 
-    @POST("auth/withdrawal-member")
+    @PUT("member-account/owners")
     fun withDraw(
     ): Call<ResultResponse>
 
-    // Owner
-    @GET("owners/")
+    @GET("member-account/owners")
     fun selectOwnerInfo(
     ): Call<ResultUserInfo>
 
@@ -61,15 +74,9 @@ interface RetrofitService {
         @Body params: HashMap<String, List<String>>
     ): Call<ResultBNumCheck>
 
-    //    @FormUrlEncoded
     @Headers("Content-Type: application/json")
-    @POST("owners/register")
-    fun registerOwner(
-//        @Field("uuid") uuid: String,
-//        @Field("name") name: String,
-//        @Field("phone") phone: String,
-//        @Field("password") password: String,
-//        @Field("role") role: String,
+    @POST("member-account/owners/sign-up")
+    fun signUpOwner(
         @Body params: HashMap<String, String>
     ): Call<ResultResponse>
 
@@ -79,12 +86,23 @@ interface RetrofitService {
         @Header("Authorization") token: String,
     ): Call<ResultUserInfo>
 
+    // 직원 검색
+    @POST("employment/find-invitee")
+    fun findStaff(
+        @Body params: HashMap<String, String>
+    ): Call<ResponseFindStaff>
+
     // 매장에서 근무하는 직원 목록
-    @GET("employment/read/")
+    @GET("employment/read-all")
     fun getStaffList(
         @Query("storeId") storeId: Int,
     ): Call<StaffList>
 
+    @GET("employment/read")
+    fun getStaffInfo(
+        @Query("staffId") staffId: Int,
+        @Query("storeId") storeId: Int
+    ): Call<ResponseGetStaffInfo>
 
     /***    매장 관리    ***/
     /***    Owner    ***/

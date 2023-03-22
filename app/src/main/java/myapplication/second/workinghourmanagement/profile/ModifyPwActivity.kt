@@ -7,27 +7,27 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import android.view.MenuItem
-import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import myapplication.second.workinghourmanagement.*
+import myapplication.second.workinghourmanagement.CustomDialog
+import myapplication.second.workinghourmanagement.R
+import myapplication.second.workinghourmanagement.RetrofitManager
 import myapplication.second.workinghourmanagement.databinding.ActivityModifyPasswdBinding
 import myapplication.second.workinghourmanagement.dto.ResultResponse
 import myapplication.second.workinghourmanagement.member.LoginActivity
+import myapplication.second.workinghourmanagement.retrofit.OwnerService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.*
 
 class ModifyPwActivity : AppCompatActivity() {
     private lateinit var customDialog: CustomDialog
-    private lateinit var service: RetrofitService
+    private lateinit var service: OwnerService
     private lateinit var binding: ActivityModifyPasswdBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_modify_passwd)
-        service = RetrofitManager.retrofit.create(RetrofitService::class.java)
+        service = RetrofitManager.retrofit.create(OwnerService::class.java)
 
         bind()
     }
@@ -61,8 +61,7 @@ class ModifyPwActivity : AppCompatActivity() {
     private fun changePassword() {
         val body = HashMap<String, String>()
         body["newPassword"] = binding.editNewPw.text.toString()
-        body["oldPassword"] = intent.getStringExtra("currentPassword")!!
-        service.updatePassword(body).enqueue(object : Callback<ResultResponse> {
+        service.updatePasswordOwner(body).enqueue(object : Callback<ResultResponse> {
             override fun onResponse(
                 call: Call<ResultResponse>,
                 response: Response<ResultResponse>

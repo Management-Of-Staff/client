@@ -9,14 +9,16 @@ import android.text.TextWatcher
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.util.Log
-import android.view.MenuItem
-import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import myapplication.second.workinghourmanagement.*
+import myapplication.second.workinghourmanagement.BuildConfig
+import myapplication.second.workinghourmanagement.CustomDialog
+import myapplication.second.workinghourmanagement.R
+import myapplication.second.workinghourmanagement.RetrofitManager
 import myapplication.second.workinghourmanagement.databinding.ActivityOwnerJoinInfoBinding
 import myapplication.second.workinghourmanagement.dto.ResultBNumCheck
 import myapplication.second.workinghourmanagement.dto.ResultResponse
+import myapplication.second.workinghourmanagement.retrofit.OwnerService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -25,14 +27,14 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class OwnerJoinInfoActivity : AppCompatActivity() {
     private lateinit var binding: ActivityOwnerJoinInfoBinding
-    private lateinit var service: RetrofitService
+    private lateinit var service: OwnerService
     private lateinit var customDialog: CustomDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_owner_join_info)
 
-        service = RetrofitManager.retrofit.create(RetrofitService::class.java)
+        service = RetrofitManager.retrofit.create(OwnerService::class.java)
         bind()
     }
 
@@ -59,7 +61,7 @@ class OwnerJoinInfoActivity : AppCompatActivity() {
             bn["b_no"] = listOf(binding.ownerJoinEditBusinessNum.text.toString())
 
             val serviceKey = BuildConfig.BNUM_KEY
-            retrofit_bnum.create(RetrofitService::class.java)
+            retrofit_bnum.create(OwnerService::class.java)
                 .checkBNum(serviceKey = serviceKey, bn)
                 .enqueue(object : Callback<ResultBNumCheck> {
                     override fun onResponse(
@@ -172,15 +174,12 @@ class OwnerJoinInfoActivity : AppCompatActivity() {
     private fun registerUser() {
         val myIntent = intent
         val phone = myIntent.getStringExtra("phone")!!
-        val uuid = myIntent.getStringExtra("uuid")!!
         val userInfo = HashMap<String, String>()
-        userInfo["uuid"] = uuid
         userInfo["name"] = binding.ownerJoinEditOwnerName.text.toString()
-        userInfo["phone"] = phone
         userInfo["password"] = binding.ownerJoinEditPassword.text.toString()
-        userInfo["role"] = "OWNER"
+        userInfo["phone"] = phone
 
-        service.registerOwner(userInfo)
+        service.signUpOwner(userInfo)
             .enqueue(object : Callback<ResultResponse> {
                 override fun onResponse(
                     call: Call<ResultResponse>,
