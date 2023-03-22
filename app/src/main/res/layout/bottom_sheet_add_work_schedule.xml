@@ -24,7 +24,7 @@
             android:textSize="16sp"
             app:layout_constraintTop_toBottomOf="@id/title" />
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/checkbox_working_day"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -34,67 +34,95 @@
 
             <CheckBox
                 android:id="@+id/checkbox_mon"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@drawable/checkbox_selector_circle_app_color_background"
                 android:button="@null"
                 android:gravity="center"
-                android:text="@string/monday" />
+                android:text="@string/monday"
+                android:textColor="@drawable/checkbox_selector_text_color"
+                app:layout_constraintEnd_toStartOf="@id/checkbox_tue"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <CheckBox
                 android:id="@+id/checkbox_tue"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@drawable/checkbox_selector_circle_app_color_background"
                 android:button="@null"
                 android:gravity="center"
-                android:text="@string/tuesday" />
+                android:text="@string/tuesday"
+                android:textColor="@drawable/checkbox_selector_text_color"
+                app:layout_constraintEnd_toStartOf="@id/checkbox_wed"
+                app:layout_constraintStart_toEndOf="@id/checkbox_mon"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <CheckBox
                 android:id="@+id/checkbox_wed"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@drawable/checkbox_selector_circle_app_color_background"
                 android:button="@null"
                 android:gravity="center"
-                android:text="@string/wednesday" />
+                android:text="@string/wednesday"
+                android:textColor="@drawable/checkbox_selector_text_color"
+                app:layout_constraintEnd_toStartOf="@id/checkbox_thu"
+                app:layout_constraintStart_toEndOf="@id/checkbox_tue"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <CheckBox
                 android:id="@+id/checkbox_thu"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@drawable/checkbox_selector_circle_app_color_background"
                 android:button="@null"
                 android:gravity="center"
-                android:text="@string/thursday" />
+                android:text="@string/thursday"
+                android:textColor="@drawable/checkbox_selector_text_color"
+                app:layout_constraintEnd_toStartOf="@id/checkbox_fri"
+                app:layout_constraintStart_toEndOf="@id/checkbox_wed"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <CheckBox
                 android:id="@+id/checkbox_fri"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@drawable/checkbox_selector_circle_app_color_background"
                 android:button="@null"
                 android:gravity="center"
-                android:text="@string/friday" />
+                android:text="@string/friday"
+                android:textColor="@drawable/checkbox_selector_text_color"
+                app:layout_constraintEnd_toStartOf="@id/checkbox_sat"
+                app:layout_constraintStart_toEndOf="@id/checkbox_thu"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <CheckBox
                 android:id="@+id/checkbox_sat"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@drawable/checkbox_selector_circle_app_color_background"
                 android:button="@null"
                 android:gravity="center"
-                android:text="@string/saturday" />
+                android:text="@string/saturday"
+                android:textColor="@drawable/checkbox_selector_text_color"
+                app:layout_constraintEnd_toStartOf="@id/checkbox_sun"
+                app:layout_constraintStart_toEndOf="@id/checkbox_fri"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <CheckBox
                 android:id="@+id/checkbox_sun"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@drawable/checkbox_selector_circle_app_color_background"
                 android:button="@null"
                 android:gravity="center"
-                android:text="@string/sunday" />
-        </LinearLayout>
+                android:text="@string/sunday"
+                android:textColor="@drawable/checkbox_selector_text_color"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/checkbox_sat"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
             android:id="@+id/tv_start_time"
@@ -117,14 +145,14 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="40dp"
             android:fontFamily="@font/spoqahansansneo_medium"
+            android:text="오전 09:00"
             android:textAlignment="textEnd"
             android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_weight="1"
             app:layout_constraintStart_toEndOf="@id/tv_start_time"
-            app:layout_constraintTop_toTopOf="@id/tv_start_time"
-            tools:text="오전 09:00" />
+            app:layout_constraintTop_toTopOf="@id/tv_start_time" />
 
         <TimePicker
             android:id="@+id/start_timePicker"
@@ -155,21 +183,21 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="40dp"
             android:fontFamily="@font/spoqahansansneo_medium"
+            android:text="오후 09:00"
             android:textAlignment="textEnd"
             android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_weight="1"
             app:layout_constraintStart_toEndOf="@id/tv_finish_time"
-            app:layout_constraintTop_toTopOf="@id/tv_finish_time"
-            tools:text="오후 09:00" />
+            app:layout_constraintTop_toTopOf="@id/tv_finish_time" />
 
         <TimePicker
             android:id="@+id/finish_timePicker"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:timePickerMode="spinner"
-            android:visibility="visible"
+            android:visibility="invisible"
             app:layout_constraintTop_toBottomOf="@id/tv_finish_time" />
 
         <Button
