@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import myapplication.second.workinghourmanagement.databinding.ItemWorkScheduleBinding
 import myapplication.second.workinghourmanagement.dto.manageStaff.WorkTime
 
-class WorkScheduleAdapter :
+class WorkScheduleAdapter(private val clickListener: OnScheduleClickListener) :
     ListAdapter<WorkTime, WorkScheduleAdapter.WorkScheduleViewHolder>(DiffCallback()) {
     private lateinit var binding: ItemWorkScheduleBinding
 
@@ -30,9 +30,16 @@ class WorkScheduleAdapter :
         }
     }
 
+    interface OnScheduleClickListener{
+        fun onClick(item: WorkTime, position: Int)
+    }
+
     override fun onBindViewHolder(holder: WorkScheduleViewHolder, position: Int) {
         val workItem = currentList[position]
         holder.bind(workItem)
+        binding.root.setOnClickListener {
+            clickListener.onClick(workItem, position)
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WorkScheduleViewHolder {
