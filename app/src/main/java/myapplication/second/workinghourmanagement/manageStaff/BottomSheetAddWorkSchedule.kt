@@ -1,31 +1,26 @@
 package myapplication.second.workinghourmanagement.manageStaff
 
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import myapplication.second.workinghourmanagement.RetrofitManager
 import myapplication.second.workinghourmanagement.databinding.BottomSheetAddWorkScheduleBinding
-import myapplication.second.workinghourmanagement.dto.ResultResponse
 import myapplication.second.workinghourmanagement.dto.workTime.WorkAddRequest
+import myapplication.second.workinghourmanagement.dto.workTime.WorkAddResponse
 import myapplication.second.workinghourmanagement.retrofit.WorkTimeService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-
 class BottomSheetAddWorkSchedule(
-    context: Context,
     private val employmentId: Int,
     private val staffId: Int
 ) :
     BottomSheetDialogFragment() {
     private lateinit var binding: BottomSheetAddWorkScheduleBinding
-    private val mContext: Context = context
     private lateinit var service: WorkTimeService
     private lateinit var start: String
     private lateinit var finish: String
@@ -80,9 +75,9 @@ class BottomSheetAddWorkSchedule(
                 binding.checkboxSat,
                 binding.checkboxSun
             )
-            for(checkboxId in checkboxIds){
-                if(checkboxId.isChecked){
-                    when(checkboxId.text){
+            for (checkboxId in checkboxIds) {
+                if (checkboxId.isChecked) {
+                    when (checkboxId.text) {
                         "월" -> checkedDay.add("MONDAY")
                         "화" -> checkedDay.add("TUESDAY")
                         "수" -> checkedDay.add("WEDNESDAY")
@@ -95,21 +90,20 @@ class BottomSheetAddWorkSchedule(
             }
 
             val data = WorkAddRequest(checkedDay, finish, staffId, start)
-            service.addWorkTime(employmentId, data).enqueue(object : Callback<ResultResponse>{
+            service.addWorkTime(employmentId, data).enqueue(object : Callback<WorkAddResponse> {
                 override fun onResponse(
-                    call: Call<ResultResponse>,
-                    response: Response<ResultResponse>
+                    call: Call<WorkAddResponse>,
+                    response: Response<WorkAddResponse>
                 ) {
                 }
 
-                override fun onFailure(call: Call<ResultResponse>, t: Throwable) {
+                override fun onFailure(call: Call<WorkAddResponse>, t: Throwable) {
                     Log.e("addWorkTime fail", t.message.orEmpty())
                 }
             })
             dismiss()
         }
         binding.title.btnBottomSheetClose.setOnClickListener {
-            Toast.makeText(mContext, "닫기", Toast.LENGTH_SHORT).show()
             dismiss()
         }
         return binding.root
