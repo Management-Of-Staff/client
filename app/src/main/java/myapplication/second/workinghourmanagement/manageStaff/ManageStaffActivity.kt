@@ -17,7 +17,10 @@ import myapplication.second.workinghourmanagement.dto.ResultResponse
 import myapplication.second.workinghourmanagement.dto.manageStaff.ResponseGetStaffInfo
 import myapplication.second.workinghourmanagement.dto.manageStaff.UpdateRankAndWageRequest
 import myapplication.second.workinghourmanagement.dto.manageStaff.WorkTime
+import myapplication.second.workinghourmanagement.dto.workTime.WorkDeleteRequest
+import myapplication.second.workinghourmanagement.dto.workTime.WorkDeleteResponse
 import myapplication.second.workinghourmanagement.retrofit.ManageStaffService
+import myapplication.second.workinghourmanagement.retrofit.WorkTimeService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -26,6 +29,7 @@ import kotlin.properties.Delegates
 class ManageStaffActivity : AppCompatActivity() {
     private lateinit var binding: ActivityManageStaffBinding
     private lateinit var service: ManageStaffService
+    private lateinit var workService: WorkTimeService
     private lateinit var role: String
     private var staffId by Delegates.notNull<Int>()
     private var employmentId by Delegates.notNull<Int>()
@@ -34,6 +38,7 @@ class ManageStaffActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_manage_staff)
         service = RetrofitManager.retrofit.create(ManageStaffService::class.java)
+        workService = RetrofitManager.retrofit.create(WorkTimeService::class.java)
 
         employmentId = intent.getIntExtra("employmentId", 2)
 
@@ -119,6 +124,28 @@ class ManageStaffActivity : AppCompatActivity() {
             layoutManager = LinearLayoutManager(context)
             adapter = workScheduleAdapter
         }
+        binding.btnDeleteSchedule.setOnClickListener {
+            binding.btnDeleteComplete.visibility = View.VISIBLE
+            binding.btnDeleteSchedule.visibility = View.GONE
+            workScheduleAdapter.visibleCheckBox()
+        }
+        binding.btnDeleteComplete.setOnClickListener {
+            binding.btnDeleteComplete.visibility = View.GONE
+            binding.btnDeleteSchedule.visibility = View.VISIBLE
+            val workDeleteRequest = WorkDeleteRequest(workScheduleAdapter.getSelectedItems())
+            workService.deleteWorkTime(employmentId, workDeleteRequest).enqueue(object: Callback<WorkDeleteResponse>{
+                override fun onResponse(
+                    call: Call<WorkDeleteResponse>,
+                    response: Response<WorkDeleteResponse>
+                ) {
+                    initStaffInfo(employmentId)
+                }
+
+                override fun onFailure(call: Call<WorkDeleteResponse>, t: Throwable) {
+                    Log.e("delete schedule fail", t.message.orEmpty())
+                }
+            })
+        }
         workScheduleAdapter.submitList(workList)
     }
 
@@ -156,10 +183,6 @@ class ManageStaffActivity : AppCompatActivity() {
                     }
                 }
             }
-
-        binding.btnDeleteSchedule.setOnClickListener {
-            //todo 근무 일정 삭제
-        }
 
         binding.btnAddSchedule.setOnClickListener {
             val bottomSheet = BottomSheetAddWorkSchedule(employmentId, staffId)
