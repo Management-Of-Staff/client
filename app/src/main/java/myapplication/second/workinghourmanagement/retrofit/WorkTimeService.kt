@@ -21,7 +21,7 @@ interface WorkTimeService {
     ): Call<WorkAddResponse>
 
     //[직원 관리] 근무 삭제
-    @DELETE(employmentPath)
+    @HTTP(method = "DELETE", path = employmentPath, hasBody = true)
     fun deleteWorkTime(
         @Path("employmentId") employmentId: Int,
         @Body params: WorkDeleteRequest
