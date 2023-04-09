@@ -17,7 +17,10 @@ import myapplication.second.workinghourmanagement.dto.ResultResponse
 import myapplication.second.workinghourmanagement.dto.manageStaff.ResponseGetStaffInfo
 import myapplication.second.workinghourmanagement.dto.manageStaff.UpdateRankAndWageRequest
 import myapplication.second.workinghourmanagement.dto.manageStaff.WorkTime
+import myapplication.second.workinghourmanagement.dto.workTime.WorkDeleteRequest
+import myapplication.second.workinghourmanagement.dto.workTime.WorkDeleteResponse
 import myapplication.second.workinghourmanagement.retrofit.ManageStaffService
+import myapplication.second.workinghourmanagement.retrofit.WorkTimeService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -26,15 +29,18 @@ import kotlin.properties.Delegates
 class ManageStaffActivity : AppCompatActivity() {
     private lateinit var binding: ActivityManageStaffBinding
     private lateinit var service: ManageStaffService
+    private lateinit var workService: WorkTimeService
     private lateinit var role: String
     private var staffId by Delegates.notNull<Int>()
+    private var employmentId by Delegates.notNull<Int>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_manage_staff)
         service = RetrofitManager.retrofit.create(ManageStaffService::class.java)
+        workService = RetrofitManager.retrofit.create(WorkTimeService::class.java)
 
-        val employmentId = intent.getIntExtra("employmentId", 2)
+        employmentId = intent.getIntExtra("employmentId", 2)
 
         initStaffInfo(employmentId)
         bind(employmentId)
@@ -103,12 +109,42 @@ class ManageStaffActivity : AppCompatActivity() {
     }
 
     private fun initWorkSchedule(workList: List<WorkTime>, recyclerView: RecyclerView) {
-        val workScheduleAdapter = WorkScheduleAdapter()
+        val workScheduleAdapter =
+            WorkScheduleAdapter(object : WorkScheduleAdapter.OnScheduleClickListener {
+                override fun onClick(item: WorkTime, position: Int) {
+                    val workTimeIds = mutableListOf(item.workTimeId)
+                    val bottomSheet =
+                        BottomSheetUpdateWorkSchedule(employmentId, staffId, workTimeIds)
+                    bottomSheet.show(supportFragmentManager, bottomSheet.tag)
+                }
+            })
 
         recyclerView.run {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(context)
             adapter = workScheduleAdapter
+        }
+        binding.btnDeleteSchedule.setOnClickListener {
+            binding.btnDeleteComplete.visibility = View.VISIBLE
+            binding.btnDeleteSchedule.visibility = View.GONE
+            workScheduleAdapter.visibleCheckBox()
+        }
+        binding.btnDeleteComplete.setOnClickListener {
+            binding.btnDeleteComplete.visibility = View.GONE
+            binding.btnDeleteSchedule.visibility = View.VISIBLE
+            val workDeleteRequest = WorkDeleteRequest(workScheduleAdapter.getSelectedItems())
+            workService.deleteWorkTime(employmentId, workDeleteRequest).enqueue(object: Callback<WorkDeleteResponse>{
+                override fun onResponse(
+                    call: Call<WorkDeleteResponse>,
+                    response: Response<WorkDeleteResponse>
+                ) {
+                    initStaffInfo(employmentId)
+                }
+
+                override fun onFailure(call: Call<WorkDeleteResponse>, t: Throwable) {
+                    Log.e("delete schedule fail", t.message.orEmpty())
+                }
+            })
         }
         workScheduleAdapter.submitList(workList)
     }
@@ -148,12 +184,8 @@ class ManageStaffActivity : AppCompatActivity() {
                 }
             }
 
-        binding.btnDeleteSchedule.setOnClickListener {
-            //todo 근무 일정 삭제
-        }
-
         binding.btnAddSchedule.setOnClickListener {
-            val bottomSheet = BottomSheetAddWorkSchedule(this, employmentId, staffId)
+            val bottomSheet = BottomSheetAddWorkSchedule(employmentId, staffId)
             bottomSheet.show(supportFragmentManager, bottomSheet.tag)
         }
         binding.btnSave.setOnClickListener {

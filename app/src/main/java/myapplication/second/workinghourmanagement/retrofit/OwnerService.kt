@@ -9,43 +9,43 @@ import retrofit2.http.*
 
 interface OwnerService {
     // [사장] 정보 조회
-    @GET(path)
+    @GET(ownerPath)
     fun selectOwnerInfo(
     ): Call<ResultUserInfo>
 
     // [사장] 회원 탈퇴
-    @PUT(path)
+    @PUT(ownerPath)
     fun withDraw(
     ): Call<ResultResponse>
 
     // [사장] 비밀번호 변경
-    @POST("${path}/password")
+    @POST("${ownerPath}/password")
     fun updatePasswordOwner(
         @Body params: HashMap<String, String>,
     ): Call<ResultResponse>
 
     //[사장] 비밀번호 확인
-    @POST("${path}s/password-check")
+    @POST("${ownerPath}/password-check")
     fun passwordCheckOwner(
         @Body params: HashMap<String, String>,
     ): Call<ResultResponse>
 
     // [사장] 핸드폰 번호 수정
-    @POST("${path}/phone")
+    @POST("${ownerPath}/phone")
     fun updatePhoneOwner(
         @Body params: HashMap<String, String>,
     ): Call<ResultResponse>
 
     //[사장] 프로필 정보 변경
     @Multipart
-    @POST("${path}/profile")
+    @POST("${ownerPath}/profile")
     fun updateProfileOwner(
         @Part imageFile: MultipartBody.Part?,
         @Part("profile") profile: HashMap<String, String>
     ): Call<ResultResponse>
 
     // [사장] 회원 가입
-    @POST("${path}/sign-up")
+    @POST("${ownerPath}/sign-up")
     fun signUpOwner(
         @Body params: HashMap<String, String>
     ): Call<ResultResponse>
@@ -58,6 +58,7 @@ interface OwnerService {
     ): Call<ResultBNumCheck>
 
     companion object {
-        const val path = "member-account/owners"
+        const val memberPath = "member-account"
+        const val ownerPath = "member-account/owners"
     }
 }

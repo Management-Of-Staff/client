@@ -248,6 +248,20 @@
                         android:text="@string/deleted"
                         android:textColor="@color/app_color"
                         android:textSize="16sp"
+                        android:visibility="visible"
+                        app:layout_constraintEnd_toStartOf="@id/btn_delete_complete"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/btn_delete_complete"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/spoqahansansneo_bold"
+                        android:paddingVertical="12dp"
+                        android:text="완료"
+                        android:textColor="@color/app_color"
+                        android:textSize="16sp"
+                        android:visibility="gone"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 

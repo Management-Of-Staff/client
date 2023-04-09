@@ -70,49 +70,79 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.appcompat.widget.Toolbar>
 
-        <Button
-            android:id="@+id/btn_store_notice_list"
+        <TextView
+            android:id="@+id/tv_manage_store"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
-            android:text="공지사항으로 이동"
+            android:layout_marginStart="24sp"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/spoqahansansneo_bold"
+            android:text="매장 관리"
+            android:textColor="@color/b1"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@id/tv_sub"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/toolbar"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
-        <Button
-            android:id="@+id/btn_manage_staff_todo"
+        <TextView
+            android:id="@+id/tv_sub"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="30dp"
-            android:text="해야할 일로 이동"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btn_store_notice_list" />
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/spoqahansansneo_regular"
+            android:text="어플 하나로 간편하게 매장을 관리하세요"
+            android:textColor="@color/disabled_text"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@id/tv_manage_store"
+            app:layout_constraintTop_toBottomOf="@id/tv_manage_store" />
 
-        <Button
-            android:id="@+id/btn_store_schedule"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="60dp"
-            android:text="매장 일정으로 이동"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btn_manage_staff_todo" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="40dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_sub">
 
-        <Button
-            android:id="@+id/btn_manage_staff_info"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="30dp"
-            android:text="직원 관리로 이동"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btn_store_schedule" />
+            <Button
+                android:id="@+id/btn_store_notice_list"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text="공지사항"
+                app:layout_constraintBottom_toTopOf="@id/btn_store_schedule"
+                app:layout_constraintEnd_toStartOf="@id/btn_manage_staff_todo"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
+            <Button
+                android:id="@+id/btn_manage_staff_todo"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text="해야할 일"
+                app:layout_constraintBottom_toTopOf="@id/btn_manage_staff_info"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/btn_store_notice_list"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/btn_store_schedule"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text="매장 일정"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/btn_manage_staff_info"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btn_store_notice_list" />
+
+            <Button
+                android:id="@+id/btn_manage_staff_info"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text="직원 관리"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/btn_store_schedule"
+                app:layout_constraintTop_toBottomOf="@id/btn_manage_staff_todo" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

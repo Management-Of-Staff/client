@@ -8,16 +8,20 @@ import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import myapplication.second.workinghourmanagement.RetrofitManager
 import myapplication.second.workinghourmanagement.databinding.BottomSheetAddWorkScheduleBinding
+import myapplication.second.workinghourmanagement.dto.ResultResponse
 import myapplication.second.workinghourmanagement.dto.workTime.WorkAddRequest
-import myapplication.second.workinghourmanagement.dto.workTime.WorkAddResponse
+import myapplication.second.workinghourmanagement.dto.workTime.WorkUpdateRequest
+import myapplication.second.workinghourmanagement.dto.workTime.WorkUpdateResponse
 import myapplication.second.workinghourmanagement.retrofit.WorkTimeService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class BottomSheetAddWorkSchedule(
+
+class BottomSheetUpdateWorkSchedule(
     private val employmentId: Int,
-    private val staffId: Int
+    private val staffId: Int,
+    private val workTimeIds: List<Int>
 ) :
     BottomSheetDialogFragment() {
     private lateinit var binding: BottomSheetAddWorkScheduleBinding
@@ -45,7 +49,7 @@ class BottomSheetAddWorkSchedule(
             binding.finishTimePicker.visibility = View.VISIBLE
         }
 
-        binding.startTimePicker.setOnTimeChangedListener { timePicker, hourOfDay, minute ->
+        binding.startTimePicker.setOnTimeChangedListener { _, hourOfDay, minute ->
             var hour12 = hourOfDay
             val isPm = hourOfDay >= 12
             if (hourOfDay > 12) hour12 -= 12
@@ -54,7 +58,7 @@ class BottomSheetAddWorkSchedule(
                 String.format("%s %02d:%02d", if (isPm) "오후" else "오전", hour12, minute)
             start = String.format("%02d:%02d:00", hourOfDay, minute)
         }
-        binding.finishTimePicker.setOnTimeChangedListener { timePicker, hourOfDay, minute ->
+        binding.finishTimePicker.setOnTimeChangedListener { _, hourOfDay, minute ->
             var hour12 = hourOfDay
             val isPm = hourOfDay >= 12
             if (hourOfDay > 12) hour12 -= 12
@@ -88,19 +92,17 @@ class BottomSheetAddWorkSchedule(
                     }
                 }
             }
-
-            val data = WorkAddRequest(checkedDay, finish, staffId, start)
-            service.addWorkTime(employmentId, data).enqueue(object : Callback<WorkAddResponse> {
-                override fun onResponse(
-                    call: Call<WorkAddResponse>,
-                    response: Response<WorkAddResponse>
-                ) {
-                }
-
-                override fun onFailure(call: Call<WorkAddResponse>, t: Throwable) {
-                    Log.e("addWorkTime fail", t.message.orEmpty())
-                }
-            })
+            val data = WorkUpdateRequest(WorkAddRequest(checkedDay, finish, staffId, start), workTimeIds)
+            service.updateWorkTime(employmentId, data)
+                .enqueue(object : Callback<WorkUpdateResponse> {
+                    override fun onResponse(
+                        call: Call<WorkUpdateResponse>,
+                        response: Response<WorkUpdateResponse>
+                    ) { }
+                    override fun onFailure(call: Call<WorkUpdateResponse>, t: Throwable) {
+                        Log.e("updateWorkTime fail", t.message.orEmpty())
+                    }
+                })
             dismiss()
         }
         binding.title.btnBottomSheetClose.setOnClickListener {
